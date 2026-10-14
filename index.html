@@ -136,6 +136,15 @@ main .wrap { padding-block: 26px 60px; }
 .topics li { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--line); }
 .topics li:first-child { border-top: 0; }
 .code { font: 600 .78rem var(--font-mono); color: var(--accent); }
+.topics li.wk-row { padding: 14px 0 4px; border-top: 1px solid var(--line); grid-template-columns: 46px minmax(0, 1fr) auto; }
+.topics li.wk-row .label:first-child { color: var(--accent); font-weight: 600; }
+.topics li.wk-row.now .label { color: var(--signal); }
+.topics li.wk-row + li { border-top: 0; }
+.toc-week { display: grid; gap: 2px; padding: 6px 0; border-top: 1px solid var(--line); }
+.toc-week:first-child { border-top: 0; }
+.toc-week > .label { padding: 4px 10px; color: var(--accent); }
+.toc-week.now > .label { color: var(--signal); }
+@media (max-width: 880px) { .toc-week { flex: none; display: flex; gap: 6px; align-items: stretch; border-top: 0; padding: 0; } .toc-week > .label { align-self: center; white-space: nowrap; } }
 .meter { height: 5px; border-radius: 3px; background: var(--surface-2); overflow: hidden; margin-top: 5px; }
 .meter i { display: block; height: 100%; background: var(--good); }
 .style-list { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
@@ -167,6 +176,7 @@ td .pill { margin: 2px 4px 2px 0; }
 .note section { display: grid; gap: 10px; min-width: 0; }
 .note h3 { padding-top: 10px; border-top: 1px solid var(--line); }
 .prose { max-width: 74ch; display: grid; gap: 8px; }
+p.prose { display: block; }
 .prose ul, .prose ol { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; }
 .prose li::marker { color: var(--muted); }
 .callout { border-left: 3px solid var(--signal); background: var(--signal-soft); padding: 12px 14px; border-radius: 0 var(--radius) var(--radius) 0; max-width: 74ch; }
@@ -236,6 +246,13 @@ td .pill { margin: 2px 4px 2px 0; }
 .missed { display: grid; gap: 12px; }
 .missed .card { display: grid; gap: 6px; background: var(--surface-2); }
 textarea { width: 100%; min-height: 160px; resize: vertical; line-height: 1.5; }
+.week-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); }
+.wk-card { border: 1px solid var(--line); background: var(--surface-2); border-radius: var(--radius); padding: 12px; display: grid; gap: 6px; align-content: start; }
+.wk-card.span { grid-column: 1 / -1; background: var(--accent-soft); border-color: transparent; }
+.wk-card.off { opacity: .5; }
+.wk-card .wk-title { font: 700 1.25rem/1 var(--font-display); }
+.wk-card .btn { padding: 6px 10px; font-size: .88rem; }
+.sec-banner { border-left: 3px solid var(--accent); padding: 8px 12px; background: var(--accent-soft); border-radius: 0 var(--radius) var(--radius) 0; }
 .check-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .check-list label { display: grid; grid-template-columns: 22px 1fr; gap: 8px; align-items: start; cursor: pointer; }
 .check-list input { margin-top: 4px; accent-color: var(--good); }
@@ -372,7 +389,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
         </div>
       </article>
       <article class="card" style="display:grid;gap:8px">
-        <div class="panel-head"><h3>Topics &amp; your progress</h3><span class="label">best practice score</span></div>
+        <div class="panel-head"><h3>Week by week</h3><span class="label">best practice score</span></div>
         <ul class="topics" id="topicStatus"></ul>
       </article>
     </div>
@@ -398,7 +415,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <div id="notesBody" style="min-width:0">
 
 <article class="note" data-note="scor">
-  <header><span class="label">Intro week · deck “Week 1 SCOR DS” · Quiz 1</span><h2>SCOR Digital Standard (SCOR DS)</h2>
+  <header><span class="label">Week 1 · Sept 2 · slides “Week 1 SCOR DS” · Quiz 1</span><h2>SCOR Digital Standard (SCOR DS)</h2>
   <p class="prose">The Supply Chain Operations Reference model, maintained by <b>ASCM</b> (Association for Supply Chain Management). A free, open-access, fully digital standard that gives organizations a common language for describing, measuring and improving supply chains. It is a <b>reference model</b>, not software and not a step-by-step method.</p></header>
   <button class="btn lablink" data-goto="labs" data-lab="scor">Open the interactive SCOR DS loop →</button>
   <section><h3>What makes SCOR DS different</h3>
@@ -478,7 +495,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 </article>
 
 <article class="note" data-note="t1" hidden>
-  <header><span class="label">Topic 1 · Sept 9 &amp; 11 · deck “Week 2” · Quiz 1</span><h2>Introduction to Supply Chain Technology</h2>
+  <header><span class="label">Week 1 · Topic 1 · Sept 9 &amp; 11 · slides labelled “Week 2” · Quiz 1</span><h2>Introduction to Supply Chain Technology</h2>
   <p class="prose"><b>Supply chain technology:</b> the tools, systems, platforms and digital capabilities used to <b>plan, execute, monitor and improve</b> supply chain activities. It supports <b>physical flows and information flows</b>. Effective technology solves a business problem; it does not just add sophistication.</p></header>
   <section><h3>Why it matters</h3>
   <div class="prose"><ul>
@@ -551,7 +568,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 </article>
 
 <article class="note" data-note="t2" hidden>
-  <header><span class="label">Topic 2 · Sept 14 &amp; 16 · deck “Week 3” · Quiz 1</span><h2>Digital Supply Chain Strategy &amp; Transformation</h2>
+  <header><span class="label">Week 2 · Topic 2 · Sept 14 &amp; 16 · slides labelled “Week 3” · Quiz 1</span><h2>Digital Supply Chain Strategy &amp; Transformation</h2>
   <p class="prose">Core principle: <b>strategy drives technology, never the reverse.</b> Business strategy → SC strategy → technology strategy → implementation.</p></header>
   <button class="btn lablink" data-goto="labs" data-lab="maturity">Open the maturity roadmap diagram →</button>
   <section><h3>Environment &amp; strategy basics</h3>
@@ -560,6 +577,19 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <li><b>Strategy:</b> long-term goals, courses of action and resource allocation. Successful if it gives sustainable competitive advantage.</li>
     <li><b>Process:</b> vision/mission/objectives → analyze environment (SWOT) → formulate (corporate, business, functional) → implement (leadership, culture, HR, information &amp; control systems) → assess.</li>
   </ul></div></section>
+  <section><h3>Diagrams from the slides</h3>
+  <div class="table-scroll"><table><thead><tr><th>Layer</th><th>What's in it</th></tr></thead><tbody>
+    <tr><td><b>The organization</b> (internal)</td><td>Culture, structure, strategy</td></tr>
+    <tr><td><b>Task / industry-specific environment</b></td><td>Suppliers, distributors, customers, competitors</td></tr>
+    <tr><td><b>General environment</b></td><td>Political, economic, sociocultural, technological, international/global forces</td></tr>
+  </tbody></table></div>
+  <p class="prose"><b>CREST</b> environmental forces: <b>C</b>ompetitive (alternative forms and components of competition), <b>R</b>egulatory (laws protecting competition, self-regulation), <b>E</b>conomic (macro conditions, consumer income), <b>S</b>ocial (demographic and cultural shifts), <b>T</b>echnological (changing technology and its impact on customer value).</p>
+  <div class="flow"><span>Strategic analysis: mission, stakeholders, values, objectives; SWOT; rivalry &amp; industry attractiveness</span><i>→</i><span>Strategy formulation: corporate, business, functional strategies</span><i>→</i><span>Strategy implementation: management systems, strategic leadership</span><i>→</i><span>Evaluate &amp; adjust: strategic control, corporate governance</span></div>
+  <div class="table-scroll"><table><thead><tr><th>Structural decisions (bricks &amp; mortar)</th><th>Infrastructural decisions (how it's run)</th></tr></thead><tbody><tr>
+    <td><b>Capacity:</b> amount, type, timing (lead, lag, match demand)<br><b>Facilities:</b> plants, warehouses, DCs; size, location, specialization<br><b>Technology:</b> processes, material handling, transport equipment, information systems</td>
+    <td><b>Organization:</b> structure, reward systems, workforce<br><b>Sourcing:</b> strategies, supplier selection, supplier performance<br><b>Planning &amp; control:</b> forecasting, inventory, production planning<br><b>Quality:</b> Six Sigma, continuous improvement, SQC<br><b>Product &amp; service development</b></td>
+  </tr></tbody></table></div>
+  <p class="prose muted">Operations and supply chain decision categories (Hayes &amp; Wheelwright). Nike's mission: “bring inspiration and innovation to every athlete in the world. If you have a body, you are an athlete.”</p></section>
   <section><h3>Porter's Five Forces &amp; how SCM influences them</h3>
   <div class="table-scroll"><table><thead><tr><th>Force</th><th>SCM lever</th><th>Example</th></tr></thead><tbody>
     <tr><td>New entrants</td><td>Raise barriers to entry</td><td>Real-time inventory, long-term supplier and logistics relationships</td></tr>
@@ -567,6 +597,13 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <tr><td>Supplier power</td><td>Increase alternatives</td><td>Multi-sourcing, supplier benchmarking</td></tr>
     <tr><td>Substitutes</td><td>Lower willingness to switch</td><td>Better quality, competitive price, faster delivery</td></tr>
     <tr><td>Rivalry</td><td>Lower cost, differentiate, standardize</td><td>Rapid response to demand, efficient processes</td></tr>
+  </tbody></table></div>
+  <div class="table-scroll"><table><thead><tr><th>Force</th><th>What drives it (from the slide)</th></tr></thead><tbody>
+    <tr><td>Threat of new entrants</td><td>Barriers to entry, economies of scale, brand loyalty, capital requirements, cumulative experience, government policies, access to distribution, switching costs</td></tr>
+    <tr><td>Supplier power</td><td>Number and size of suppliers, uniqueness of their product, your ability to substitute</td></tr>
+    <tr><td>Buyer power</td><td>Number of customers, order size, differences between competitors, price sensitivity, ability to substitute, information available, switching costs</td></tr>
+    <tr><td>Threat of substitutes</td><td>Number of substitutes, buyer propensity to substitute, relative price-performance, perceived differentiation, switching costs</td></tr>
+    <tr><td>Rivalry</td><td>Number and diversity of competitors, concentration, industry growth, quality differences, brand loyalty, exit barriers, switching costs</td></tr>
   </tbody></table></div>
   <p class="prose"><b>Why Five Forces + Value Chain matter for digital strategy:</b> they show <b>where</b> SC capabilities and technology can influence competitive forces and create value. They don't pick the cheapest tech or guarantee advantage.</p>
   <p class="prose"><b>Value chain → systems:</b> ERP → everything (backbone); WMS → inbound logistics &amp; operations; TMS → outbound logistics; CRM → marketing, sales, service; AI/analytics → margin by removing waste.</p></section>
@@ -597,14 +634,23 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <li>Sequential in principle (no skipping clean data) but <b>rarely a straight line</b>; maturity can be <b>uneven</b>: stage 4 in one region, stage 1 in another.</li>
     <li>A firm with good transactions but fragmented data should build <b>connectivity</b> before expecting AI prediction to work.</li>
     <li><b>Gartner model:</b> 5 levels, assessed on <b>Data, Process, Technology, Talent, Culture</b>.</li>
-    <li>Transformation journey: <b>Diagnose → Pilot → Scale → Transform → Optimize</b>.</li>
+    <li>Transformation journey: <b>Diagnose → Pilot → Scale → Transform → Optimize</b>.
+      <ul><li><b>Diagnose:</b> AS-IS process map, digital maturity assessment, gap analysis, business case.</li>
+      <li><b>Pilot:</b> pick 1–2 high-impact use cases, implement, measure, learn quickly.</li>
+      <li><b>Scale:</b> roll out proven solutions across functions and regions, integrate data layers.</li>
+      <li><b>Transform:</b> redesign the business model, build new digital capabilities, ecosystem integration.</li>
+      <li><b>Optimize:</b> continuous improvement, AI-driven automation, monitor KPIs, iterate.</li></ul></li>
   </ul></div></section>
   <section><h3>Orchestrate &amp; the control tower</h3>
   <div class="prose"><ul>
     <li><b>Orchestrate</b> = the brain of SCOR DS; strategic and decision-driving. <b>It sets the planning framework; Plan executes it.</b></li>
     <li>The <b>control tower</b> is the primary technology enabling Orchestrate: real-time, end-to-end visibility that collects, synthesizes and <b>acts</b> (more than a dashboard).</li>
     <li>Decisions: <b>operational</b> (supplier 3 days late), <b>tactical</b> (demand +20% in Ontario, expedite from Calgary?), <b>strategic</b> (which nodes are most vulnerable?).</li>
-    <li>Principle: <b>Seeing → Understanding → Deciding → Acting</b>. Layers: visibility → analytics → action.</li>
+    <li>Principle: <b>Seeing → Understanding → Deciding → Acting</b>.</li>
+    <li><b>Three layers, each built on the one below:</b>
+      <ul><li><b>1 Visibility</b>, “what is happening right now?”: inventory across DCs, orders in transit with GPS, supplier delivery status, production vs plan, order backlog.</li>
+      <li><b>2 Analytics</b>, “why is it happening, what happens next?”: demand forecast spikes, tier-2 capacity constraints, supplier risk scores, weather delays, ML-flagged anomalies.</li>
+      <li><b>3 Action</b>, “what should we do?”: increase production, re-route via air, reallocate inventory between DCs, alert customers with a new ETA, switch to a backup supplier.</li></ul></li>
     <li><b>P&amp;G:</b> “drowning in data but starved for insights” → control tower; a capability for “winning at the shelf”.</li>
     <li><b>Ecosystem thinking:</b> no firm digitizes alone.</li>
   </ul></div></section>
@@ -615,11 +661,20 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <li><b>2020 Consumer Direct Acceleration:</b> 50% digital revenue target by FY2025; regional hubs; ML replenishment (7% of SKUs = 40% of demand); Nike Fit.</li>
     <li>RFID tags = digitization; AI forecasting = digitalization; wholesale → DTC ecosystem = transformation.</li>
   </ul></div></section>
-  <div class="callout"><span class="label">Most likely on the quiz</span>Match a scenario to efficient/responsive/resilient/sustainable; transformation vs digitization; tech stack order (IoT → AI → Cloud → Robotics); why Five Forces + Value Chain matter; uneven maturity; maturity stage order; control tower decision levels; red vs blue ocean (OR vs AND).</div>
+  <section><h3>Six common digital transformation pitfalls</h3>
+  <div class="table-scroll"><table><thead><tr><th>Pitfall</th><th>What it looks like</th></tr></thead><tbody>
+    <tr><td><b>Technology-first thinking</b></td><td>Buying technology before defining the strategy (“We bought SAP, now what?”). Lidl wrote off €500M.</td></tr>
+    <tr><td><b>Ignoring data quality</b></td><td>Digitizing bad data just makes bad digital data faster (Target Canada).</td></tr>
+    <tr><td><b>Change management neglect</b></td><td>90% of transformation failures are people/process failures, not technology.</td></tr>
+    <tr><td><b>Boiling the ocean</b></td><td>Transforming everything at once. Dell started with one technology (RPA), proved value, then scaled.</td></tr>
+    <tr><td><b>Ecosystem myopia</b></td><td>Only looking inside. A control tower is only as good as the data suppliers share.</td></tr>
+    <tr><td><b>ROI impatience</b></td><td>Expecting results in year 1. P&amp;G's control tower took 3+ years to deliver full value.</td></tr>
+  </tbody></table></div></section>
+  <div class="callout"><span class="label">Most likely on the quiz</span>Six transformation pitfalls; control tower layers; Diagnose → Pilot → Scale → Transform → Optimize; task vs general environment; CREST; structural vs infrastructural decisions; Match a scenario to efficient/responsive/resilient/sustainable; transformation vs digitization; tech stack order (IoT → AI → Cloud → Robotics); why Five Forces + Value Chain matter; uneven maturity; maturity stage order; control tower decision levels; red vs blue ocean (OR vs AND).</div>
 </article>
 
 <article class="note" data-note="t3" hidden>
-  <header><span class="label">Topic 3 · Sept 21 &amp; 23 · Quiz 1</span><h2>Supply Chain Risk, Resilience &amp; Sustainability</h2></header>
+  <header><span class="label">Week 3 · Topic 3 · Sept 21 &amp; 23 · Quiz 1</span><h2>Supply Chain Risk, Resilience &amp; Sustainability</h2></header>
   <div class="callout info"><span class="label">Built from the mock quiz and related slides</span>The Topic 3 slides haven't been uploaded yet. These notes come from the mock quiz answer key (which quotes this lesson) and the risk and sustainability material in the other decks. Upload the Topic 3 deck to fill in the rest.</div>
   <section><h3>Risk, disruption, crisis</h3>
   <div class="flow"><span>Risk: a possible event</span><i>→</i><span>Disruption: the event interrupts flows</span><i>→</i><span>Crisis: consequences severe enough to threaten the wider business</span></div>
@@ -661,7 +716,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 </article>
 
 <article class="note" data-note="t4" hidden>
-  <header><span class="label">Topic 4 · Sept 28 &amp; 30 · deck “Week 4” · Quiz 2</span><h2>Enterprise Supply Chain Systems 1</h2>
+  <header><span class="label">Week 4 · Topic 4 · Sept 28 &amp; 30 · slides “Week 4” · Quiz 2</span><h2>Enterprise Supply Chain Systems 1</h2>
   <p class="prose"><b>Enterprise SC system:</b> an integrated technology environment supporting end-to-end processes across functions, units and partners. Not standalone. Supports transactions, planning &amp; execution, and monitoring &amp; decisions.</p></header>
   <button class="btn lablink" data-goto="labs" data-lab="bullwhip">Open the bullwhip simulator →</button>
   <section><h3>Six flows &amp; scope</h3>
@@ -722,7 +777,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 </article>
 
 <article class="note" data-note="t5" hidden>
-  <header><span class="label">Topic 5 · Oct 5 &amp; 7 · deck “Week 5” · Quiz 2</span><h2>Enterprise Systems 2: Beyond ERP</h2>
+  <header><span class="label">Week 5 · Topic 5 · Oct 5 &amp; 7 · slides “Week 5” · Quiz 2</span><h2>Enterprise Systems 2: Beyond ERP</h2>
   <p class="prose"><b>ERP is the backbone, not the whole skeleton.</b> ERP is the system of record at the core; specialized systems (APS, e-procurement/SRM, CRM/OMS, WMS, TMS, MES, SCEM) at the edge add optimization, execution detail and real-time visibility, connected by integration.</p></header>
   <section><h3>Why go beyond ERP</h3>
   <div class="table-scroll"><table><thead><tr><th>ERP does well</th><th>ERP gaps</th></tr></thead><tbody><tr>
@@ -898,6 +953,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
       <button class="btn" id="fcShuffle">Shuffle</button>
     </div>
   </div>
+  <div class="chips" id="fcWeekChips" style="justify-content:center"></div>
   <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Flashcard, press to flip">
     <div class="fc-inner">
       <div class="fc-face front"><div class="fc-top"><span class="label" id="fcTopicLabel"></span><span class="label num" id="fcCount"></span></div><div class="term" id="fcTerm"></div><span class="label">tap to flip</span></div>
@@ -917,6 +973,9 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 <section class="panel" data-panel="quiz" hidden>
   <div class="panel-head"><div style="display:grid;gap:6px"><h2>Practice</h2><p class="muted">True/false, multiple choice and short essays written in the same style as the instructor's mock quiz. Every answer comes with the reasoning. Questions marked <span class="pill mock">mock quiz</span> are reworded from the sample the instructor gave out.</p></div></div>
   <article class="card quiz-card" id="quizSetup">
+    <div style="display:grid;gap:4px"><h3>Quiz by week</h3><p class="muted">Each week's quiz runs every true/false and multiple choice question for that week. Review sets run in week-by-week sections, like the real quiz.</p></div>
+    <div class="week-grid" id="weekGrid"></div>
+    <h3 style="padding-top:10px;border-top:1px solid var(--line)">Build your own</h3>
     <div class="fc-tools">
       <div class="field" style="flex:1 1 230px"><label class="label" for="qScope">Questions from</label><select id="qScope"></select></div>
       <div class="field" style="flex:1 1 230px"><label class="label" for="qFormat">Format</label><select id="qFormat">
@@ -933,7 +992,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <div id="qHistory"></div>
   </article>
   <article class="card quiz-card" id="quizRun" hidden>
-    <div class="panel-head"><span class="label num" id="qPos"></span><span style="display:flex;gap:6px" id="qTags"></span></div>
+    <div class="panel-head"><span style="display:grid;gap:2px"><span class="label" id="qSection" style="color:var(--accent)"></span><span class="label num" id="qPos"></span></span><span style="display:flex;gap:6px" id="qTags"></span></div>
     <div class="progress"><i id="qBar" style="width:0%"></i></div>
     <p class="q-stem" id="qStem"></p>
     <div class="opts" id="qOpts"></div>
@@ -1046,18 +1105,33 @@ function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<":
 
 /* ---------- course data ---------- */
 const TOPICS = [
-  { id: "scor", code: "SCOR", title: "SCOR Digital Standard", when: "Sept 2 (intro week)", status: "uploaded", quiz: 1 },
-  { id: "t1", code: "T1", title: "Introduction to Supply Chain Technology", when: "Sept 9 & 11", status: "uploaded", quiz: 1 },
-  { id: "t2", code: "T2", title: "Digital SC Strategy & Transformation", when: "Sept 14 & 16", status: "uploaded", quiz: 1 },
-  { id: "t3", code: "T3", title: "SC Risk, Resilience & Sustainability", when: "Sept 21 & 23", status: "partial", quiz: 1 },
-  { id: "t4", code: "T4", title: "Enterprise SC Systems 1", when: "Sept 28 & 30", status: "uploaded", quiz: 2 },
-  { id: "t5", code: "T5", title: "Enterprise SC Systems 2: Beyond ERP", when: "Oct 5 & 7", status: "uploaded", quiz: 2 },
-  { id: "t6", code: "T6", title: "AI & Intelligent Supply Chains", when: "Oct 14", status: "missing", quiz: 2 },
-  { id: "t7", code: "T7", title: "Automation, Smart Manufacturing & Digital Twins", when: "Oct 19 & 21", status: "missing", quiz: 3 },
-  { id: "t8", code: "T8", title: "Blockchain, IoT & Smart Logistics", when: "Oct 26 & 28", status: "missing", quiz: 3 },
-  { id: "t9", code: "T9", title: "SC Data Management & Descriptive Analytics", when: "Nov 16 & 18", status: "missing", quiz: 3 },
-  { id: "t10", code: "T10", title: "Advanced Supply Chain Analytics", when: "Nov 23 & 25", status: "missing", quiz: 0 }
+  { id: "scor", wk: 1, code: "Week 1", title: "SCOR Digital Standard", when: "Sept 2", status: "uploaded", quiz: 1 },
+  { id: "t1", wk: 1, code: "Week 1", title: "Introduction to Supply Chain Technology", when: "Sept 9 & 11", status: "uploaded", quiz: 1 },
+  { id: "t2", wk: 2, code: "Week 2", title: "Digital SC Strategy & Transformation", when: "Sept 14 & 16", status: "uploaded", quiz: 1 },
+  { id: "t3", wk: 3, code: "Week 3", title: "SC Risk, Resilience & Sustainability", when: "Sept 21 & 23", status: "partial", quiz: 1 },
+  { id: "t4", wk: 4, code: "Week 4", title: "Enterprise SC Systems 1", when: "Sept 28 & 30", status: "uploaded", quiz: 2 },
+  { id: "t5", wk: 5, code: "Week 5", title: "Enterprise SC Systems 2: Beyond ERP", when: "Oct 5 & 7", status: "uploaded", quiz: 2 },
+  { id: "t6", wk: 6, code: "Week 6", title: "AI & Intelligent Supply Chains", when: "Oct 14", status: "missing", quiz: 2 },
+  { id: "t7", wk: 7, code: "Week 7", title: "Automation, Smart Manufacturing & Digital Twins", when: "Oct 19 & 21", status: "missing", quiz: 3 },
+  { id: "t8", wk: 8, code: "Week 8", title: "Blockchain, IoT & Smart Logistics", when: "Oct 26 & 28", status: "missing", quiz: 3 },
+  { id: "t9", wk: 11, code: "Week 11", title: "SC Data Management & Descriptive Analytics", when: "Nov 16 & 18", status: "missing", quiz: 3 },
+  { id: "t10", wk: 12, code: "Week 12", title: "Advanced Supply Chain Analytics", when: "Nov 23 & 25", status: "missing", quiz: 0 }
 ];
+const WEEK_INFO = {
+  1: { dates: "Sept 2–11", note: "Quiz 1", slides: "slides labelled “Week 1” and “Week 2”" },
+  2: { dates: "Sept 14–16", note: "Quiz 1", slides: "slides labelled “Week 3”" },
+  3: { dates: "Sept 21–23", note: "Quiz 1", slides: "slides not uploaded yet" },
+  4: { dates: "Sept 28–30", note: "Quiz 2", slides: "slides labelled “Week 4”" },
+  5: { dates: "Oct 5–7", note: "Quiz 2", slides: "slides labelled “Week 5”" },
+  6: { dates: "Oct 12–14", note: "Quiz 2 · Quiz 1 written Oct 14", slides: "slides not uploaded yet" },
+  7: { dates: "Oct 19–21", note: "Quiz 3", slides: "slides not uploaded yet" },
+  8: { dates: "Oct 26–28", note: "Quiz 3 · Quiz 2 written Oct 28", slides: "slides not uploaded yet" },
+  11: { dates: "Nov 16–18", note: "Quiz 3", slides: "slides not uploaded yet" },
+  12: { dates: "Nov 23–25", note: "Final", slides: "slides not uploaded yet" }
+};
+const WEEK_NUMS = [...new Set(TOPICS.map(t => t.wk))];
+function weekTopics(n) { return TOPICS.filter(t => t.wk === n); }
+function currentWeekNum() { const w = WEEKS.find(x => T0 >= parseD(x.start) && T0 <= parseD(x.end)); return w ? +w.w.slice(1) : 0; }
 const topicById = Object.fromEntries(TOPICS.map(t => [t.id, t]));
 
 const EVENTS = [
@@ -1065,13 +1139,13 @@ const EVENTS = [
   { date: "2026-09-07", title: "Labour Day, campus closed", kind: "closed" },
   { date: "2026-09-09", title: "Group project assigned", kind: "project" },
   { date: "2026-10-12", title: "Thanksgiving, campus closed", kind: "closed" },
-  { date: "2026-10-14", title: "In-class Quiz 1", scope: "Topics 1, 2 & 3 (plus SCOR DS from week 1)", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q1" },
-  { date: "2026-10-28", title: "In-class Quiz 2", scope: "Topics 4, 5 & 6", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q2" },
+  { date: "2026-10-14", title: "In-class Quiz 1", scope: "Weeks 1–3: SCOR DS, Intro to SC Tech, Digital SC Strategy, Risk & Resilience", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q1" },
+  { date: "2026-10-28", title: "In-class Quiz 2", scope: "Weeks 4–6: Enterprise Systems 1 & 2, AI & Intelligent SCs", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q2" },
   { date: "2026-11-01", title: "Group project report due", scope: "Outline says 11:59 a.m. on a Sunday; confirm a.m. vs p.m.", weight: "20% with presentation", kind: "project", time: "11:59" },
   { date: "2026-11-02", title: "Group project presentation", scope: "In class", kind: "project", time: "11:00" },
   { date: "2026-11-04", title: "Midterm exam", scope: "In person, in class. Scope isn't stated in the outline; confirm with the instructor.", weight: "20%", kind: "exam", time: "11:00" },
   { date: "2026-11-09", end: "2026-11-13", title: "Reading week, campus closed", kind: "closed" },
-  { date: "2026-11-25", title: "In-class Quiz 3", scope: "Topics 7, 8 & 9", weight: "10%", kind: "quiz", time: "11:00" },
+  { date: "2026-11-25", title: "In-class Quiz 3", scope: "Weeks 7, 8 & 11: Automation & Digital Twins, Blockchain & IoT, Data & Analytics", weight: "10%", kind: "quiz", time: "11:00" },
   { date: "2026-12-07", title: "Last class", kind: "class" },
   { date: "2026-12-07", end: "2026-12-18", title: "Final exam period", scope: "Your exact date, time and room are in myStudentSystem", weight: "30%", kind: "exam" }
 ];
@@ -1120,6 +1194,10 @@ const TF = [
 ["t1","Autonomous mobile robots need extensive fixed infrastructure such as conveyors to work.",false,"AMRs navigate with limited fixed infrastructure, which makes them more flexible than fixed automation."],
 ["t1","In the SMAC model, mobile devices form the core.",false,"The cloud is the core; mobile devices are the endpoints and social channels connect them."],
 ["t1","A decision support system supports both what-if analysis and goal-seeking.",true,"DSS are interactive, model-based tools for sensitivity analysis."],
+["t2","Most digital transformation failures are caused by the technology itself.",false,"The slide says 90% of failures are people and process failures. Technology is the easy part."],
+["t2","A company should expect the full value of a supply chain control tower within its first year.",false,"ROI impatience is a named pitfall: P&G's control tower took 3+ years to deliver full value."],
+["t2","Digitizing bad data simply creates bad digital data faster.",true,"That's the 'ignoring data quality' pitfall, with Target Canada as the example."],
+["t2","The general environment is easier to identify and address than the task environment.",false,"It's harder; that's why it needs constant environmental scanning."],
 ["t2","A company should choose its technology strategy first and then adjust its business strategy to fit.",false,"Strategy drives technology, never the reverse: business → SC → technology → implementation."],
 ["t2","A company can sit at different digital maturity stages in different regions at the same time.",true,"Maturity is often uneven: stage 4 in an established market, stage 1 in a new one."],
 ["t2","A company can jump straight to the Autonomous & Adaptive stage by buying advanced AI tools.",false,"Each stage builds on the one before: visibility, then connectivity, then prediction. Skipping clean data usually fails."],
@@ -1220,6 +1298,18 @@ const MC = [
 ["t2","The primary technology enabling the SCOR DS Orchestrate process is:",["The supply chain control tower","A barcode scanner","EDI 850","A spreadsheet"],"Real-time, end-to-end visibility and orchestration."],
 ["t2","In Nike's 2017 Triple Double, cutting from about 30,000 retailers to ~40 partners was part of:",["2X Direct","2X Speed","2X Innovation","2X Sustainability"],"2X Speed was RFID and faster creation; 2X Innovation was app data + Celect AI."],
 ["t2","Nike putting RFID tags on shoes is an example of:",["Digitization","Digitalization","Digital transformation","Blue ocean strategy"],"Making inventory information digital. AI forecasting would be digitalization."],
+["t2","A company buys a new ERP before deciding its strategy, then asks 'now what?'. Which transformation pitfall is this?",["Technology-first thinking","Ecosystem myopia","ROI impatience","Boiling the ocean"],"Buying technology before defining strategy. The slide's example: Lidl wrote off €500M."],
+["t2","A firm tries to digitize every process across every region at the same time. Which pitfall?",["Boiling the ocean","Technology-first thinking","Ignoring data quality","Change management neglect"],"Dell avoided this by starting with one technology (RPA), proving value, then scaling."],
+["t2","A control tower is installed, but suppliers share little data, so it can't see upstream problems. Which pitfall?",["Ecosystem myopia","ROI impatience","Boiling the ocean","Technology-first thinking"],"A control tower is only as good as the data your suppliers share."],
+["t2","Which control tower layer answers 'Why is this happening? What will happen next?'",["Analytics layer","Visibility layer","Action layer","Integration layer"],"Visibility = what is happening now; analytics = why and what next; action = what should we do."],
+["t2","'Re-route a shipment via air freight and alert the customer with a revised ETA' belongs to which control tower layer?",["Action layer","Visibility layer","Analytics layer","Data layer"],"The action layer turns insight into decisions: re-route, reallocate, switch suppliers."],
+["t2","In the transformation roadmap, selecting 1–2 high-impact use cases, implementing and learning quickly is the:",["Pilot phase","Diagnose phase","Scale phase","Optimize phase"],"Diagnose → Pilot → Scale → Transform → Optimize."],
+["t2","An AS-IS process map, maturity assessment, gap analysis and business case are done in which phase?",["Diagnose","Pilot","Scale","Transform"],"Diagnose comes first: understand where you are and why change pays."],
+["t2","Suppliers, distributors, customers and competitors make up the:",["Task (industry-specific) environment","General environment","Internal environment","Regulatory environment"],"The general environment is political, economic, sociocultural, technological and international forces."],
+["t2","What does CREST stand for?",["Competitive, Regulatory, Economic, Social, Technological","Cost, Risk, Efficiency, Speed, Technology","Customers, Retailers, Employees, Suppliers, Transporters","Capacity, Resources, Environment, Strategy, Tactics"],"CREST and PESTEL both describe general environmental forces."],
+["t2","Capacity, facilities and technology are which type of operations and supply chain decision?",["Structural","Infrastructural","Tactical","Functional"],"Infrastructural decisions cover organization, sourcing, planning & control, quality and product development."],
+["t2","Economies of scale, capital requirements and access to distribution channels mainly affect:",["Threat of new entrants","Supplier power","Threat of substitutes","Buyer power"],"These are barriers to entry from the Five Forces diagram."],
+["t2","Strategic control and corporate governance belong to which part of strategic management?",["Evaluating results and making adjustments","Strategic analysis","Strategy formulation","Environmental scanning"],"Analysis → formulation → implementation → evaluate and adjust (then the cycle renews)."],
 ["t2","In value chain terms, a TMS mainly supports:",["Outbound logistics","Human resource management","Procurement only","Firm infrastructure"],"WMS → inbound logistics & operations; TMS → outbound; CRM → marketing, sales, service."],
 
 ["t3","What does supply chain resilience mainly aim to do?",["Limit the impact of disruptions, recover quickly and adapt","Prevent every disruption","Hold as much inventory as possible","Use as many suppliers as possible"],"Resilience is about absorbing and bouncing back, not perfect prevention."],
@@ -1370,7 +1460,99 @@ const F = [
 ["t5","SCEM","Manage by exception: Sense → Detect & alert → Decide → Act → Learn. KPI: MTTD."],
 ["t5","Fit-gap","Fit = as delivered · Configure = settings, no code · Gap = change process, add-on, workaround or customize (last resort)."],
 ["t5","MoSCoW","Must, Should, Could, Won't: prioritizing requirements."],
-["t5","Payback & ROI","Payback = investment ÷ annual benefit. ROI = (benefits − cost) ÷ cost."]
+["t5","Payback & ROI","Payback = investment ÷ annual benefit. ROI = (benefits − cost) ÷ cost."],
+["scor","SCOR history","1996 Supply Chain Council → 2014 merges with APICS → 2017 SCOR 12.0 → 2019 APICS becomes ASCM → 2022 SCOR Digital Standard."],
+["scor","Why an infinity loop?","Continuity (no start or end), synchronization (processes run at once on shared data), orchestration (Orchestrate at the centre)."],
+["scor","Order vs Fulfill","Order: locate products, pricing, payment, order status. Fulfill: schedule deliveries, pick, pack, ship, install, invoice."],
+["scor","Transform (SCOR DS)","Production scheduling and value creation: manufacturing, assembly, maintenance, repair, services. Replaced Make."],
+["scor","Return (SCOR DS)","Diagnose, evaluate entitlement, decide disposition (repair, resell, recycle); feeds back into Source and Plan."],
+["scor","Resilience attributes","Reliability (right product, place, time, condition, docs), Responsiveness (speed), Agility (respond to change)."],
+["scor","Economic attributes","Cost (running the processes), Profit (financial benefit), Assets (asset efficiency, e.g. cash-to-cash)."],
+["scor","SCORmark","ASCM benchmarking that compares your SCOR metrics with peers: parity, advantage or superior."],
+["scor","People proficiency levels","Novice → Beginner → Competent → Proficient → Expert."],
+["scor","SCOR pitfalls","Mapping everything to Level 4 before acting, treating it as an IT project, chasing every metric, copying best practices blindly, ignoring sustainability and Return."],
+["t1","Why SC technology matters","Competition is now on speed, visibility, resilience and customer experience; tech connects partners and drives information flow."],
+["t1","M2M vs IoT","M2M: sensor-embedded products share real-time data via radio. IoT: capabilities enabled when physical things connect to the internet."],
+["t1","TPS transactions","Internal: originate inside (payroll, purchases). External: originate outside (customers, suppliers)."],
+["t1","Six core building blocks","Data, connectivity, cloud, automation, analytics & AI, integration."],
+["t1","Four types of SC data","Master, transactional, operational (inventory, capacity), external (weather, traffic, markets)."],
+["t1","RFID","Radio tags read without line of sight; consider tag cost, infrastructure, standards, privacy."],
+["t1","EDI (intro)","Structured documents (POs, invoices, ship notices) between firms; still key in B2B even as APIs grow."],
+["t1","Cloud computing","Scalable, fast to deploy, lower infrastructure burden. Risks: cyber, availability, data governance, vendor dependence."],
+["t1","Cobots","Collaborative robots work alongside people in selected tasks, but still need process redesign and safety analysis."],
+["t1","AMRs","Autonomous mobile robots: navigate with little fixed infrastructure; flexible; support goods-to-person picking."],
+["t1","Additive manufacturing","3D printing layer by layer: local production, spare parts on demand, less inventory. Limits: materials, certification, speed."],
+["t1","Digital twin","Digital representation of a physical asset, process or system linked to live data; used for what-if analysis."],
+["t1","SC visibility","Knowing what is happening across processes; needs data that is timely, accurate and actionable."],
+["t1","Adoption challenges","High cost, legacy systems, resistance and skills gaps, cyber/privacy, weak business case or sponsor, scaling pilots."],
+["t2","Three environments","Internal (structure, culture) · Task (industry stakeholders, daily) · General (PESTEL / CREST forces)."],
+["t2","Environmental scanning","Systematic gathering, analysis and interpretation of data about external opportunities and threats."],
+["t2","Strategic management process","Vision/mission → analyze environment (SWOT) → formulate → implement → assess outcomes."],
+["t2","SCM levers on the Five Forces","Entrants: raise barriers · Buyers: raise switching costs · Suppliers: multi-source · Substitutes: quality/speed · Rivalry: cost and differentiation."],
+["t2","Value chain → systems","ERP: everything · WMS: inbound logistics & operations · TMS: outbound logistics · CRM: marketing, sales, service."],
+["t2","Why Five Forces + Value Chain","They show WHERE SC capabilities and technology can influence competition and create value. They guarantee nothing."],
+["t2","Digital SC building blocks","Smart factories + smart warehouses + smart logistics, powered by cloud, AI and analytics."],
+["t2","Five driver categories","Market, operational, information, risk & sustainability, technology."],
+["t2","Lean vs agile vs hybrid","Lean: waste out, stable demand (Toyota). Agile: respond to uncertainty (Zara). Hybrid: lean upstream + agile downstream (Dell)."],
+["t2","Orchestrate vs Plan","Orchestrate sets the planning framework (strategic); Plan executes it (operational)."],
+["t2","P&G control tower","‘Drowning in data but starved for insights’ → visibility, analytics and action layers; supports ‘winning at the shelf’."],
+["t2","Nike 2020 Consumer Direct Acceleration","50% digital revenue target by FY2025, regional hubs for 2-day delivery, ML replenishment, Nike Fit."],
+["t2","Transformation journey","Diagnose → Pilot → Scale → Transform → Optimize."],
+["t2","Six transformation pitfalls","Technology-first thinking (Lidl €500M) · Ignoring data quality · Change management neglect (90% people/process) · Boiling the ocean (Dell started with RPA) · Ecosystem myopia · ROI impatience (P&G 3+ yrs)."],
+["t2","Control tower layers","1 Visibility: what is happening now? · 2 Analytics: why, and what next? · 3 Action: what should we do?"],
+["t2","Transformation roadmap phases","Diagnose (AS-IS map, gaps, business case) → Pilot (1–2 use cases) → Scale (roll out) → Transform (new business model) → Optimize (continuous improvement)."],
+["t2","Task vs general environment","Task: suppliers, distributors, customers, competitors. General: political, economic, sociocultural, technological, international."],
+["t2","CREST","Competitive, Regulatory, Economic, Social, Technological forces."],
+["t2","Structural vs infrastructural decisions","Structural: capacity, facilities, technology. Infrastructural: organization, sourcing, planning & control, quality, product development."],
+["t2","Barriers to entry","Economies of scale, brand loyalty, capital requirements, experience, government policy, access to distribution, switching costs."],
+["t2","Strategic management stages","Analysis (mission, SWOT, industry) → Formulation (corporate, business, functional) → Implementation → Evaluate & adjust."],
+["t2","Nike's mission","Bring inspiration and innovation to every athlete in the world. If you have a body, you are an athlete."],
+["t2","Uneven maturity","A firm can be stage 4 in one region and stage 1 in another. Normal, not a reason to restart."],
+["t3","More suppliers = more resilient?","Not automatically. Diversification adds procurement complexity, supplier-management work and cost."],
+["t3","More inventory = more resilient?","Not automatically. Excess stock brings carrying costs and obsolescence risk."],
+["t3","Connectivity cuts both ways","Digital connections raise visibility AND cybersecurity exposure."],
+["t3","Single sourcing trade-off","Lower purchase cost and leverage, but exposure if that one supplier fails."],
+["t3","JIT trade-off","Lower carrying cost, but few buffers when a disruption hits."],
+["t3","High utilization trade-off","Efficient asset use, but little spare capacity to absorb shocks."],
+["t3","Global sourcing trade-off","Lower unit cost, but more geopolitical, transport and environmental exposure."],
+["t3","Long, lean networks trade-off","Economies of scale, but longer recovery times."],
+["t3","Third-party cyber risk","Suppliers often access your systems, so their weaknesses are your entry points. Part of SC risk management."],
+["t3","Internal vs external risk","Internal: planning and control. External: demand, supply, regulatory, partner, ethical."],
+["t3","Technology and resilience","Monitoring, scenario planning, multi-tier visibility, rapid reconfiguration. Complements, not replaces, risk management."],
+["t3","Sustainability in SCOR DS","Environmental and social attributes beside cost; ESG in Orchestrate; Return closes the loop."],
+["t4","Enterprise SC system scope","Source → Make → Store → Move → Sell → Return."],
+["t4","Four bullwhip causes","Demand forecast updating, order batching, price fluctuations, rationing & shortage gaming."],
+["t4","Bullwhip remedies","Share POS data, plan more often, stable pricing (EDLP), shorter lead times (cross-docking, JIT, EDI), VMI, CPFR."],
+["t4","ERP strengths","One version of the truth, standardized auditable processes, real-time financial impact."],
+["t4","ERP limitations","Transactional not optimizing (weak at what-if), rigid and costly to customize, inward-looking."],
+["t4","System landscape layers","Customer-facing (OMS, CRM) · Planning (APS, S&OP) · Execution (WMS, TMS, MES) · ERP core · Integration · Control tower across all."],
+["t4","EDI standards","ANSI X12 in North America; EDIFACT internationally."],
+["t4","GS1 / GTIN","The globally unique product number behind a barcode; shared identifiers let systems understand each other."],
+["t4","Planning horizons","Strategic (years) → Tactical (months, S&OP) → Operational (weeks/days)."],
+["t4","Forecast accuracy","Often 1 − MAPE (mean absolute percentage error). Poor forecasts cause stockouts AND excess."],
+["t4","Hershey 1999","Big-bang ERP + CRM + planning go-live before Halloween. Lesson: never go live in peak season."],
+["t4","Nike 2000–01","i2 demand planning over- and under-ordered. Lesson: pilot, test with real data, keep human oversight."],
+["t4","Target Canada 2013–15","Bad master data → empty shelves, full warehouses; exited 2015. Lesson: master data is foundational."],
+["t4","Critical success factors","Executive sponsor, process before technology, data quality & governance, change management, phased rollout, benefits tracking."],
+["t4","TradeLens (2023)","IBM-Maersk blockchain platform shut down: tech alone fails if trading partners won't participate."],
+["t5","ERP gaps","Simplified planning, batch not real-time, thin execution detail, single company only, weak analytics, costly customization."],
+["t5","Suite vs best-of-breed","Suite: one data model, simpler upgrades, shallower. Best-of-breed: deepest functionality, more interfaces. Most firms go hybrid."],
+["t5","Middleware hub","Each system connects once; translates, routes, logs, retries. Change one system, fix one link. Hub becomes critical."],
+["t5","TCO iceberg","Licence is the tip. Below: implementation, integration, data cleansing, customization, training, hosting, support & upgrades."],
+["t5","Supplier TCO example","A quotes $6.00 → $8.80 total; B quotes $7.20 → $7.85 total. Cheapest quote ≠ lowest cost."],
+["t5","CPFR four activities","Strategy & planning → Demand & supply management → Execution → Analysis."],
+["t5","Bullwhip causes → digital cures","Signal processing → share POS/VMI · Batching → EDI, TMS consolidation · Price → EDLP, CPFR · Gaming → allocate on past sales."],
+["t5","Maverick vs tail spend","Maverick: buying off-contract. Tail: many tiny suppliers costing admin time."],
+["t5","Three-way match example","PO 100 × $10, received 95, invoiced 100 → fails on quantity. Block, or pay $950."],
+["t5","B2B vs B2C ordering","B2B: contract pricing, EDI, invoice on terms, pallets. B2C: list price, web/app, pay up front, parcels."],
+["t5","Customer segmentation","Strategic (99% fill, allocated ATP) · Core (95%) · Transactional (best effort, self-service)."],
+["t5","Omnichannel node choice","OMS picks DC, store or drop-ship on inventory accuracy, distance, cost, capacity and protecting store sales."],
+["t5","Dell build-to-order","Configure online (CTP) → pay up front → unique build → supplier pull → ship direct. ≈0 finished goods; cash first."],
+["t5","WMS process","Receive → Inspect → Put away → Store → Pick → Pack → Ship."],
+["t5","TMS phases","Plan (loads, mode, routes, carrier) → Execute (tender, appointments, tracking) → Settle (freight audit, payment)."],
+["t5","Carrier selection rule","Meets promise date? → Serves the address? → Lowest landed cost → Tie-break on on-time score."],
+["t5","Business case example","$1.2M investment, $450K/yr → payback 2.7 yrs; 3-yr ROI 12.5%."],
+["t5","Hershey vs Target Canada","Hershey: timing, testing, integration. Target: master data."]
 ];
 
 /* ---------- build question objects ---------- */
@@ -1452,14 +1634,16 @@ function renderDashboard() {
     return '<li><div class="date-chip"><span>' + MONTHS[d.getMonth()] + '</span><b class="num">' + d.getDate() + '</b></div><div style="min-width:0"><div class="t">' + esc(e.title) + '</div><div class="s">' + esc(e.scope || (e.end ? "Through " + fmt(parseD(e.end)) : DAYS[d.getDay()])) + '</div></div><span class="pill ' + e.kind + '">' + rel(daysBetween(T0, d)) + '</span></li>';
   }).join("") || '<li><div></div><div class="s">Nothing else on the calendar.</div><span></span></li>';
 
-  document.getElementById("topicStatus").innerHTML = TOPICS.map(t => {
+  const cw = currentWeekNum();
+  document.getElementById("topicStatus").innerHTML = WEEK_NUMS.map(n => '<li class="wk-row' + (n === cw ? ' now' : '') + '"><span class="label">Week ' + n + '</span><span class="label">' + WEEK_INFO[n].dates + ' · ' + WEEK_INFO[n].note + (n === cw ? ' · this week' : '') + '</span><span></span></li>' + weekTopics(n).map(t => {
     const best = scores[t.id];
     let right;
     if (t.status === "missing") right = '<span class="pill">slides needed</span>';
     else if (best == null) right = '<span class="pill">not tried</span>';
     else right = '<span class="pill ' + (best >= 80 ? "good" : best >= 60 ? "warn" : "bad") + ' num">' + best + '%</span>';
-    return '<li><span class="code">' + t.code + '</span><div style="min-width:0"><div style="font-weight:500;line-height:1.3">' + esc(t.title) + '</div><div class="muted" style="font-size:.82rem">' + t.when + (t.quiz ? " · Quiz " + t.quiz : " · Final") + (t.status === "partial" ? " · partial notes" : "") + '</div>' + (best != null ? '<div class="meter"><i style="width:' + best + '%"></i></div>' : "") + '</div>' + right + '</li>';
-  }).join("");
+    const link = t.status === "missing" ? esc(t.title) : '<a href="#notes" data-goto="notes" data-note="' + t.id + '" style="color:inherit">' + esc(t.title) + '</a>';
+    return '<li><span></span><div style="min-width:0"><div style="font-weight:500;line-height:1.3">' + link + '</div><div class="muted" style="font-size:.82rem">' + t.when + (t.status === "partial" ? " · partial notes" : "") + '</div>' + (best != null ? '<div class="meter"><i style="width:' + best + '%"></i></div>' : "") + '</div>' + right + '</li>';
+  }).join("")).join("");
 }
 
 /* ---------- schedule ---------- */
@@ -1469,7 +1653,7 @@ function renderSchedule() {
     const state = T0 > e ? "done" : (T0 >= s ? "now" : "");
     const evs = EVENTS.filter(ev => { const d = parseD(ev.date); return d >= s && d <= e && ev.kind !== "class"; });
     const evHtml = evs.map(ev => '<span class="pill ' + ev.kind + '">' + esc(ev.title) + " · " + fmt(parseD(ev.date)) + "</span>").join("") || '<span class="muted">—</span>';
-    const notes = w.topicIds.filter(id => topicById[id].status !== "missing").map(id => ' <a href="#notes" data-goto="notes" data-note="' + id + '">' + topicById[id].code + ' notes</a>').join(" ·");
+    const notes = w.topicIds.filter(id => topicById[id].status !== "missing").map(id => ' <a href="#notes" data-goto="notes" data-note="' + id + '">' + esc(topicById[id].title) + ' notes</a>').join(" ·");
     return '<tr class="' + state + '"><td class="mono">' + w.w + (state === "now" ? " ◂" : "") + '</td><td class="num" style="white-space:nowrap">' + w.dates + '</td><td>' + esc(w.topic) + notes + '</td><td>' + evHtml + '</td></tr>';
   }).join("");
   const cal = EVENTS.filter(e => ["quiz", "exam", "project"].includes(e.kind) && !e.end);
@@ -1552,7 +1736,8 @@ document.getElementById("calToday").onclick = () => { calMonth = T0 < TERM_START
 
 /* ---------- notes ---------- */
 const toc = document.getElementById("notesToc");
-toc.innerHTML = TOPICS.map(t => '<button data-topic="' + t.id + '" aria-pressed="false"><span class="code">' + t.code + (t.status === "missing" ? " · no slides yet" : t.status === "partial" ? " · partial" : "") + '</span><span class="ttl">' + esc(t.title) + '</span></button>').join("");
+toc.innerHTML = WEEK_NUMS.map(n => '<div class="toc-week' + (n === currentWeekNum() ? ' now' : '') + '"><span class="label">Week ' + n + ' · ' + WEEK_INFO[n].dates + (n === currentWeekNum() ? ' · this week' : '') + '</span>' +
+  weekTopics(n).map(t => '<button data-topic="' + t.id + '" aria-pressed="false"><span class="ttl">' + esc(t.title) + '</span><span class="muted" style="font-size:.8rem">' + t.when + (t.status === "missing" ? " · no slides yet" : t.status === "partial" ? " · partial notes" : "") + '</span></button>').join("") + '</div>').join("");
 function openNote(id) {
   const t = topicById[id]; if (!t) return;
   const target = t.status === "missing" ? "pending" : id;
@@ -1591,7 +1776,7 @@ const SCOR_P = {
 };
 
 const LABS = [
-{ id: "scor", title: "SCOR DS loop", sub: "Click a process", topic: "SCOR · T5", render(el) {
+{ id: "scor", title: "SCOR DS loop", sub: "Click a process", topic: "Week 1 · Week 5", render(el) {
   const L = { cx: 190, cy: 135, rx: 150, ry: 100 }, R = { cx: 470, cy: 135, rx: 150, ry: 100 };
   const pos = { Plan: [L, -125], Source: [L, 180], Return: [L, 125], Order: [R, -55], Transform: [R, 0], Fulfill: [R, 55] };
   let svg = '<svg viewBox="0 0 660 270" role="img" aria-label="SCOR DS infinity loop">' +
@@ -1609,7 +1794,7 @@ const LABS = [
   el.querySelectorAll(".scor-node").forEach(g => { g.addEventListener("click", () => show(g.dataset.p)); g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(g.dataset.p); } }); });
   show("Orchestrate");
 }},
-{ id: "bullwhip", title: "Bullwhip simulator", sub: "Watch orders amplify upstream", topic: "T4 · T5", render(el) {
+{ id: "bullwhip", title: "Bullwhip simulator", sub: "Watch orders amplify upstream", topic: "Week 4 · Week 5", render(el) {
   el.innerHTML = '<div class="lab-controls">' + slider("bwL", "Lead time (weeks)", 1, 6, 1, 3) + slider("bwP", "Forecast window (weeks)", 2, 8, 1, 3) + slider("bwB", "Order batching (every N weeks)", 1, 4, 1, 1) + slider("bwPromo", "Promotion spike in week 20 (%)", 0, 60, 5, 0, "%") + '</div>' +
     '<div class="chips"><button class="chip-btn" id="bwPos" aria-pressed="false">Share POS data with every tier</button></div>' +
     '<div class="figure"><svg id="bwSvg" viewBox="0 0 640 260" role="img" aria-label="Orders by tier over 52 weeks"></svg></div>' +
@@ -1650,7 +1835,7 @@ const LABS = [
   ["bwL", "bwP", "bwB", "bwPromo"].forEach(id => document.getElementById(id).addEventListener("input", () => { document.getElementById(id + "Out").textContent = val(id) + (id === "bwPromo" ? "%" : ""); draw(); }));
   draw();
 }},
-{ id: "integration", title: "Integration network", sub: "Point-to-point vs hub", topic: "T5", render(el) {
+{ id: "integration", title: "Integration network", sub: "Point-to-point vs hub", topic: "Week 5", render(el) {
   el.innerHTML = '<div class="lab-controls">' + slider("inN", "Number of systems", 3, 14, 1, 8) + '</div><div class="chips"><button class="chip-btn" data-arch="p2p" aria-pressed="true">Point-to-point</button><button class="chip-btn" data-arch="hub" aria-pressed="false">Middleware hub</button></div>' +
     '<div class="figure small"><svg id="inSvg" viewBox="0 0 420 300" role="img" aria-label="Integration network" style="max-width:520px;margin:auto"></svg></div><div class="readout" id="inRead"></div>';
   let arch = "p2p";
@@ -1670,7 +1855,7 @@ const LABS = [
   document.getElementById("inN").addEventListener("input", () => { document.getElementById("inNOut").textContent = val("inN"); draw(); });
   draw();
 }},
-{ id: "perfect", title: "Perfect order index", sub: "Four components multiply", topic: "T4 · T5", render(el) {
+{ id: "perfect", title: "Perfect order index", sub: "Four components multiply", topic: "Week 4 · Week 5", render(el) {
   el.innerHTML = '<div class="lab-controls">' + slider("poA", "On time", 80, 100, .5, 95, "%") + slider("poB", "Complete", 80, 100, .5, 97, "%") + slider("poC", "Damage-free", 80, 100, .5, 99, "%") + slider("poD", "Accurate docs", 80, 100, .5, 98, "%") + '</div><div class="readout" id="poRead"></div><div id="poBars" style="display:grid;gap:8px"></div>';
   bindSliders(["poA", "poB", "poC", "poD"], ["%", "%", "%", "%"], () => {
     const v = ["poA", "poB", "poC", "poD"].map(val), names = ["On time", "Complete", "Damage-free", "Accurate docs"];
@@ -1679,7 +1864,7 @@ const LABS = [
     document.getElementById("poBars").innerHTML = v.map((x, i) => '<div class="bar-row"><span>' + names[i] + '</span><div class="bar-track"><div style="width:' + ((x - 80) * 5) + '%;background:' + (x === min ? C.signal : C.accent) + '"></div></div><span class="num mono" style="text-align:right">' + x + '%</span></div>').join("");
   });
 }},
-{ id: "oee", title: "OEE calculator", sub: "Availability × performance × quality", topic: "T5", render(el) {
+{ id: "oee", title: "OEE calculator", sub: "Availability × performance × quality", topic: "Week 5", render(el) {
   el.innerHTML = '<div class="lab-controls">' + slider("oeP", "Planned minutes", 240, 600, 10, 480) + slider("oeD", "Downtime minutes", 0, 180, 1, 48) + slider("oeU", "Units made (ideal 1/min)", 100, 600, 1, 367) + slider("oeG", "Good units", 50, 600, 1, 360) + '</div><div class="readout" id="oeRead"></div>';
   bindSliders(["oeP", "oeD", "oeU", "oeG"], [], () => {
     const P = val("oeP"), D = Math.min(val("oeD"), P), run = P - D, U = Math.min(val("oeU"), run), G = Math.min(val("oeG"), U);
@@ -1687,7 +1872,7 @@ const LABS = [
     document.getElementById("oeRead").innerHTML = f.map(([n, x]) => '<div><span class="label">' + n + '</span><div class="big num" style="font-size:2rem;color:' + (n === weak ? C.signal : C.ink) + '">' + pct(x) + '</div></div>').join('<div class="big muted" style="font-size:2rem">×</div>') + '<div><span class="label">OEE</span><div class="big num" style="color:' + (oee >= .85 ? C.good : C.accent) + '">' + pct(oee) + '</div></div><p class="muted" style="flex-basis:100%">Run time ' + run + ' of ' + P + ' min · ' + U + ' of ' + run + ' ideal units · ' + G + ' good. World-class is about 85%. Attack the weakest factor first: <b>' + weak + '</b>. (Lecture example: 480, 48, 367, 360 → ≈75%.)</p>';
   });
 }},
-{ id: "atp", title: "ATP vs CTP", sub: "What date can we promise?", topic: "T4 · T5", render(el) {
+{ id: "atp", title: "ATP vs CTP", sub: "What date can we promise?", topic: "Week 4 · Week 5", render(el) {
   el.innerHTML = '<div class="lab-controls">' + slider("atO", "Order quantity (by Friday)", 50, 500, 10, 300) + slider("atH", "On hand, uncommitted", 0, 400, 10, 120) + slider("atR", "Arriving Thursday", 0, 300, 10, 100) + slider("atC", "Extra we can build by Wednesday (CTP)", 0, 200, 10, 80) + '</div><div class="figure small"><svg id="atSvg" viewBox="0 0 600 90" role="img" aria-label="Promise breakdown"></svg></div><div id="atRead" class="card" style="display:grid;gap:6px"></div>';
   bindSliders(["atO", "atH", "atR", "atC"], [], () => {
     const O = val("atO"), atp = val("atH") + val("atR"), promise = Math.min(O, atp), short = O - promise, ctp = Math.min(short, val("atC")), gap = short - ctp;
@@ -1696,7 +1881,7 @@ const LABS = [
     document.getElementById("atRead").innerHTML = '<p><b>ATP</b> (do we HAVE it?): ' + val("atH") + ' on hand + ' + val("atR") + ' arriving = ' + atp + '. Promise <b>' + promise + '</b> by Friday.</p>' + (short ? '<p><b>CTP</b> (can we MAKE it?): ' + (ctp ? 'build ' + ctp + ' more by Wednesday next week.' : 'no extra capacity.') + '</p>' : '<p>ATP covers the whole order; no CTP check needed.</p>') + (gap ? '<p style="color:' + C.bad + '">Still short ' + gap + ': partial ship, substitute, alternate site or negotiate a later date.</p>' : "");
   });
 }},
-{ id: "matrix", title: "Weighted decision matrix", sub: "Change the weights", topic: "T5", render(el) {
+{ id: "matrix", title: "Weighted decision matrix", sub: "Change the weights", topic: "Week 5", render(el) {
   const crit = [["Unit cost", 30, [5, 3, 4]], ["Quality (PPM)", 25, [3, 5, 4]], ["OTIF delivery", 20, [3, 4, 5]], ["Lead time", 15, [4, 3, 2]], ["Sustainability", 10, [2, 4, 2]]];
   el.innerHTML = '<p class="muted">The packaging-supplier example from the lecture. Edit any weight or score (1–5). Weights should total 100% and be agreed before the bids arrive.</p><div class="table-scroll"><table><thead><tr><th>Criterion</th><th>Weight %</th><th>A</th><th>B</th><th>C</th></tr></thead><tbody>' +
     crit.map((c, i) => '<tr><td>' + c[0] + '</td><td><input class="mini-input" type="number" min="0" max="100" id="mxW' + i + '" value="' + c[1] + '" aria-label="' + c[0] + ' weight"></td>' + c[2].map((s, j) => '<td><input class="mini-input" type="number" min="1" max="5" id="mxS' + i + j + '" value="' + s + '" aria-label="' + c[0] + ' supplier ' + "ABC"[j] + '"></td>').join("") + '</tr>').join("") +
@@ -1714,7 +1899,7 @@ const LABS = [
   document.getElementById("mxReset").onclick = () => { crit.forEach((c, i) => { document.getElementById("mxW" + i).value = c[1]; c[2].forEach((s, j) => document.getElementById("mxS" + i + j).value = s); }); calc(); };
   calc();
 }},
-{ id: "tco", title: "Supplier TCO", sub: "Cheapest quote ≠ lowest cost", topic: "T5", render(el) {
+{ id: "tco", title: "Supplier TCO", sub: "Cheapest quote ≠ lowest cost", topic: "Week 5", render(el) {
   const parts = [["Quoted price", 6.00, 7.20, C.accent], ["Freight & duties", 1.50, .30, C.signal], ["Inventory carrying", .55, .15, C.purple], ["Quality cost", .35, .10, C.bad], ["Risk premium", .40, .10, C.muted]];
   el.innerHTML = '<p class="muted">Cost per unit for a component. Supplier A is offshore, Supplier B is domestic. Edit any cost.</p><div class="table-scroll"><table><thead><tr><th>Cost element</th><th>Supplier A</th><th>Supplier B</th></tr></thead><tbody>' + parts.map((p, i) => '<tr><td><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:' + p[3] + ';margin-right:6px"></span>' + p[0] + '</td><td><input class="mini-input" type="number" step="0.05" id="tcA' + i + '" value="' + p[1].toFixed(2) + '"></td><td><input class="mini-input" type="number" step="0.05" id="tcB' + i + '" value="' + p[2].toFixed(2) + '"></td></tr>').join("") + '</tbody></table></div><div id="tcBars" style="display:grid;gap:10px"></div><div id="tcRead"></div>';
   function calc() {
@@ -1727,7 +1912,7 @@ const LABS = [
   }
   el.querySelectorAll("input").forEach(i => i.addEventListener("input", calc)); calc();
 }},
-{ id: "match", title: "Three-way match", sub: "PO vs receipt vs invoice", topic: "T4 · T5", render(el) {
+{ id: "match", title: "Three-way match", sub: "PO vs receipt vs invoice", topic: "Week 4 · Week 5", render(el) {
   el.innerHTML = '<div class="lab-controls">' + slider("m3P", "PO quantity", 10, 200, 5, 100) + slider("m3R", "Received quantity", 0, 200, 5, 95) + slider("m3I", "Invoiced quantity", 0, 200, 5, 100) + slider("m3T", "Tolerance", 0, 10, 1, 2, "%") + '</div><div class="readout" id="m3Read"></div>';
   bindSliders(["m3P", "m3R", "m3I", "m3T"], ["", "", "", "%"], () => {
     const P = val("m3P"), R = val("m3R"), I = val("m3I"), tol = val("m3T") / 100, price = 10;
@@ -1737,7 +1922,7 @@ const LABS = [
     document.getElementById("m3Read").innerHTML = card("Purchase order", P) + card("Goods receipt", R) + card("Invoice", I) + '<div style="flex-basis:100%"><span class="pill ' + (pass ? "good" : "bad") + '">' + (pass ? "Match: pay the invoice" : "Match fails") + '</span> ' + (pass ? "" : '<span class="muted">Block for review, or pay $' + (Math.min(R, I) * price).toLocaleString() + ' for what was received. Without the control you would overpay $' + Math.max(0, (I - R) * price).toLocaleString() + '.</span>') + '</div>';
   });
 }},
-{ id: "c2c", title: "Cash-to-cash & turns", sub: "DIO + DSO − DPO", topic: "T4", render(el) {
+{ id: "c2c", title: "Cash-to-cash & turns", sub: "DIO + DSO − DPO", topic: "Week 4", render(el) {
   el.innerHTML = '<div class="lab-controls">' + slider("ccI", "DIO: days inventory", 0, 120, 1, 45) + slider("ccS", "DSO: days to collect", 0, 90, 1, 30) + slider("ccP", "DPO: days to pay", 0, 120, 1, 50) + slider("ccT", "Inventory turns (COGS ÷ avg inv)", 1, 20, .5, 6) + '</div><div class="figure small"><svg id="ccSvg" viewBox="0 0 600 120" role="img" aria-label="Cash-to-cash timeline"></svg></div><div class="readout" id="ccRead"></div>';
   bindSliders(["ccI", "ccS", "ccP", "ccT"], [], () => {
     const I = val("ccI"), S = val("ccS"), P = val("ccP"), c2c = I + S - P, span = Math.max(I + S, P, 1), w = 540 / span;
@@ -1748,7 +1933,7 @@ const LABS = [
     document.getElementById("ccRead").innerHTML = '<div><span class="label">Cash-to-cash</span><div class="big num" style="color:' + (c2c < 0 ? C.good : C.ink) + '">' + c2c + ' days</div></div><div><span class="label">Days of inventory from turns</span><div class="big num" style="font-size:2rem">' + (365 / val("ccT")).toFixed(0) + ' days</div></div><p class="muted" style="max-width:42ch">' + (c2c < 0 ? "Negative: customers pay you before you pay suppliers (Apple, Amazon, classic Dell)." : "Cash is tied up in operations for this many days.") + ' Lecture example: 45 + 30 − 50 = 25 days.</p>';
   });
 }},
-{ id: "payback", title: "Payback & ROI", sub: "Technology business case", topic: "T5", render(el) {
+{ id: "payback", title: "Payback & ROI", sub: "Technology business case", topic: "Week 5", render(el) {
   el.innerHTML = '<div class="lab-controls">' + slider("pbI", "Total investment ($K)", 200, 3000, 50, 1200) + slider("pbB", "Annual benefit ($K)", 50, 1500, 25, 450) + slider("pbY", "Years for ROI", 1, 7, 1, 3) + '</div><div class="figure small"><svg id="pbSvg" viewBox="0 0 600 200" role="img" aria-label="Cumulative cash"></svg></div><div class="readout" id="pbRead"></div>';
   bindSliders(["pbI", "pbB", "pbY"], [], () => {
     const I = val("pbI"), B = val("pbB"), Yr = val("pbY"), pay = I / B, roi = (B * Yr - I) / I;
@@ -1761,7 +1946,7 @@ const LABS = [
     document.getElementById("pbRead").innerHTML = '<div><span class="label">Payback</span><div class="big num">' + pay.toFixed(1) + ' yrs</div></div><div><span class="label">' + Yr + '-year ROI</span><div class="big num" style="color:' + (roi >= 0 ? C.good : C.bad) + '">' + (roi * 100).toFixed(1) + '%</div></div><p class="muted" style="max-width:42ch">Payback = investment ÷ annual benefit. ROI = (benefits − cost) ÷ cost. Lecture: $1.2M ÷ $450K ≈ 2.7 yrs; 3-yr ROI 12.5%.</p>';
   });
 }},
-{ id: "maturity", title: "Digital maturity roadmap", sub: "Click a stage", topic: "T2", render(el) {
+{ id: "maturity", title: "Digital maturity roadmap", sub: "Click a stage", topic: "Week 2", render(el) {
   const ST = [["Visibility", "Digitize data capture; see what is happening across nodes.", "RFID, barcodes, IoT sensors, digital records", "Many firms buy AI before fixing basic data capture, and it fails."],
     ["Connectivity", "Integrate systems and partners on shared platforms.", "ERP integration, APIs, EDI, cloud platforms, supplier portals", "Fragmented data across partners blocks the next stage."],
     ["Predictive intelligence", "Use analytics and AI to forecast disruptions and demand.", "ML forecasting, demand sensing, risk analytics, control tower analytics", "Only works on clean, connected data."],
@@ -1788,12 +1973,14 @@ labToc.addEventListener("click", e => { const b = e.target.closest("button"); if
 /* ---------- flashcards ---------- */
 let known = store.get("known", {});
 const fcTopic = document.getElementById("fcTopic"), fcMode = document.getElementById("fcMode");
-const scopeOptions = '<option value="q1">Quiz 1 set: SCOR DS, Topics 1–3</option><option value="q2">Quiz 2 set: Topics 4 &amp; 5 (6 needs slides)</option><option value="all">Everything so far</option>';
-fcTopic.innerHTML = scopeOptions + TOPICS.filter(t => CARDS.some(c => c.topic === t.id)).map(t => '<option value="' + t.id + '">' + t.code + ": " + esc(t.title) + "</option>").join("");
+const scopeOptions = '<option value="q1">Quiz 1 set: Weeks 1–3</option><option value="q2">Quiz 2 set: Weeks 4–6 (Week 6 needs slides)</option><option value="all">Everything so far</option>';
+function weekOptions(has) { return WEEK_NUMS.filter(n => weekTopics(n).some(t => has(t.id))).map(n => '<option value="w' + n + '">Week ' + n + ': ' + weekTopics(n).map(t => esc(t.title)).join(" + ") + '</option>').join(""); }
+fcTopic.innerHTML = scopeOptions + weekOptions(id => CARDS.some(c => c.topic === id));
 function inScope(topic, scope) {
   if (scope === "all") return true;
   if (scope === "q1") return topicById[topic].quiz === 1;
   if (scope === "q2") return topicById[topic].quiz === 2;
+  if (/^w\d+$/.test(scope)) return topicById[topic].wk === +scope.slice(1);
   return topic === scope;
 }
 let deck = [], fcIdx = 0;
@@ -1834,12 +2021,15 @@ document.getElementById("fcNext").onclick = () => step(1);
 document.getElementById("fcKnow").onclick = () => mark(true);
 document.getElementById("fcLearning").onclick = () => mark(false);
 document.getElementById("fcShuffle").onclick = () => buildDeck(true);
-fcTopic.onchange = () => buildDeck(false);
+fcTopic.onchange = () => { buildDeck(false); syncFcChips(); };
+function syncFcChips() { document.querySelectorAll("#fcWeekChips button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === fcTopic.value)); }
+document.getElementById("fcWeekChips").innerHTML = [["all", "All weeks"], ["q1", "Quiz 1 (Wk 1–3)"], ["q2", "Quiz 2 (Wk 4–6)"]].concat(WEEK_NUMS.filter(n => weekTopics(n).some(t => CARDS.some(c => c.topic === t.id))).map(n => ["w" + n, "Week " + n + " · " + CARDS.filter(c => topicById[c.topic].wk === n).length])).map(([v, l]) => '<button class="chip-btn" data-v="' + v + '" aria-pressed="false">' + l + '</button>').join("");
+document.getElementById("fcWeekChips").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; fcTopic.value = b.dataset.v; buildDeck(false); syncFcChips(); });
 fcMode.onchange = () => buildDeck(false);
 
 /* ---------- practice ---------- */
 const qScope = document.getElementById("qScope"), qFormat = document.getElementById("qFormat"), qLen = document.getElementById("qLen");
-qScope.innerHTML = scopeOptions + TOPICS.filter(t => QUESTIONS.some(q => q.topic === t.id)).map(t => '<option value="' + t.id + '">' + t.code + ": " + esc(t.title) + "</option>").join("") + '<option value="mock">Mock quiz questions only</option><option value="missed">Questions I got wrong</option>';
+qScope.innerHTML = scopeOptions + weekOptions(id => QUESTIONS.some(q => q.topic === id)) + '<option value="mock">Mock quiz questions only</option><option value="missed">Questions I got wrong</option>';
 let missedIds = store.get("missed", {});
 function poolFor(scope) {
   if (scope === "missed") return QUESTIONS.filter(q => missedIds[q.id]);
@@ -1857,8 +2047,8 @@ function updateScopeInfo() {
   document.getElementById("qLenField").hidden = f === "mock" || f === "essay";
   const tf = pool.filter(q => q.type === "tf").length, mc = pool.length - tf, es = essayPool(qScope.value).length;
   let msg = tf + " true/false, " + mc + " multiple choice and " + es + " short essay questions available.";
-  if (qScope.value === "q1") msg += " Topic 3's slides aren't uploaded yet, so its questions come from the mock quiz and related material.";
-  if (qScope.value === "q2") msg += " Topic 6 gets questions once its slides are uploaded.";
+  if (qScope.value === "q1") msg += " Week 3's slides aren't uploaded yet, so its questions come from the mock quiz and related material.";
+  if (qScope.value === "q2") msg += " Week 6 gets questions once its slides are uploaded.";
   if (f === "mock" && (tf < 12 || mc < 8)) msg += " There aren't enough for the full 12 + 8 here, so you'll get as many as exist.";
   if (qScope.value === "missed" && !pool.length) msg = "You haven't missed any questions yet.";
   document.getElementById("qScopeInfo").textContent = msg;
@@ -1869,6 +2059,23 @@ qScope.onchange = updateScopeInfo; qFormat.onchange = updateScopeInfo;
 function resetPractice() { ["quizRun", "essayRun", "quizDone"].forEach(id => document.getElementById(id).hidden = true); document.getElementById("quizSetup").hidden = false; run = null; }
 
 let run = null;
+let wkScores = store.get("wkScores", {});
+function renderWeekGrid() {
+  const cnt = ids => { const q = QUESTIONS.filter(x => ids.includes(x.topic)); return { tf: q.filter(x => x.type === "tf").length, mc: q.filter(x => x.type === "mc").length, es: ESSAY_OBJS.filter(e => ids.includes(e.topic)).length }; };
+  const best = k => wkScores[k] != null ? '<span class="pill ' + (wkScores[k] >= 80 ? "good" : wkScores[k] >= 60 ? "warn" : "bad") + ' num">best ' + wkScores[k] + '%</span>' : '<span class="pill">not tried</span>';
+  const sets = [["q1", "Quiz 1 review · Weeks 1–3", "Written Oct 14"], ["q2", "Quiz 2 review · Weeks 4–6", "Written Oct 28 · Week 6 needs slides"]];
+  let h = sets.map(([k, t, sub]) => { const ids = TOPICS.filter(x => x.quiz === +k.slice(1)).map(x => x.id), c = cnt(ids);
+    return '<div class="wk-card span"><div class="panel-head"><span class="wk-title">' + t + '</span>' + best(k) + '</div><span class="muted" style="font-size:.85rem">' + sub + ' · ' + c.tf + ' true/false · ' + c.mc + ' multiple choice · ' + c.es + ' essays</span><div class="btn-row"><button class="btn primary" data-wkstart="' + k + '" data-fmt="mock">Real-quiz format (12 + 8)</button><button class="btn" data-wkstart="' + k + '" data-fmt="mixed">Every question</button><button class="btn" data-wkstart="' + k + '" data-fmt="essay">Essays</button></div></div>'; }).join("");
+  h += [1, 2, 3, 4, 5, 6, 7, 8].map(n => { const ts = weekTopics(n), ids = ts.map(t => t.id), c = cnt(ids), has = c.tf + c.mc > 0;
+    return '<div class="wk-card' + (has ? "" : " off") + '"><div class="panel-head"><span class="wk-title">Week ' + n + '</span>' + (has ? best("w" + n) : '<span class="pill">slides needed</span>') + '</div><span class="label">' + WEEK_INFO[n].dates + '</span><span style="font-size:.9rem;font-weight:500">' + ts.map(t => esc(t.title)).join(" + ") + '</span>' +
+      (has ? '<span class="muted" style="font-size:.82rem">' + c.tf + ' T/F · ' + c.mc + ' MC' + (c.es ? ' · ' + c.es + ' essay' + (c.es > 1 ? "s" : "") : "") + '</span><div class="btn-row"><button class="btn primary" data-wkstart="w' + n + '" data-fmt="mixed">Start</button>' + (c.es ? '<button class="btn" data-wkstart="w' + n + '" data-fmt="essay">Essays</button>' : "") + '</div>' : '<span class="muted" style="font-size:.82rem">Upload this week\'s slides to add questions.</span>') + '</div>'; }).join("");
+  document.getElementById("weekGrid").innerHTML = h;
+}
+document.getElementById("weekGrid").addEventListener("click", e => {
+  const b = e.target.closest("[data-wkstart]"); if (!b) return;
+  qScope.value = b.dataset.wkstart; qFormat.value = b.dataset.fmt; qLen.value = "all"; updateScopeInfo(); document.getElementById("qStart").click(); window.scrollTo({ top: 0 });
+});
+function sectionOrder(qs) { return qs.slice().sort((a, b) => topicById[a.topic].wk - topicById[b.topic].wk || (a.type === b.type ? 0 : a.type === "tf" ? -1 : 1)); }
 document.getElementById("qStart").onclick = () => {
   const f = qFormat.value, label = qScope.options[qScope.selectedIndex].text.split(":")[0] + " · " + qFormat.options[qFormat.selectedIndex].text.split(":")[0];
   if (f === "essay") { startEssay(); return; }
@@ -1878,18 +2085,21 @@ document.getElementById("qStart").onclick = () => {
   if (f === "mock") qs = pool.filter(q => q.type === "tf").slice(0, 12).concat(pool.filter(q => q.type === "mc").slice(0, 8));
   else qs = qLen.value === "all" ? pool : pool.slice(0, +qLen.value);
   if (!qs.length) return;
-  run = { qs: qs.map(q => ({ ...q, order: q.type === "tf" ? ["True", "False"] : shuffled(q.options) })), i: 0, answers: [], label };
+  qs = sectionOrder(qs);
+  run = { qs: qs.map(q => ({ ...q, order: q.type === "tf" ? ["True", "False"] : shuffled(q.options) })), i: 0, answers: [], label, scope: qScope.value };
   document.getElementById("quizSetup").hidden = true; document.getElementById("quizDone").hidden = true; document.getElementById("quizRun").hidden = false;
   renderQ();
 };
 function tags(q) { return '<span class="pill">' + topicById[q.topic].code + '</span><span class="pill">' + (q.type === "tf" ? "True/false" : q.type === "mc" ? "Multiple choice" : "Short essay") + '</span>' + (q.mock ? '<span class="pill mock">mock quiz</span>' : ""); }
 function renderQ() {
   const q = run.qs[run.i];
+  const wk = topicById[q.topic].wk, prev = run.i > 0 ? topicById[run.qs[run.i - 1].topic].wk : null;
+  const inWeek = run.qs.filter(x => topicById[x.topic].wk === wk), idxInWeek = inWeek.indexOf(q) + 1;
+  document.getElementById("qSection").textContent = "Week " + wk + " section · " + idxInWeek + " of " + inWeek.length;
   document.getElementById("qPos").textContent = "Question " + (run.i + 1) + " of " + run.qs.length;
   document.getElementById("qTags").innerHTML = tags(q);
   document.getElementById("qBar").style.width = (run.i / run.qs.length * 100) + "%";
-  document.getElementById("qStem").textContent = q.stem;
-  document.getElementById("qExplain").innerHTML = "";
+  document.getElementById("qStem").innerHTML = (wk !== prev && new Set(run.qs.map(x => topicById[x.topic].wk)).size > 1 ? '<div class="sec-banner" style="margin-bottom:12px"><span class="label">Section</span><div style="font-weight:600">Week ' + wk + ': ' + weekTopics(wk).map(t => esc(t.title)).join(" + ") + '</div></div>' : "") + esc(q.stem);
   document.getElementById("qNext").hidden = true;
   const opts = document.getElementById("qOpts");
   opts.className = "opts" + (q.type === "tf" ? " tf" : "");
@@ -1917,20 +2127,25 @@ function finish(early) {
   run.qs.forEach((q, i) => { const a = run.answers[i]; if (!a) return; (byTopic[q.topic] = byTopic[q.topic] || [0, 0])[1]++; byType[q.type][1]++; if (a.ok) { byTopic[q.topic][0]++; byType[q.type][0]++; } });
   Object.entries(byTopic).forEach(([t, [s, n]]) => { if (n >= 3) { const v = Math.round(s / n * 100); if (scores[t] == null || v > scores[t]) scores[t] = v; } });
   store.set("scores", scores);
+  const byWeek = {};
+  Object.entries(byTopic).forEach(([t, [s, n]]) => { const w = topicById[t].wk; (byWeek[w] = byWeek[w] || [0, 0]); byWeek[w][0] += s; byWeek[w][1] += n; });
+  Object.entries(byWeek).forEach(([w, [s, n]]) => { if (n >= 3) { const v = Math.round(s / n * 100); if (wkScores["w" + w] == null || v > wkScores["w" + w]) wkScores["w" + w] = v; } });
+  if ((run.scope === "q1" || run.scope === "q2") && total >= 5 && (wkScores[run.scope] == null || p > wkScores[run.scope])) wkScores[run.scope] = p;
+  store.set("wkScores", wkScores);
   const now = new Date();
   attempts.push({ label: run.label, score, total, pct: p, when: fmt(now) + " " + now.toTimeString().slice(0, 5) }); attempts = attempts.slice(-30); store.set("history", attempts);
   const missed = run.qs.map((q, i) => ({ q, a: run.answers[i] })).filter(x => x.a && !x.a.ok);
   const typeLine = ["tf", "mc"].filter(t => byType[t][1]).map(t => '<span class="pill num">' + (t === "tf" ? "True/false " : "Multiple choice ") + byType[t][0] + "/" + byType[t][1] + "</span>").join("");
   done.innerHTML = '<span class="label">' + (early ? "Ended early · " : "") + esc(run.label) + '</span>' +
     '<div style="display:flex;flex-wrap:wrap;gap:12px 28px;align-items:end"><div class="score-big num">' + p + '%</div><div><b class="num">' + score + " of " + total + '</b> correct<div class="muted">' + (p >= 80 ? "Solid. Review the misses below and you're set." : p >= 60 ? "Getting there. Go back over the notes for your weakest topic." : "Worth another pass through the notes before trying again.") + "</div></div></div>" +
-    '<div class="btn-row">' + typeLine + Object.entries(byTopic).map(([t, [s, n]]) => '<span class="pill ' + (s / n >= .8 ? "good" : s / n >= .6 ? "warn" : "bad") + ' num">' + topicById[t].code + " " + s + "/" + n + "</span>").join("") + "</div>" +
+    '<div class="btn-row">' + typeLine + Object.entries(byWeek).map(([w, [s, n]]) => '<span class="pill ' + (s / n >= .8 ? "good" : s / n >= .6 ? "warn" : "bad") + ' num">Week ' + w + " " + s + "/" + n + "</span>").join("") + "</div>" +
     (byType.tf[1] && byType.tf[0] / byType.tf[1] < .75 ? '<div class="callout"><span class="label">True/false tip</span>Look for absolute words like “always”, “automatically”, “guaranteed” or “every”. In the mock quiz, statements with those words were false.</div>' : "") +
     (missed.length ? '<h3>Review what you missed</h3><div class="missed">' + missed.map(x => '<div class="card"><span class="label">' + topicById[x.q.topic].code + (x.q.mock ? " · mock quiz" : "") + '</span><b>' + esc(x.q.stem) + '</b><div><span class="muted">You said:</span> ' + esc(x.a.chosen) + '</div><div><span style="color:var(--good);font-weight:600">Answer:</span> ' + esc(x.q.correct) + '</div><p class="muted">' + esc(x.q.why) + "</p></div>").join("") + "</div>" : "") +
     '<div class="btn-row"><button class="btn primary" id="qAgain">New quiz</button>' + (missed.length ? '<button class="btn" id="qRetryMissed">Retry the ones I missed</button>' : "") + "</div>";
   document.getElementById("qAgain").onclick = () => { resetPractice(); updateScopeInfo(); };
   const rm = document.getElementById("qRetryMissed");
   if (rm) rm.onclick = () => { qScope.value = "missed"; qFormat.value = "mixed"; qLen.value = "all"; resetPractice(); updateScopeInfo(); document.getElementById("qStart").click(); };
-  renderDashboard(); run = null;
+  renderDashboard(); renderWeekGrid(); run = null;
 }
 
 /* essays */
@@ -2017,6 +2232,8 @@ openNote(store.get("note", "scor"));
 openLab(store.get("lab", "bullwhip"));
 buildDeck(false);
 updateScopeInfo();
+renderWeekGrid();
+syncFcChips();
 renderGrades();
 showTab(location.hash.slice(1) || store.get("tab", "dashboard"));
 })();
