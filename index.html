@@ -248,6 +248,42 @@ textarea { width: 100%; min-height: 160px; resize: vertical; line-height: 1.5; }
 .result-big { font: 700 3.4rem/1 var(--font-display); }
 .needed table { min-width: 0; }
 
+/* Calendar */
+.cal { display: grid; gap: 12px; }
+.cal-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+.cal-nav { display: flex; gap: 6px; }
+.cal-nav .btn { padding: 6px 11px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.cal-dow { font: 500 .68rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); text-align: center; padding-bottom: 2px; }
+.cal-day { min-height: 78px; min-width: 0; border: 1px solid var(--line); background: var(--surface-2); border-radius: 5px; padding: 5px; display: flex; flex-direction: column; gap: 3px; text-align: left; cursor: pointer; overflow: hidden; color: var(--ink); }
+.cal-day:hover { border-color: var(--muted); }
+.cal-day.wknd { background: transparent; }
+.cal-day.past { opacity: .5; }
+.cal-day.closed { background: transparent; border-style: dashed; }
+.cal-day.today { border-color: var(--signal); box-shadow: inset 0 0 0 1px var(--signal); }
+.cal-day[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); opacity: 1; }
+.cal-n { font: 600 .82rem/1 var(--font-mono); }
+.cal-day.today .cal-n { color: var(--signal); }
+.cal-day.wknd .cal-n { color: var(--muted); }
+.cal-chip { font: 500 .68rem/1.35 var(--font-mono); padding: 1px 5px; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal-chip.quiz { background: var(--accent-soft); color: var(--accent); }
+.cal-chip.exam { background: var(--bad-soft); color: var(--bad); }
+.cal-chip.project { background: var(--signal-soft); color: var(--signal); }
+.cal-chip.closed { color: var(--closed); padding-left: 0; }
+.cal-chip.class { color: var(--muted); padding-left: 0; }
+.cal-dots { display: none; gap: 3px; flex-wrap: wrap; }
+.cal-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--c); }
+.cal-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .82rem; color: var(--muted); }
+.cal-legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: var(--c); }
+.cal-detail { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 10px; }
+.cal-item { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; align-items: start; }
+.cal-item .pill { justify-self: start; }
+@media (max-width: 560px) {
+  .cal-day { min-height: 46px; padding: 4px 3px; align-items: center; }
+  .cal-chip { display: none; }
+  .cal-dots { display: flex; justify-content: center; }
+}
+
 .info-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); align-items: start; }
 .copyline { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .copyline code { font-family: var(--font-mono); background: var(--surface-2); padding: 3px 8px; border-radius: 4px; user-select: all; word-break: break-all; }
@@ -300,6 +336,15 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
   <div class="grid-2">
     <div class="stack">
       <article class="card nextup" id="nextUp"></article>
+      <article class="card cal" id="calendar" aria-label="Course calendar">
+        <div class="cal-head">
+          <h3 id="calTitle">Calendar</h3>
+          <div class="cal-nav"><button class="btn" id="calPrev" aria-label="Previous month">←</button><button class="btn" id="calToday">Today</button><button class="btn" id="calNext" aria-label="Next month">→</button></div>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend"><span style="--c:var(--accent)">Quiz</span><span style="--c:var(--bad)">Exam</span><span style="--c:var(--signal)">Project</span><span style="--c:var(--muted)">Class day</span><span style="--c:var(--closed)">Campus closed</span></div>
+        <div class="cal-detail" id="calDetail"></div>
+      </article>
       <article class="card">
         <div class="panel-head" style="margin-bottom:6px"><h3>Coming up</h3><button class="btn" data-goto="schedule">Full schedule</button></div>
         <ul class="events" id="upcomingList"></ul>
@@ -1437,6 +1482,74 @@ function renderSchedule() {
   }).join("");
 }
 
+/* ---------- calendar ---------- */
+const MONTHS_FULL = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const DAYS_FULL = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const SHORT = { "Labour Day, campus closed": "Closed", "Group project assigned": "Project out", "Thanksgiving, campus closed": "Closed", "In-class Quiz 1": "Quiz 1", "In-class Quiz 2": "Quiz 2", "Group project report due": "Report due", "Group project presentation": "Presentation", "Midterm exam": "Midterm", "Reading week, campus closed": "Reading wk", "In-class Quiz 3": "Quiz 3", "Final exam period": "Finals" };
+const CLASS_DAYS = {
+  "2026-09-02": ["Course intro & SCOR DS", "scor"], "2026-09-09": ["Topic 1: Intro to SC Technology", "t1"],
+  "2026-09-14": ["Topic 2: Digital SC Strategy & Transformation", "t2"], "2026-09-16": ["Topic 2: Digital SC Strategy & Transformation", "t2"],
+  "2026-09-21": ["Topic 3: SC Risk, Resilience & Sustainability", "t3"], "2026-09-23": ["Topic 3: SC Risk, Resilience & Sustainability", "t3"],
+  "2026-09-28": ["Topic 4: Enterprise SC Systems 1", "t4"], "2026-09-30": ["Topic 4: Enterprise SC Systems 1", "t4"],
+  "2026-10-05": ["Topic 5: Enterprise SC Systems 2, Beyond ERP", "t5"], "2026-10-07": ["Topic 5: Enterprise SC Systems 2, Beyond ERP", "t5"],
+  "2026-10-14": ["Topic 6: AI & Intelligent Supply Chains", "t6"],
+  "2026-10-19": ["Topic 7: Automation, Smart Manufacturing & Digital Twins", "t7"], "2026-10-21": ["Topic 7: Automation, Smart Manufacturing & Digital Twins", "t7"],
+  "2026-10-26": ["Topic 8: Blockchain, IoT & Smart Logistics", "t8"], "2026-10-28": ["Topic 8: Blockchain, IoT & Smart Logistics", "t8"],
+  "2026-11-02": ["Group project presentations", null], "2026-11-04": ["Midterm exam", null],
+  "2026-11-16": ["Topic 9: SC Data Management & Descriptive Analytics", "t9"], "2026-11-18": ["Topic 9: SC Data Management & Descriptive Analytics", "t9"],
+  "2026-11-23": ["Topic 10: Advanced SC Analytics", "t10"], "2026-11-25": ["Topic 10: Advanced SC Analytics", "t10"],
+  "2026-11-30": ["Concluding remarks & final exam review", null], "2026-12-02": ["Concluding remarks & final exam review", null],
+  "2026-12-07": ["Last class", null]
+};
+const KIND_COLOR = { quiz: "var(--accent)", exam: "var(--bad)", project: "var(--signal)", closed: "var(--closed)", class: "var(--muted)" };
+function isoD(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+function eventsOn(ds) { const d = parseD(ds); return EVENTS.filter(e => d >= parseD(e.date) && d <= parseD(e.end || e.date)); }
+const TERM_START = parseD("2026-09-01"), TERM_END = parseD("2026-12-31");
+let calMonth = T0 < TERM_START ? 8 : T0 > TERM_END ? 11 : T0.getMonth();
+let calSel = T0 >= TERM_START && T0 <= TERM_END ? isoD(T0) : "2026-09-02";
+function renderCalendar() {
+  const y = 2026, m = calMonth, startDow = new Date(y, m, 1).getDay(), nDays = new Date(y, m + 1, 0).getDate();
+  document.getElementById("calTitle").textContent = MONTHS_FULL[m] + " " + y;
+  document.getElementById("calPrev").disabled = m <= 8;
+  document.getElementById("calNext").disabled = m >= 11;
+  let h = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(d => '<div class="cal-dow">' + d + '</div>').join("");
+  for (let i = 0; i < startDow; i++) h += "<div></div>";
+  for (let day = 1; day <= nDays; day++) {
+    const d = new Date(y, m, day), ds = isoD(d), evs = eventsOn(ds).filter(e => e.kind !== "class"), cls = CLASS_DAYS[ds];
+    const closed = evs.some(e => e.kind === "closed"), wknd = d.getDay() === 0 || d.getDay() === 6;
+    const cl = ["cal-day"]; if (wknd) cl.push("wknd"); if (closed) cl.push("closed"); if (d < T0) cl.push("past"); if (ds === isoD(T0)) cl.push("today");
+    let chips = evs.map(e => '<span class="cal-chip ' + e.kind + '">' + esc(SHORT[e.title] || e.title) + '</span>').join("");
+    if (cls && !evs.some(e => ["quiz", "exam", "project"].includes(e.kind))) chips += '<span class="cal-chip class">Class</span>';
+    const dots = evs.map(e => e.kind).concat(cls && !evs.length ? ["class"] : []).map(k => '<i style="--c:' + KIND_COLOR[k] + '"></i>').join("");
+    const label = DAYS_FULL[d.getDay()] + " " + MONTHS_FULL[m] + " " + day + (evs.length ? ": " + evs.map(e => e.title).join(", ") : "") + (cls ? (evs.length ? "; " : ": ") + "class" : "");
+    h += '<button class="' + cl.join(" ") + '" data-date="' + ds + '" aria-pressed="' + (ds === calSel) + '" aria-label="' + esc(label) + '"><span class="cal-n num">' + day + '</span>' + chips + '<span class="cal-dots">' + dots + '</span></button>';
+  }
+  document.getElementById("calGrid").innerHTML = h;
+  renderCalDetail();
+}
+function renderCalDetail() {
+  const d = parseD(calSel), evs = eventsOn(calSel), cls = CLASS_DAYS[calSel], n = daysBetween(T0, d);
+  const relTxt = n === 0 ? "today" : n === 1 ? "tomorrow" : n === -1 ? "yesterday" : n > 0 ? "in " + n + " days" : -n + " days ago";
+  let items = "";
+  evs.filter(e => e.kind !== "class").forEach(e => {
+    items += '<div class="cal-item"><span class="pill ' + e.kind + '">' + ({ quiz: "Quiz", exam: "Exam", project: "Project", closed: "Closed" }[e.kind]) + '</span><div><b>' + esc(e.title) + '</b>' + (e.end ? ' <span class="muted">(' + fmt(parseD(e.date)) + " to " + fmt(parseD(e.end)) + ')</span>' : "") + (e.scope ? '<div class="muted">' + esc(e.scope) + '</div>' : "") + (e.weight ? '<div class="muted">Worth ' + esc(e.weight) + '</div>' : "") +
+      (e.quizSet ? '<div class="btn-row" style="margin-top:6px"><button class="btn" data-goto="quiz" data-quizscope="' + e.quizSet + '" data-quizformat="mock">Practise for it</button></div>' : "") + '</div></div>';
+  });
+  if (cls) {
+    const t = cls[1] && topicById[cls[1]];
+    items += '<div class="cal-item"><span class="pill">Class</span><div><b>' + esc(cls[0]) + '</b><div class="muted">11:00 a.m.–12:20 p.m. · Room 7-383</div>' +
+      (t ? (t.status === "missing" ? '<div class="muted">Slides not added yet</div>' : '<div class="btn-row" style="margin-top:6px"><button class="btn" data-goto="notes" data-note="' + t.id + '">' + t.code + ' notes</button></div>') : "") + '</div></div>';
+  }
+  if (d.getDay() === 4 && d >= parseD("2026-09-03") && d <= parseD("2026-12-03") && !evs.some(e => e.kind === "closed"))
+    items += '<div class="cal-item"><span class="pill">Office hours</span><div>9:45–10:45 a.m. · Room 6-315 <span class="muted">(by appointment)</span></div></div>';
+  if (!items) items = '<p class="muted">No class or deadlines this day.</p>';
+  document.getElementById("calDetail").innerHTML = '<div class="panel-head"><h3 style="font-size:1.15rem">' + DAYS_FULL[d.getDay()] + ", " + MONTHS_FULL[d.getMonth()] + " " + d.getDate() + '</h3><span class="pill' + (n === 0 ? " warn" : "") + '">' + relTxt + '</span></div>' + items;
+}
+document.getElementById("calGrid").addEventListener("click", e => { const b = e.target.closest(".cal-day"); if (!b) return; calSel = b.dataset.date; document.querySelectorAll(".cal-day").forEach(x => x.setAttribute("aria-pressed", x === b)); renderCalDetail(); });
+document.getElementById("calPrev").onclick = () => { if (calMonth > 8) { calMonth--; renderCalendar(); } };
+document.getElementById("calNext").onclick = () => { if (calMonth < 11) { calMonth++; renderCalendar(); } };
+document.getElementById("calToday").onclick = () => { calMonth = T0 < TERM_START ? 8 : T0 > TERM_END ? 11 : T0.getMonth(); calSel = T0 >= TERM_START && T0 <= TERM_END ? isoD(T0) : "2026-09-02"; renderCalendar(); };
+
 /* ---------- notes ---------- */
 const toc = document.getElementById("notesToc");
 toc.innerHTML = TOPICS.map(t => '<button data-topic="' + t.id + '" aria-pressed="false"><span class="code">' + t.code + (t.status === "missing" ? " · no slides yet" : t.status === "partial" ? " · partial" : "") + '</span><span class="ttl">' + esc(t.title) + '</span></button>').join("");
@@ -1898,6 +2011,7 @@ document.getElementById("copyEmail").onclick = function () {
 
 /* ---------- boot ---------- */
 renderDashboard();
+renderCalendar();
 renderSchedule();
 openNote(store.get("note", "scor"));
 openLab(store.get("lab", "bullwhip"));

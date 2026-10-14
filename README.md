@@ -6,7 +6,7 @@ A free, student-made study guide for **SCMT 205 (CC02) Supply Chain Technology M
 
 ## What's inside
 
-- **Dashboard**: countdown to the next quiz or exam, upcoming dates, grade weights, your progress by topic, and how the instructor tends to write quiz questions.
+- **Dashboard**: countdown to the next quiz or exam, a clickable term calendar (Sept–Dec) with every class, quiz, deadline and closure, upcoming dates, grade weights, your progress by topic, and how the instructor tends to write quiz questions.
 - **Schedule**: the full term from the course outline, with "add to Google Calendar" buttons.
 - **Notes**: condensed notes for SCOR DS and Topics 1–5, each ending with what's most likely to be tested.
 - **Live diagrams**: bullwhip simulator, SCOR DS loop, point-to-point vs hub integration, perfect order index, OEE, ATP vs CTP, weighted decision matrix, supplier TCO, three-way match, cash-to-cash, payback/ROI, digital maturity roadmap.
