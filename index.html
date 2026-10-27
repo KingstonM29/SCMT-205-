@@ -678,7 +678,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 
 <article class="note" data-note="t3" hidden>
   <header><span class="label">Week 3 · Topic 3 · Sept 21 &amp; 23 · Quiz 1</span><h2>Supply Chain Risk, Resilience &amp; Sustainability</h2></header>
-  <div class="callout info"><span class="label">Built from the mock quiz and related slides</span>The Topic 3 slides haven't been uploaded yet. These notes come from the mock quiz answer key (which quotes this lesson) and the risk and sustainability material in the other decks. Upload the Topic 3 deck to fill in the rest.</div>
+  <div class="callout info"><span class="label">Built from the mock quiz and related slides</span>These notes come from the mock quiz answer key (which quotes this lesson) and the risk and sustainability material in the other decks.</div>
   <section><h3>Risk, disruption, crisis</h3>
   <div class="flow"><span>Risk: a possible event</span><i>→</i><span>Disruption: the event interrupts flows</span><i>→</i><span>Crisis: consequences severe enough to threaten the wider business</span></div>
   <div class="prose"><ul>
@@ -1106,7 +1106,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 <article class="note" data-note="t8" hidden>
   <header><span class="label">Week 8 · Topic 8 · Oct 26 · guest lecture, Teh-Hau Chua · Quiz 3</span><h2>Connected Supply Chains: Warehouse Picking Technology &amp; RFID</h2>
   <p class="prose">The Week 8 deck is titled “Blockchain, IoT &amp; Smart Logistics”, but the slides themselves cover <b>warehouse automation for picking</b> (pick-to-light, voice picking, batch picking) and <b>RFID</b>, mostly through videos. For IoT and blockchain, see the reading (sensors, exponential tier), Week 7 (IIoT sensors, the twin loop) and Weeks 1 &amp; 5 (blockchain limits, TradeLens).</p></header>
-  <div class="callout info"><span class="label">Partial notes</span>These come from 10 short slides that mainly introduce videos. If there is a second Week 8 deck (for example from the Oct 28 class), upload it to fill in blockchain and IoT.</div>
+  <div class="callout info"><span class="label">About these notes</span>The Week 8 deck is 10 short slides that mainly introduce videos, so these notes stick to what the slides show: picking technology and RFID.</div>
   <section><h3>Why warehouse accuracy matters</h3>
   <div class="flow"><span>Receiving</span><span>Put away</span><span>Picking</span><span>Packing</span><span>Shipping</span><span>Replenishment</span><span>Returns</span></div>
   <div class="prose"><ul>
@@ -1171,8 +1171,8 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 </article>
 
 <article class="note" data-note="pending" hidden>
-  <header><span class="label">Waiting for slides</span><h2 id="pendingTitle">Topic not uploaded yet</h2></header>
-  <div class="card" style="border-style:dashed;display:grid;gap:8px"><p id="pendingText"></p><p class="muted">Once the deck is uploaded, its notes, flashcards and questions get added here.</p></div>
+  <header><span class="label">No notes for this topic</span><h2 id="pendingTitle">No notes yet</h2></header>
+  <div class="card" style="border-style:dashed;display:grid;gap:8px"><p id="pendingText"></p></div>
 </article>
     </div>
   </div>
@@ -1355,29 +1355,32 @@ const TOPICS = [
   { id: "t3", wk: 3, code: "Week 3", title: "SC Risk, Resilience & Sustainability", when: "Sept 21 & 23", status: "partial", quiz: 1 },
   { id: "t4", wk: 4, code: "Week 4", title: "Enterprise SC Systems 1", when: "Sept 28 & 30", status: "uploaded", quiz: 2 },
   { id: "t5", wk: 5, code: "Week 5", title: "Enterprise SC Systems 2: Beyond ERP", when: "Oct 5 & 7", status: "uploaded", quiz: 2 },
-  { id: "t6", wk: 6, code: "Week 6", title: "AI & Intelligent Supply Chains", when: "Oct 14", status: "missing", quiz: 2 },
+  { id: "t6", wk: 6, code: "Week 6", title: "AI & Intelligent Supply Chains", when: "Oct 14", status: "nodeck", quiz: 2 },
   { id: "t7", wk: 7, code: "Week 7", title: "Automation, Smart Manufacturing & Digital Twins", when: "Oct 19 & 21", status: "uploaded", quiz: 3, also: 2 },
   { id: "t8", wk: 8, code: "Week 8", title: "Blockchain, IoT & Smart Logistics", when: "Oct 26", status: "partial", quiz: 3 },
   { id: "tech", wk: 8, code: "Reading", title: "Reading: Technologies in SCM & Logistics", when: "Pagano & Liotine, Ch. 2", status: "uploaded", quiz: 3 },
-  { id: "t9", wk: 11, code: "Week 11", title: "SC Data Management & Descriptive Analytics", when: "Nov 16 & 18", status: "missing", quiz: 3 },
-  { id: "t10", wk: 12, code: "Week 12", title: "Advanced Supply Chain Analytics", when: "Nov 23 & 25", status: "missing", quiz: 0 }
+  { id: "t9", wk: 11, code: "Week 11", title: "SC Data Management & Descriptive Analytics", when: "Nov 16 & 18", status: "upcoming", quiz: 3 },
+  { id: "t10", wk: 12, code: "Week 12", title: "Advanced Supply Chain Analytics", when: "Nov 23 & 25", status: "upcoming", quiz: 0 }
 ];
 const WEEK_INFO = {
   1: { dates: "Sept 2–11", note: "Quiz 1", slides: "slides labelled “Week 1” and “Week 2”" },
   2: { dates: "Sept 14–16", note: "Quiz 1", slides: "slides labelled “Week 3”" },
-  3: { dates: "Sept 21–23", note: "Quiz 1", slides: "slides not uploaded yet" },
+  3: { dates: "Sept 21–23", note: "Quiz 1", slides: "notes built from the mock quiz and related decks" },
   4: { dates: "Sept 28–30", note: "Quiz 2", slides: "slides labelled “Week 4”" },
   5: { dates: "Oct 5–7", note: "Quiz 2", slides: "slides labelled “Week 5”" },
-  6: { dates: "Oct 12–14", note: "Quiz 2 · Quiz 1 written Oct 14", slides: "slides not uploaded yet" },
+  6: { dates: "Oct 12–14", note: "Quiz 2 · Quiz 1 written Oct 14", slides: "no slide deck this week" },
   7: { dates: "Oct 19–21", note: "Quiz 3 · also on the Quiz 2 mock", slides: "slides labelled “Week 7”" },
   8: { dates: "Oct 26–28", note: "Quiz 3 · Quiz 2 written Oct 28", slides: "guest-lecture slides labelled “Week 8” + the Ch. 2 reading deck" },
-  11: { dates: "Nov 16–18", note: "Quiz 3", slides: "slides not uploaded yet" },
-  12: { dates: "Nov 23–25", note: "Final", slides: "slides not uploaded yet" }
+  11: { dates: "Nov 16–18", note: "Quiz 3", slides: "not taught yet" },
+  12: { dates: "Nov 23–25", note: "Final", slides: "not taught yet" }
 };
 const WEEK_NUMS = [...new Set(TOPICS.map(t => t.wk))];
 function weekTopics(n) { return TOPICS.filter(t => t.wk === n); }
 function currentWeekNum() { const w = WEEKS.find(x => T0 >= parseD(x.start) && T0 <= parseD(x.end)); return w ? +w.w.slice(1) : 0; }
 const topicById = Object.fromEntries(TOPICS.map(t => [t.id, t]));
+/* topics without notes: "nodeck" (no slides were given that week) or "upcoming" (not taught yet) */
+function hasNotes(t) { return t.status === "uploaded" || t.status === "partial"; }
+function noNotesLabel(t) { return t.status === "nodeck" ? "no deck this week" : "coming " + t.when.split(" & ")[0]; }
 
 const EVENTS = [
   { date: "2026-09-02", title: "First class", kind: "class" },
@@ -2098,11 +2101,11 @@ function renderDashboard() {
   document.getElementById("topicStatus").innerHTML = WEEK_NUMS.map(n => '<li class="wk-row' + (n === cw ? ' now' : '') + '"><span class="label">Week ' + n + '</span><span class="label">' + WEEK_INFO[n].dates + ' · ' + WEEK_INFO[n].note + (n === cw ? ' · this week' : '') + '</span><span></span></li>' + weekTopics(n).map(t => {
     const best = scores[t.id];
     let right;
-    if (t.status === "missing") right = '<span class="pill">slides needed</span>';
+    if (!hasNotes(t)) right = '<span class="pill">' + noNotesLabel(t) + '</span>';
     else if (best == null) right = '<span class="pill">not tried</span>';
     else right = '<span class="pill ' + (best >= 80 ? "good" : best >= 60 ? "warn" : "bad") + ' num">' + best + '%</span>';
-    const link = t.status === "missing" ? esc(t.title) : '<a href="#notes" data-goto="notes" data-note="' + t.id + '" style="color:inherit">' + esc(t.title) + '</a>';
-    return '<li><span></span><div style="min-width:0"><div style="font-weight:500;line-height:1.3">' + link + '</div><div class="muted" style="font-size:.82rem">' + t.when + (t.status === "partial" ? " · partial notes" : "") + '</div>' + (best != null ? '<div class="meter"><i style="width:' + best + '%"></i></div>' : "") + '</div>' + right + '</li>';
+    const link = !hasNotes(t) ? esc(t.title) : '<a href="#notes" data-goto="notes" data-note="' + t.id + '" style="color:inherit">' + esc(t.title) + '</a>';
+    return '<li><span></span><div style="min-width:0"><div style="font-weight:500;line-height:1.3">' + link + '</div><div class="muted" style="font-size:.82rem">' + t.when + '</div>' + (best != null ? '<div class="meter"><i style="width:' + best + '%"></i></div>' : "") + '</div>' + right + '</li>';
   }).join("")).join("");
 }
 
@@ -2113,7 +2116,7 @@ function renderSchedule() {
     const state = T0 > e ? "done" : (T0 >= s ? "now" : "");
     const evs = EVENTS.filter(ev => { const d = parseD(ev.date); return d >= s && d <= e && ev.kind !== "class"; });
     const evHtml = evs.map(ev => '<span class="pill ' + ev.kind + '">' + esc(ev.title) + " · " + fmt(parseD(ev.date)) + "</span>").join("") || '<span class="muted">—</span>';
-    const notes = w.topicIds.filter(id => topicById[id].status !== "missing").map(id => ' <a href="#notes" data-goto="notes" data-note="' + id + '">' + esc(topicById[id].title) + ' notes</a>').join(" ·");
+    const notes = w.topicIds.filter(id => hasNotes(topicById[id])).map(id => ' <a href="#notes" data-goto="notes" data-note="' + id + '">' + esc(topicById[id].title) + ' notes</a>').join(" ·");
     return '<tr class="' + state + '"><td class="mono">' + w.w + (state === "now" ? " ◂" : "") + '</td><td class="num" style="white-space:nowrap">' + w.dates + '</td><td>' + esc(w.topic) + notes + '</td><td>' + evHtml + '</td></tr>';
   }).join("");
   const cal = EVENTS.filter(e => ["quiz", "exam", "project"].includes(e.kind) && !e.end);
@@ -2182,7 +2185,7 @@ function renderCalDetail() {
   if (cls) {
     const t = cls[1] && topicById[cls[1]];
     items += '<div class="cal-item"><span class="pill">Class</span><div><b>' + esc(cls[0]) + '</b><div class="muted">11:00 a.m.–12:20 p.m. · Room 7-383</div>' +
-      (t ? (t.status === "missing" ? '<div class="muted">Slides not added yet</div>' : '<div class="btn-row" style="margin-top:6px"><button class="btn" data-goto="notes" data-note="' + t.id + '">' + t.code + ' notes</button></div>') : "") + '</div></div>';
+      (t ? (!hasNotes(t) ? '<div class="muted">' + (t.status === "nodeck" ? "No slide deck for this class" : "Notes get added after this class") + '</div>' : '<div class="btn-row" style="margin-top:6px"><button class="btn" data-goto="notes" data-note="' + t.id + '">' + t.code + ' notes</button></div>') : "") + '</div></div>';
   }
   if (d.getDay() === 4 && d >= parseD("2026-09-03") && d <= parseD("2026-12-03") && !evs.some(e => e.kind === "closed"))
     items += '<div class="cal-item"><span class="pill">Office hours</span><div>9:45–10:45 a.m. · Room 6-315 <span class="muted">(by appointment)</span></div></div>';
@@ -2197,14 +2200,14 @@ document.getElementById("calToday").onclick = () => { calMonth = T0 < TERM_START
 /* ---------- notes ---------- */
 const toc = document.getElementById("notesToc");
 toc.innerHTML = WEEK_NUMS.map(n => '<div class="toc-week' + (n === currentWeekNum() ? ' now' : '') + '"><span class="label">Week ' + n + ' · ' + WEEK_INFO[n].dates + (n === currentWeekNum() ? ' · this week' : '') + '</span>' +
-  weekTopics(n).map(t => '<button data-topic="' + t.id + '" aria-pressed="false"><span class="ttl">' + esc(t.title) + '</span><span class="muted" style="font-size:.8rem">' + t.when + (t.status === "missing" ? " · no slides yet" : t.status === "partial" ? " · partial notes" : "") + '</span></button>').join("") + '</div>').join("");
+  weekTopics(n).map(t => '<button data-topic="' + t.id + '" aria-pressed="false"><span class="ttl">' + esc(t.title) + '</span><span class="muted" style="font-size:.8rem">' + t.when + (t.status === "nodeck" ? " · no deck this week" : t.status === "upcoming" ? " · not taught yet" : "") + '</span></button>').join("") + '</div>').join("");
 function openNote(id) {
   const t = topicById[id]; if (!t) return;
-  const target = t.status === "missing" ? "pending" : id;
+  const target = hasNotes(t) ? id : "pending";
   document.querySelectorAll("article[data-note]").forEach(a => a.hidden = a.dataset.note !== target);
   if (target === "pending") {
     document.getElementById("pendingTitle").textContent = t.code + ": " + t.title;
-    document.getElementById("pendingText").textContent = "Taught " + t.when + (t.quiz ? ", tested on Quiz " + t.quiz : ", tested on the final") + ". The slides for this topic haven't been added yet.";
+    document.getElementById("pendingText").textContent = "Taught " + t.when + (t.quiz ? ", tested on Quiz " + t.quiz : ", tested on the final") + (t.status === "nodeck" ? ". There was no slide deck for this week, so there are no notes for it." : ". Notes, flashcards and questions get added once it's taught and the slides are out.");
   }
   toc.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.topic === id ? "true" : "false"));
   store.set("note", id);
@@ -2524,7 +2527,7 @@ labToc.addEventListener("click", e => { const b = e.target.closest("button"); if
 /* ---------- flashcards ---------- */
 let known = store.get("known", {});
 const fcTopic = document.getElementById("fcTopic"), fcMode = document.getElementById("fcMode");
-const scopeOptions = '<option value="q1">Quiz 1 set: Weeks 1–3</option><option value="q2">Quiz 2 set: Weeks 4–7 (Week 7 is on the mock; Week 6 needs slides)</option><option value="q3">Quiz 3 set: Weeks 7, 8 &amp; 11 (Week 11 needs slides)</option><option value="all">Everything so far</option>';
+const scopeOptions = '<option value="q1">Quiz 1 set: Weeks 1–3</option><option value="q2">Quiz 2 set: Weeks 4–7 (Week 7 is on the mock)</option><option value="q3">Quiz 3 set: Weeks 7, 8 &amp; 11 (Week 11 not taught yet)</option><option value="all">Everything so far</option>';
 function weekOptions(has) { return WEEK_NUMS.filter(n => weekTopics(n).some(t => has(t.id))).map(n => '<option value="w' + n + '">Week ' + n + ': ' + weekTopics(n).map(t => esc(t.title)).join(" + ") + '</option>').join(""); }
 fcTopic.innerHTML = scopeOptions + weekOptions(id => CARDS.some(c => c.topic === id));
 function inScope(topic, scope) {
@@ -2597,9 +2600,8 @@ function updateScopeInfo() {
   document.getElementById("qLenField").hidden = f === "mock" || f === "essay";
   const tf = pool.filter(q => q.type === "tf").length, mc = pool.length - tf, es = essayPool(qScope.value).length;
   let msg = tf + " true/false, " + mc + " multiple choice and " + es + " short essay questions available.";
-  if (qScope.value === "q1") msg += " Week 3's slides aren't uploaded yet, so its questions come from the mock quiz and related material.";
-  if (qScope.value === "q2") msg += " Week 7 is included because the Quiz 2 mock quiz tests it. Week 6 gets questions once its slides are uploaded.";
-  if (qScope.value === "q3") msg += " Week 11 gets questions once its slides are uploaded.";
+  if (qScope.value === "q2") msg += " Week 7 is included because the Quiz 2 mock quiz tests it. Week 6 had no slide deck, so it has no questions.";
+  if (qScope.value === "q3") msg += " Week 11 questions get added after it's taught.";
   const [nt, nm] = mockFmt(qScope.value);
   if (f === "mock") msg += " Mock format here: " + nt + " true/false + " + nm + " multiple choice.";
   if (f === "mock" && (tf < nt || mc < nm)) msg += " There aren't enough for the full " + nt + " + " + nm + " here, so you'll get as many as exist.";
@@ -2616,12 +2618,12 @@ let wkScores = store.get("wkScores", {});
 function renderWeekGrid() {
   const cnt = ids => { const q = QUESTIONS.filter(x => ids.includes(x.topic)); return { tf: q.filter(x => x.type === "tf").length, mc: q.filter(x => x.type === "mc").length, es: ESSAY_OBJS.filter(e => ids.includes(e.topic)).length }; };
   const best = k => wkScores[k] != null ? '<span class="pill ' + (wkScores[k] >= 80 ? "good" : wkScores[k] >= 60 ? "warn" : "bad") + ' num">best ' + wkScores[k] + '%</span>' : '<span class="pill">not tried</span>';
-  const sets = [["q1", "Quiz 1 review · Weeks 1–3", "Written Oct 14"], ["q2", "Quiz 2 review · Weeks 4–7", "Written Oct 28 · Week 7 included because the mock quiz tests it · Week 6 needs slides"], ["q3", "Quiz 3 review · Weeks 7, 8 & 11", "Written Nov 25 · Week 11 needs slides"]];
+  const sets = [["q1", "Quiz 1 review · Weeks 1–3", "Written Oct 14"], ["q2", "Quiz 2 review · Weeks 4–7", "Written Oct 28 · Week 7 included because the mock quiz tests it"], ["q3", "Quiz 3 review · Weeks 7, 8 & 11", "Written Nov 25 · Week 11 not taught yet"]];
   let h = sets.map(([k, t, sub]) => { const ids = TOPICS.filter(x => inScope(x.id, k)).map(x => x.id), c = cnt(ids);
     return '<div class="wk-card span"><div class="panel-head"><span class="wk-title">' + t + '</span>' + best(k) + '</div><span class="muted" style="font-size:.85rem">' + sub + ' · ' + c.tf + ' true/false · ' + c.mc + ' multiple choice · ' + c.es + ' essays</span><div class="btn-row"><button class="btn primary" data-wkstart="' + k + '" data-fmt="mock">Real-quiz format (' + mockFmt(k).join(" + ") + ')</button><button class="btn" data-wkstart="' + k + '" data-fmt="mixed">Every question</button><button class="btn" data-wkstart="' + k + '" data-fmt="essay">Essays</button></div></div>'; }).join("");
   h += [1, 2, 3, 4, 5, 6, 7, 8].map(n => { const ts = weekTopics(n), ids = ts.map(t => t.id), c = cnt(ids), has = c.tf + c.mc > 0;
-    return '<div class="wk-card' + (has ? "" : " off") + '"><div class="panel-head"><span class="wk-title">Week ' + n + '</span>' + (has ? best("w" + n) : '<span class="pill">slides needed</span>') + '</div><span class="label">' + WEEK_INFO[n].dates + '</span><span style="font-size:.9rem;font-weight:500">' + ts.map(t => esc(t.title)).join(" + ") + '</span>' +
-      (has ? '<span class="muted" style="font-size:.82rem">' + c.tf + ' T/F · ' + c.mc + ' MC' + (c.es ? ' · ' + c.es + ' essay' + (c.es > 1 ? "s" : "") : "") + '</span><div class="btn-row"><button class="btn primary" data-wkstart="w' + n + '" data-fmt="mixed">Start</button>' + (c.es ? '<button class="btn" data-wkstart="w' + n + '" data-fmt="essay">Essays</button>' : "") + '</div>' : '<span class="muted" style="font-size:.82rem">Upload this week\'s slides to add questions.</span>') + '</div>'; }).join("");
+    return '<div class="wk-card' + (has ? "" : " off") + '"><div class="panel-head"><span class="wk-title">Week ' + n + '</span>' + (has ? best("w" + n) : '<span class="pill">' + noNotesLabel(ts[0]) + '</span>') + '</div><span class="label">' + WEEK_INFO[n].dates + '</span><span style="font-size:.9rem;font-weight:500">' + ts.map(t => esc(t.title)).join(" + ") + '</span>' +
+      (has ? '<span class="muted" style="font-size:.82rem">' + c.tf + ' T/F · ' + c.mc + ' MC' + (c.es ? ' · ' + c.es + ' essay' + (c.es > 1 ? "s" : "") : "") + '</span><div class="btn-row"><button class="btn primary" data-wkstart="w' + n + '" data-fmt="mixed">Start</button>' + (c.es ? '<button class="btn" data-wkstart="w' + n + '" data-fmt="essay">Essays</button>' : "") + '</div>' : '<span class="muted" style="font-size:.82rem">' + (ts[0].status === "nodeck" ? "No slide deck this week, so no questions." : "Questions get added after this week is taught.") + '</span>') + '</div>'; }).join("");
   document.getElementById("weekGrid").innerHTML = h;
 }
 document.getElementById("weekGrid").addEventListener("click", e => {
