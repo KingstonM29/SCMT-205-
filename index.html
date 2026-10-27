@@ -367,15 +367,18 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
         <ul class="events" id="upcomingList"></ul>
       </article>
       <article class="card" style="display:grid;gap:10px">
-        <div class="panel-head"><h3>How the instructor writes quiz questions</h3><span class="pill mock">from the mock quiz</span></div>
+        <div class="panel-head"><h3>How the instructor writes quiz questions</h3><span class="pill mock">from both mock quizzes</span></div>
         <ul class="style-list">
+          <li><b>Quiz 2 mock: false statements give a system a strength it doesn't have.</b> ERP's MRP “respects finite capacity”, ERP “plans in real time”, ERP is “primarily an optimizing system”, a WMS “needs automated equipment”, a two-way match “compares the PO with the goods receipt”: all <b>false</b>. The true ones were mechanics: six systems point-to-point = 15 interfaces, one goods receipt updates inventory, PO, AP and GL, a bad unit of measure breaks everything, heavy customization makes upgrades harder.</li>
+          <li><b>Quiz 2 mock: scenario MC names the system or level.</b> Waveless release as pickers free up → WES. Sensor data shows wear → predictive. AMRs switching variants with little changeover → Level 3 flexible. A duplicate supplier → uniqueness rule.</li>
+          <li><b>Quiz 2 mock essays: compare, then recommend.</b> WMS vs WES vs WCS (question, horizon, users, what fails) then pick a stack; digital model vs shadow vs twin, the five-step loop, an example and two limits; bullwhip causes, cures, CPFR and why it's an information problem.</li>
           <li><b>True/false with absolute words.</b> “Always”, “automatically”, “guaranteed”, “without ongoing monitoring”, “primarily prevents every disruption”: these were all <b>false</b>. Balanced statements about trade-offs were <b>true</b>.</li>
           <li><b>Scenario multiple choice.</b> A company is described (stable demand, high utilization, low inventory) and you pick the matching concept (efficient supply chain).</li>
           <li><b>“Which best represents X rather than Y.”</b> Telling digitization, digitalization and transformation apart; putting a tech stack in order.</li>
           <li><b>Short essays that apply a framework.</b> Walk through the steps, then give at least two KPIs and two risks, or explain each trade-off.</li>
-          <li><b>Mock quiz format:</b> 12 true/false, 8 multiple choice, 3 short essays. The Practice tab can build a quiz in that format.</li>
+          <li><b>Mock quiz format:</b> Quiz 1 mock had 12 true/false, 8 multiple choice and 3 short essays; the Quiz 2 mock has 10 true/false, 8 multiple choice and 3 short essays. The Practice tab builds quizzes in each format.</li>
         </ul>
-        <div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="q1" data-quizformat="mock">Take a mock-format quiz</button><button class="btn" data-goto="quiz" data-quizscope="q1" data-quizformat="essay">Practise short essays</button></div>
+        <div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="q2" data-quizformat="mock">Take a Quiz 2 mock-format quiz</button><button class="btn" data-goto="quiz" data-quizscope="mock2" data-quizformat="essay">Practise the Quiz 2 mock essays</button></div>
       </article>
     </div>
     <div class="stack">
@@ -926,6 +929,247 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
   <div class="callout"><span class="label">Most likely on the quiz</span>Why ERP isn't enough and which system fills each gap; map systems to SCOR DS; n(n−1)/2; EDI vs API vs portal; EDI codes 850/855/856/810/997; master data rules; TCO and build/buy/integrate; APS vs MRP; S&amp;OP steps; bullwhip cures; three-way match; spend cube terms; ATP vs CTP; perfect order and OEE math; weighted matrix; fit-gap; payback/ROI; Hershey vs Target.</div>
 </article>
 
+<article class="note" data-note="t7" hidden>
+  <header><span class="label">Week 7 · Topic 7 · Oct 19 &amp; 21 · slides “Week 7” · Quiz 3, and on the Quiz 2 mock</span><h2>Emerging Technologies: Automation, Smart Manufacturing &amp; Digital Twins</h2>
+  <p class="prose">From planning and visibility systems to the <b>physical</b> supply chain. The organizing metaphor: <b>automation = the hands</b>, <b>smart manufacturing = the senses and nerves</b>, <b>digital twins = the memory and foresight</b>. Each builds on the one before: you can automate without being smart, and be smart without a twin, but you can't have a meaningful twin without the data of smart operations.</p></header>
+  <div class="callout info"><span class="label">This week is on the Quiz 2 mock quiz</span>The Quiz 2 mock asks about WES vs WMS vs WCS, predictive maintenance, the automation level of an AMR fleet, the digital shadow, and has two full essays (warehouse software layers and digital twins). Study this week for Quiz 2 as well as Quiz 3, and confirm the scope with the instructor.</div>
+  <section><h3>What makes a technology “emerging”</h3>
+  <p class="prose">New to an industry, improving and spreading quickly, expected to reshape work, while its costs, uses and risks are still uncertain (Rotolo, Hicks &amp; Martin, 2015). Three tests: <b>1 new &amp; fast-improving</b> · <b>2 high potential impact</b> · <b>3 still uncertain</b>. (Their five attributes: radical novelty, fast growth, coherence, prominent impact, uncertainty &amp; ambiguity.)</p>
+  <div class="prose"><ul>
+    <li>“Emerging” is <b>relative to an industry and a firm</b>: robots are mature in car body shops but emerging in grocery fulfilment. It doesn't mean brand new (the twin concept dates to the early 2000s).</li>
+    <li>Uncertainty is the defining feature, so managers use <b>staged investment</b>: small experiments, learn, scale what works.</li>
+  </ul></div>
+  <div class="table-scroll"><table><thead><tr><th>Process</th><th>Emerging technologies</th><th>What they change</th></tr></thead><tbody>
+    <tr><td>Plan</td><td>AI/ML forecasting, digital twins</td><td>Sharper demand signals, what-if testing</td></tr>
+    <tr><td>Source</td><td>Supplier-risk analytics, blockchain, e-procurement</td><td>Earlier warning, traceable transactions</td></tr>
+    <tr><td>Make</td><td>Robotics, IIoT sensors, 3D printing</td><td>Flexible, connected production</td></tr>
+    <tr><td>Store</td><td>AMRs, goods-to-person, drones</td><td>Faster, denser, more accurate warehousing</td></tr>
+    <tr><td>Deliver</td><td>IoT tracking, route optimization, autonomous trucks</td><td>Live visibility, lower cost per delivery</td></tr>
+    <tr><td>Return</td><td>RFID, digital product passports (EU), reverse-logistics platforms</td><td>Traceability for repair, resale, recycling</td></tr>
+  </tbody></table></div>
+  <p class="prose"><b>Four pressures</b> driving adoption: <b>labour</b> (hard-to-fill, ageing workforce; automation is about operating at all), <b>resilience</b> (2020–22 shocks exposed opaque networks), <b>speed</b> (e-commerce: smaller orders, more variants), <b>sustainability</b> (measure energy, waste, Scope 3). <b>Enablers:</b> cheap sensors, connectivity, cloud &amp; edge, cheaper AI.</p>
+  <div class="table-scroll"><table><thead><tr><th>Revolution</th><th>When</th><th>What changed</th></tr></thead><tbody>
+    <tr><td>1.0 Mechanization</td><td>Late 18th c.</td><td>Water &amp; steam power</td></tr>
+    <tr><td>2.0 Mass production</td><td>Late 19th c.</td><td>Electricity, moving assembly line (Ford, 1913)</td></tr>
+    <tr><td>3.0 Automation</td><td>1970s on</td><td>Electronics, computers, PLCs (~1970)</td></tr>
+    <tr><td>4.0 Cyber-physical systems</td><td>2010s on</td><td>Connected machines, data, AI, cloud. “Industrie 4.0”: German initiative, Hannover Messe 2011</td></tr>
+  </tbody></table></div>
+  <p class="prose muted">4.0 is mostly about <b>connecting existing machines</b> and using the data, not buying new ones; retrofitting sensors often matters more. <b>Industry 5.0</b> (European Commission, 2021) adds human-centric, sustainable and resilient industry.</p>
+  <div class="flow"><span>1 Innovation trigger</span><i>→</i><span>2 Peak of inflated expectations</span><i>→</i><span>3 Trough of disillusionment</span><i>→</i><span>4 Slope of enlightenment</span><i>→</i><span>5 Plateau of productivity</span></div>
+  <p class="prose"><b>Hype Cycle</b> (Gartner): a descriptive pattern, not a law; not every technology reaches the plateau and stages differ by industry. Blockchain traceability peaked around 2017–18 (TradeLens shut in 2023); warehouse AMRs are moving mainstream; generative/agentic AI is at high expectations. Early stages suit cheap experiments, later stages scaled investment.</p>
+  <p class="prose"><b>A manager's four questions:</b> <b>1 Problem fit</b> (which problem, worth solving? start from the problem, not the tech) · <b>2 Maturity</b> (proven at scale in our industry, or demos?) · <b>3 Data &amp; integration</b> (most cost and delay sit here) · <b>4 Value &amp; risk</b> (KPI baseline first; cyber, workforce, lock-in).</p></section>
+  <section><h3>Automation: the spectrum</h3>
+  <button class="btn lablink" data-goto="labs" data-lab="spectrum">Practise matching scenarios to levels →</button>
+  <div class="table-scroll"><table><thead><tr><th>Level</th><th>What it does</th><th>Examples</th></tr></thead><tbody>
+    <tr><td><b>1 Fixed</b></td><td>Dedicated equipment, one task, high volume</td><td>Bottling lines, conveyor sortation, AS/RS</td></tr>
+    <tr><td><b>2 Programmable</b></td><td>Reprogrammed between batches; changeover takes time</td><td>CNC machines, industrial robot cells</td></tr>
+    <tr><td><b>3 Flexible</b></td><td>Switches between variants with little or no changeover</td><td>Flexible manufacturing cells, <b>AMR fleets</b></td></tr>
+    <tr><td><b>4 Autonomous</b></td><td>Senses, decides and adapts with minimal human input</td><td>Autonomous yard trucks, self-adjusting lines, AI scheduling agents</td></tr>
+  </tbody></table></div>
+  <p class="prose">Left = high volume, low variety. Right = more flexibility, data and intelligence. <b>Moving right is not automatically better</b>: fixed automation can be cheapest per unit when demand is stable and high. The right level depends on volume, variability, product life cycle and labour. E-commerce pushed warehouses rightward.</p></section>
+  <section><h3>Warehouse, yard &amp; robots</h3>
+  <div class="prose"><ul>
+    <li><b>AS/RS:</b> cranes or shuttles in dense high-bay racking. High throughput, high capital, low flexibility: classic fixed automation.</li>
+    <li><b>Goods-to-person:</b> robots bring shelves/totes to a stationary picker (walking is a big share of manual pick time). Amazon Robotics (Kiva, 2012); AutoStore cube grids.</li>
+    <li><b>AGV vs AMR:</b> AGVs follow <b>fixed paths</b> (wires, magnetic tape, reflectors). AMRs <b>navigate freely</b> with lidar, cameras and maps, so they can be redeployed without infrastructure changes (flexible automation).</li>
+    <li><b>Robotic picking:</b> vision + AI grippers; the hardest problem (soft, odd, novel items); humans keep the exceptions.</li>
+    <li><b>Sortation &amp; packing:</b> cross-belt and tilt-tray sorters, auto-baggers, right-sized carton makers (less void fill).</li>
+    <li><b>Drones &amp; yard trucks:</b> drones count rack inventory; autonomous tractors move trailers.</li>
+    <li>A 3PL on a short (3-year) contract favours <b>redeployable AMRs</b>; a fixed AS/RS is hard to justify.</li>
+  </ul></div>
+  <div class="table-scroll"><table><thead><tr><th></th><th>Industrial robot</th><th>Cobot</th><th>AMR</th></tr></thead><tbody>
+    <tr><td>Where</td><td>Fenced or guarded cell</td><td>Alongside people, force &amp; speed limited</td><td>Travels through the facility</td></tr>
+    <tr><td>Tasks</td><td>Welding, painting, heavy handling</td><td>Machine tending, assembly assist, packing</td><td>Moving totes, carts, pallets</td></tr>
+    <tr><td>Set-up</td><td>Weeks–months; integrator</td><td>Days–weeks; teach by demonstration</td><td>Map the site; integrate with WMS</td></tr>
+    <tr><td>Flexibility</td><td>Low once installed</td><td>High: easy to redeploy</td><td>High: re-route in software</td></tr>
+  </tbody></table></div>
+  <p class="prose muted">Trade-off: speed and payload on the left, flexibility and ease of deployment on the right. Safety standards: ISO 10218; collaborative operation ISO/TS 15066. High-mix contract manufacturer (200 products) → cobots &amp; AMRs.</p>
+  <div class="table-scroll"><table><thead><tr><th>Software automation</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+    <tr><td><b>RPA</b></td><td>Rule-based bots repeat clicks and keystrokes. Brittle: breaks if a screen or document format changes. A workaround for systems that don't integrate.</td><td>Keying emailed POs into ERP; three-way invoice matching</td></tr>
+    <tr><td><b>Intelligent automation</b></td><td>RPA + OCR + machine learning reads messy documents, flags exceptions</td><td>Bills of lading, customs forms</td></tr>
+    <tr><td><b>Agentic AI</b></td><td>AI agents plan and carry out multi-step tasks; people approve key decisions (governance)</td><td>Re-planning around a delayed shipment; routine carrier tenders</td></tr>
+  </tbody></table></div>
+  <p class="prose"><b>Rule of thumb: fix the process before you automate it, or you only make mistakes faster.</b> Lean: eliminate, simplify, then automate.</p></section>
+  <section><h3>WMS, WES &amp; WCS</h3>
+  <button class="btn lablink" data-goto="labs" data-lab="whs">Open the warehouse software stack →</button>
+  <p class="prose"><b>The one idea that explains everything:</b> each layer sits at a different <b>distance from physical motion</b>. The further from motion, the longer the decision horizon and the more business-oriented the data.</p>
+  <div class="table-scroll"><table><thead><tr><th></th><th>WMS</th><th>WES</th><th>WCS</th></tr></thead><tbody>
+    <tr><td>Core question</td><td><b>What &amp; where?</b></td><td><b>When &amp; by whom?</b></td><td><b>How, physically?</b></td></tr>
+    <tr><td>Role</td><td>System of record: every SKU, location, order</td><td>Real-time orchestrator between WMS and the floor</td><td>Machine-level controller</td></tr>
+    <tr><td>Primary goal</td><td>Inventory accuracy, order fulfilment, compliance</td><td>Throughput &amp; resource balance</td><td>Smooth equipment flow &amp; uptime</td></tr>
+    <tr><td>Time horizon</td><td>Hours to days</td><td>Minutes to seconds</td><td>Seconds to milliseconds</td></tr>
+    <tr><td>Works with</td><td>Business records</td><td>Tasks</td><td>Machine signals</td></tr>
+    <tr><td>Main users</td><td>Warehouse &amp; inventory managers</td><td>Operations supervisors</td><td>Controls &amp; maintenance engineers</td></tr>
+    <tr><td>Connects to</td><td>ERP, OMS, TMS, carriers</td><td>WMS above; WCS, robots, labour below</td><td>PLCs, sensors, scanners, drives</td></tr>
+    <tr><td>Needs automation?</td><td><b>No</b>: runs fully manual sites</td><td>Most value in mixed or automated sites</td><td><b>Yes</b>: exists only with automation</td></tr>
+    <tr><td>Plans or reacts?</td><td>Plans (waves, allocation)</td><td>Re-plans continuously</td><td>Executes deterministically</td></tr>
+    <tr><td>If it fails</td><td>No accurate allocation or shipping</td><td>Manual release, lower throughput</td><td>Equipment stops</td></tr>
+    <tr><td>So it is built for</td><td>Data integrity &amp; backups</td><td>Live optimization</td><td>High availability &amp; local fail-safes</td></tr>
+  </tbody></table></div>
+  <div class="prose"><ul>
+    <li><b>WMS functions:</b> receiving &amp; put-away, inventory &amp; location control, order allocation &amp; <b>wave planning</b>, pick/pack/ship rules, cycle counts, lot &amp; serial tracking, labour, billing, KPIs.</li>
+    <li><b>WES functions:</b> <b>dynamic (waveless) order release</b>, task prioritization &amp; interleaving, balancing manual and automated zones, live labour &amp; equipment monitoring, exceptions &amp; re-routing, bottleneck analytics. Why separate: the WMS plans in batches but the floor changes by the minute (a zone backs up, pickers go on break, a carrier cut-off moves).</li>
+    <li><b>WCS functions:</b> translate tasks into equipment commands, routing &amp; sortation, merge &amp; traffic control, scanner/sensor/PLC communication, faults &amp; alarms. Why separate: a carton gets <b>one chance at a divert</b>, so the decision must arrive in milliseconds and be deterministic; a slow database query must never jam a sorter.</li>
+    <li>Separation of concerns: new robots change the WCS, not the inventory rules. WCS can't fix a stock error; WMS can't clear a jam.</li>
+  </ul></div>
+  <div class="flow"><span>1 ERP: order created</span><i>→</i><span>2 WMS: allocates stock, creates pick tasks</span><i>→</i><span>3 WES: releases tasks when a picker/robot is free, by carrier cut-off</span><i>→</i><span>4 WCS: routes the tote by conveyor &amp; sorter</span><i>→</i><span>5 WMS: confirms pack &amp; ship, updates inventory, tells ERP</span></div>
+  <div class="table-scroll"><table><thead><tr><th>Operation</th><th>Stack</th><th>Why</th></tr></thead><tbody>
+    <tr><td>Manual or lightly automated (RF scanners, carts, forklifts)</td><td><b>WMS</b></td><td>No machines to control, one resource type (people): WMS rules and waves are enough</td></tr>
+    <tr><td>One automation system (one sorter line or one AS/RS)</td><td><b>WMS + WCS</b></td><td>Equipment needs real-time control, but little to orchestrate; WCS often comes with the equipment</td></tr>
+    <tr><td>Mixed, high-volume (robots, conveyors, AS/RS, manual zones, tight cut-offs)</td><td><b>WMS + WES + WCS</b></td><td>Many competing resources balanced in real time: the exact gap a WES fills</td></tr>
+  </tbody></table></div>
+  <p class="prose">They are <b>layers, not alternatives</b>. Boundaries are blurring (WMS products with WES modules, WES with WCS functions), so <b>judge a product by its capabilities, not its label</b>. Investment follows complexity: no machines, no control layer; no competing resources, little to orchestrate.</p></section>
+  <section><h3>Smart manufacturing stack &amp; IT/OT</h3>
+  <p class="prose">Smart manufacturing uses real-time data from connected equipment to monitor, predict and continuously adjust production. An automated machine does what it's told; a smart machine also reports what's happening.</p>
+  <div class="table-scroll"><table><thead><tr><th>Layer</th><th>Contents</th></tr></thead><tbody>
+    <tr><td>5 Decisions &amp; action</td><td>Operators, planners, automatic setpoint changes, ERP updates (e.g. ATP dates)</td></tr>
+    <tr><td>4 Analytics &amp; AI</td><td>Dashboards (descriptive) → anomaly detection (predictive) → optimization (prescriptive)</td></tr>
+    <tr><td>3 Data platforms</td><td>Historians (time-series), MES, edge servers, cloud data lakes</td></tr>
+    <tr><td>2 Connectivity</td><td>Industrial Ethernet, Wi-Fi, private 5G; <b>OPC UA</b> (vendor-neutral, describes what data means) and <b>MQTT</b> (lightweight publish-subscribe)</td></tr>
+    <tr><td>1 Assets &amp; sensors</td><td>Machines, PLCs, IIoT sensors (vibration, heat, power, vision); retrofitting is often step one</td></tr>
+  </tbody></table></div>
+  <p class="prose"><b>“Data flows up, decisions flow down. Value appears only when the loop closes.”</b> Lots of spend on layers 1–4 with nobody changing a decision = <b>“dashboard without action.”</b> Projects usually get stuck at layer 3 (data integration) and layer 5 (organizational follow-through).</p>
+  <div class="table-scroll"><table><thead><tr><th>ISA-95 level</th><th>Systems</th><th>Time scale</th><th></th></tr></thead><tbody>
+    <tr><td>4 Business planning</td><td>ERP, SCM planning</td><td>Months to days</td><td rowspan="2"><b>IT</b>: transactions &amp; business data; priority = confidentiality &amp; integrity</td></tr>
+    <tr><td>3 Manufacturing operations</td><td>MES, WMS, quality</td><td>Days to minutes</td></tr>
+    <tr><td>2 Supervisory control</td><td>SCADA, HMI</td><td>Minutes to seconds</td><td rowspan="3"><b>OT</b>: real-time control of equipment; priority = availability &amp; safety (you can't reboot a running furnace to patch it)</td></tr>
+    <tr><td>1 Basic control</td><td>PLCs, controllers</td><td>Seconds to milliseconds</td></tr>
+    <tr><td>0 Physical process</td><td>Sensors, actuators, machines</td><td>Real time</td></tr>
+  </tbody></table></div>
+  <p class="prose"><b>IT/OT convergence:</b> sensor data now flows straight to planning (a Level 0 vibration reading can update a Level 4 plan). That raises <b>both value and cyber risk</b>: once-isolated plant networks become reachable, and the consequence shifts from data loss to physical stoppage. ISA-95 = <b>IEC 62264</b>; OT security standards = <b>IEC 62443</b>.</p></section>
+  <section><h3>Maintenance, OEE &amp; value</h3>
+  <div class="table-scroll"><table><thead><tr><th>Strategy</th><th>Trigger</th><th>Strength</th><th>Weakness</th></tr></thead><tbody>
+    <tr><td><b>Reactive</b> (run to failure)</td><td>After a breakdown</td><td>No upfront cost; fine for cheap, non-critical, redundant assets</td><td>Unplanned downtime, knock-on damage</td></tr>
+    <tr><td><b>Preventive</b></td><td>Calendar or usage interval</td><td>Simple to plan and staff</td><td>Replaces healthy parts; misses random failures</td></tr>
+    <tr><td><b>Predictive</b></td><td><b>Sensor data shows wear</b></td><td>Repair just before failure; fewer stoppages</td><td>Needs sensors, failure history (scarce), analytics skills</td></tr>
+    <tr><td><b>Prescriptive</b></td><td>Model recommends the action</td><td>Timing fits the production plan, spares and technicians</td><td>Most data- and model-intensive</td></tr>
+  </tbody></table></div>
+  <p class="prose">One bottleneck press + twenty identical packers → predictive/prescriptive for the press, preventive or even reactive for the packers. <b>Supply chain link:</b> fewer surprise stoppages → reliable capacity → less lead-time variability → <b>less safety stock</b>; earlier warning for ordering critical spares.</p>
+  <button class="btn lablink" data-goto="labs" data-lab="oee">Open the OEE calculator →</button>
+  <div class="prose"><ul>
+    <li><b>OEE = Availability × Performance × Quality</b>, the share of planned time that is truly productive. From Total Productive Maintenance (<b>Nakajima, 1988</b>); <b>~85% is world-class</b> (a rule of thumb).</li>
+    <li>Availability loses: breakdowns, changeovers (predictive maintenance raises it). Performance loses: slow cycles, minor stops (live monitoring exposes them). Quality loses: defects, rework (vision inspection raises first-pass yield).</li>
+    <li>90% × 95% × 98% ≈ <b>84%</b>. A line at 95% availability, 95% quality but 60% OEE is losing on <b>performance</b> (≈66%).</li>
+    <li>OEE is <b>hidden capacity</b>: bottleneck 60% → 70% = about <b>one-sixth more output</b> with no new equipment. Easy to game by redefining planned time.</li>
+  </ul></div>
+  <p class="prose"><b>Where value shows up:</b> predictive maintenance · vision-based quality (inspect every unit, not a sample) · adaptive scheduling (MES re-sequences jobs) · energy &amp; emissions per unit. <b>For planners:</b> live factory status → more accurate promise dates (ATP/CTP), earlier warnings. Examples: WEF Global Lighthouse Network (2018).</p>
+  <div class="flow"><span>1 Sense: vibration drifts on the bottleneck press</span><i>→</i><span>2 Analyze: bearing failure in ~10 days</span><i>→</i><span>3 Plan: repair in planned downtime, order the spare</span><i>→</i><span>4 Adjust: MES re-sequences, ATP dates update</span><i>→</i><span>5 Learn: outcome retrains the model</span></div></section>
+  <section><h3>Digital twins</h3>
+  <button class="btn lablink" data-goto="labs" data-lab="twin">Try the model / shadow / twin classifier →</button>
+  <p class="prose"><b>Definition:</b> a virtual representation of a physical object, process or system, <b>kept in sync with its real counterpart through data</b>, and used to understand, predict and improve it. Three parts: <b>1 a physical entity</b> · <b>2 a virtual model</b> (structure, state, behaviour) · <b>3 a live data link</b> (ideally both directions). A 3D CAD model or a one-off simulation is <b>not</b> a twin.</p>
+  <p class="prose muted">History: concept credited to <b>Michael Grieves</b> (PLM, University of Michigan, early 2000s); the name tied to NASA (John Vickers, ~2010); Apollo 13 (1970) often cited as a precursor (physical simulators).</p>
+  <div class="table-scroll"><table><thead><tr><th></th><th>Physical → digital (data)</th><th>Digital → physical (action)</th><th>Example</th></tr></thead><tbody>
+    <tr><td><b>Digital model</b></td><td>Manual</td><td>Manual</td><td>CAD model, spreadsheet capacity model, one-off layout simulation</td></tr>
+    <tr><td><b>Digital shadow</b></td><td><b>Automatic</b></td><td>Manual</td><td>Control tower showing live shipments where planners decide; a navigation app for most drivers</td></tr>
+    <tr><td><b>Digital twin</b></td><td><b>Automatic</b></td><td><b>Automatic</b></td><td>Adjusts machine parameters, re-routes AMRs, releases replenishment within rules people set</td></tr>
+  </tbody></table></div>
+  <p class="prose">Classification from <b>Kritzinger et al. (2018)</b>, IFAC-PapersOnLine: it classifies by <b>level of data integration</b>, not how good the graphics look. Many things sold as “twins” are really <b>shadows</b>, and that's often the right design (human in the loop for safety, regulation, trust).</p>
+  <div class="flow"><span>1 Sense: IoT, ERP, WMS, TMS, external feeds</span><i>→</i><span>2 Synchronize: update the virtual state in near real time</span><i>→</i><span>3 Simulate: predict, test what-ifs, optimize</span><i>→</i><span>4 Decide: a person or a rule chooses</span><i>→</i><span>5 Act: setpoints, re-route, reorder, reschedule</span><i>↺</i></div>
+  <p class="prose">Results are sensed again and the twin learns. <b>A one-off simulation answers a question once; a twin keeps answering as reality changes.</b> Simulate is where a twin differs from a dashboard. Most effort goes into steps 1–2 (data integration) and building trust so step 4 uses the output.</p>
+  <div class="table-scroll"><table><thead><tr><th>Scale</th><th>Covers</th><th>Example</th></tr></thead><tbody>
+    <tr><td>1 Product twin</td><td>One item across design and use</td><td>Aircraft engine history used to plan servicing (“power by the hour”); digital product passports</td></tr>
+    <tr><td>2 Asset twin</td><td>A machine, vehicle or line</td><td>Packaging line health &amp; throughput (where predictive maintenance lives)</td></tr>
+    <tr><td>3 Factory twin</td><td>Plant layout, flows, capacity</td><td>Test a new layout virtually (BMW + NVIDIA Omniverse)</td></tr>
+    <tr><td>4 Network twin</td><td>Suppliers, plants, DCs, lanes, inventory</td><td>Stress-test the loss of a key supplier; hardest because data sits with other firms</td></tr>
+  </tbody></table></div>
+  <p class="prose"><b>Supply chain twins in practice:</b> <b>1 scenario planning &amp; stress tests</b> (port closes, supplier fails: estimate <b>time to recover</b> and <b>time to survive</b>, Simchi-Levi, MIT) · <b>2 network design</b> (DC locations, sourcing mix, modes before committing capital) · <b>3 inventory &amp; service balancing</b> · <b>4 control tower</b> (most are shadows). <b>Needs:</b> clean master data (items, locations, lead times), live feeds from ERP/WMS/TMS/IoT/partners, a network model of flows, capacities and costs, and <b>governance: an owner and a refresh rhythm</b>. Stale ERP lead times = “garbage in, confident garbage out.”</p>
+  <div class="table-scroll"><table><thead><tr><th>Benefit</th><th>Limit to manage</th></tr></thead><tbody>
+    <tr><td>Test changes safely before touching operations</td><td>Only as good as its assumptions and data</td></tr>
+    <tr><td>Earlier warning of disruptions and bottlenecks</td><td>Partner data is often late, partial, in different formats</td></tr>
+    <tr><td>Faster, better-informed decisions</td><td>People must trust the outputs or they'll be ignored</td></tr>
+    <tr><td>Lower risk on capital projects and layouts</td><td>Costly to build; decays without an owner and recalibration</td></tr>
+    <tr><td>One shared view across planning, ops, finance</td><td>More connections = more cyber and data-sharing exposure</td></tr>
+    <tr><td>Better measurement of energy, emissions, waste</td><td>Proprietary platforms can lock you in to one vendor</td></tr>
+  </tbody></table></div>
+  <div class="flow"><span>1 Define the decision &amp; its KPI</span><i>→</i><span>2 Connect &amp; clean the data (master data first)</span><i>→</i><span>3 Start as a shadow, earn trust</span><i>→</i><span>4 Close the loop on low-risk actions, then extend</span></div>
+  <p class="prose muted">“A twin without a decision is a 3D picture.”</p></section>
+  <section><h3>Making it work</h3>
+  <div class="table-scroll"><table><thead><tr><th>Barrier</th><th>What helps</th></tr></thead><tbody>
+    <tr><td>High cost, unclear return</td><td>Pilot one use case tied to one KPI; scale what pays back</td></tr>
+    <tr><td>Legacy systems &amp; silos</td><td>Integration layer and a common data model (OPC UA, ISA-95)</td></tr>
+    <tr><td>Poor data quality</td><td>Clean master data first; name an owner for each data set</td></tr>
+    <tr><td>OT cyber exposure</td><td>Segment IT and OT networks; zero-trust access; IEC 62443</td></tr>
+    <tr><td>Skills gap</td><td>Upskill; cross-functional IT, OT and operations teams</td></tr>
+    <tr><td><b>“Pilot purgatory”</b> (many pilots, none scaled)</td><td>Executive sponsor and a scaling roadmap from day one</td></tr>
+  </tbody></table></div>
+  <p class="prose muted">Only two or three of these are mainly technical; the rest are organizational.</p>
+  <p class="prose"><b>Business case:</b> <b>1 baseline first</b> (measure today's downtime, pick rate, lead time) · <b>2 hard savings</b> (labour, inventory, downtime, scrap, energy, each tied to a KPI) · <b>3 strategic value</b> (resilience, safety, service: use scenarios and ranges) · <b>4 full lifecycle cost</b> (integration, training, upkeep; compare payback and <b>NPV</b>).</p>
+  <div class="flow"><span>1 Prioritize (value + sponsor)</span><i>→</i><span>2 Pilot (one site, one KPI, 8–16 weeks)</span><i>→</i><span>3 Prove (vs baseline, full costs)</span><i>→</i><span>4 Standardize (data model, playbook, security)</span><i>→</i><span>5 Scale (site by site, track benefits)</span></div>
+  <p class="prose"><b>Technology is rarely the bottleneck; people, data and process change are.</b></p>
+  <div class="prose"><ul>
+    <li><b>Workforce:</b> tasks change before jobs disappear (repetitive, strenuous, dangerous first) · new roles (robot technicians, automation engineers, data analysts, twin modelers) · involve frontline operators early · ethics (worker monitoring and privacy, safety around robots, fair transition).</li>
+    <li><b>Ridgeline Components case</b> (fictional): A) bottleneck press stops → <b>predictive maintenance</b> / asset twin (sensors + failure history; barrier: little failure data, OT security) · B) can't hire pickers for peak → <b>flexible automation</b> (AMRs, goods-to-person, robots-as-a-service), or process fixes first (slotting, batch picking) · C) single overseas supplier caused a six-week shortage → <b>network twin or shadow</b> for scenario planning (BOM, supplier lead times; barrier: supplier data sharing; real fix may be dual sourcing). Many fund A first (fast, measurable); C may be the bigger risk.</li>
+  </ul></div></section>
+  <div class="callout"><span class="label">Most likely on the quiz</span>WMS vs WES vs WCS (question, horizon, users, failure, which combination); automation levels 1–4 and where AMRs sit (Level 3); AGV vs AMR; robot vs cobot vs AMR; RPA vs intelligent automation vs agentic AI; the five-layer stack and “data up, decisions down”; ISA-95 levels and IT vs OT priorities; the four maintenance strategies; OEE math; digital model vs shadow vs twin; the five-step twin loop; four twin scales; supply chain twin uses and limits; barriers and pilot purgatory; business case steps.</div>
+</article>
+
+<article class="note" data-note="t8" hidden>
+  <header><span class="label">Week 8 · Topic 8 · Oct 26 · guest lecture, Teh-Hau Chua · Quiz 3</span><h2>Connected Supply Chains: Warehouse Picking Technology &amp; RFID</h2>
+  <p class="prose">The Week 8 deck is titled “Blockchain, IoT &amp; Smart Logistics”, but the slides themselves cover <b>warehouse automation for picking</b> (pick-to-light, voice picking, batch picking) and <b>RFID</b>, mostly through videos. For IoT and blockchain, see the reading (sensors, exponential tier), Week 7 (IIoT sensors, the twin loop) and Weeks 1 &amp; 5 (blockchain limits, TradeLens).</p></header>
+  <div class="callout info"><span class="label">Partial notes</span>These come from 10 short slides that mainly introduce videos. If there is a second Week 8 deck (for example from the Oct 28 class), upload it to fill in blockchain and IoT.</div>
+  <section><h3>Why warehouse accuracy matters</h3>
+  <div class="flow"><span>Receiving</span><span>Put away</span><span>Picking</span><span>Packing</span><span>Shipping</span><span>Replenishment</span><span>Returns</span></div>
+  <div class="prose"><ul>
+    <li>Goals: <b>first-time right</b>, accuracy, productivity, quality.</li>
+    <li><b>Every mistake comes at a cost:</b> wrong item, inaccurate quantity, customer returns, safety concerns.</li>
+    <li><b>Poka-yoke (error-proofing) is the key.</b> Every process is integrated, so an error in one step flows into the next.</li>
+    <li>Picking technology has evolved: <b>paper → RF scanner → pick-to-light (PTL) → voice picking</b>.</li>
+  </ul></div></section>
+  <section><h3>Pick-to-light, voice &amp; batch picking</h3>
+  <div class="table-scroll"><table><thead><tr><th>Method</th><th>How it works</th><th>From the slides</th></tr></thead><tbody>
+    <tr><td><b>Pick-to-light</b></td><td>A light at each location shows where to pick and how many; the picker presses the light to confirm</td><td>Multiple simultaneous actions: identify location, acknowledge quantity, hit the light button. Single-user setup.</td></tr>
+    <tr><td><b>Voice picking</b></td><td>The WMS sends tasks to a wearable device; a headset speaks directions and the picker replies to confirm</td><td>Hands-free and ergonomic, live human-machine interaction, automated data capture, full visibility of performance and progress. <b>Significant investment</b> relative to other systems.</td></tr>
+    <tr><td><b>Batch picking</b></td><td>One picker collects items for several orders in one trip</td><td>Simultaneous picking, consolidates orders, improves productivity and accuracy.</td></tr>
+  </tbody></table></div>
+  <div class="flow"><span>Order Management System</span><i>→</i><span>Warehouse Management System</span><i>→</i><span>Mobile device + headset</span><i>→</i><span>Picking</span><i>→</i><span>Packing</span></div>
+  <div class="prose"><ul>
+    <li><b>Voice hardware:</b> wearable device with a screen (fragile) or without (rugged); headset wired, Bluetooth or on a hardhat. Enhanced features: noise cancellation, operates in extreme temperatures, long battery life (<b>7–8 hours</b>), the concept of “base items”.</li>
+    <li><b>Voice setup:</b> system language is flexible to choose. Voice training is either <b>speaker-independent</b> (works for anyone) or <b>speaker-dependent</b> (trained on each worker's voice). Verification steps confirm the right location and quantity.</li>
+  </ul></div></section>
+  <section><h3>RFID</h3>
+  <p class="prose">An <b>RFID reader</b> reads an <b>RFID tag</b> by radio, so many tags can be read without line of sight (compare barcodes: cheap but line-of-sight, one at a time). Its limits:</p>
+  <div class="table-scroll"><table><thead><tr><th>Limitation</th><th>Examples</th></tr></thead><tbody>
+    <tr><td><b>Physical</b></td><td>Curved surfaces, condensation-prone items, <b>liquid content</b></td></tr>
+    <tr><td><b>Operational</b></td><td>High-speed beverage filling lines</td></tr>
+    <tr><td><b>Economic</b> (per tag, CAD)</td><td><b>$0.04–0.08</b> cheapest · <b>$0.30–0.70</b> high end · <b>up to $70</b> battery-powered</td></tr>
+  </tbody></table></div></section>
+  <div class="callout"><span class="label">Most likely on the quiz</span>The order of picking technologies (paper → RF → PTL → voice); what PTL, voice and batch picking each do and their pros; speaker-independent vs speaker-dependent voice; poka-yoke and the cost of picking errors; RFID's physical, operational and economic limits and tag price ranges.</div>
+</article>
+
+<article class="note" data-note="tech" hidden>
+  <header><span class="label">Reading deck · Pagano &amp; Liotine, Technology in SCM &amp; Logistics, Ch. 2 · Quiz 3</span><h2>Technologies in Supply Chain Management &amp; Logistics</h2>
+  <p class="prose">A multi-year study by the <b>UIC Center for Supply Chain Management &amp; Logistics</b> of the technologies major U.S. corporations are adopting, based on industry research plus interviews with <b>10 technology vendors</b>. The deck doesn't say which week it belongs to, so it's filed under Week 8 here.</p></header>
+  <section><h3>Context</h3>
+  <div class="prose"><ul>
+    <li><b>Five objectives:</b> identify emerging technologies · understand their implications (value, effectiveness, investment, migration, acceptance) · track adoption trends · map applications (planning, inventory, transportation, distribution, maintenance, quality, EHS) · name favoured suppliers.</li>
+    <li><b>Business trends:</b> the supply chain is a key business process, not a cost centre; networks go centralized → distributed → <b>hybrid</b>; multimode logistics; more direct-to-customer shipping. Net effect: <b>more risk and disruption</b>.</li>
+    <li><b>Resulting challenges:</b> supplier communication, multisourcing, safety stock auditing, risk planning, diversified offerings, social and environmental responsibility.</li>
+    <li><b>Why invest:</b> improve ROI (leverage people and equipment), operational efficiency (less inventory, faster cycles), customer responsiveness (shorter lead times, fewer stockouts). The common goal: <b>end-to-end visibility</b>, “controlled access and transparency to accurate, timely and complete events and data … within and across organizations” (Titze &amp; Barger, 2015).</li>
+    <li><b>Vendors interviewed:</b> SAP (ERP), Vuzix (smart glasses), ORTEC (planning &amp; optimization), Aberdeen Group (research), Accenture (consulting), Mecalux (racking &amp; storage), GT Nexus (cloud SC services), Bastian Solutions (material-handling integrator), AGV Solutions, Zebra Technologies (tracking/RFID).</li>
+  </ul></div>
+  <div class="table-scroll"><table><thead><tr><th>Tier</th><th>Adoption (MHI, 2015)</th><th>Technologies</th></tr></thead><tbody>
+    <tr><td><b>Maturing</b></td><td>35% today, projected 80–90% by 2019</td><td>Optimization software, sensors/telematics, cloud computing, data warehousing, AS/RS</td></tr>
+    <tr><td><b>Growth</b></td><td>~20%, growing over 3–5 years</td><td>Mobility, wearability, data analytics, social media</td></tr>
+    <tr><td><b>Emerging</b></td><td>10%; disruptive</td><td>3D printing, drones, autonomous vehicles</td></tr>
+    <tr><td><b>Exponential</b></td><td>New, just entering use</td><td>Blockchain, Internet of Things, virtual reality, machine learning</td></tr>
+  </tbody></table></div>
+  <p class="prose muted">Impacts are often <b>collective</b>: value comes from integrating several technologies.</p></section>
+  <section><h3>The ten technologies</h3>
+  <div class="table-scroll"><table><thead><tr><th>Technology</th><th>Key benefit</th><th>Example</th><th>Remember</th></tr></thead><tbody>
+    <tr><td><b>Cloud computing</b></td><td>Real-time data shared across partners</td><td>GT Nexus data hub</td><td>SaaS sits on PaaS sits on IaaS. Companies are “brought to the data.” Collaborative sourcing saves <b>20.7%</b> on average. TMS already cloud-based; WMS lags (response time).</td></tr>
+    <tr><td><b>Mobility</b></td><td>Low-cost scanning, tracking, proof of delivery</td><td>Enterprise mobility platforms</td><td>Smartphones replace dedicated hardware; location-based promotions; mobile data turns breakdowns into planned downtime.</td></tr>
+    <tr><td><b>Wearables</b></td><td>Hands-free, more accurate picking</td><td>Vuzix M100 + SAP AR Warehouse Picker</td><td>Adoption <b>23% → 64%</b> in 3–5 years; <b>2× faster</b> picking claimed. Modes: standalone, laptop display, handshaking. Hurdles: battery (~8 h light, ~2 h video), prescription lenses, security, costly custom apps. KPM uses topVox Lydia voice picking.</td></tr>
+    <tr><td><b>Data analytics</b></td><td>Faster, better-informed decisions</td><td>UPS ORION routing</td><td>GNC labour dashboard; Accenture + GE TALERIS (airline predictive maintenance); SAP HANA in-memory MRP runs from hours to seconds.</td></tr>
+    <tr><td><b>Data warehouse</b></td><td>Fast, scalable data foundation</td><td>In-memory architecture</td><td>In-memory is preferred (Imhoff, 2013): faster, scalable, less transformation; watch slow memory-to-cache transfers. Data virtualization: less data movement, handles documents/video; needs performance management.</td></tr>
+    <tr><td><b>Sensors &amp; telematics</b></td><td>Live asset and shipment visibility</td><td>Zebra RFID</td><td>Sense → combine (with weather, traffic; ML finds patterns) → act (predict late shipments, reschedule cross-docks). Helps control the bullwhip. Decide data granularity up front: too much data is real.</td></tr>
+    <tr><td><b>3D printing</b></td><td>On-demand, local production</td><td>Prototypes, spare parts</td><td><b>10%</b> adoption. Shorter lead times, less inventory, regional manufacturing, smaller carbon footprint. Uses: prototyping, high-value replacement parts, complex custom products.</td></tr>
+    <tr><td><b>Social media</b></td><td>Collective supplier intelligence</td><td>CH Robinson TMC Connect (Dec 2009)</td><td>Procurious.com; social sentiment for supplier qualification and design problems. Firms not participating risk falling behind.</td></tr>
+    <tr><td><b>Drones</b></td><td>Low-cost inspection and delivery</td><td>PINC Air, Amazon Prime Air</td><td><b>20%</b> of logistics organizations likely by 2020; strictly regulated by the U.S. FAA. Remote inspection (pipelines), yard tracking, last-mile (Domino's trials).</td></tr>
+    <tr><td><b>AS/RS</b></td><td>Dense, safe, low-labour storage</td><td>Mecalux, Bastian</td><td>Horizontal and vertical carousels, vertical lift modules, fixed-aisle S/R. Driven by growing SKU counts. Requires warehouse redesign.</td></tr>
+  </tbody></table></div></section>
+  <div class="callout"><span class="label">Key takeaways &amp; most likely on the quiz</span><b>Visibility is the goal</b> (drives ROI, efficiency, responsiveness) · <b>adoption varies by tier</b> (know which tech sits in which tier and the 35% / 20% / 10% figures) · <b>data is the backbone</b> (cloud, sensors, warehousing feed analytics) · <b>impact is collective</b>. Also: SaaS vs PaaS vs IaaS, the 20.7% collaborative-sourcing saving, why TMS moved to the cloud before WMS, and each technology's flagship example.</div>
+</article>
+
 <article class="note" data-note="pending" hidden>
   <header><span class="label">Waiting for slides</span><h2 id="pendingTitle">Topic not uploaded yet</h2></header>
   <div class="card" style="border-style:dashed;display:grid;gap:8px"><p id="pendingText"></p><p class="muted">Once the deck is uploaded, its notes, flashcards and questions get added here.</p></div>
@@ -971,7 +1215,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 
 <!-- PRACTICE -->
 <section class="panel" data-panel="quiz" hidden>
-  <div class="panel-head"><div style="display:grid;gap:6px"><h2>Practice</h2><p class="muted">True/false, multiple choice and short essays written in the same style as the instructor's mock quiz. Every answer comes with the reasoning. Questions marked <span class="pill mock">mock quiz</span> are reworded from the sample the instructor gave out.</p></div></div>
+  <div class="panel-head"><div style="display:grid;gap:6px"><h2>Practice</h2><p class="muted">True/false, multiple choice and short essays written in the same style as the instructor's mock quiz. Every answer comes with the reasoning. Questions marked <span class="pill mock">mock quiz 1</span> or <span class="pill mock">mock quiz 2</span> are reworded from the two samples the instructor gave out.</p></div></div>
   <article class="card quiz-card" id="quizSetup">
     <div style="display:grid;gap:4px"><h3>Quiz by week</h3><p class="muted">Each week's quiz runs every true/false and multiple choice question for that week. Review sets run in week-by-week sections, like the real quiz.</p></div>
     <div class="week-grid" id="weekGrid"></div>
@@ -979,7 +1223,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <div class="fc-tools">
       <div class="field" style="flex:1 1 230px"><label class="label" for="qScope">Questions from</label><select id="qScope"></select></div>
       <div class="field" style="flex:1 1 230px"><label class="label" for="qFormat">Format</label><select id="qFormat">
-        <option value="mock">Like the real quiz: 12 true/false + 8 multiple choice</option>
+        <option value="mock">Like the real quiz: mock-quiz format (10 or 12 true/false + 8 multiple choice)</option>
         <option value="mixed">Mixed, choose how many</option>
         <option value="mc">Multiple choice only</option>
         <option value="tf">True/false only</option>
@@ -1112,8 +1356,9 @@ const TOPICS = [
   { id: "t4", wk: 4, code: "Week 4", title: "Enterprise SC Systems 1", when: "Sept 28 & 30", status: "uploaded", quiz: 2 },
   { id: "t5", wk: 5, code: "Week 5", title: "Enterprise SC Systems 2: Beyond ERP", when: "Oct 5 & 7", status: "uploaded", quiz: 2 },
   { id: "t6", wk: 6, code: "Week 6", title: "AI & Intelligent Supply Chains", when: "Oct 14", status: "missing", quiz: 2 },
-  { id: "t7", wk: 7, code: "Week 7", title: "Automation, Smart Manufacturing & Digital Twins", when: "Oct 19 & 21", status: "missing", quiz: 3 },
-  { id: "t8", wk: 8, code: "Week 8", title: "Blockchain, IoT & Smart Logistics", when: "Oct 26 & 28", status: "missing", quiz: 3 },
+  { id: "t7", wk: 7, code: "Week 7", title: "Automation, Smart Manufacturing & Digital Twins", when: "Oct 19 & 21", status: "uploaded", quiz: 3, also: 2 },
+  { id: "t8", wk: 8, code: "Week 8", title: "Blockchain, IoT & Smart Logistics", when: "Oct 26", status: "partial", quiz: 3 },
+  { id: "tech", wk: 8, code: "Reading", title: "Reading: Technologies in SCM & Logistics", when: "Pagano & Liotine, Ch. 2", status: "uploaded", quiz: 3 },
   { id: "t9", wk: 11, code: "Week 11", title: "SC Data Management & Descriptive Analytics", when: "Nov 16 & 18", status: "missing", quiz: 3 },
   { id: "t10", wk: 12, code: "Week 12", title: "Advanced Supply Chain Analytics", when: "Nov 23 & 25", status: "missing", quiz: 0 }
 ];
@@ -1124,8 +1369,8 @@ const WEEK_INFO = {
   4: { dates: "Sept 28–30", note: "Quiz 2", slides: "slides labelled “Week 4”" },
   5: { dates: "Oct 5–7", note: "Quiz 2", slides: "slides labelled “Week 5”" },
   6: { dates: "Oct 12–14", note: "Quiz 2 · Quiz 1 written Oct 14", slides: "slides not uploaded yet" },
-  7: { dates: "Oct 19–21", note: "Quiz 3", slides: "slides not uploaded yet" },
-  8: { dates: "Oct 26–28", note: "Quiz 3 · Quiz 2 written Oct 28", slides: "slides not uploaded yet" },
+  7: { dates: "Oct 19–21", note: "Quiz 3 · also on the Quiz 2 mock", slides: "slides labelled “Week 7”" },
+  8: { dates: "Oct 26–28", note: "Quiz 3 · Quiz 2 written Oct 28", slides: "guest-lecture slides labelled “Week 8” + the Ch. 2 reading deck" },
   11: { dates: "Nov 16–18", note: "Quiz 3", slides: "slides not uploaded yet" },
   12: { dates: "Nov 23–25", note: "Final", slides: "slides not uploaded yet" }
 };
@@ -1140,12 +1385,12 @@ const EVENTS = [
   { date: "2026-09-09", title: "Group project assigned", kind: "project" },
   { date: "2026-10-12", title: "Thanksgiving, campus closed", kind: "closed" },
   { date: "2026-10-14", title: "In-class Quiz 1", scope: "Weeks 1–3: SCOR DS, Intro to SC Tech, Digital SC Strategy, Risk & Resilience", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q1" },
-  { date: "2026-10-28", title: "In-class Quiz 2", scope: "Weeks 4–6: Enterprise Systems 1 & 2, AI & Intelligent SCs", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q2" },
+  { date: "2026-10-28", title: "In-class Quiz 2", scope: "Weeks 4–6 per the outline: Enterprise Systems 1 & 2, AI & Intelligent SCs. The Quiz 2 mock quiz also tests Week 7 (WMS/WES/WCS, automation levels, maintenance, digital twins), so study it too.", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q2" },
   { date: "2026-11-01", title: "Group project report due", scope: "Outline says 11:59 a.m. on a Sunday; confirm a.m. vs p.m.", weight: "20% with presentation", kind: "project", time: "11:59" },
   { date: "2026-11-02", title: "Group project presentation", scope: "In class", kind: "project", time: "11:00" },
   { date: "2026-11-04", title: "Midterm exam", scope: "In person, in class. Scope isn't stated in the outline; confirm with the instructor.", weight: "20%", kind: "exam", time: "11:00" },
   { date: "2026-11-09", end: "2026-11-13", title: "Reading week, campus closed", kind: "closed" },
-  { date: "2026-11-25", title: "In-class Quiz 3", scope: "Weeks 7, 8 & 11: Automation & Digital Twins, Blockchain & IoT, Data & Analytics", weight: "10%", kind: "quiz", time: "11:00" },
+  { date: "2026-11-25", title: "In-class Quiz 3", scope: "Weeks 7, 8 & 11: Automation & Digital Twins, Blockchain & IoT, Data & Analytics", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q3" },
   { date: "2026-12-07", title: "Last class", kind: "class" },
   { date: "2026-12-07", end: "2026-12-18", title: "Final exam period", scope: "Your exact date, time and room are in myStudentSystem", weight: "30%", kind: "exam" }
 ];
@@ -1243,7 +1488,61 @@ const TF = [
 ["t5","Lead-time variability drives safety stock more than the average lead time does.",true,"That's why the supplier scorecard measures the standard deviation of lead time."],
 ["t5","MES works in days and weeks while ERP works in seconds and minutes.",false,"It's the reverse: ERP plans in days/weeks (ISA-95 L4); MES works in shifts and minutes (L3)."],
 ["t5","S&OP is mainly used to schedule detailed daily production on each line.",false,"S&OP plans product families monthly; detailed scheduling is done in the master production schedule."],
-["t5","Bad master data in one field, such as unit of measure, can break MRP, billing, WMS and TMS at the same time.",true,"Every integrated system trusts master data, so one error spreads everywhere."]
+["t5","Bad master data in one field, such as unit of measure, can break MRP, billing, WMS and TMS at the same time.",true,"Every integrated system trusts master data, so one error spreads everywhere."],
+["t5","Connecting six systems point-to-point so each can exchange data with every other needs 15 custom interfaces.",true,"n(n−1)/2 = 6 × 5 ÷ 2 = 15. A middleware hub would need about 6.",2],
+["t5","Traditional ERP MRP checks and respects finite capacity while it builds the plan.",false,"MRP assumes infinite capacity and checks it afterwards (CRP). APS is the system that plans against finite capacity.",2],
+["t7","A digital shadow receives data from its physical counterpart automatically, but any action back on the physical side is still taken manually.",true,"That's the shadow in Kritzinger's classification. A model has no automatic flow; a twin is automatic in both directions.",2],
+["t7","A WMS can only be used in a facility that has automated material-handling equipment.",false,"A WMS runs fully manual sites with RF scanners and carts. The WCS is the one that exists only with automation.",2],
+["t5","In a two-way match, accounts payable compares the purchase order with the goods receipt before paying.",false,"A two-way match compares the PO with the invoice (common for services). Adding the goods receipt makes it a three-way match.",2],
+["t4","In ERP, posting one goods receipt against a PO can update inventory, the PO status, the supplier liability and the general ledger in a single transaction.",true,"That's the point of an integrated system: one event updates every module that cares about it.",2],
+["t5","ERP is primarily an optimizing system that excels at network-wide what-if planning and trade-off analysis.",false,"ERP is a transactional system of record. Network optimization and what-if planning are APS / SCM planning jobs.",2],
+["t5","Heavily customizing ERP to cover every supply chain function is costly and makes future upgrades harder.",true,"ERP is the backbone, not the whole skeleton. Specialized systems at the edge usually beat bending the core.",2],
+["t5","Because ERP plans in real time, its plans stay current throughout the working day.",false,"ERP planning (MRP) usually runs as an overnight batch, so plans go stale as the day changes. Batch, not real-time, is one of ERP's gaps.",2],
+["t5","A single wrong unit of measure in ERP master data can disrupt MRP, billing, warehouse slotting and transport load planning.",true,"Every integrated system trusts master data, so one bad field spreads everywhere (Target Canada).",2],
+["t7","Moving from fixed toward autonomous automation always lowers the cost per unit.",false,"Fixed automation can be cheapest per unit when demand is stable and high. The right level depends on volume, variability, life cycle and labour."],
+["t7","Automated guided vehicles (AGVs) navigate freely with lidar and maps, while AMRs follow fixed paths.",false,"It's the reverse: AGVs follow wires, tape or reflectors; AMRs navigate freely, which makes them flexible automation."],
+["t7","Cobots are designed to work near people by limiting force, speed and power.",true,"That's why they can work without full guarding, at the cost of speed and payload."],
+["t7","Robotic process automation is a robust long-term replacement for proper system integration.",false,"RPA is brittle: a changed screen or document format breaks the bot. It's a workaround for systems that don't integrate."],
+["t7","The rule of thumb for software automation is to fix the process before you automate it.",true,"Automating a broken process just makes mistakes faster. Eliminate, simplify, then automate."],
+["t7","A WCS has to decide in milliseconds because a carton on a conveyor gets only one chance at a divert.",true,"Decisions close to physical motion must be fast and deterministic, so the WCS is isolated from slow business systems."],
+["t7","WMS, WES and WCS are alternatives, so a warehouse should pick one of them.",false,"They are layers, not alternatives. Each sits at a different distance from physical motion."],
+["t7","If the WCS goes down, the warehouse keeps running at lower throughput by releasing work manually.",false,"That describes a WES failure. If the WCS fails, the equipment stops, which is why it's built for high availability and local fail-safes."],
+["t7","In smart manufacturing, value appears as soon as sensors and dashboards are installed.",false,"Value appears only when the loop closes and someone changes a decision. Otherwise it's a “dashboard without action.”"],
+["t7","In the ISA-95 levels, PLCs sit at Level 1 and ERP sits at Level 4.",true,"Level 0 physical process, 1 PLCs, 2 SCADA/HMI, 3 MES/WMS, 4 ERP/SCM planning."],
+["t7","Operational technology (OT) puts data confidentiality ahead of availability and safety.",false,"That's IT's priority. OT prioritizes availability and safety: you can't reboot a running furnace to apply a patch."],
+["t7","IT/OT convergence raises both the value of plant data and the company's cyber risk.",true,"Once-isolated plant networks become reachable from the enterprise network and sometimes the internet."],
+["t7","Preventive maintenance replaces parts based on their measured condition.",false,"Preventive runs on a calendar or usage interval. Condition-based maintenance using sensor data is predictive."],
+["t7","Reactive maintenance can be the cheapest choice for cheap, redundant, non-critical assets.",true,"It's a poor choice for bottlenecks, but run-to-failure is fine where a failure costs little."],
+["t7","Fewer unplanned breakdowns can let a company hold less safety stock for the same service level.",true,"Reliable capacity reduces lead-time variability, and variability drives safety stock."],
+["t7","A 3D CAD model of a machine counts as a digital twin.",false,"With no live data link it's a digital model. A twin stays in sync with the real thing, and its insights act on it."],
+["t7","A one-off simulation study and a digital twin are the same thing.",false,"A simulation answers a question once and is shelved. A twin is persistent and keeps answering as reality changes."],
+["t7","Many products marketed as digital twins are really digital shadows.",true,"By Kritzinger's strict definition they mirror reality but people still act. That's often a sensible design."],
+["t7","A digital twin is only as good as its data and assumptions.",true,"Stale ERP lead times give “garbage in, confident garbage out.”"],
+["t7","A supply chain network twin is usually the easiest twin to build.",false,"It's the hardest scale: much of the data sits with suppliers and carriers who use different systems."],
+["t7","The recommended way to build a twin is to connect every system at once and automate decisions from day one.",false,"Start with one decision and its KPI, clean the master data, run it as a shadow to earn trust, then close the loop on low-risk actions."],
+["t7","“Pilot purgatory” describes a company that runs many successful pilots but never scales them.",true,"The fix is an executive sponsor and a scaling roadmap from day one."],
+["t7","According to the lecture, technology is usually the main bottleneck in automation and digital twin projects.",false,"Technology is rarely the bottleneck; people, data and process change are."],
+["t7","The Hype Cycle is a law that every technology follows all the way to the plateau of productivity.",false,"It's a descriptive pattern. Some technologies never reach the plateau, and stages differ by industry."],
+["t7","A business case for automation should start by measuring a baseline before anything changes.",true,"Without a baseline no one can prove the benefit later."],
+["t7","Industry 4.0 is mainly about buying new machines.",false,"It's about connecting existing machines to each other and to business systems, then using the data. Retrofitting sensors often matters more."],
+["t7","An OEE of about 85% is often cited as world-class.",true,"From Nakajima's Total Productive Maintenance work. It's a rule of thumb, not a universal target."],
+["t8","Voice picking lets workers pick hands-free while the system captures data automatically.",true,"Headset directions and spoken confirmations free both hands and record every pick."],
+["t8","Voice picking is a low-cost option compared with other picking systems.",false,"The guest lecture flagged it as a significant investment relative to other systems."],
+["t8","Speaker-dependent voice systems are trained on each worker's voice.",true,"Speaker-independent systems work for anyone without individual training."],
+["t8","RFID tags read reliably on any product, including liquids and curved, condensation-prone surfaces.",false,"Those are exactly RFID's physical limitations from the slides."],
+["t8","Batch picking collects items for several orders in one trip to improve productivity.",true,"It consolidates orders and improves productivity and accuracy."],
+["t8","Poka-yoke means error-proofing a process so mistakes are hard to make.",true,"The guest lecturer called it the key to first-time-right warehousing."],
+["t8","A battery-powered RFID tag can cost up to about $70.",true,"The cheapest tags are $0.04–0.08 and high-end passive ones $0.30–0.70 (CAD)."],
+["t8","In pick-to-light, the picker confirms a pick by pressing the light at the location.",true,"Identify the location, acknowledge the quantity, hit the light button."],
+["tech","In the UIC study, the common goal behind supply chain technology investment is end-to-end visibility.",true,"ROI, operational efficiency and customer responsiveness all depend on it."],
+["tech","Blockchain and the Internet of Things sit in the study's maturing tier.",false,"They're in the exponential tier (just entering use), with virtual reality and machine learning."],
+["tech","In cloud computing, SaaS sits on top of PaaS, which sits on top of IaaS.",true,"Users run SaaS apps; builders pay for PaaS tools; IaaS virtualizes the hardware."],
+["tech","Warehouse management systems moved to the cloud before transportation management systems.",false,"TMS is already cloud-based; WMS lags because of response-time limits."],
+["tech","3D printing had about 10% adoption in the study and sits in the emerging tier.",true,"Main uses: prototyping, high-value spare parts and complex custom products."],
+["tech","Commercial drone use in the U.S. is unregulated.",false,"It's strictly regulated by the Federal Aviation Administration."],
+["tech","With sensors and telematics, collecting as much data as possible is always better.",false,"Too much data is a real problem. Decide data granularity up front based on storage and analytic capability."],
+["tech","The study says technology impacts are often collective, coming from integrating several technologies.",true,"That's one of the four key takeaways."],
+["tech","Moving to an AS/RS usually requires redesigning the warehouse.",true,"It changes storage density, aisles and flows."]
 ];
 
 /* ---------- multiple choice: [topic, stem, [correct, ...wrong], why, fromMock] ---------- */
@@ -1358,7 +1657,64 @@ const MC = [
 ["t5","Which SCEM metric measures how fast exceptions are noticed?",["MTTD (mean time to detect)","OEE","PPM","DSO"],"Resolution time measures detect-to-closed."],
 ["t5","B2B ordering differs from B2C mainly because B2B uses:",["Contract pricing, EDI orders and invoices on terms","Card payment up front","Parcel delivery to homes","List prices only"],"B2C is many small orders paid up front and shipped as parcels."],
 ["t5","In the TMS carrier rule at checkout, what is checked first?",["Can the carrier meet the promise date?","Lowest landed cost","On-time score tie-break","Box size"],"Then coverage, then lowest landed cost, then the on-time tie-break."],
-["t5","Which EDI document confirms a message was received and readable?",["997","855","830","850"],"855 = PO acknowledgment; 830 = planning schedule."]
+["t5","Which EDI document confirms a message was received and readable?",["997","855","830","850"],"855 = PO acknowledgment; 830 = planning schedule."],
+["t7","Which warehouse system decides when and by which resource each task is done, releasing work dynamically (waveless) as pickers and robots become free?",["Warehouse Execution System (WES)","Warehouse Management System (WMS)","Warehouse Control System (WCS)","Transportation Management System (TMS)"],"WMS = what & where; WES = when & who; WCS = how, physically. A TMS handles transport.",2],
+["t7","Which maintenance strategy uses sensor data showing wear so parts are repaired just before they fail?",["Predictive","Reactive","Preventive","Corrective"],"Preventive runs on a calendar; reactive waits for the breakdown; prescriptive goes further and recommends the action.",2],
+["t7","A DC's fleet of AMRs can switch between product variants with little or no changeover. On the automation spectrum this is:",["Level 3: flexible","Level 1: fixed","Level 2: programmable","Level 4: autonomous"],"Programmable needs changeover time; flexible handles variants with near-zero changeover; autonomous senses, decides and adapts.",2],
+["t5","Which is a strength of ERP rather than one of its typical gaps?",["A single system of record for transactions with an audit trail","Simplified planning that assumes unlimited capacity and fixed lead times","A view limited to the company itself, with little partner visibility","Little support for sustainability data such as emissions and returns"],"The other three are ERP gaps from the “why go beyond ERP” slide.",2],
+["t4","Which ERP module records purchase requisitions, purchase orders and goods receipts?",["Procurement","Finance","Master data","Inventory management"],"Procurement runs the P2P steps; finance records the liability and payment.",2],
+["t5","A retailer is choosing between a single-vendor suite and best-of-breed systems around its ERP. Which is an advantage of the suite?",["One data model with less reconciliation and simpler upgrades","The deepest functionality in each specialist area","More interfaces, giving more flexibility","It removes the need for an ERP core"],"Deepest functionality is the best-of-breed advantage; more interfaces is a cost, not a benefit.",2],
+["t5","“ERP is the backbone, not the whole skeleton.” Which function normally stays in the ERP core?",["General ledger, accounts payable and receivable, and costing","Bin-level warehouse execution","Carrier rating, routing and freight audit","Real-time shop-floor control"],"Financial control stays in ERP; the others move to WMS, TMS and MES.",2],
+["t5","A data steward finds the same supplier set up twice in the vendor master under slightly different names. Which validation rule was broken?",["Uniqueness","Completeness","Validity","Reasonableness"],"Uniqueness = no duplicates. Completeness = no missing fields; validity = allowed values; reasonableness = flags outliers.",2],
+["t7","Which matches the lecture's metaphor for this week's three technologies?",["Automation = hands; smart manufacturing = senses and nerves; digital twins = memory and foresight","Automation = brain; smart manufacturing = hands; twins = eyes","Automation = memory; smart manufacturing = foresight; twins = hands","All three are the brain of the supply chain"],"Each builds on the one before: no meaningful twin without smart-operations data."],
+["t7","An online fashion retailer and a beverage bottler each want to automate a DC. Which is most sensible?",["Flexible automation for the fashion retailer; fixed automation for the bottler","Fixed automation for both","Autonomous for the bottler; programmable for the retailer","No automation for either"],"Variable, many-SKU e-commerce needs flexibility; stable high-volume bottling suits fixed automation."],
+["t7","A 3PL with three-year customer contracts wants warehouse automation. Which fits best?",["AMRs that can be redeployed","A custom high-bay AS/RS","A fixed conveyor sortation line built into the building","Hard-wired AGV guide paths"],"Short contracts favour flexible, redeployable options; a fixed AS/RS is hard to justify over three years."],
+["t7","What distinguishes an AMR from an AGV?",["AMRs navigate freely with onboard sensors and maps; AGVs follow fixed paths","AMRs follow magnetic tape; AGVs use lidar","AMRs are fixed robot arms","There is no real difference"],"AMRs can be redeployed without infrastructure changes."],
+["t7","A contract manufacturer with 200 products and frequent changeovers wants robots. Which family fits best?",["Cobots and AMRs","Traditional fenced industrial robots","Fixed bottling lines","Large AS/RS cranes"],"Cobots redeploy quickly and are taught by demonstration; industrial robots suit stable, high-volume work."],
+["t7","Which task is the best candidate for robotic process automation (RPA)?",["Keying emailed purchase orders in a stable format into the ERP","Negotiating a new supplier contract","Re-planning a network after a port closure","Reading varied, handwritten customs forms with no fixed layout"],"RPA suits high-volume, rule-based, stable tasks. Messy documents need intelligent automation (OCR + ML)."],
+["t7","An AI agent finds an alternative carrier for delayed loads within budget, and a planner approves the booking. This is:",["Agentic AI","Robotic process automation","Fixed automation","A digital model"],"Agents plan and carry out multi-step tasks; people approve key decisions."],
+["t7","Which system is the system of record for every SKU, location and order in a warehouse?",["WMS","WES","WCS","PLC"],"The WMS owns business truth: what stock exists, where it is, and which orders it must serve."],
+["t7","Which system talks directly to conveyors, sorters, AS/RS and their PLCs?",["WCS","WMS","ERP","OMS"],"The WCS controls the how, in seconds to milliseconds."],
+["t7","Who are the main users of a WES?",["Operations supervisors","Controls and maintenance engineers","Finance and accounts payable","Warehouse and inventory managers"],"WMS: managers and inventory teams. WES: supervisors. WCS: controls engineers."],
+["t7","A DC runs one AS/RS and is otherwise manual. Which software combination fits?",["WMS + WCS","WMS only","WMS + WES + WCS","WCS only"],"One automation system needs real-time control but has little to orchestrate."],
+["t7","A manual DC uses RF scanners, carts and forklifts. Which warehouse software does it need?",["WMS","WMS + WCS","WES + WCS","WCS only"],"No machines means no control layer; one resource type means little to orchestrate."],
+["t7","What single idea explains most of the differences between WMS, WES and WCS?",["Their distance from physical motion","Which vendor sells them","Whether they run in the cloud","How many users log in"],"The closer to motion, the shorter the horizon and the less delay a decision can tolerate."],
+["t7","In the five-layer smart manufacturing stack, where do OPC UA and MQTT belong?",["Layer 2: connectivity","Layer 1: assets & sensors","Layer 4: analytics & AI","Layer 5: decisions & action"],"They're protocols for getting data off the machine."],
+["t7","A plant has impressive dashboards but nobody changes a decision because of them. The lecture calls this:",["Dashboard without action","Pilot purgatory","IT/OT convergence","A digital twin"],"Value appears only when the loop closes."],
+["t7","In ISA-95, at which level do SCADA and HMIs sit?",["Level 2: supervisory control","Level 4: business planning","Level 3: manufacturing operations","Level 0: physical process"],"L1 PLCs, L2 SCADA/HMI, L3 MES/WMS, L4 ERP."],
+["t7","Why might an OT engineer resist connecting a production line to the corporate network?",["Attacks could now stop production, and OT systems can't easily be taken offline to patch","OT prioritizes confidentiality over safety","It would make the line run too fast","IEC 62443 forbids any connection"],"Consequences shift from data loss to physical stoppage. Responses: segmentation, zero-trust, IEC 62443."],
+["t7","A plant has one bottleneck press and twenty identical packing machines. What's the best maintenance mix?",["Predictive or prescriptive for the press; preventive or reactive for the packers","Reactive for the press; predictive for every packer","Preventive for everything","Reactive for everything"],"Spend sensor effort where a failure stops the whole plant."],
+["t7","Which maintenance strategy recommends what to do and when, taking the production schedule and spare parts into account?",["Prescriptive","Predictive","Preventive","Reactive"],"Prescriptive turns maintenance into a planning problem."],
+["t7","A line has 95% availability and 95% quality but only 60% OEE. Where is the loss?",["Performance (about 66%)","Availability","Quality","Nowhere; 60% is world-class"],"0.60 ÷ (0.95 × 0.95) ≈ 0.66. Look for slow cycles and minor stops."],
+["t7","A control tower shows live shipment positions, and planners decide what to do. In Kritzinger's classification it is a:",["Digital shadow","Digital model","Digital twin","Digital product passport"],"Data flows in automatically; the action is manual."],
+["t7","What is the correct order of the digital twin loop?",["Sense → Synchronize → Simulate → Decide → Act","Simulate → Sense → Act → Decide → Synchronize","Decide → Act → Sense → Simulate → Synchronize","Act → Decide → Simulate → Sense → Synchronize"],"Then the results are sensed again and the twin learns."],
+["t7","Testing a new plant layout virtually before moving any equipment is an example of which twin scale?",["Factory twin","Product twin","Asset twin","Network twin"],"The lecture's example is BMW with NVIDIA Omniverse."],
+["t7","Stress-testing the loss of a key supplier to estimate time to recover uses a:",["Network (supply chain) twin","Asset twin","Product twin","Digital model of one machine"],"Simchi-Levi's time-to-recover and time-to-survive metrics."],
+["t7","According to the lecture, what is usually the hardest part of a supply chain twin?",["Clean master data, timely partner data and governance","The 3D graphics","Buying the modelling software","Choosing a cloud provider"],"The modelling software is rarely the hardest part."],
+["t7","What should be the first step when building a digital twin?",["Define one recurring decision and the KPI it should improve","Connect every system in the company","Automate all decisions immediately","Buy the most expensive platform"],"Then clean the data, start as a shadow, then close the loop."],
+["t7","Which barrier is matched with the right response?",["Pilot purgatory → an executive sponsor and a scaling roadmap","OT cyber exposure → connect everything directly to the internet","Poor data quality → automate first, clean later","Skills gap → keep IT and OT teams separate"],"Others: OT cyber → segmentation, zero-trust, IEC 62443; data → clean master data with named owners."],
+["t7","Which framing adds human-centric, sustainable and resilient industry to Industry 4.0?",["Industry 5.0 (European Commission, 2021)","Industry 3.0","Industrie 4.0 (Hannover Messe, 2011)","The Hype Cycle"],"Industry 3.0 was electronics, computers and PLCs."],
+["t7","In the Hype Cycle, pilots stall, vendors consolidate and interest fades during the:",["Trough of disillusionment","Peak of inflated expectations","Slope of enlightenment","Plateau of productivity"],"The slope of enlightenment follows, with clearer use cases."],
+["t7","Which of the manager's four questions asks whether a technology is proven at scale in your industry?",["Maturity","Problem fit","Data & integration","Value & risk"],"Ask vendors for reference sites of similar scale, not just demos."],
+["t7","Ridgeline Components can't hire enough pickers for peak season. Which recommendation fits best?",["Flexible automation such as AMRs or goods-to-person, or process fixes like slotting and batch picking first","A fixed AS/RS sized for peak","Predictive maintenance on the press","A network twin of overseas suppliers"],"A seasonal problem favours scalable, flexible options; a fixed AS/RS is hard to justify."],
+["t8","In what order did picking technology evolve, per the guest lecture?",["Paper → RF scanner → pick-to-light → voice picking","Voice → paper → RF scanner → pick-to-light","Pick-to-light → paper → voice → RF scanner","RF scanner → voice → paper → pick-to-light"],"Each step adds more direction and automatic data capture."],
+["t8","Which picking method is hands-free and lets the worker confirm picks by speaking?",["Voice picking","Pick-to-light","Paper picking","Batch picking"],"Pick-to-light needs a button press; paper needs a hand for the list."],
+["t8","Which is NOT one of RFID's limitations from the guest lecture?",["It needs line of sight to read a tag","Liquid content","High-speed beverage filling lines","Tag cost"],"RFID doesn't need line of sight; barcodes do."],
+["t8","A cheap passive RFID tag costs about (CAD):",["$0.04–0.08","$0.30–0.70","Up to $70","$5–10"],"$0.30–0.70 is high-end; up to $70 is battery-powered."],
+["t8","Where does a voice-picking system get its pick tasks?",["From the WMS, which receives orders from the OMS","Directly from the supplier","From the TMS","From the general ledger"],"OMS → WMS → mobile device and headset → picking → packing."],
+["t8","Which voice-system setup works for any worker without individual voice training?",["Speaker-independent","Speaker-dependent","Pick-to-light","Batch picking"],"Speaker-dependent systems are trained on each user's voice."],
+["t8","Which is a cost of a picking mistake named in the guest lecture?",["Customer returns","Faster cycle times","Lower inventory","Higher OEE"],"Also wrong item, inaccurate quantity and safety concerns."],
+["t8","Picking several orders at once in one trip is called:",["Batch picking","Voice picking","Pick-to-light","Cross-docking"],"It consolidates orders to raise productivity and accuracy."],
+["tech","Which technologies did the UIC study place in the maturing tier?",["Optimization software, sensors/telematics, cloud, data warehousing, AS/RS","Blockchain, IoT, virtual reality, machine learning","3D printing, drones, autonomous vehicles","Mobility, wearables, analytics, social media"],"Growth = mobility, wearables, analytics, social media; emerging = 3D printing, drones, autonomous vehicles; exponential = blockchain, IoT, VR, ML."],
+["tech","Roughly what adoption did the emerging tier (3D printing, drones, autonomous vehicles) have?",["10%","35%","About 20%","80–90%"],"Maturing was 35% (projected 80–90% by 2019); growth about 20%."],
+["tech","Users running a provider's application through a browser or thin client is:",["SaaS","PaaS","IaaS","EDI"],"PaaS gives builders memory, storage and tools; IaaS gives virtualized hardware."],
+["tech","GT Nexus's cloud platform is described as a data hub that:",["Brings companies to the data, giving every partner live order and shipment status","Replaces every partner's ERP","Only stores invoices","Works only inside one company"],"It also sends disruption alerts and tracks supplier history and credit strength."],
+["tech","Average savings from cloud-based collaborative sourcing in the study were about:",["20.7%","2%","50%","85%"],"McKeefry (2014)."],
+["tech","Which example matches data analytics in the study?",["UPS ORION route optimization","Vuzix M100 smart glasses","CH Robinson TMC Connect","PINC Air drones"],"Vuzix = wearables; TMC Connect = social media; PINC Air = drones."],
+["tech","SAP HANA's in-memory processing cut MRP runs from:",["Hours to seconds","Seconds to hours","Days to weeks","It made no difference"],"That speed makes scenario planning practical."],
+["tech","What is a main hurdle for warehouse smart glasses?",["Battery life (about 8 hours light use, 2 hours with video)","They need a keyboard","They can't run apps","They're slower than paper"],"Also fit for prescription-lens wearers, security and costly custom apps."],
+["tech","Why did TMS move to the cloud before WMS, according to the study?",["WMS has response-time limits","TMS has more users","WMS is a newer technology","Cloud is banned in warehouses"],"Warehouse execution needs fast responses."],
+["tech","Which technology is computer-controlled equipment that stores and retrieves loads from defined locations?",["AS/RS","Drones","3D printing","Social media"],"Carousels, vertical lift modules and fixed-aisle storage & retrieval are typical."]
 ];
 
 /* ---------- short essays: [topic, prompt, [elements], tip, fromMock] ---------- */
@@ -1384,7 +1740,25 @@ const ESSAYS = [
 ["t5","Compare the Hershey (1999) and Target Canada (2013–15) failures. What were the root causes, and what three things should management have done differently?",
  ["Hershey: big-bang go-live of ERP, CRM and planning in July before Halloween; ~$100M orders unfilled","Target Canada: rushed SAP rollout with bad master data (dimensions, UoM, case packs); 133 stores closed","Hershey = timing, testing, integration; Target = master data","Fix: avoid peak-season go-live and phase the rollout","Fix: end-to-end testing with real volumes and a fallback plan","Fix: cleanse and govern master data before go-live","Point: the software worked for thousands of others, implementation decisions failed"],"Contrast the two causes clearly."],
 ["scor","A regional coffee chain has 120 cafés, a roastery, an online store and a cup-recycling pledge. Apply SCOR DS: place activities in the seven processes and pick the performance attributes that matter most.",
- ["Orchestrate: ethical sourcing policy, café network design","Plan: café demand forecast, roastery capacity plan","Order: mobile app ordering, online checkout","Source: green bean purchasing, milk deliveries","Transform: roasting, in-store drink preparation","Fulfill: delivery to cafés, shipping online orders","Return: equipment warranty returns, cup collection and recycling","Attributes: reliability, responsiveness, environmental sustainability (cost at parity), with a trade-off noted"],"Two activities per process, then justify the attributes."]
+ ["Orchestrate: ethical sourcing policy, café network design","Plan: café demand forecast, roastery capacity plan","Order: mobile app ordering, online checkout","Source: green bean purchasing, milk deliveries","Transform: roasting, in-store drink preparation","Fulfill: delivery to cafés, shipping online orders","Return: equipment warranty returns, cup collection and recycling","Attributes: reliability, responsiveness, environmental sustainability (cost at parity), with a trade-off noted"],"Two activities per process, then justify the attributes."],
+["t7","Explain the roles of the WMS, WES and WCS. For each, state the question it answers, its time horizon, its main users and what happens if it fails. Then recommend a system combination for a high-volume DC that runs manual pick zones, an AS/RS and an AMR fleet against tight carrier cut-offs, and justify your choice.",
+ ["WMS: the what & where; business record of inventory, locations and orders; hours to days; managers and inventory teams; goal accuracy and compliance","WMS down: no accurate allocation or shipping","WES: the when & who; releases and balances tasks across people and machines in real time; minutes to seconds; operations supervisors; goal throughput and resource balance","WES down: work is released manually and throughput drops","WCS: the how; deterministic, millisecond commands to conveyors, sorters, AS/RS and robots via PLCs; controls and maintenance engineers; goal equipment flow and uptime","WCS down: equipment stops, so it's built for high availability and local fail-safes","Recommend WMS + WES + WCS: many competing resources (people, AS/RS, AMRs) must be balanced in real time against cut-offs, the gap a WES fills, and automated equipment needs a WCS","They are layers, not alternatives; boundaries are blurring, so judge products by capabilities, not labels"],"Cover the same four points for each system (question, horizon, users, failure), then recommend and justify.",2],
+["t7","Define a digital twin and distinguish it from a digital model and a digital shadow. Describe the five-step loop through which a twin creates value, give one example of a supply chain network twin in use, and discuss two limits a company must manage.",
+ ["Definition: a virtual representation of a physical object, process or system, kept in sync with it through data and used to understand, predict and improve it","It needs a physical entity, a virtual model and a live data link","Digital model: no automatic exchange, updated by hand","Digital shadow: data flows automatically from physical to digital, but actions remain manual","Digital twin: data flows automatically in both directions","Loop: sense (IoT, ERP, WMS, TMS, external feeds) → synchronize → simulate (predict, what-ifs) → decide (a person or rule) → act (setpoints, re-route, reorder, reschedule); results are sensed again","Unlike a one-off simulation, the twin keeps answering as reality changes","Example: stress-test the loss of a key supplier or a port closure (time to recover, cost), or test DC locations and sourcing mixes before committing capital","Limit 1, e.g. only as good as its data and assumptions, or partner data is late or partial","Limit 2, e.g. people must trust it, it's costly and decays without an owner, cyber exposure, or vendor lock-in"],"Definition → model vs shadow vs twin by data flow → the five verbs in order → one example → two limits.",2],
+["t5","Explain the bullwhip effect and its four root causes. Then describe how enterprise systems and collaborative practices such as POS data sharing, VMI, EDI and CPFR reduce it, and explain why the bullwhip is described as “an information problem.”",
+ ["Definition: demand variability amplifies as orders move upstream (consumer ±5% → manufacturer ±50%); each tier carries more inventory; longer chains distort more","Cause: demand forecast updating (each tier forecasts from orders, not real demand)","Cause: order batching (big, infrequent orders to save ordering and freight costs)","Cause: price fluctuation (promotions trigger forward buying)","Cause: rationing and shortage gaming (inflated orders during allocation, then cancellations)","Cures: share POS and inventory data across tiers, VMI, supplier portals","Cures: EDI and auto-replenishment make smaller, more frequent orders practical; TMS consolidation keeps freight costs down","Cures: EDLP and shared promotion calendars; allocate on past sales and share capacity data; shorter lead times (cross-docking, JIT)","CPFR: retailer and manufacturer agree a joint business plan and share POS sell-through, promotions and forecasts (EDI 830), managing exceptions above agreed thresholds","Information problem: each firm acts rationally on what it sees, but sees only the next tier's orders rather than true end demand; sharing accurate, timely demand data removes the cause"],"Pair each cause with its cure, then finish with the “information problem” argument.",2],
+["t7","Ridgeline Components (two plants, one DC) has three problems: unplanned stops on its bottleneck press line, too few pickers for peak season, and a single overseas supplier that caused a six-week shortage last year. For each, recommend one Week 7 technology, name the data it needs and one barrier or risk. Then choose which to fund first and explain why.",
+ ["A: predictive maintenance (or an asset twin) on the press","A data: vibration, hydraulic pressure, temperature and motor current, plus maintenance logs with failure history","A barrier: little failure history to train on, retrofitting old equipment, OT security when connecting the press","B: flexible automation (AMRs, goods-to-person, robots as a service), or process fixes first (slotting, batch picking)","B data: order profiles, SKU velocity, peak vs average volumes; barrier: capital, WMS integration, change management","C: a network twin or digital shadow for scenario planning (time to recover and time to survive; test dual sourcing or buffer stock)","C data: BOM, supplier locations and lead times, inventory positions, alternative sources; barrier: supplier data sharing, and the real fix may be a sourcing decision","Funding choice justified: A pays back fast and measurably on a bottleneck, but C may be the bigger risk; quantify both with a baseline and scenarios"],"Give each problem the same three parts: technology, data, barrier."],
+["t7","Explain the smart manufacturing stack from sensors to decisions and why IT/OT convergence matters. Use a predictive-maintenance example to show how one sensor reading becomes a supply chain decision.",
+ ["Five layers: assets & sensors → connectivity (OPC UA, MQTT) → data platforms (historians, MES, edge, cloud) → analytics & AI → decisions & action","Data flows up, decisions flow down; value only when the loop closes (avoid “dashboard without action”)","ISA-95 levels: 0 process, 1 PLCs, 2 SCADA/HMI, 3 MES/WMS, 4 ERP","IT (Levels 3–4) prioritizes confidentiality and integrity; OT (Levels 0–2) prioritizes availability and safety","Convergence: sensor data reaches planning, raising value and cyber risk (segmentation, zero-trust, IEC 62443)","Example: vibration drifts → model predicts bearing failure in ~10 days → repair booked into planned downtime and spare ordered → MES re-sequences and ATP dates update → outcome retrains the model","Supply chain benefit: reliable capacity, kept customer promises, less safety stock and expediting"],"Build the stack bottom-up, then walk the five-step example."],
+["t7","Compare the four maintenance strategies and explain how better maintenance affects OEE and the wider supply chain. Include an OEE calculation.",
+ ["Reactive: after a breakdown; no upfront cost; unplanned downtime and knock-on damage","Preventive: calendar or usage interval; simple to plan; replaces healthy parts and misses random failures","Predictive: sensor data shows wear; repair just before failure; needs sensors, failure history and analytics skills","Prescriptive: a model recommends the action, fitted to the schedule and spares; most data-intensive","Match the strategy to the asset (bottleneck vs redundant)","OEE = availability × performance × quality, e.g. 90% × 95% × 98% ≈ 84%; about 85% is world-class","Maintenance raises availability; OEE on a bottleneck is hidden capacity (60% → 70% ≈ one-sixth more output)","Supply chain: less lead-time variability, less safety stock, more reliable promise dates, earlier ordering of spares"],"Compare the four first, then one OEE number, then the supply chain link."],
+["t7","A company wants to fund a warehouse automation project. Using the lecture's barriers, business case and pilot-to-scale roadmap, explain how you'd build the case and avoid pilot purgatory. Include the workforce dimension.",
+ ["Start from the problem: problem fit, maturity, data & integration, value & risk","Baseline first: measure pick rate, labour hours and errors before anything changes","Hard savings tied to KPIs: labour, inventory, errors, energy","Strategic value with scenarios and ranges: resilience, safety, service","Full lifecycle cost (integration, training, upkeep, upgrades); payback and NPV","Roadmap: prioritize → pilot (one site, one KPI, fixed time box) → prove → standardize → scale","Avoid pilot purgatory: executive sponsor, scaling roadmap and reusable platform from day one","Barriers: legacy integration, data quality, OT cyber, skills gap","Workforce: tasks change before jobs, new roles, involve the frontline early, ethics (monitoring, safety, fair transition)"],"Say that technology is rarely the bottleneck, then show how you handle people and data."],
+["t8","A distributor's pickers make frequent errors (wrong item, wrong quantity) and productivity is falling. Compare paper, RF scanning, pick-to-light, voice and batch picking, recommend an approach, and explain where RFID would and wouldn't help.",
+ ["Errors cost money: wrong item, wrong quantity, returns, safety; aim for first-time right through poka-yoke","Paper: cheap, but no automatic data capture or verification","RF scanner: scanning confirms the item; real-time direction","Pick-to-light: lights show location and quantity, the picker presses to confirm","Voice: hands-free, ergonomic, automated data capture, verification steps; significant investment; speaker-independent vs speaker-dependent","Batch picking: several orders per trip raises productivity and accuracy","Recommendation tied to the order profile and budget, with a KPI (pick accuracy, lines per labour hour)","RFID reads many tags without line of sight, but is limited by liquids, curved or condensation-prone surfaces, high-speed lines and tag cost ($0.04–0.08 up to $70)"],"Compare on accuracy, productivity and cost, then recommend."],
+["tech","Using the UIC study (Pagano & Liotine), explain the four technology tiers and argue why end-to-end visibility and integration matter more than any single technology. Give at least three technologies with their study examples.",
+ ["Maturing (35%, projected 80–90%): optimization, sensors/telematics, cloud, data warehousing, AS/RS","Growth (~20%): mobility, wearables, analytics, social media","Emerging (10%): 3D printing, drones, autonomous vehicles","Exponential (new): blockchain, IoT, virtual reality, machine learning","Why invest: ROI, operational efficiency and customer responsiveness, which all need end-to-end visibility (Titze & Barger)","Examples: GT Nexus cloud hub, UPS ORION analytics, Vuzix + SAP AR picking, Zebra RFID, Mecalux/Bastian AS/RS, PINC Air drones","Data is the backbone: cloud, sensors and warehousing feed analytics","Impact is collective: value comes from integrating technologies, not using them alone"],"Tier → adoption figure → examples, then the visibility and integration argument."]
 ];
 
 /* ---------- flashcards: [topic, term, definition] ---------- */
@@ -1552,14 +1926,100 @@ const F = [
 ["t5","TMS phases","Plan (loads, mode, routes, carrier) → Execute (tender, appointments, tracking) → Settle (freight audit, payment)."],
 ["t5","Carrier selection rule","Meets promise date? → Serves the address? → Lowest landed cost → Tie-break on on-time score."],
 ["t5","Business case example","$1.2M investment, $450K/yr → payback 2.7 yrs; 3-yr ROI 12.5%."],
-["t5","Hershey vs Target Canada","Hershey: timing, testing, integration. Target: master data."]
+["t5","Hershey vs Target Canada","Hershey: timing, testing, integration. Target: master data."],
+["t7","Emerging technology (3 tests)","New & fast-improving · high potential impact · still uncertain (Rotolo, Hicks & Martin, 2015). Relative to an industry and firm. Respond with staged investment."],
+["t7","Hands · nerves · foresight","Automation = the hands. Smart manufacturing = the senses and nerves. Digital twins = the memory and foresight."],
+["t7","Four pressures driving adoption","Labour (hard-to-fill roles), resilience (opaque networks), speed (e-commerce), sustainability (energy, emissions). Enablers: sensors, connectivity, cloud & edge, cheaper AI."],
+["t7","Industrial revolutions","1.0 steam (late 1700s) · 2.0 electricity & assembly line (Ford 1913) · 3.0 electronics & PLCs (1970s) · 4.0 cyber-physical systems (Industrie 4.0, Hannover Messe 2011)."],
+["t7","Industry 5.0","European Commission framing (2021): human-centric, sustainable and resilient industry alongside efficiency."],
+["t7","Hype Cycle stages","Innovation trigger → Peak of inflated expectations → Trough of disillusionment → Slope of enlightenment → Plateau of productivity (Gartner). A pattern, not a law."],
+["t7","Manager's four questions","Problem fit · Maturity · Data & integration · Value & risk."],
+["t7","Automation spectrum","1 Fixed (bottling, sortation) · 2 Programmable (CNC, robot cells) · 3 Flexible (AMR fleets, flexible cells) · 4 Autonomous (yard trucks, self-adjusting lines)."],
+["t7","Is moving right on the spectrum always better?","No. Fixed automation can be cheapest per unit for stable, high-volume work. Match flexibility to volume and variability."],
+["t7","AGV vs AMR","AGV follows fixed paths (wires, tape, reflectors). AMR navigates freely with lidar, cameras and maps, so it's easy to redeploy (flexible)."],
+["t7","Goods-to-person","Robots bring shelves or totes to a stationary picker. Amazon Robotics (Kiva, 2012), AutoStore cube grids."],
+["t7","AS/RS","Cranes or shuttles in dense high-bay racking. High throughput, high capital, low flexibility: classic fixed automation."],
+["t7","Industrial robot vs cobot vs AMR","Robot: fenced, fast, strong, low flexibility. Cobot: works beside people, force-limited, taught by demonstration. AMR: moves things through the facility, re-routed in software."],
+["t7","RPA","Rule-based software bots repeat clicks and keystrokes. Brittle; a workaround for systems that don't integrate."],
+["t7","Intelligent automation vs agentic AI","Intelligent: RPA + OCR + ML reads messy documents. Agentic: AI agents plan multi-step tasks; people approve key decisions."],
+["t7","Software automation rule of thumb","Fix the process before you automate it, or you'll only make mistakes faster. Eliminate, simplify, then automate."],
+["t7","WMS","What & where. System of record for SKUs, locations, orders. Hours–days. Managers. Runs manual sites. Down = no accurate allocation or shipping."],
+["t7","WES","When & who. Real-time orchestrator, waveless release, balances people and machines. Minutes–seconds. Supervisors. Down = manual release, lower throughput."],
+["t7","WCS","How, physically. Millisecond, deterministic commands to conveyors, sorters, AS/RS via PLCs. Controls engineers. Exists only with automation. Down = equipment stops."],
+["t7","Why three warehouse layers?","Distance from physical motion: the closer to motion, the shorter the horizon and the more technical the data. Layers, not alternatives."],
+["t7","Which warehouse stack?","Manual → WMS. One automation system → WMS + WCS. Mixed, high-volume, tight cut-offs → WMS + WES + WCS."],
+["t7","One order through the stack","ERP creates order → WMS allocates & creates tasks → WES releases when a resource is free → WCS routes the tote → WMS confirms, tells ERP."],
+["t7","Smart manufacturing stack","1 Assets & sensors · 2 Connectivity · 3 Data platforms · 4 Analytics & AI · 5 Decisions & action. Data flows up, decisions flow down."],
+["t7","Dashboard without action","Investing in layers 1–4 but never changing a decision. Value appears only when the loop closes."],
+["t7","OPC UA vs MQTT","OPC UA: vendor-neutral industrial data exchange that also describes what data means. MQTT: lightweight publish-subscribe messaging for IoT."],
+["t7","ISA-95 levels","0 process · 1 PLCs (ms–s) · 2 SCADA/HMI (min–s) · 3 MES/WMS (days–min) · 4 ERP/SCM (months–days). Also IEC 62264."],
+["t7","IT vs OT","IT (L3–4): business data; confidentiality & integrity. OT (L0–2): real-time control; availability & safety."],
+["t7","IT/OT convergence","Sensor data flows straight to planning: more value and more cyber risk. Segment networks, zero-trust, IEC 62443."],
+["t7","Four maintenance strategies","Reactive (after breakdown) · Preventive (calendar/usage) · Predictive (sensor data shows wear) · Prescriptive (model recommends the action)."],
+["t7","Maintenance → supply chain","Fewer surprise stoppages → reliable lead times → less safety stock and expediting; earlier spare-part orders."],
+["t7","OEE","Availability × Performance × Quality (Nakajima, 1988, TPM). ~85% world-class. 90% × 95% × 98% ≈ 84%."],
+["t7","OEE as hidden capacity","Raising a bottleneck from 60% to 70% OEE adds about one-sixth more output without new equipment."],
+["t7","Sense → Analyze → Plan → Adjust → Learn","Vibration drifts → bearing failure predicted in ~10 days → repair in planned downtime, spare ordered → MES re-sequences, ATP updates → model retrains."],
+["t7","Digital twin (definition)","A virtual representation of a physical object, process or system, kept in sync through data, used to understand, predict and improve it."],
+["t7","Three parts of a twin","A physical entity · a virtual model · a live data link (ideally both ways)."],
+["t7","Digital model vs shadow vs twin","Model: no automatic exchange. Shadow: data in automatically, action manual. Twin: automatic both ways (Kritzinger et al., 2018)."],
+["t7","Twin origins","Concept: Michael Grieves (PLM, early 2000s). Name: NASA, John Vickers (~2010). Apollo 13 (1970) often cited as a precursor."],
+["t7","Twin loop","Sense → Synchronize → Simulate → Decide → Act, then sense again. A simulation answers once; a twin keeps answering."],
+["t7","Four twin scales","Product (engine) · Asset (machine, line) · Factory (layout, BMW/Omniverse) · Network (suppliers, DCs, lanes)."],
+["t7","Supply chain twin uses","Scenario planning & stress tests · network design · inventory & service balancing · control tower."],
+["t7","Time to recover / time to survive","Simchi-Levi (MIT) metrics for how long a node takes to recover vs how long the network can survive without it. Twins estimate them."],
+["t7","What a SC twin needs","Clean master data, live feeds (ERP, WMS, TMS, IoT, partners), a network model of flows/capacities/costs, governance (owner + refresh rhythm)."],
+["t7","Twin limits","Only as good as data & assumptions · partner data late/partial · trust · cost & decay without an owner · cyber exposure · vendor lock-in."],
+["t7","Twin roadmap","1 Define the decision & KPI → 2 Connect & clean data → 3 Start as a shadow → 4 Close the loop on low-risk actions, then extend."],
+["t7","Barriers → what helps","Cost → pilot one KPI · Legacy → integration layer (OPC UA) · Data → clean master data, owners · OT cyber → segmentation, IEC 62443 · Skills → upskill · Pilot purgatory → sponsor + roadmap."],
+["t7","Pilot purgatory","Many successful pilots, none scaled. Causes: one-off builds, no rollout budget owner, no reusable platform."],
+["t7","Business case steps","Baseline first → hard savings tied to KPIs → strategic value with scenarios → full lifecycle cost (payback & NPV)."],
+["t7","Pilot to scale","Prioritize → Pilot (one site, one KPI, 8–16 weeks) → Prove → Standardize → Scale. Technology is rarely the bottleneck."],
+["t7","Workforce dimension","Tasks change before jobs disappear · new roles · involve frontline early · ethics (monitoring, safety, fair transition)."],
+["t7","Ridgeline Components","A press stops → predictive maintenance. B no pickers at peak → flexible automation (AMRs). C single supplier → network twin/shadow for scenarios."],
+["t8","Picking technology evolution","Paper → RF scanner → pick-to-light → voice picking."],
+["t8","Cost of picking mistakes","Wrong item, inaccurate quantity, customer returns, safety concerns. Goal: first-time right."],
+["t8","Poka-yoke","Error-proofing: design the process so mistakes are hard to make. The key to accurate warehousing."],
+["t8","Pick-to-light","Lights mark the location and quantity; picker identifies, acknowledges, presses the light. Multiple simultaneous actions; single-user setup."],
+["t8","Voice picking flow","OMS → WMS → mobile device + headset → picking → packing."],
+["t8","What makes voice picking unique","Hands-free & ergonomic, live human-machine interaction, automated data capture, full visibility. Significant investment."],
+["t8","Speaker-independent vs dependent","Independent: works for anyone. Dependent: trained on each worker's voice."],
+["t8","Voice hardware features","Screen (fragile) or no screen (rugged); wired, Bluetooth or hardhat headset; noise cancellation, extreme temperatures, 7–8 hr battery."],
+["t8","Batch picking","Pick several orders at once: consolidates orders, improves productivity and accuracy."],
+["t8","RFID limitations","Physical: curved surfaces, condensation, liquids. Operational: high-speed beverage filling lines. Economic: tag cost."],
+["t8","RFID tag cost (CAD)","$0.04–0.08 cheapest · $0.30–0.70 high end · up to $70 battery-powered."],
+["tech","UIC study (Pagano & Liotine, Ch. 2)","Multi-year study of SC technology trends at major U.S. firms: industry research + interviews with 10 vendors."],
+["tech","Why invest in SC technology","Improve ROI · operational efficiency · customer responsiveness. Common goal: end-to-end visibility."],
+["tech","End-to-end visibility (Titze & Barger, 2015)","“Controlled access and transparency to accurate, timely and complete events and data … within and across organizations.”"],
+["tech","Four technology tiers","Maturing (35%) · Growth (~20%) · Emerging (10%) · Exponential (new) (MHI, 2015)."],
+["tech","Maturing tier","Optimization software, sensors/telematics, cloud, data warehousing, AS/RS. 35% adoption, projected 80–90% by 2019."],
+["tech","Growth tier","Mobility, wearability, data analytics, social media. ~20%, growing over 3–5 years."],
+["tech","Emerging tier","3D printing, drones, autonomous vehicles. ~10%; disruptive."],
+["tech","Exponential tier","Blockchain, Internet of Things, virtual reality, machine learning. Just entering general use."],
+["tech","SaaS · PaaS · IaaS","SaaS: apps through a browser. PaaS: tools, memory, storage for builders. IaaS: virtualized hardware. Stacked SaaS on PaaS on IaaS."],
+["tech","GT Nexus","Cloud data hub that brings companies to the data: live order and shipment status, disruption alerts, supplier history."],
+["tech","Collaborative sourcing saving","About 20.7% on average from cloud-based multiple bidding (McKeefry, 2014)."],
+["tech","Cloud TMS vs WMS","TMS is already cloud-based; WMS lags because of response-time limits."],
+["tech","Wearables in the study","Adoption 23% → 64% in 3–5 yrs. SAP AR picker on Vuzix M100: 2× faster. Hurdles: battery, prescription lenses, security, costly apps."],
+["tech","Vuzix M100 modes","Standalone (own processor) · laptop display · handshaking (real-time data transfer)."],
+["tech","Analytics examples","UPS ORION routing · GNC labour dashboard · Accenture + GE TALERIS · SAP HANA (MRP hours → seconds)."],
+["tech","In-memory data warehouse","Preferred (Imhoff, 2013): faster, scalable, less transformation. Watch slow memory-to-cache transfers. Data virtualization layers on top."],
+["tech","Sensors & telematics","Sense → combine (weather, traffic, ML) → act (predict late shipments, reschedule). Decide data granularity up front."],
+["tech","3D printing","~10% adoption. Shorter lead times, less inventory, regional manufacturing, smaller footprint. Prototypes, spare parts, custom products."],
+["tech","Social media in SC","Collective intelligence across partners. Procurious.com; CH Robinson TMC Connect (Dec 2009)."],
+["tech","Drones","20% of logistics orgs by 2020; FAA-regulated. Inspection, yard tracking (PINC Air), last mile (Amazon Prime Air, Domino's)."],
+["tech","AS/RS types","Horizontal & vertical carousels, vertical lift modules, fixed-aisle S/R. Providers: Mecalux, Bastian. Needs warehouse redesign."],
+["tech","Study key takeaways","Visibility is the goal · adoption varies by tier · data is the backbone · impact is collective."]
 ];
 
 /* ---------- build question objects ---------- */
 const QUESTIONS = [];
-TF.forEach((q, i) => QUESTIONS.push({ id: "tf" + i, type: "tf", topic: q[0], stem: q[1], correct: q[2] ? "True" : "False", options: ["True", "False"], why: q[3], mock: !!q[4] }));
-MC.forEach((q, i) => QUESTIONS.push({ id: "mc" + i, type: "mc", topic: q[0], stem: q[1], correct: q[2][0], options: q[2], why: q[3], mock: !!q[4] }));
-const ESSAY_OBJS = ESSAYS.map((e, i) => ({ id: "es" + i, topic: e[0], prompt: e[1], elements: e[2], tip: e[3], mock: !!e[4] }));
+TF.forEach((q, i) => QUESTIONS.push({ id: "tf" + i, type: "tf", topic: q[0], stem: q[1], correct: q[2] ? "True" : "False", options: ["True", "False"], why: q[3], mock: q[4] || 0 }));
+MC.forEach((q, i) => QUESTIONS.push({ id: "mc" + i, type: "mc", topic: q[0], stem: q[1], correct: q[2][0], options: q[2], why: q[3], mock: q[4] || 0 }));
+const ESSAY_OBJS = ESSAYS.map((e, i) => ({ id: "es" + i, topic: e[0], prompt: e[1], elements: e[2], tip: e[3], mock: e[4] || 0 }));
+/* mock-quiz format per scope: [true/false, multiple choice]. Quiz 1 mock was 12 + 8, Quiz 2 mock 10 + 8 */
+const MOCK_FMT = { q1: [12, 8], mock1: [12, 8] };
+function mockFmt(scope) { return MOCK_FMT[scope] || [10, 8]; }
 const CARDS = F.map((c, i) => ({ id: "c" + i, topic: c[0], term: c[1], def: c[2] }));
 
 /* ---------- dates ---------- */
@@ -1620,7 +2080,7 @@ function renderDashboard() {
     const when = isToday ? (next.end ? "Under way" : "Today") : n === 1 ? "Tomorrow" : n + "<small>days</small>";
     let actions = "";
     if (next.quizSet) {
-      actions = '<div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="' + next.quizSet + '" data-quizformat="mock">Practise this quiz</button><button class="btn" data-goto="notes" data-note="' + (next.quizSet === "q1" ? "t3" : "t5") + '">Review notes</button><button class="btn" data-goto="cards">Flashcards</button></div>';
+      actions = '<div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="' + next.quizSet + '" data-quizformat="mock">Practise this quiz</button><button class="btn" data-goto="notes" data-note="' + ({ q1: "t3", q2: "t7", q3: "t7" }[next.quizSet]) + '">Review notes</button><button class="btn" data-goto="cards">Flashcards</button></div>';
     }
     box.innerHTML = '<span class="label">' + (isToday ? "Happening today" : "Next graded item") + '</span>' +
       '<div class="when num">' + when + '</div><h2>' + esc(next.title) + '</h2><dl class="kv">' +
@@ -1864,7 +2324,7 @@ const LABS = [
     document.getElementById("poBars").innerHTML = v.map((x, i) => '<div class="bar-row"><span>' + names[i] + '</span><div class="bar-track"><div style="width:' + ((x - 80) * 5) + '%;background:' + (x === min ? C.signal : C.accent) + '"></div></div><span class="num mono" style="text-align:right">' + x + '%</span></div>').join("");
   });
 }},
-{ id: "oee", title: "OEE calculator", sub: "Availability × performance × quality", topic: "Week 5", render(el) {
+{ id: "oee", title: "OEE calculator", sub: "Availability × performance × quality", topic: "Week 5 · Week 7", render(el) {
   el.innerHTML = '<div class="lab-controls">' + slider("oeP", "Planned minutes", 240, 600, 10, 480) + slider("oeD", "Downtime minutes", 0, 180, 1, 48) + slider("oeU", "Units made (ideal 1/min)", 100, 600, 1, 367) + slider("oeG", "Good units", 50, 600, 1, 360) + '</div><div class="readout" id="oeRead"></div>';
   bindSliders(["oeP", "oeD", "oeU", "oeG"], [], () => {
     const P = val("oeP"), D = Math.min(val("oeD"), P), run = P - D, U = Math.min(val("oeU"), run), G = Math.min(val("oeG"), U);
@@ -1957,6 +2417,97 @@ const LABS = [
     '</svg></div><p class="muted">The mock quiz tests this: a firm can be stage 4 in one region and stage 1 in another. That is normal, not a reason to restart.</p>';
   const show = i => { el.querySelectorAll("#mtChips button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.i === i)); const s = ST[i]; document.getElementById("mtInfo").innerHTML = '<span class="label">Stage ' + (i + 1) + ' of 4</span><h3>' + s[0] + '</h3><p>' + s[1] + '</p><dl class="kv"><dt>Typical tech</dt><dd>' + s[2] + '</dd><dt>Watch out</dt><dd>' + s[3] + '</dd></dl>'; };
   el.querySelectorAll("#mtChips button").forEach(b => b.onclick = () => show(+b.dataset.i)); show(0);
+}},
+{ id: "spectrum", title: "Automation spectrum", sub: "Match the scenario to a level", topic: "Week 7", render(el) {
+  const LV = [["Fixed", "One task, high volume, low variety"], ["Programmable", "Reprogrammed between batches"], ["Flexible", "Switches variants with little or no changeover"], ["Autonomous", "Senses, decides and adapts"]];
+  const SC = [["A beverage company bottles three drinks at very high, stable volume.", 0, "Stable, high-volume, low-variety work is where fixed automation is cheapest per unit. Moving right is not automatically better."],
+    ["A fleet of AMRs can switch between product variants with little or no changeover.", 2, "This is the Quiz 2 mock question. AMR routes change in software, so the fleet is flexible automation."],
+    ["A machine shop reprograms its CNC machines between batches of different parts.", 1, "Programmable automation handles new products, but changeover takes time, so it suits batch production."],
+    ["An online fashion retailer's DC has thousands of SKUs, single-unit orders and seasonal peaks.", 2, "Variable e-commerce order profiles push warehouses toward flexible automation such as AMRs and goods-to-person."],
+    ["Driverless terminal tractors move trailers between dock doors and parking in a DC yard.", 3, "Autonomous yard trucks perceive their surroundings and decide their own moves: the frontier, usually with human oversight."],
+    ["A 3PL on a three-year customer contract wants automation it can move to the next site.", 2, "Redeployable AMRs fit short contracts; a fixed AS/RS is hard to justify over three years."],
+    ["A conveyor sortation system diverts cartons to the same fixed lanes all day.", 0, "Conveyor sortation is dedicated equipment doing one job: fixed automation."],
+    ["A production line adjusts its own settings based on quality feedback from cameras.", 3, "Self-adjusting lines sense, decide and adapt with minimal human input."],
+    ["A traditional industrial robot cell is reprogrammed when the car model changes.", 1, "Industrial robot cells are the textbook programmable example: powerful but slow to change over."],
+    ["A contract manufacturer makes 200 different products with frequent changeovers.", 2, "High-mix, low-volume work needs near-zero changeover, so flexible cells, cobots and AMRs fit."]];
+  let i = 0, right = 0, done = 0;
+  el.innerHTML = '<div class="figure small"><svg viewBox="0 0 640 96" role="img" aria-label="Four automation levels from fixed to autonomous">' +
+    LV.map((l, k) => '<rect class="spLv" data-k="' + k + '" x="' + (k * 160 + 4) + '" y="8" width="152" height="54" rx="6" fill="' + C.surface + '" stroke="' + C.line + '" stroke-width="2"/><text x="' + (k * 160 + 80) + '" y="31" text-anchor="middle" fill="' + C.ink + '" font-family="IBM Plex Sans, sans-serif" font-size="14" font-weight="600">' + (k + 1) + ' ' + l[0] + '</text><text x="' + (k * 160 + 80) + '" y="50" text-anchor="middle" fill="' + C.muted + '" font-family="IBM Plex Sans, sans-serif" font-size="10.5">' + (k === 0 ? "high volume, low variety" : k === 3 ? "most data & intelligence" : k === 1 ? "batch changeovers" : "near-zero changeover") + '</text>').join("") +
+    '<text x="4" y="86" fill="' + C.muted + '" font-family="IBM Plex Sans, sans-serif" font-size="12">More flexibility, data and intelligence →</text></svg></div>' +
+    '<div class="card" style="display:grid;gap:10px"><span class="label" id="spPos"></span><p class="q-stem" id="spQ" style="margin:0"></p><div class="chips" id="spBtns">' + LV.map((l, k) => '<button class="chip-btn" data-k="' + k + '">' + (k + 1) + ' ' + l[0] + '</button>').join("") + '</div><div id="spWhy"></div></div>';
+  const paint = k => el.querySelectorAll(".spLv").forEach(r => { const on = +r.dataset.k === k; r.setAttribute("stroke", on ? C.accent : C.line); r.setAttribute("fill", on ? "#121d38" : C.surface); });
+  const show = () => { const sc = SC[i]; document.getElementById("spPos").textContent = "Scenario " + (i + 1) + " of " + SC.length + (done ? " · " + right + "/" + done + " right" : ""); document.getElementById("spQ").textContent = sc[0]; document.getElementById("spWhy").innerHTML = ""; el.querySelectorAll("#spBtns button").forEach(b => { b.disabled = false; b.setAttribute("aria-pressed", "false"); }); paint(-1); };
+  el.querySelector("#spBtns").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b || b.disabled) return;
+    const k = +b.dataset.k, sc = SC[i], ok = k === sc[1];
+    done++; if (ok) right++;
+    el.querySelectorAll("#spBtns button").forEach(x => { x.disabled = true; x.setAttribute("aria-pressed", +x.dataset.k === sc[1] ? "true" : "false"); });
+    paint(sc[1]);
+    document.getElementById("spPos").textContent = "Scenario " + (i + 1) + " of " + SC.length + " · " + right + "/" + done + " right";
+    document.getElementById("spWhy").innerHTML = '<div class="explain"><span class="pill ' + (ok ? "good" : "bad") + '">' + (ok ? "Correct" : "Not quite: Level " + (sc[1] + 1) + " " + LV[sc[1]][0]) + '</span><p>' + sc[2] + '</p><div class="btn-row"><button class="btn primary" id="spNext">Next scenario</button></div></div>';
+    document.getElementById("spNext").onclick = () => { i = (i + 1) % SC.length; if (i === 0) { right = 0; done = 0; } show(); };
+  });
+  show();
+}},
+{ id: "whs", title: "Warehouse software stack", sub: "WMS, WES & WCS", topic: "Week 7", render(el) {
+  const L = {
+    ERP: ["Enterprise Resource Planning", "Business planning: sales orders, purchasing, finance", "Days to weeks", "Financial record and business plan", "Planners, finance, purchasing", "WMS, OMS, TMS", "Orders can't be created or invoiced"],
+    WMS: ["Warehouse Management System", "WHAT & WHERE? The system of record for every SKU, location and order", "Hours to days", "Inventory accuracy, order fulfilment, compliance", "Warehouse & inventory managers", "ERP, OMS, TMS, carriers", "No accurate allocation or shipping, so it is built for data integrity & backups"],
+    WES: ["Warehouse Execution System", "WHEN & BY WHOM? Releases and balances tasks across people and machines (waveless release)", "Minutes to seconds", "Throughput & resource balance", "Operations supervisors", "WMS above; WCS, robots and labour below", "Work is released manually and throughput drops"],
+    WCS: ["Warehouse Control System", "HOW, PHYSICALLY? Millisecond, deterministic commands to conveyors, sorters, AS/RS and robots", "Seconds to milliseconds", "Smooth equipment flow & uptime", "Controls & maintenance engineers", "PLCs, sensors, scanners, drives", "Equipment stops, so it is built for high availability & local fail-safes"],
+    EQ: ["Automation & equipment", "PLCs, sensors, scanners, motors: the physical layer", "Real time", "Move the product", "Technicians", "WCS", "Product stops moving"]
+  };
+  const OPS = [["Manual or lightly automated", ["ERP", "WMS"], "RF scanners, carts and forklifts. No machines to control and one main resource type (people), so WMS rules and waves are enough."],
+    ["One automation system", ["ERP", "WMS", "WCS", "EQ"], "One sorter line or one AS/RS. The equipment needs real-time control, but with one subsystem there is little to orchestrate; the WCS often comes with the equipment."],
+    ["Mixed, high-volume", ["ERP", "WMS", "WES", "WCS", "EQ"], "Robots, conveyors, AS/RS and manual zones against tight carrier cut-offs. Many competing resources must be balanced in real time: the exact gap a WES fills. (This is the Quiz 2 mock essay answer.)"]];
+  const ORDER = [["ERP", "Customer order is created and sent to the warehouse."], ["WMS", "Allocates stock from a location and creates pick tasks."], ["WES", "Releases tasks when a picker or robot is free, prioritized by carrier cut-off."], ["WCS", "Routes the tote by conveyor and sorter to the right pack lane."], ["WMS", "Confirms packing and shipment, updates inventory and informs ERP."]];
+  let op = 2, sel = "WES", step = -1;
+  el.innerHTML = '<div class="chips" id="whOps">' + OPS.map((o, k) => '<button class="chip-btn" data-k="' + k + '">' + o[0] + '</button>').join("") + '</div><p class="muted" id="whWhy"></p>' +
+    '<div id="whStack" style="display:grid;gap:6px"></div><div class="btn-row"><button class="btn" id="whStep">Follow one order →</button><span class="muted" id="whStepTxt"></span></div><div class="card" id="whInfo" style="display:grid;gap:8px"></div>' +
+    '<p class="muted">Distance from physical motion explains the differences: the closer to motion, the shorter the horizon and the more technical the data. They are layers, not alternatives.</p>';
+  const draw = () => {
+    const on = OPS[op][1];
+    el.querySelectorAll("#whOps button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.k === op));
+    document.getElementById("whWhy").textContent = OPS[op][2];
+    document.getElementById("whStack").innerHTML = ["ERP", "WMS", "WES", "WCS", "EQ"].map(k => {
+      const a = on.includes(k), hi = step >= 0 ? ORDER[step][0] === k : sel === k;
+      return '<button data-k="' + k + '" style="display:grid;gap:4px;text-align:left;cursor:pointer;padding:10px 12px;border-radius:6px;border:' + (hi ? "2px solid " + C.accent : "1px solid " + C.line) + ';background:' + (hi ? "#121d38" : C.surface) + ';opacity:' + (a ? 1 : .4) + '"><span style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b style="font-family:Barlow Condensed,sans-serif;font-size:1.3rem">' + (k === "EQ" ? "Equipment" : k) + '</b><span class="pill' + (a ? "" : " bad") + '">' + (a ? L[k][2] : "not needed") + '</span></span><span style="font-size:.88rem">' + L[k][1] + '</span></button>';
+    }).join("");
+    const d = L[step >= 0 ? ORDER[step][0] : sel];
+    document.getElementById("whInfo").innerHTML = '<span class="label">' + d[0] + '</span><dl class="kv"><dt>Job</dt><dd>' + d[1] + '</dd><dt>Horizon</dt><dd>' + d[2] + '</dd><dt>Goal</dt><dd>' + d[3] + '</dd><dt>Users</dt><dd>' + d[4] + '</dd><dt>Connects to</dt><dd>' + d[5] + '</dd><dt>If it fails</dt><dd>' + d[6] + '</dd></dl>';
+    document.getElementById("whStepTxt").textContent = step >= 0 ? "Step " + (step + 1) + " of 5 · " + ORDER[step][0] + ": " + ORDER[step][1] : "";
+    document.getElementById("whStep").textContent = step < 0 ? "Follow one order →" : step < 4 ? "Next step →" : "Start over";
+  };
+  el.querySelector("#whOps").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { op = +b.dataset.k; step = -1; if (!OPS[op][1].includes(sel)) sel = "WMS"; draw(); } });
+  el.querySelector("#whStack").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { sel = b.dataset.k; step = -1; draw(); } });
+  document.getElementById("whStep").onclick = () => { op = 2; step = step < 4 ? step + 1 : -1; draw(); };
+  draw();
+}},
+{ id: "twin", title: "Model, shadow or twin?", sub: "Classify by the data flow", topic: "Week 7", render(el) {
+  const EX = [["CAD model of a machine", 0, 0], ["One-off layout simulation", 0, 0], ["Control tower; planners act", 1, 0], ["Navigation app, you drive", 1, 0], ["App steering a self-driving car", 1, 1], ["DC twin that re-routes AMRs", 1, 1]];
+  let d = 1, a = 0;
+  el.innerHTML = '<div class="chips" id="twEx"><span class="label" style="align-self:center">Examples:</span>' + EX.map((x, k) => '<button class="chip-btn" data-k="' + k + '" aria-pressed="false">' + x[0] + '</button>').join("") + '</div>' +
+    '<div class="chips"><button class="chip-btn" id="twD"></button><button class="chip-btn" id="twA"></button></div>' +
+    '<div class="figure small"><svg id="twSvg" viewBox="0 0 600 170" role="img" aria-label="Data and action flows between the physical and digital sides"></svg></div><div class="card" id="twInfo" style="display:grid;gap:8px"></div>' +
+    '<p class="muted">Kritzinger et al. (2018) classify by level of data integration, not by how impressive the graphics are. Many products sold as twins are shadows, and a shadow with a person in the loop is often the right design.</p>';
+  const box = (x, t, s) => '<rect x="' + x + '" y="50" width="170" height="70" rx="8" fill="' + C.surface + '" stroke="' + C.muted + '"/><text x="' + (x + 85) + '" y="82" text-anchor="middle" fill="' + C.ink + '" font-family="IBM Plex Sans, sans-serif" font-size="16" font-weight="600">' + t + '</text><text x="' + (x + 85) + '" y="102" text-anchor="middle" fill="' + C.muted + '" font-family="IBM Plex Sans, sans-serif" font-size="11">' + s + '</text>';
+  const arrow = (y, dir, auto, label) => { const x1 = dir > 0 ? 196 : 404, x2 = dir > 0 ? 400 : 200, col = auto ? C.accent : C.muted;
+    return '<line x1="' + x1 + '" y1="' + y + '" x2="' + x2 + '" y2="' + y + '" stroke="' + col + '" stroke-width="' + (auto ? 3 : 2) + '"' + (auto ? "" : ' stroke-dasharray="6 6"') + '/><path d="M' + x2 + ' ' + y + ' l' + (-10 * dir) + ' -6 v12 z" fill="' + col + '"/><text x="300" y="' + (y < 85 ? y - 10 : y + 20) + '" text-anchor="middle" fill="' + col + '" font-family="IBM Plex Sans, sans-serif" font-size="12">' + label + ' · ' + (auto ? "automatic" : "manual (a person)") + '</text>'; };
+  const draw = () => {
+    document.getElementById("twD").textContent = "Data in: " + (d ? "automatic" : "manual"); document.getElementById("twD").setAttribute("aria-pressed", d ? "true" : "false");
+    document.getElementById("twA").textContent = "Action back: " + (a ? "automatic" : "manual"); document.getElementById("twA").setAttribute("aria-pressed", a ? "true" : "false");
+    el.querySelectorAll("#twEx button").forEach(b => b.setAttribute("aria-pressed", EX[+b.dataset.k][1] === d && EX[+b.dataset.k][2] === a ? "true" : "false"));
+    document.getElementById("twSvg").innerHTML = box(20, "Physical", "asset, process, network") + box(410, "Digital", "virtual model") + arrow(70, 1, d, "state / data") + arrow(100, -1, a, "action");
+    let t, p;
+    if (!d) { t = "Digital model"; p = "No automatic exchange: the model is updated by hand and its insights are applied by hand. A CAD model, a spreadsheet capacity model or a one-off simulation." + (a ? " Even with automatic actions, a model that can't receive live data can't stay in sync, so it isn't a shadow or a twin." : ""); }
+    else if (!a) { t = "Digital shadow"; p = "State flows in automatically, so the digital side mirrors reality, but people decide and act. Most control towers are shadows. Quiz 2 mock: “a digital shadow receives data automatically but action back is manual” is TRUE."; }
+    else { t = "Digital twin"; p = "Data flows automatically in both directions: the twin senses, synchronizes, simulates, decides (within rules people set) and acts, then senses the result again. A one-off simulation answers once; a twin keeps answering."; }
+    document.getElementById("twInfo").innerHTML = '<span class="label">Classification</span><h3>' + t + '</h3><p>' + p + '</p>';
+  };
+  document.getElementById("twD").onclick = () => { d = 1 - d; draw(); };
+  document.getElementById("twA").onclick = () => { a = 1 - a; draw(); };
+  el.querySelector("#twEx").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { const x = EX[+b.dataset.k]; d = x[1]; a = x[2]; draw(); } });
+  draw();
 }}
 ];
 const labToc = document.getElementById("labToc"), labBody = document.getElementById("labBody");
@@ -1973,13 +2524,12 @@ labToc.addEventListener("click", e => { const b = e.target.closest("button"); if
 /* ---------- flashcards ---------- */
 let known = store.get("known", {});
 const fcTopic = document.getElementById("fcTopic"), fcMode = document.getElementById("fcMode");
-const scopeOptions = '<option value="q1">Quiz 1 set: Weeks 1–3</option><option value="q2">Quiz 2 set: Weeks 4–6 (Week 6 needs slides)</option><option value="all">Everything so far</option>';
+const scopeOptions = '<option value="q1">Quiz 1 set: Weeks 1–3</option><option value="q2">Quiz 2 set: Weeks 4–7 (Week 7 is on the mock; Week 6 needs slides)</option><option value="q3">Quiz 3 set: Weeks 7, 8 &amp; 11 (Week 11 needs slides)</option><option value="all">Everything so far</option>';
 function weekOptions(has) { return WEEK_NUMS.filter(n => weekTopics(n).some(t => has(t.id))).map(n => '<option value="w' + n + '">Week ' + n + ': ' + weekTopics(n).map(t => esc(t.title)).join(" + ") + '</option>').join(""); }
 fcTopic.innerHTML = scopeOptions + weekOptions(id => CARDS.some(c => c.topic === id));
 function inScope(topic, scope) {
   if (scope === "all") return true;
-  if (scope === "q1") return topicById[topic].quiz === 1;
-  if (scope === "q2") return topicById[topic].quiz === 2;
+  if (/^q\d$/.test(scope)) { const n = +scope.slice(1), t = topicById[topic]; return t.quiz === n || t.also === n; }
   if (/^w\d+$/.test(scope)) return topicById[topic].wk === +scope.slice(1);
   return topic === scope;
 }
@@ -2023,21 +2573,21 @@ document.getElementById("fcLearning").onclick = () => mark(false);
 document.getElementById("fcShuffle").onclick = () => buildDeck(true);
 fcTopic.onchange = () => { buildDeck(false); syncFcChips(); };
 function syncFcChips() { document.querySelectorAll("#fcWeekChips button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === fcTopic.value)); }
-document.getElementById("fcWeekChips").innerHTML = [["all", "All weeks"], ["q1", "Quiz 1 (Wk 1–3)"], ["q2", "Quiz 2 (Wk 4–6)"]].concat(WEEK_NUMS.filter(n => weekTopics(n).some(t => CARDS.some(c => c.topic === t.id))).map(n => ["w" + n, "Week " + n + " · " + CARDS.filter(c => topicById[c.topic].wk === n).length])).map(([v, l]) => '<button class="chip-btn" data-v="' + v + '" aria-pressed="false">' + l + '</button>').join("");
+document.getElementById("fcWeekChips").innerHTML = [["all", "All weeks"], ["q1", "Quiz 1 (Wk 1–3)"], ["q2", "Quiz 2 (Wk 4–7)"], ["q3", "Quiz 3 (Wk 7–11)"]].concat(WEEK_NUMS.filter(n => weekTopics(n).some(t => CARDS.some(c => c.topic === t.id))).map(n => ["w" + n, "Week " + n + " · " + CARDS.filter(c => topicById[c.topic].wk === n).length])).map(([v, l]) => '<button class="chip-btn" data-v="' + v + '" aria-pressed="false">' + l + '</button>').join("");
 document.getElementById("fcWeekChips").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; fcTopic.value = b.dataset.v; buildDeck(false); syncFcChips(); });
 fcMode.onchange = () => buildDeck(false);
 
 /* ---------- practice ---------- */
 const qScope = document.getElementById("qScope"), qFormat = document.getElementById("qFormat"), qLen = document.getElementById("qLen");
-qScope.innerHTML = scopeOptions + weekOptions(id => QUESTIONS.some(q => q.topic === id)) + '<option value="mock">Mock quiz questions only</option><option value="missed">Questions I got wrong</option>';
+qScope.innerHTML = scopeOptions + weekOptions(id => QUESTIONS.some(q => q.topic === id)) + '<option value="mock1">Quiz 1 mock quiz questions</option><option value="mock2">Quiz 2 mock quiz questions</option><option value="missed">Questions I got wrong</option>';
 let missedIds = store.get("missed", {});
 function poolFor(scope) {
   if (scope === "missed") return QUESTIONS.filter(q => missedIds[q.id]);
-  if (scope === "mock") return QUESTIONS.filter(q => q.mock);
+  if (/^mock\d$/.test(scope)) return QUESTIONS.filter(q => q.mock === +scope.slice(4));
   return QUESTIONS.filter(q => inScope(q.topic, scope));
 }
 function essayPool(scope) {
-  if (scope === "mock") return ESSAY_OBJS.filter(e => e.mock);
+  if (/^mock\d$/.test(scope)) return ESSAY_OBJS.filter(e => e.mock === +scope.slice(4));
   if (scope === "missed") return [];
   return ESSAY_OBJS.filter(e => inScope(e.topic, scope));
 }
@@ -2048,8 +2598,11 @@ function updateScopeInfo() {
   const tf = pool.filter(q => q.type === "tf").length, mc = pool.length - tf, es = essayPool(qScope.value).length;
   let msg = tf + " true/false, " + mc + " multiple choice and " + es + " short essay questions available.";
   if (qScope.value === "q1") msg += " Week 3's slides aren't uploaded yet, so its questions come from the mock quiz and related material.";
-  if (qScope.value === "q2") msg += " Week 6 gets questions once its slides are uploaded.";
-  if (f === "mock" && (tf < 12 || mc < 8)) msg += " There aren't enough for the full 12 + 8 here, so you'll get as many as exist.";
+  if (qScope.value === "q2") msg += " Week 7 is included because the Quiz 2 mock quiz tests it. Week 6 gets questions once its slides are uploaded.";
+  if (qScope.value === "q3") msg += " Week 11 gets questions once its slides are uploaded.";
+  const [nt, nm] = mockFmt(qScope.value);
+  if (f === "mock") msg += " Mock format here: " + nt + " true/false + " + nm + " multiple choice.";
+  if (f === "mock" && (tf < nt || mc < nm)) msg += " There aren't enough for the full " + nt + " + " + nm + " here, so you'll get as many as exist.";
   if (qScope.value === "missed" && !pool.length) msg = "You haven't missed any questions yet.";
   document.getElementById("qScopeInfo").textContent = msg;
   const h = attempts.slice(-5).reverse();
@@ -2063,9 +2616,9 @@ let wkScores = store.get("wkScores", {});
 function renderWeekGrid() {
   const cnt = ids => { const q = QUESTIONS.filter(x => ids.includes(x.topic)); return { tf: q.filter(x => x.type === "tf").length, mc: q.filter(x => x.type === "mc").length, es: ESSAY_OBJS.filter(e => ids.includes(e.topic)).length }; };
   const best = k => wkScores[k] != null ? '<span class="pill ' + (wkScores[k] >= 80 ? "good" : wkScores[k] >= 60 ? "warn" : "bad") + ' num">best ' + wkScores[k] + '%</span>' : '<span class="pill">not tried</span>';
-  const sets = [["q1", "Quiz 1 review · Weeks 1–3", "Written Oct 14"], ["q2", "Quiz 2 review · Weeks 4–6", "Written Oct 28 · Week 6 needs slides"]];
-  let h = sets.map(([k, t, sub]) => { const ids = TOPICS.filter(x => x.quiz === +k.slice(1)).map(x => x.id), c = cnt(ids);
-    return '<div class="wk-card span"><div class="panel-head"><span class="wk-title">' + t + '</span>' + best(k) + '</div><span class="muted" style="font-size:.85rem">' + sub + ' · ' + c.tf + ' true/false · ' + c.mc + ' multiple choice · ' + c.es + ' essays</span><div class="btn-row"><button class="btn primary" data-wkstart="' + k + '" data-fmt="mock">Real-quiz format (12 + 8)</button><button class="btn" data-wkstart="' + k + '" data-fmt="mixed">Every question</button><button class="btn" data-wkstart="' + k + '" data-fmt="essay">Essays</button></div></div>'; }).join("");
+  const sets = [["q1", "Quiz 1 review · Weeks 1–3", "Written Oct 14"], ["q2", "Quiz 2 review · Weeks 4–7", "Written Oct 28 · Week 7 included because the mock quiz tests it · Week 6 needs slides"], ["q3", "Quiz 3 review · Weeks 7, 8 & 11", "Written Nov 25 · Week 11 needs slides"]];
+  let h = sets.map(([k, t, sub]) => { const ids = TOPICS.filter(x => inScope(x.id, k)).map(x => x.id), c = cnt(ids);
+    return '<div class="wk-card span"><div class="panel-head"><span class="wk-title">' + t + '</span>' + best(k) + '</div><span class="muted" style="font-size:.85rem">' + sub + ' · ' + c.tf + ' true/false · ' + c.mc + ' multiple choice · ' + c.es + ' essays</span><div class="btn-row"><button class="btn primary" data-wkstart="' + k + '" data-fmt="mock">Real-quiz format (' + mockFmt(k).join(" + ") + ')</button><button class="btn" data-wkstart="' + k + '" data-fmt="mixed">Every question</button><button class="btn" data-wkstart="' + k + '" data-fmt="essay">Essays</button></div></div>'; }).join("");
   h += [1, 2, 3, 4, 5, 6, 7, 8].map(n => { const ts = weekTopics(n), ids = ts.map(t => t.id), c = cnt(ids), has = c.tf + c.mc > 0;
     return '<div class="wk-card' + (has ? "" : " off") + '"><div class="panel-head"><span class="wk-title">Week ' + n + '</span>' + (has ? best("w" + n) : '<span class="pill">slides needed</span>') + '</div><span class="label">' + WEEK_INFO[n].dates + '</span><span style="font-size:.9rem;font-weight:500">' + ts.map(t => esc(t.title)).join(" + ") + '</span>' +
       (has ? '<span class="muted" style="font-size:.82rem">' + c.tf + ' T/F · ' + c.mc + ' MC' + (c.es ? ' · ' + c.es + ' essay' + (c.es > 1 ? "s" : "") : "") + '</span><div class="btn-row"><button class="btn primary" data-wkstart="w' + n + '" data-fmt="mixed">Start</button>' + (c.es ? '<button class="btn" data-wkstart="w' + n + '" data-fmt="essay">Essays</button>' : "") + '</div>' : '<span class="muted" style="font-size:.82rem">Upload this week\'s slides to add questions.</span>') + '</div>'; }).join("");
@@ -2082,7 +2635,7 @@ document.getElementById("qStart").onclick = () => {
   let pool = shuffled(poolFor(qScope.value)), qs;
   if (f === "tf") pool = pool.filter(q => q.type === "tf");
   if (f === "mc") pool = pool.filter(q => q.type === "mc");
-  if (f === "mock") qs = pool.filter(q => q.type === "tf").slice(0, 12).concat(pool.filter(q => q.type === "mc").slice(0, 8));
+  if (f === "mock") { const [nt, nm] = mockFmt(qScope.value); qs = pool.filter(q => q.type === "tf").slice(0, nt).concat(pool.filter(q => q.type === "mc").slice(0, nm)); }
   else qs = qLen.value === "all" ? pool : pool.slice(0, +qLen.value);
   if (!qs.length) return;
   qs = sectionOrder(qs);
@@ -2090,7 +2643,7 @@ document.getElementById("qStart").onclick = () => {
   document.getElementById("quizSetup").hidden = true; document.getElementById("quizDone").hidden = true; document.getElementById("quizRun").hidden = false;
   renderQ();
 };
-function tags(q) { return '<span class="pill">' + topicById[q.topic].code + '</span><span class="pill">' + (q.type === "tf" ? "True/false" : q.type === "mc" ? "Multiple choice" : "Short essay") + '</span>' + (q.mock ? '<span class="pill mock">mock quiz</span>' : ""); }
+function tags(q) { return '<span class="pill">' + topicById[q.topic].code + '</span><span class="pill">' + (q.type === "tf" ? "True/false" : q.type === "mc" ? "Multiple choice" : "Short essay") + '</span>' + (q.mock ? '<span class="pill mock">mock quiz ' + q.mock + '</span>' : ""); }
 function renderQ() {
   const q = run.qs[run.i];
   const wk = topicById[q.topic].wk, prev = run.i > 0 ? topicById[run.qs[run.i - 1].topic].wk : null;
@@ -2130,7 +2683,7 @@ function finish(early) {
   const byWeek = {};
   Object.entries(byTopic).forEach(([t, [s, n]]) => { const w = topicById[t].wk; (byWeek[w] = byWeek[w] || [0, 0]); byWeek[w][0] += s; byWeek[w][1] += n; });
   Object.entries(byWeek).forEach(([w, [s, n]]) => { if (n >= 3) { const v = Math.round(s / n * 100); if (wkScores["w" + w] == null || v > wkScores["w" + w]) wkScores["w" + w] = v; } });
-  if ((run.scope === "q1" || run.scope === "q2") && total >= 5 && (wkScores[run.scope] == null || p > wkScores[run.scope])) wkScores[run.scope] = p;
+  if (/^q\d$/.test(run.scope) && total >= 5 && (wkScores[run.scope] == null || p > wkScores[run.scope])) wkScores[run.scope] = p;
   store.set("wkScores", wkScores);
   const now = new Date();
   attempts.push({ label: run.label, score, total, pct: p, when: fmt(now) + " " + now.toTimeString().slice(0, 5) }); attempts = attempts.slice(-30); store.set("history", attempts);
@@ -2139,8 +2692,8 @@ function finish(early) {
   done.innerHTML = '<span class="label">' + (early ? "Ended early · " : "") + esc(run.label) + '</span>' +
     '<div style="display:flex;flex-wrap:wrap;gap:12px 28px;align-items:end"><div class="score-big num">' + p + '%</div><div><b class="num">' + score + " of " + total + '</b> correct<div class="muted">' + (p >= 80 ? "Solid. Review the misses below and you're set." : p >= 60 ? "Getting there. Go back over the notes for your weakest topic." : "Worth another pass through the notes before trying again.") + "</div></div></div>" +
     '<div class="btn-row">' + typeLine + Object.entries(byWeek).map(([w, [s, n]]) => '<span class="pill ' + (s / n >= .8 ? "good" : s / n >= .6 ? "warn" : "bad") + ' num">Week ' + w + " " + s + "/" + n + "</span>").join("") + "</div>" +
-    (byType.tf[1] && byType.tf[0] / byType.tf[1] < .75 ? '<div class="callout"><span class="label">True/false tip</span>Look for absolute words like “always”, “automatically”, “guaranteed” or “every”. In the mock quiz, statements with those words were false.</div>' : "") +
-    (missed.length ? '<h3>Review what you missed</h3><div class="missed">' + missed.map(x => '<div class="card"><span class="label">' + topicById[x.q.topic].code + (x.q.mock ? " · mock quiz" : "") + '</span><b>' + esc(x.q.stem) + '</b><div><span class="muted">You said:</span> ' + esc(x.a.chosen) + '</div><div><span style="color:var(--good);font-weight:600">Answer:</span> ' + esc(x.q.correct) + '</div><p class="muted">' + esc(x.q.why) + "</p></div>").join("") + "</div>" : "") +
+    (byType.tf[1] && byType.tf[0] / byType.tf[1] < .75 ? '<div class="callout"><span class="label">True/false tip</span>Look for absolute words like “always”, “automatically”, “guaranteed” or “every”. In the mock quizzes, statements with those words, or that gave a system a strength it doesn’t have, were false.</div>' : "") +
+    (missed.length ? '<h3>Review what you missed</h3><div class="missed">' + missed.map(x => '<div class="card"><span class="label">' + topicById[x.q.topic].code + (x.q.mock ? " · mock quiz " + x.q.mock : "") + '</span><b>' + esc(x.q.stem) + '</b><div><span class="muted">You said:</span> ' + esc(x.a.chosen) + '</div><div><span style="color:var(--good);font-weight:600">Answer:</span> ' + esc(x.q.correct) + '</div><p class="muted">' + esc(x.q.why) + "</p></div>").join("") + "</div>" : "") +
     '<div class="btn-row"><button class="btn primary" id="qAgain">New quiz</button>' + (missed.length ? '<button class="btn" id="qRetryMissed">Retry the ones I missed</button>' : "") + "</div>";
   document.getElementById("qAgain").onclick = () => { resetPractice(); updateScopeInfo(); };
   const rm = document.getElementById("qRetryMissed");
