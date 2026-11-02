@@ -1172,9 +1172,9 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 </article>
 
 <article class="note" data-note="midterm" hidden>
-  <header><span class="label">Midterm · Wed Nov 4 · 11:00 a.m. · Room 7-383 · 20% of your grade</span><h2>Midterm Study Guide: Weeks 1–8</h2>
+  <header><span class="label">Midterm · Tue Nov 3 · 20% of your grade · check the time and room on mêskanâs</span><h2>Midterm Study Guide: Weeks 1–8</h2>
   <p class="prose">Everything on one page: the big idea of each week, every formula with a worked example, the lists and sequences to memorize, the pairs people mix up, the true/false traps from both mock quizzes, and outlines for the likely essays.</p></header>
-  <div class="callout info"><span class="label">Scope and format are assumptions</span>The course outline doesn't state the midterm's scope or format. This guide assumes <b>Weeks 1–8</b> (everything taught before Nov 4) in the same style as the quizzes: true/false, multiple choice and short essays. Week 6 (AI) had no slide deck, so the AI points that appear in other weeks are gathered in their own section below. Confirm the scope with the instructor if you can.</div>
+  <div class="callout info"><span class="label">Scope and format are assumptions</span>The course outline doesn't state the midterm's scope or format. This guide assumes <b>Weeks 1–8</b> (everything taught before the midterm) in the same style as the quizzes: true/false, multiple choice and short essays. Week 6 (AI) had no slide deck, so the AI points that appear in other weeks are gathered in their own section below. Confirm the scope with the instructor if you can.</div>
   <div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Take a practice midterm (20 + 20)</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="essay">Practise midterm essays</button><button class="btn" data-goto="cards" data-cardscope="mid">Midterm flashcards</button></div>
   <section><h3>Each week in one line</h3>
   <div class="table-scroll"><table><thead><tr><th>Week</th><th>Topic</th><th>The big idea</th><th>Know cold</th></tr></thead><tbody>
@@ -1528,7 +1528,7 @@ const EVENTS = [
   { date: "2026-10-28", title: "In-class Quiz 2", scope: "Weeks 4–6 per the outline: Enterprise Systems 1 & 2, AI & Intelligent SCs. The Quiz 2 mock quiz also tests Week 7 (WMS/WES/WCS, automation levels, maintenance, digital twins), so study it too.", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q2" },
   { date: "2026-11-01", title: "Group project report due", scope: "Outline says 11:59 a.m. on a Sunday; confirm a.m. vs p.m.", weight: "20% with presentation", kind: "project", time: "11:59" },
   { date: "2026-11-02", title: "Group project presentation", scope: "In class", kind: "project", time: "11:00" },
-  { date: "2026-11-04", title: "Midterm exam", scope: "In person, in class. The outline doesn't state the scope; the study guide assumes Weeks 1–8 (everything taught before it). Confirm with the instructor.", weight: "20%", kind: "exam", time: "11:00", quizSet: "mid" },
+  { date: "2026-11-03", title: "Midterm exam", scope: "Moved to Tuesday, Nov 3 (the outline said Nov 4). Tuesday isn't a regular class day, so check the time and room on mêskanâs. The study guide assumes Weeks 1–8; confirm the scope with the instructor.", weight: "20%", kind: "exam", quizSet: "mid" },
   { date: "2026-11-09", end: "2026-11-13", title: "Reading week, campus closed", kind: "closed" },
   { date: "2026-11-25", title: "In-class Quiz 3", scope: "Weeks 7, 8 & 11: Automation & Digital Twins, Blockchain & IoT, Data & Analytics", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q3" },
   { date: "2026-12-07", title: "Last class", kind: "class" },
@@ -1544,7 +1544,7 @@ const WEEKS = [
   { w: "W6", start: "2026-10-10", end: "2026-10-16", dates: "Oct 12 & 14", topic: "Thanksgiving (Oct 12) · Topic 6: AI & Intelligent Supply Chains", topicIds: ["t6"] },
   { w: "W7", start: "2026-10-17", end: "2026-10-23", dates: "Oct 19 & 21", topic: "Topic 7: Automation, Smart Manufacturing & Digital Twins", topicIds: ["t7"] },
   { w: "W8", start: "2026-10-24", end: "2026-10-30", dates: "Oct 26 & 28", topic: "Topic 8: Blockchain, IoT & Smart Logistics", topicIds: ["t8"] },
-  { w: "W9", start: "2026-10-31", end: "2026-11-06", dates: "Nov 2 & 4", topic: "Group project presentations · Midterm exam", topicIds: [] },
+  { w: "W9", start: "2026-10-31", end: "2026-11-06", dates: "Nov 2, 3 & 4", topic: "Group project presentations (Nov 2) · Midterm exam (Tue Nov 3)", topicIds: [] },
   { w: "W10", start: "2026-11-07", end: "2026-11-13", dates: "Nov 9 & 11", topic: "Reading week, campus closed", topicIds: [] },
   { w: "W11", start: "2026-11-14", end: "2026-11-20", dates: "Nov 16 & 18", topic: "Topic 9: SC Data Management & Descriptive Analytics", topicIds: ["t9"] },
   { w: "W12", start: "2026-11-21", end: "2026-11-27", dates: "Nov 23 & 25", topic: "Topic 10: Advanced SC Analytics", topicIds: ["t10"] },
@@ -2265,7 +2265,7 @@ function renderExamPrep() {
   box.hidden = n < 0 || n > 10; if (box.hidden) return;
   const done = PREP.filter((p, i) => prepDone[i]).length, best = wkScores.mid;
   box.innerHTML = '<div class="panel-head"><h3>Midterm prep · ' + (n === 0 ? "today" : n === 1 ? "tomorrow" : "in " + n + " days") + '</h3><span class="pill' + (done === PREP.length ? " good" : "") + ' num">' + done + "/" + PREP.length + ' done</span></div>' +
-    '<p class="muted" style="margin:0">Weeks 1–8 · Wed Nov 4, 11:00 a.m., Room 7-383 · 20%. ' + (best != null ? 'Best practice midterm: <b class="num">' + best + '%</b>.' : "No practice midterm yet.") + '</p>' +
+    '<p class="muted" style="margin:0">Weeks 1–8 · Tue Nov 3 · 20% · check the time and room on mêskanâs. ' + (best != null ? 'Best practice midterm: <b class="num">' + best + '%</b>.' : "No practice midterm yet.") + '</p>' +
     '<div class="meter"><i style="width:' + (done / PREP.length * 100) + '%"></i></div>' +
     '<ul class="check-list" id="prepList">' + PREP.map((p, i) => '<li style="display:flex;justify-content:space-between;gap:10px;align-items:center"><label><input type="checkbox" data-i="' + i + '"' + (prepDone[i] ? " checked" : "") + '><span>' + p[0] + '</span></label><button class="btn" data-goto="' + p[1] + '"' + p[2] + '>Go</button></li>').join("") + '</ul>' +
     '<div class="btn-row"><button class="btn primary" data-goto="notes" data-note="midterm">Open the Midterm Study Guide</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Practice midterm</button></div>';
@@ -2305,7 +2305,7 @@ const CLASS_DAYS = {
   "2026-10-14": ["Topic 6: AI & Intelligent Supply Chains", "t6"],
   "2026-10-19": ["Topic 7: Automation, Smart Manufacturing & Digital Twins", "t7"], "2026-10-21": ["Topic 7: Automation, Smart Manufacturing & Digital Twins", "t7"],
   "2026-10-26": ["Topic 8: Blockchain, IoT & Smart Logistics", "t8"], "2026-10-28": ["Topic 8: Blockchain, IoT & Smart Logistics", "t8"],
-  "2026-11-02": ["Group project presentations", null], "2026-11-04": ["Midterm exam", null],
+  "2026-11-02": ["Group project presentations", null], "2026-11-04": ["Class (the midterm moved to Tue Nov 3)", null],
   "2026-11-16": ["Topic 9: SC Data Management & Descriptive Analytics", "t9"], "2026-11-18": ["Topic 9: SC Data Management & Descriptive Analytics", "t9"],
   "2026-11-23": ["Topic 10: Advanced SC Analytics", "t10"], "2026-11-25": ["Topic 10: Advanced SC Analytics", "t10"],
   "2026-11-30": ["Concluding remarks & final exam review", null], "2026-12-02": ["Concluding remarks & final exam review", null],
@@ -2788,7 +2788,7 @@ let wkScores = store.get("wkScores", {});
 function renderWeekGrid() {
   const cnt = ids => { const q = QUESTIONS.filter(x => ids.includes(x.topic)); return { tf: q.filter(x => x.type === "tf").length, mc: q.filter(x => x.type === "mc").length, es: ESSAY_OBJS.filter(e => ids.includes(e.topic)).length }; };
   const best = k => wkScores[k] != null ? '<span class="pill ' + (wkScores[k] >= 80 ? "good" : wkScores[k] >= 60 ? "warn" : "bad") + ' num">best ' + wkScores[k] + '%</span>' : '<span class="pill">not tried</span>';
-  const sets = [["mid", "Midterm review · Weeks 1–8", "Wed Nov 4 · 20% · practice format is 20 true/false + 20 multiple choice (the real format isn't published)"], ["q1", "Quiz 1 review · Weeks 1–3", "Written Oct 14"], ["q2", "Quiz 2 review · Weeks 4–7", "Written Oct 28 · Week 7 included because the mock quiz tests it"], ["q3", "Quiz 3 review · Weeks 7, 8 & 11", "Written Nov 25 · Week 11 not taught yet"]];
+  const sets = [["mid", "Midterm review · Weeks 1–8", "Tue Nov 3 · 20% · practice format is 20 true/false + 20 multiple choice (the real format isn't published)"], ["q1", "Quiz 1 review · Weeks 1–3", "Written Oct 14"], ["q2", "Quiz 2 review · Weeks 4–7", "Written Oct 28 · Week 7 included because the mock quiz tests it"], ["q3", "Quiz 3 review · Weeks 7, 8 & 11", "Written Nov 25 · Week 11 not taught yet"]];
   let h = sets.map(([k, t, sub]) => { const ids = TOPICS.filter(x => inScope(x.id, k)).map(x => x.id), c = cnt(ids);
     return '<div class="wk-card span"><div class="panel-head"><span class="wk-title">' + t + '</span>' + best(k) + '</div><span class="muted" style="font-size:.85rem">' + sub + ' · ' + c.tf + ' true/false · ' + c.mc + ' multiple choice · ' + c.es + ' essays</span><div class="btn-row"><button class="btn primary" data-wkstart="' + k + '" data-fmt="mock">' + (k === "mid" ? "Practice midterm" : "Real-quiz format") + ' (' + mockFmt(k).join(" + ") + ')</button><button class="btn" data-wkstart="' + k + '" data-fmt="mixed">Every question</button><button class="btn" data-wkstart="' + k + '" data-fmt="essay">Essays</button></div></div>'; }).join("");
   h += [1, 2, 3, 4, 5, 6, 7, 8].map(n => { const ts = weekTopics(n), ids = ts.map(t => t.id), c = cnt(ids), has = c.tf + c.mc > 0;
@@ -2918,7 +2918,7 @@ document.addEventListener("keydown", e => {
 });
 
 /* ---------- grades ---------- */
-const PARTS = [{ id: "q1", name: "Quiz 1 (Oct 14)", w: 10 }, { id: "q2", name: "Quiz 2 (Oct 28)", w: 10 }, { id: "q3", name: "Quiz 3 (Nov 25)", w: 10 }, { id: "proj", name: "Group project (Nov 1–2)", w: 20 }, { id: "mid", name: "Midterm (Nov 4)", w: 20 }, { id: "fin", name: "Final exam (Dec 7–18)", w: 30 }];
+const PARTS = [{ id: "q1", name: "Quiz 1 (Oct 14)", w: 10 }, { id: "q2", name: "Quiz 2 (Oct 28)", w: 10 }, { id: "q3", name: "Quiz 3 (Nov 25)", w: 10 }, { id: "proj", name: "Group project (Nov 1–2)", w: 20 }, { id: "mid", name: "Midterm (Nov 3)", w: 20 }, { id: "fin", name: "Final exam (Dec 7–18)", w: 30 }];
 const SCALE = [["A+", 95, "4.0"], ["A", 90, "4.0"], ["A-", 85, "3.7"], ["B+", 80, "3.3"], ["B", 75, "3.0"], ["B-", 70, "2.7"], ["C+", 65, "2.3"], ["C", 61, "2.0"], ["C-", 57, "1.7"], ["D+", 53, "1.3"], ["D", 50, "1.0"], ["F", 0, "0.0"]];
 const letter = p => SCALE.find(s => p >= s[1]);
 let marks = store.get("marks", {});
