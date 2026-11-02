@@ -353,6 +353,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
   <div class="grid-2">
     <div class="stack">
       <article class="card nextup" id="nextUp"></article>
+      <article class="card" id="examPrep" style="display:grid;gap:10px" hidden></article>
       <article class="card cal" id="calendar" aria-label="Course calendar">
         <div class="cal-head">
           <h3 id="calTitle">Calendar</h3>
@@ -1170,6 +1171,142 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
   <div class="callout"><span class="label">Key takeaways &amp; most likely on the quiz</span><b>Visibility is the goal</b> (drives ROI, efficiency, responsiveness) · <b>adoption varies by tier</b> (know which tech sits in which tier and the 35% / 20% / 10% figures) · <b>data is the backbone</b> (cloud, sensors, warehousing feed analytics) · <b>impact is collective</b>. Also: SaaS vs PaaS vs IaaS, the 20.7% collaborative-sourcing saving, why TMS moved to the cloud before WMS, and each technology's flagship example.</div>
 </article>
 
+<article class="note" data-note="midterm" hidden>
+  <header><span class="label">Midterm · Wed Nov 4 · 11:00 a.m. · Room 7-383 · 20% of your grade</span><h2>Midterm Study Guide: Weeks 1–8</h2>
+  <p class="prose">Everything on one page: the big idea of each week, every formula with a worked example, the lists and sequences to memorize, the pairs people mix up, the true/false traps from both mock quizzes, and outlines for the likely essays.</p></header>
+  <div class="callout info"><span class="label">Scope and format are assumptions</span>The course outline doesn't state the midterm's scope or format. This guide assumes <b>Weeks 1–8</b> (everything taught before Nov 4) in the same style as the quizzes: true/false, multiple choice and short essays. Week 6 (AI) had no slide deck, so the AI points that appear in other weeks are gathered in their own section below. Confirm the scope with the instructor if you can.</div>
+  <div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Take a practice midterm (20 + 20)</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="essay">Practise midterm essays</button><button class="btn" data-goto="cards" data-cardscope="mid">Midterm flashcards</button></div>
+  <section><h3>Each week in one line</h3>
+  <div class="table-scroll"><table><thead><tr><th>Week</th><th>Topic</th><th>The big idea</th><th>Know cold</th></tr></thead><tbody>
+    <tr><td>1</td><td><a href="#notes" data-goto="notes" data-note="scor">SCOR DS</a></td><td>A free, digital <b>reference model</b> (not software) giving a common language to describe, measure and improve a supply <b>network</b></td><td>7 processes; Enable→Orchestrate, Make→Transform, Deliver→Order + Fulfill; 4 building blocks; L1–L4 (diagnose at L3); resilience / economic / sustainability attributes</td></tr>
+    <tr><td>1</td><td><a href="#notes" data-goto="notes" data-note="t1">Intro to SC Technology</a></td><td>Technology must <b>solve a business problem</b>; data quality decides how reliable tech-enabled decisions are</td><td>Digitization → digitalization → transformation; TPS/MIS/DSS/EIS; batch vs OLTP; SMAC; 4 analytics questions; 6-step selection framework (define the problem first)</td></tr>
+    <tr><td>2</td><td><a href="#notes" data-goto="notes" data-note="t2">Digital SC Strategy</a></td><td><b>Strategy drives technology</b>, never the reverse</td><td>Five Forces + SCM levers; red vs blue ocean; efficient / responsive / resilient / sustainable; maturity 1–4 (uneven is normal); Diagnose → Pilot → Scale → Transform → Optimize; control tower layers; 6 pitfalls; Nike</td></tr>
+    <tr><td>3</td><td><a href="#notes" data-goto="notes" data-note="t3">Risk, Resilience &amp; Sustainability</a></td><td>Resilience = <b>limit impact, recover, adapt</b>, not prevent everything; efficiency creates vulnerability</td><td>Risk → disruption → crisis; efficiency practices and their trade-offs; TBL; unintended consequences; third-party cyber risk</td></tr>
+    <tr><td>4</td><td><a href="#notes" data-goto="notes" data-note="t4">Enterprise Systems 1</a></td><td>ERP is the integrated <b>system of record</b>: plan / execute / record</td><td>Bullwhip 4 causes + cures; MRP → MRP II → ERP → SCM → cloud; one goods receipt updates everything; EDI codes; Hershey, Nike, Target Canada; KPI formulas</td></tr>
+    <tr><td>5</td><td><a href="#notes" data-goto="notes" data-note="t5">Enterprise Systems 2: Beyond ERP</a></td><td><b>ERP is the backbone, not the whole skeleton</b>: specialized systems fill its gaps, joined by integration</td><td>ERP gaps → APS, WMS, TMS, MES, CRM/SRM, SCEM; n(n−1)/2; EDI vs API vs portal; master data rules; APS vs MRP; S&amp;OP; P2P &amp; 3-way match; ATP vs CTP; perfect order; OEE; weighted matrix; payback/ROI</td></tr>
+    <tr><td>6</td><td>AI &amp; Intelligent SCs</td><td>No slide deck: see the AI section below</td><td>Supervised vs unsupervised; drift; analytics types; AI needs clean, connected data</td></tr>
+    <tr><td>7</td><td><a href="#notes" data-goto="notes" data-note="t7">Automation, Smart Mfg &amp; Twins</a></td><td>Automation = hands, smart manufacturing = senses and nerves, twins = memory and foresight</td><td>Automation levels 1–4; WMS vs WES vs WCS; 5-layer stack; ISA-95 and IT vs OT; 4 maintenance strategies; OEE; model vs shadow vs twin; twin loop; barriers, pilot purgatory</td></tr>
+    <tr><td>8</td><td><a href="#notes" data-goto="notes" data-note="t8">Picking tech &amp; RFID</a> + <a href="#notes" data-goto="notes" data-note="tech">Ch. 2 reading</a></td><td>Accuracy and visibility: <b>first-time right</b>; visibility is the goal of tech investment</td><td>Paper → RF → pick-to-light → voice; voice pros and cost; RFID limits and tag prices; 4 technology tiers and %; the ten technologies and their examples</td></tr>
+  </tbody></table></div></section>
+  <section><h3>Formula sheet</h3>
+  <div class="table-scroll"><table><thead><tr><th>What</th><th>Formula</th><th>Worked example from class</th></tr></thead><tbody>
+    <tr><td>Point-to-point interfaces</td><td><b>n(n−1) ÷ 2</b></td><td>6 systems → 15 · 8 systems → 28 (a hub needs about n)</td></tr>
+    <tr><td>OEE</td><td><b>Availability × Performance × Quality</b></td><td>90% × 85% × 98% ≈ 75% · 90% × 95% × 98% ≈ 84% · world-class ≈ 85%. Fix the lowest factor first.</td></tr>
+    <tr><td>Find the missing OEE factor</td><td>OEE ÷ (the other two)</td><td>60% ÷ (95% × 95%) ≈ 66% performance</td></tr>
+    <tr><td>Perfect order index</td><td>On time × complete × damage-free × accurate docs</td><td>95% × 97% × 99% × 98% ≈ 89.4%. Stricter than OTIF.</td></tr>
+    <tr><td>Cash-to-cash</td><td><b>DIO + DSO − DPO</b></td><td>Negative = customers pay you before you pay suppliers (Dell)</td></tr>
+    <tr><td>Inventory turns</td><td>COGS ÷ average inventory</td><td>Higher turns = less cash tied up</td></tr>
+    <tr><td>Forecast accuracy</td><td>1 − MAPE</td><td>MAPE 20% → 80% accuracy</td></tr>
+    <tr><td>Payback</td><td>Investment ÷ annual benefit</td><td>$1.2M ÷ $450K ≈ <b>2.7 years</b></td></tr>
+    <tr><td>ROI</td><td>(Total benefit − investment) ÷ investment</td><td>3 years: (1.35M − 1.2M) ÷ 1.2M = <b>12.5%</b></td></tr>
+    <tr><td>PPM (defects)</td><td>Defects ÷ units × 1,000,000</td><td>50 of 100,000 → 500 PPM (0.05%)</td></tr>
+    <tr><td>Weighted decision matrix</td><td>Σ (score × weight), weights = 100%, set before bids</td><td>Cost 40% / quality 60%: A (5, 2) = 3.2; B (3, 4) = 3.6 → B wins</td></tr>
+    <tr><td>ATP</td><td>On hand + scheduled receipts − committed</td><td>Order 300; 120 on hand + 100 Thursday → promise 220, CTP checks the other 80</td></tr>
+    <tr><td>Three-way match</td><td>PO = goods receipt = invoice (within tolerance)</td><td>PO 100 × $10, received 95, invoiced 100 → fails; block or pay $950</td></tr>
+    <tr><td>Supplier TCO</td><td>Price + freight/duties + carrying + quality + risk</td><td>A quotes $6.00 → $8.80 total; B quotes $7.20 → $7.85. B wins.</td></tr>
+    <tr><td>OEE as hidden capacity</td><td>New OEE ÷ old OEE</td><td>Bottleneck 60% → 70% = 70 ÷ 60 ≈ +1/6 output</td></tr>
+  </tbody></table></div>
+  <p class="prose muted">Check any of these with the <a href="#labs" data-goto="labs" data-lab="oee">live calculators</a>.</p></section>
+  <section><h3>Lists and sequences to memorize</h3>
+  <div class="table-scroll"><table><thead><tr><th>List</th><th>In order</th></tr></thead><tbody>
+    <tr><td>SCOR DS processes (7)</td><td>Orchestrate, Plan, Order, Source, Transform, Fulfill, Return</td></tr>
+    <tr><td>SCOR building blocks (4)</td><td>Processes, Performance, Practices, People</td></tr>
+    <tr><td>SCOR levels</td><td>L1 process types (targets) → L2 categories (configuration) → L3 elements (diagnosis) → L4 implementation (outside the standard)</td></tr>
+    <tr><td>SCOR attributes</td><td>Resilience (reliability, responsiveness, agility) · Economic (cost, profit, assets) · Sustainability (environmental, social)</td></tr>
+    <tr><td>Digital journey</td><td>Digitization → Digitalization → Digital transformation</td></tr>
+    <tr><td>Information systems</td><td>TPS (operational) → MIS (managers: periodic, exception, ad hoc) → DSS (what-if) → EIS (executives)</td></tr>
+    <tr><td>Data hierarchy</td><td>Data → Information → Knowledge → Wisdom</td></tr>
+    <tr><td>Analytics</td><td>Descriptive (what happened) → Diagnostic (why) → Predictive (what's likely) → Prescriptive (what to do)</td></tr>
+    <tr><td>Tech selection (6)</td><td>Define problem &amp; objectives → assess current state → identify alternatives → evaluate (cost, fit, integration, ROI) → pilot &amp; phase → monitor, measure, scale</td></tr>
+    <tr><td>Strategy cascade</td><td>Business strategy → SC strategy → technology strategy → implementation</td></tr>
+    <tr><td>Digital maturity (4)</td><td>Visibility → Connectivity → Predictive intelligence → Autonomous &amp; adaptive</td></tr>
+    <tr><td>Transformation journey (5)</td><td>Diagnose → Pilot → Scale → Transform → Optimize</td></tr>
+    <tr><td>Control tower layers</td><td>Visibility (what's happening) → Analytics (why, what next) → Action (what to do). Seeing → Understanding → Deciding → Acting.</td></tr>
+    <tr><td>Digital tech stack</td><td>IoT captures → AI/ML decides → Cloud distributes → Robotics execute → (Blockchain audit trail)</td></tr>
+    <tr><td>6 transformation pitfalls</td><td>Technology-first · ignoring data quality · change-management neglect · boiling the ocean · ecosystem myopia · ROI impatience</td></tr>
+    <tr><td>Event severity</td><td>Risk → Disruption → Crisis</td></tr>
+    <tr><td>Bullwhip causes (4)</td><td>Demand forecast updating · order batching · price fluctuation · rationing &amp; shortage gaming</td></tr>
+    <tr><td>System evolution</td><td>MRP (1960s–70s) → MRP II (1980s) → ERP (1990s) → SCM suites (2000s) → Cloud (2010s on)</td></tr>
+    <tr><td>EDI documents</td><td>850 PO → 855 PO ack → 856 ASN → 810 invoice · 997 functional ack · 830 planning schedule</td></tr>
+    <tr><td>S&amp;OP (5)</td><td>Data gathering → Demand review → Supply review → Pre-S&amp;OP → Executive S&amp;OP</td></tr>
+    <tr><td>Procure-to-pay (7)</td><td>Requisition → approval → PO → goods receipt → invoice → 3-way match → payment</td></tr>
+    <tr><td>Order-to-cash</td><td>Inquiry &amp; quote → order entry → credit check → promise (ATP/CTP) → fulfill → invoice → cash</td></tr>
+    <tr><td>WMS process</td><td>Receive → Inspect → Put away → Store → Pick → Pack → Ship</td></tr>
+    <tr><td>TMS phases</td><td>Plan → Execute → Settle</td></tr>
+    <tr><td>SCEM loop</td><td>Sense → Detect &amp; alert → Decide → Act → Learn</td></tr>
+    <tr><td>Software selection (6)</td><td>Requirements (MoSCoW) → fit-gap → evaluate vendors → PoC/pilot → business case → implementation plan</td></tr>
+    <tr><td>ISA-95</td><td>L0 process · L1 PLCs · L2 SCADA/HMI · L3 MES/WMS · L4 ERP</td></tr>
+    <tr><td>Automation levels</td><td>Fixed → Programmable → Flexible → Autonomous</td></tr>
+    <tr><td>Smart manufacturing stack</td><td>Assets &amp; sensors → Connectivity → Data platforms → Analytics &amp; AI → Decisions &amp; action</td></tr>
+    <tr><td>Maintenance</td><td>Reactive → Preventive → Predictive → Prescriptive</td></tr>
+    <tr><td>Twin loop</td><td>Sense → Synchronize → Simulate → Decide → Act</td></tr>
+    <tr><td>Twin scales</td><td>Product → Asset → Factory → Network</td></tr>
+    <tr><td>Hype Cycle</td><td>Trigger → Peak → Trough → Slope → Plateau</td></tr>
+    <tr><td>Pilot to scale</td><td>Prioritize → Pilot → Prove → Standardize → Scale</td></tr>
+    <tr><td>Picking technology</td><td>Paper → RF scanner → Pick-to-light → Voice</td></tr>
+    <tr><td>UIC technology tiers</td><td>Maturing (35%) → Growth (~20%) → Emerging (10%) → Exponential (new)</td></tr>
+  </tbody></table></div></section>
+  <section><h3>Pairs people mix up</h3>
+  <div class="table-scroll"><table><thead><tr><th>Pair</th><th>The difference</th></tr></thead><tbody>
+    <tr><td>Digitization vs digitalization vs transformation</td><td>Convert to digital (RFID tags) · improve a process with digital tools (AI forecasting) · redesign the business model (wholesale → DTC)</td></tr>
+    <tr><td>Batch vs OLTP</td><td>Batch is cheaper but out of date; OLTP is real-time and <b>costs more</b></td></tr>
+    <tr><td>MIS vs DSS</td><td>MIS reports for monitoring; DSS is interactive what-if and goal-seeking</td></tr>
+    <tr><td>Supervised vs unsupervised ML</td><td>Learns from labelled outcomes vs finds structure on its own</td></tr>
+    <tr><td>Efficient vs responsive</td><td>Stable demand, low cost, high utilization vs volatile demand, speed over cost</td></tr>
+    <tr><td>Red vs blue ocean</td><td>Low cost <b>OR</b> differentiation in an existing market vs low cost <b>AND</b> differentiation in a new one</td></tr>
+    <tr><td>Task vs general environment</td><td>Suppliers, customers, competitors you deal with daily vs PESTEL/CREST forces</td></tr>
+    <tr><td>Structural vs infrastructural</td><td>Capacity, facilities, technology (bricks &amp; mortar) vs organization, sourcing, planning, quality</td></tr>
+    <tr><td>MRP vs APS</td><td>Infinite capacity, sequential, overnight batch vs finite capacity, simultaneous, live what-if</td></tr>
+    <tr><td>ATP vs CTP</td><td>Do we <b>have</b> it? vs can we <b>make</b> it?</td></tr>
+    <tr><td>2-, 3-, 4-way match</td><td>PO vs invoice (services) · + goods receipt · + quality inspection</td></tr>
+    <tr><td>CRM vs OMS</td><td>The relationship vs the order</td></tr>
+    <tr><td>EDI vs API vs portal</td><td>Batch, standard high-volume documents · real-time checks · low-volume suppliers keying in by hand</td></tr>
+    <tr><td>Suite vs best-of-breed</td><td>One data model, simpler upgrades vs deepest functionality, more interfaces (most firms go hybrid)</td></tr>
+    <tr><td>Maverick vs tail spend</td><td>Buying off-contract vs many tiny suppliers</td></tr>
+    <tr><td>Hershey vs Target Canada</td><td>Timing, testing, integration vs master data</td></tr>
+    <tr><td>AGV vs AMR</td><td>Fixed paths vs free navigation (flexible)</td></tr>
+    <tr><td>WMS vs WES vs WCS</td><td>What &amp; where (hours–days) · when &amp; who (minutes–seconds) · how (milliseconds). Only the WCS needs automation.</td></tr>
+    <tr><td>Preventive vs predictive</td><td>Calendar or usage interval vs sensor data showing wear</td></tr>
+    <tr><td>Model vs shadow vs twin</td><td>No automatic flow · automatic data in, manual action · automatic both ways</td></tr>
+    <tr><td>IT vs OT</td><td>Confidentiality &amp; integrity vs availability &amp; safety</td></tr>
+    <tr><td>RPA vs intelligent automation vs agentic AI</td><td>Rule-based clicks · + OCR/ML for messy documents · agents plan multi-step tasks with human approval</td></tr>
+    <tr><td>Speaker-independent vs dependent</td><td>Works for anyone vs trained on each worker's voice</td></tr>
+    <tr><td>SaaS vs PaaS vs IaaS</td><td>Use an app · build on a platform · rent virtual hardware</td></tr>
+  </tbody></table></div></section>
+  <section><h3>AI across the course (Week 6 had no deck)</h3>
+  <div class="prose"><ul>
+    <li><b>Machine learning:</b> supervised (labelled outcomes) vs unsupervised (finds structure). Models <b>drift</b> as demand changes, so they need monitoring and retraining. “Trained once, accurate forever” is false.</li>
+    <li><b>Analytics ladder:</b> descriptive → diagnostic → predictive → prescriptive. AI powers the predictive and prescriptive steps.</li>
+    <li><b>AI needs foundations:</b> predictive intelligence is maturity stage 3, after visibility and connectivity. A firm with fragmented data should <b>build connectivity before buying AI</b> (Quiz 1 mock essay).</li>
+    <li><b>In the stack:</b> IoT captures → <b>AI/ML decides</b> → cloud distributes → robotics execute. In smart manufacturing, AI is layer 4 (dashboards → anomaly detection → optimization).</li>
+    <li><b>Uses seen in class:</b> Nike's ML replenishment and Celect AI; AI demand sensing (an emerging SCOR practice); predictive maintenance; vision-based quality; control tower anomaly flags; UPS ORION; robotic picking with vision + AI grippers.</li>
+    <li><b>Software automation:</b> RPA → intelligent automation (RPA + OCR + ML) → <b>agentic AI</b> (agents plan multi-step tasks; people approve key decisions). Governance matters: who approves, what it may change.</li>
+    <li><b>Hype:</b> generative and agentic AI are near the peak of inflated expectations. Data governance and explainable, monitored AI are part of risk management.</li>
+  </ul></div></section>
+  <section><h3>True/false traps from both mock quizzes</h3>
+  <div class="prose"><ul>
+    <li><b>Absolute words are usually false:</b> “always”, “automatically”, “guaranteed”, “every”, “without ongoing monitoring”. More suppliers or more inventory does <b>not automatically</b> make a chain resilient.</li>
+    <li><b>Giving a system a strength it doesn't have is false:</b> ERP “plans in real time”, ERP is “primarily optimizing”, MRP “respects finite capacity”, a WMS “needs automation”, blockchain “guarantees accuracy”, OLTP “is cheaper than batch”.</li>
+    <li><b>Swapped definitions are false:</b> two-way match “PO vs goods receipt” (it's PO vs invoice); the first selection step is “evaluate alternatives” (it's define the problem); AGVs “navigate freely” (that's AMRs).</li>
+    <li><b>Balanced trade-off statements are usually true:</b> EDI stays important as APIs grow; cobots still need redesign and safety analysis; third-party cyber is part of SC risk; heavy ERP customization makes upgrades harder; one bad unit of measure breaks MRP, billing, WMS and TMS.</li>
+  </ul></div></section>
+  <section><h3>Essay outlines</h3>
+  <p class="prose">The quizzes give short essays that apply a framework. Lead with the definition, walk the steps or layers in order, then apply them to the scenario with examples, KPIs, risks or trade-offs.</p>
+  <div class="table-scroll"><table><thead><tr><th>Likely prompt</th><th>Skeleton answer</th></tr></thead><tbody>
+    <tr><td>Technology roadmap for a struggling distributor (Quiz 1 mock)</td><td>6 selection steps in order → WMS + barcode/RFID, then AMRs and analytics → 2 KPIs (pick accuracy, lines per labour hour) → 2 risks (integration &amp; data quality, resistance &amp; training)</td></tr>
+    <tr><td>How efficiency creates vulnerability (Quiz 1 mock)</td><td>3+ practices as practice → benefit → vulnerability (single sourcing, JIT, high utilization, global sourcing, long networks) → conclude: balance, don't eliminate efficiency</td></tr>
+    <tr><td>Fragmented data, wants AI (Quiz 1 mock)</td><td>4 maturity stages → diagnosis: weak connectivity → recommend integration first, then AI</td></tr>
+    <tr><td>WMS vs WES vs WCS + recommend (Quiz 2 mock)</td><td>For each: question, horizon, users, goal, failure → mixed high-volume DC = WMS + WES + WCS → layers not alternatives; judge capabilities, not labels</td></tr>
+    <tr><td>Digital twin (Quiz 2 mock)</td><td>Definition + 3 parts → model / shadow / twin by data flow → sense, synchronize, simulate, decide, act → network twin example (supplier loss, port closure) → 2 limits (data, trust, cost &amp; decay, cyber, lock-in)</td></tr>
+    <tr><td>Bullwhip (Quiz 2 mock)</td><td>Definition (±5% → ±50%) → 4 causes, each with its cure (POS/VMI, EDI &amp; TMS consolidation, EDLP, allocate on past sales) → CPFR → “an information problem”</td></tr>
+    <tr><td>Why ERP alone isn't enough</td><td>ERP = system of record → 3+ gaps with the system that fills each (APS, WMS/TMS/MES, SCEM, SRM/CRM) → suite vs best-of-breed → hybrid</td></tr>
+    <tr><td>Classify a company's initiatives (Nike)</td><td>Definition → example → why it fits, for digitization (RFID), digitalization (AI forecasting), transformation (DTC ecosystem)</td></tr>
+    <tr><td>Hershey vs Target Canada</td><td>What happened in each → Hershey = timing, testing, integration; Target = master data → 3 fixes (no peak go-live, end-to-end testing, clean master data)</td></tr>
+    <tr><td>Apply SCOR DS to a company</td><td>Two activities in each of the 7 processes → pick the lead attributes, stay at parity on the rest, note a trade-off</td></tr>
+  </tbody></table></div></section>
+  <div class="callout"><span class="label">If you only have an hour</span>Read the formula sheet and the pairs table, take one practice midterm, then go through every question you missed with “Retry the ones I missed.” Finish by writing the WMS/WES/WCS, digital twin and bullwhip outlines from memory.</div>
+</article>
+
 <article class="note" data-note="pending" hidden>
   <header><span class="label">No notes for this topic</span><h2 id="pendingTitle">No notes yet</h2></header>
   <div class="card" style="border-style:dashed;display:grid;gap:8px"><p id="pendingText"></p></div>
@@ -1391,7 +1528,7 @@ const EVENTS = [
   { date: "2026-10-28", title: "In-class Quiz 2", scope: "Weeks 4–6 per the outline: Enterprise Systems 1 & 2, AI & Intelligent SCs. The Quiz 2 mock quiz also tests Week 7 (WMS/WES/WCS, automation levels, maintenance, digital twins), so study it too.", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q2" },
   { date: "2026-11-01", title: "Group project report due", scope: "Outline says 11:59 a.m. on a Sunday; confirm a.m. vs p.m.", weight: "20% with presentation", kind: "project", time: "11:59" },
   { date: "2026-11-02", title: "Group project presentation", scope: "In class", kind: "project", time: "11:00" },
-  { date: "2026-11-04", title: "Midterm exam", scope: "In person, in class. Scope isn't stated in the outline; confirm with the instructor.", weight: "20%", kind: "exam", time: "11:00" },
+  { date: "2026-11-04", title: "Midterm exam", scope: "In person, in class. The outline doesn't state the scope; the study guide assumes Weeks 1–8 (everything taught before it). Confirm with the instructor.", weight: "20%", kind: "exam", time: "11:00", quizSet: "mid" },
   { date: "2026-11-09", end: "2026-11-13", title: "Reading week, campus closed", kind: "closed" },
   { date: "2026-11-25", title: "In-class Quiz 3", scope: "Weeks 7, 8 & 11: Automation & Digital Twins, Blockchain & IoT, Data & Analytics", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q3" },
   { date: "2026-12-07", title: "Last class", kind: "class" },
@@ -2021,7 +2158,7 @@ TF.forEach((q, i) => QUESTIONS.push({ id: "tf" + i, type: "tf", topic: q[0], ste
 MC.forEach((q, i) => QUESTIONS.push({ id: "mc" + i, type: "mc", topic: q[0], stem: q[1], correct: q[2][0], options: q[2], why: q[3], mock: q[4] || 0 }));
 const ESSAY_OBJS = ESSAYS.map((e, i) => ({ id: "es" + i, topic: e[0], prompt: e[1], elements: e[2], tip: e[3], mock: e[4] || 0 }));
 /* mock-quiz format per scope: [true/false, multiple choice]. Quiz 1 mock was 12 + 8, Quiz 2 mock 10 + 8 */
-const MOCK_FMT = { q1: [12, 8], mock1: [12, 8] };
+const MOCK_FMT = { q1: [12, 8], mock1: [12, 8], mid: [20, 20] };
 function mockFmt(scope) { return MOCK_FMT[scope] || [10, 8]; }
 const CARDS = F.map((c, i) => ({ id: "c" + i, topic: c[0], term: c[1], def: c[2] }));
 
@@ -2053,6 +2190,7 @@ document.addEventListener("click", e => {
   if (g.dataset.quizscope) { qScope.value = g.dataset.quizscope; }
   if (g.dataset.quizformat) { qFormat.value = g.dataset.quizformat; }
   if (g.dataset.quizscope || g.dataset.quizformat) { resetPractice(); updateScopeInfo(); }
+  if (g.dataset.cardscope) { fcTopic.value = g.dataset.cardscope; buildDeck(false); syncFcChips(); }
   showTab(g.dataset.goto); window.scrollTo({ top: 0 });
 });
 
@@ -2083,7 +2221,7 @@ function renderDashboard() {
     const when = isToday ? (next.end ? "Under way" : "Today") : n === 1 ? "Tomorrow" : n + "<small>days</small>";
     let actions = "";
     if (next.quizSet) {
-      actions = '<div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="' + next.quizSet + '" data-quizformat="mock">Practise this quiz</button><button class="btn" data-goto="notes" data-note="' + ({ q1: "t3", q2: "t7", q3: "t7" }[next.quizSet]) + '">Review notes</button><button class="btn" data-goto="cards">Flashcards</button></div>';
+      actions = '<div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="' + next.quizSet + '" data-quizformat="mock">Practise this quiz</button><button class="btn" data-goto="notes" data-note="' + ({ q1: "t3", q2: "t7", q3: "t7", mid: "midterm" }[next.quizSet]) + '">' + (next.quizSet === "mid" ? "Midterm study guide" : "Review notes") + '</button><button class="btn" data-goto="cards">Flashcards</button></div>';
     }
     box.innerHTML = '<span class="label">' + (isToday ? "Happening today" : "Next graded item") + '</span>' +
       '<div class="when num">' + when + '</div><h2>' + esc(next.title) + '</h2><dl class="kv">' +
@@ -2091,6 +2229,7 @@ function renderDashboard() {
       (next.scope ? '<dt>Covers</dt><dd>' + esc(next.scope) + '</dd>' : "") + (next.weight ? '<dt>Worth</dt><dd>' + esc(next.weight) + '</dd>' : "") + '</dl>' + actions;
   } else box.innerHTML = '<span class="label">All done</span><h2>No graded work left this term</h2>';
 
+  renderExamPrep();
   const rows = EVENTS.filter(e => e.kind !== "class" && daysBetween(T0, parseD(e.end || e.date)) >= 0 && e !== next).slice(0, 7);
   document.getElementById("upcomingList").innerHTML = rows.map(e => {
     const d = parseD(e.date);
@@ -2108,6 +2247,30 @@ function renderDashboard() {
     return '<li><span></span><div style="min-width:0"><div style="font-weight:500;line-height:1.3">' + link + '</div><div class="muted" style="font-size:.82rem">' + t.when + '</div>' + (best != null ? '<div class="meter"><i style="width:' + best + '%"></i></div>' : "") + '</div>' + right + '</li>';
   }).join("")).join("");
 }
+
+/* exam prep checklist, shown in the 10 days before the midterm */
+const PREP = [
+  ["Read the Midterm Study Guide: formula sheet, lists, mixed-up pairs", "notes", ' data-note="midterm"'],
+  ["Weeks 1–3 review set (aim for 80%)", "quiz", ' data-quizscope="q1" data-quizformat="mixed"'],
+  ["Weeks 4–7 review set (aim for 80%)", "quiz", ' data-quizscope="q2" data-quizformat="mixed"'],
+  ["Week 8 + the Ch. 2 reading", "quiz", ' data-quizscope="w8" data-quizformat="mixed"'],
+  ["Midterm flashcards until “still learning” is empty", "cards", ' data-cardscope="mid"'],
+  ["Practice midterm (20 + 20)", "quiz", ' data-quizscope="mid" data-quizformat="mock"'],
+  ["Write the essay outlines from memory", "quiz", ' data-quizscope="mid" data-quizformat="essay"'],
+  ["Retry every question you missed", "quiz", ' data-quizscope="missed" data-quizformat="mixed"']
+];
+let prepDone = store.get("midPrep", {});
+function renderExamPrep() {
+  const box = document.getElementById("examPrep"), n = daysBetween(T0, parseD(MIDTERM.date));
+  box.hidden = n < 0 || n > 10; if (box.hidden) return;
+  const done = PREP.filter((p, i) => prepDone[i]).length, best = wkScores.mid;
+  box.innerHTML = '<div class="panel-head"><h3>Midterm prep · ' + (n === 0 ? "today" : n === 1 ? "tomorrow" : "in " + n + " days") + '</h3><span class="pill' + (done === PREP.length ? " good" : "") + ' num">' + done + "/" + PREP.length + ' done</span></div>' +
+    '<p class="muted" style="margin:0">Weeks 1–8 · Wed Nov 4, 11:00 a.m., Room 7-383 · 20%. ' + (best != null ? 'Best practice midterm: <b class="num">' + best + '%</b>.' : "No practice midterm yet.") + '</p>' +
+    '<div class="meter"><i style="width:' + (done / PREP.length * 100) + '%"></i></div>' +
+    '<ul class="check-list" id="prepList">' + PREP.map((p, i) => '<li style="display:flex;justify-content:space-between;gap:10px;align-items:center"><label><input type="checkbox" data-i="' + i + '"' + (prepDone[i] ? " checked" : "") + '><span>' + p[0] + '</span></label><button class="btn" data-goto="' + p[1] + '"' + p[2] + '>Go</button></li>').join("") + '</ul>' +
+    '<div class="btn-row"><button class="btn primary" data-goto="notes" data-note="midterm">Open the Midterm Study Guide</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Practice midterm</button></div>';
+}
+document.getElementById("examPrep").addEventListener("change", e => { const c = e.target.closest("input[data-i]"); if (!c) return; prepDone[c.dataset.i] = c.checked; store.set("midPrep", prepDone); renderExamPrep(); });
 
 /* ---------- schedule ---------- */
 function renderSchedule() {
@@ -2199,9 +2362,15 @@ document.getElementById("calToday").onclick = () => { calMonth = T0 < TERM_START
 
 /* ---------- notes ---------- */
 const toc = document.getElementById("notesToc");
-toc.innerHTML = WEEK_NUMS.map(n => '<div class="toc-week' + (n === currentWeekNum() ? ' now' : '') + '"><span class="label">Week ' + n + ' · ' + WEEK_INFO[n].dates + (n === currentWeekNum() ? ' · this week' : '') + '</span>' +
+const MIDTERM = EVENTS.find(e => e.quizSet === "mid");
+toc.innerHTML = '<div class="toc-week now"><span class="label">Midterm · ' + DAYS[parseD(MIDTERM.date).getDay()] + " " + fmt(parseD(MIDTERM.date)) + '</span><button data-topic="midterm" aria-pressed="false"><span class="ttl">Midterm Study Guide</span><span class="muted" style="font-size:.8rem">Weeks 1–8 on one page</span></button></div>' + WEEK_NUMS.map(n => '<div class="toc-week' + (n === currentWeekNum() ? ' now' : '') + '"><span class="label">Week ' + n + ' · ' + WEEK_INFO[n].dates + (n === currentWeekNum() ? ' · this week' : '') + '</span>' +
   weekTopics(n).map(t => '<button data-topic="' + t.id + '" aria-pressed="false"><span class="ttl">' + esc(t.title) + '</span><span class="muted" style="font-size:.8rem">' + t.when + (t.status === "nodeck" ? " · no deck this week" : t.status === "upcoming" ? " · not taught yet" : "") + '</span></button>').join("") + '</div>').join("");
 function openNote(id) {
+  if (id === "midterm") {
+    document.querySelectorAll("article[data-note]").forEach(a => a.hidden = a.dataset.note !== "midterm");
+    toc.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.topic === id ? "true" : "false"));
+    store.set("note", id); return;
+  }
   const t = topicById[id]; if (!t) return;
   const target = hasNotes(t) ? id : "pending";
   document.querySelectorAll("article[data-note]").forEach(a => a.hidden = a.dataset.note !== target);
@@ -2527,11 +2696,12 @@ labToc.addEventListener("click", e => { const b = e.target.closest("button"); if
 /* ---------- flashcards ---------- */
 let known = store.get("known", {});
 const fcTopic = document.getElementById("fcTopic"), fcMode = document.getElementById("fcMode");
-const scopeOptions = '<option value="q1">Quiz 1 set: Weeks 1–3</option><option value="q2">Quiz 2 set: Weeks 4–7 (Week 7 is on the mock)</option><option value="q3">Quiz 3 set: Weeks 7, 8 &amp; 11 (Week 11 not taught yet)</option><option value="all">Everything so far</option>';
+const scopeOptions = '<option value="mid">Midterm set: Weeks 1–8</option><option value="q1">Quiz 1 set: Weeks 1–3</option><option value="q2">Quiz 2 set: Weeks 4–7 (Week 7 is on the mock)</option><option value="q3">Quiz 3 set: Weeks 7, 8 &amp; 11 (Week 11 not taught yet)</option><option value="all">Everything so far</option>';
 function weekOptions(has) { return WEEK_NUMS.filter(n => weekTopics(n).some(t => has(t.id))).map(n => '<option value="w' + n + '">Week ' + n + ': ' + weekTopics(n).map(t => esc(t.title)).join(" + ") + '</option>').join(""); }
 fcTopic.innerHTML = scopeOptions + weekOptions(id => CARDS.some(c => c.topic === id));
 function inScope(topic, scope) {
   if (scope === "all") return true;
+  if (scope === "mid") return topicById[topic].wk <= 8;
   if (/^q\d$/.test(scope)) { const n = +scope.slice(1), t = topicById[topic]; return t.quiz === n || t.also === n; }
   if (/^w\d+$/.test(scope)) return topicById[topic].wk === +scope.slice(1);
   return topic === scope;
@@ -2576,7 +2746,7 @@ document.getElementById("fcLearning").onclick = () => mark(false);
 document.getElementById("fcShuffle").onclick = () => buildDeck(true);
 fcTopic.onchange = () => { buildDeck(false); syncFcChips(); };
 function syncFcChips() { document.querySelectorAll("#fcWeekChips button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === fcTopic.value)); }
-document.getElementById("fcWeekChips").innerHTML = [["all", "All weeks"], ["q1", "Quiz 1 (Wk 1–3)"], ["q2", "Quiz 2 (Wk 4–7)"], ["q3", "Quiz 3 (Wk 7–11)"]].concat(WEEK_NUMS.filter(n => weekTopics(n).some(t => CARDS.some(c => c.topic === t.id))).map(n => ["w" + n, "Week " + n + " · " + CARDS.filter(c => topicById[c.topic].wk === n).length])).map(([v, l]) => '<button class="chip-btn" data-v="' + v + '" aria-pressed="false">' + l + '</button>').join("");
+document.getElementById("fcWeekChips").innerHTML = [["all", "All weeks"], ["mid", "Midterm (Wk 1–8)"], ["q1", "Quiz 1 (Wk 1–3)"], ["q2", "Quiz 2 (Wk 4–7)"], ["q3", "Quiz 3 (Wk 7–11)"]].concat(WEEK_NUMS.filter(n => weekTopics(n).some(t => CARDS.some(c => c.topic === t.id))).map(n => ["w" + n, "Week " + n + " · " + CARDS.filter(c => topicById[c.topic].wk === n).length])).map(([v, l]) => '<button class="chip-btn" data-v="' + v + '" aria-pressed="false">' + l + '</button>').join("");
 document.getElementById("fcWeekChips").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; fcTopic.value = b.dataset.v; buildDeck(false); syncFcChips(); });
 fcMode.onchange = () => buildDeck(false);
 
@@ -2618,9 +2788,9 @@ let wkScores = store.get("wkScores", {});
 function renderWeekGrid() {
   const cnt = ids => { const q = QUESTIONS.filter(x => ids.includes(x.topic)); return { tf: q.filter(x => x.type === "tf").length, mc: q.filter(x => x.type === "mc").length, es: ESSAY_OBJS.filter(e => ids.includes(e.topic)).length }; };
   const best = k => wkScores[k] != null ? '<span class="pill ' + (wkScores[k] >= 80 ? "good" : wkScores[k] >= 60 ? "warn" : "bad") + ' num">best ' + wkScores[k] + '%</span>' : '<span class="pill">not tried</span>';
-  const sets = [["q1", "Quiz 1 review · Weeks 1–3", "Written Oct 14"], ["q2", "Quiz 2 review · Weeks 4–7", "Written Oct 28 · Week 7 included because the mock quiz tests it"], ["q3", "Quiz 3 review · Weeks 7, 8 & 11", "Written Nov 25 · Week 11 not taught yet"]];
+  const sets = [["mid", "Midterm review · Weeks 1–8", "Wed Nov 4 · 20% · practice format is 20 true/false + 20 multiple choice (the real format isn't published)"], ["q1", "Quiz 1 review · Weeks 1–3", "Written Oct 14"], ["q2", "Quiz 2 review · Weeks 4–7", "Written Oct 28 · Week 7 included because the mock quiz tests it"], ["q3", "Quiz 3 review · Weeks 7, 8 & 11", "Written Nov 25 · Week 11 not taught yet"]];
   let h = sets.map(([k, t, sub]) => { const ids = TOPICS.filter(x => inScope(x.id, k)).map(x => x.id), c = cnt(ids);
-    return '<div class="wk-card span"><div class="panel-head"><span class="wk-title">' + t + '</span>' + best(k) + '</div><span class="muted" style="font-size:.85rem">' + sub + ' · ' + c.tf + ' true/false · ' + c.mc + ' multiple choice · ' + c.es + ' essays</span><div class="btn-row"><button class="btn primary" data-wkstart="' + k + '" data-fmt="mock">Real-quiz format (' + mockFmt(k).join(" + ") + ')</button><button class="btn" data-wkstart="' + k + '" data-fmt="mixed">Every question</button><button class="btn" data-wkstart="' + k + '" data-fmt="essay">Essays</button></div></div>'; }).join("");
+    return '<div class="wk-card span"><div class="panel-head"><span class="wk-title">' + t + '</span>' + best(k) + '</div><span class="muted" style="font-size:.85rem">' + sub + ' · ' + c.tf + ' true/false · ' + c.mc + ' multiple choice · ' + c.es + ' essays</span><div class="btn-row"><button class="btn primary" data-wkstart="' + k + '" data-fmt="mock">' + (k === "mid" ? "Practice midterm" : "Real-quiz format") + ' (' + mockFmt(k).join(" + ") + ')</button><button class="btn" data-wkstart="' + k + '" data-fmt="mixed">Every question</button><button class="btn" data-wkstart="' + k + '" data-fmt="essay">Essays</button></div></div>'; }).join("");
   h += [1, 2, 3, 4, 5, 6, 7, 8].map(n => { const ts = weekTopics(n), ids = ts.map(t => t.id), c = cnt(ids), has = c.tf + c.mc > 0;
     return '<div class="wk-card' + (has ? "" : " off") + '"><div class="panel-head"><span class="wk-title">Week ' + n + '</span>' + (has ? best("w" + n) : '<span class="pill">' + noNotesLabel(ts[0]) + '</span>') + '</div><span class="label">' + WEEK_INFO[n].dates + '</span><span style="font-size:.9rem;font-weight:500">' + ts.map(t => esc(t.title)).join(" + ") + '</span>' +
       (has ? '<span class="muted" style="font-size:.82rem">' + c.tf + ' T/F · ' + c.mc + ' MC' + (c.es ? ' · ' + c.es + ' essay' + (c.es > 1 ? "s" : "") : "") + '</span><div class="btn-row"><button class="btn primary" data-wkstart="w' + n + '" data-fmt="mixed">Start</button>' + (c.es ? '<button class="btn" data-wkstart="w' + n + '" data-fmt="essay">Essays</button>' : "") + '</div>' : '<span class="muted" style="font-size:.82rem">' + (ts[0].status === "nodeck" ? "No slide deck this week, so no questions." : "Questions get added after this week is taught.") + '</span>') + '</div>'; }).join("");
@@ -2685,7 +2855,7 @@ function finish(early) {
   const byWeek = {};
   Object.entries(byTopic).forEach(([t, [s, n]]) => { const w = topicById[t].wk; (byWeek[w] = byWeek[w] || [0, 0]); byWeek[w][0] += s; byWeek[w][1] += n; });
   Object.entries(byWeek).forEach(([w, [s, n]]) => { if (n >= 3) { const v = Math.round(s / n * 100); if (wkScores["w" + w] == null || v > wkScores["w" + w]) wkScores["w" + w] = v; } });
-  if (/^q\d$/.test(run.scope) && total >= 5 && (wkScores[run.scope] == null || p > wkScores[run.scope])) wkScores[run.scope] = p;
+  if (/^(q\d|mid)$/.test(run.scope) && total >= 5 && (wkScores[run.scope] == null || p > wkScores[run.scope])) wkScores[run.scope] = p;
   store.set("wkScores", wkScores);
   const now = new Date();
   attempts.push({ label: run.label, score, total, pct: p, when: fmt(now) + " " + now.toTimeString().slice(0, 5) }); attempts = attempts.slice(-30); store.set("history", attempts);
