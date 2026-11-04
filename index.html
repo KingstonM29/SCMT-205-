@@ -75,12 +75,17 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* Tabs */
 .tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(0,0,0,.88); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; padding-block: 8px; }
-.tabs .wrap::-webkit-scrollbar { display: none; }
+.tabs .wrap { display: flex; gap: 8px; align-items: center; padding-block: 8px; }
+.tablist { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
+.tablist::-webkit-scrollbar { display: none; }
+.gsearch { position: relative; flex: none; }
+.gsearch input { width: clamp(130px, 24vw, 280px); padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface-2); }
+.gsearch input:focus { outline: none; border-color: var(--accent); }
+.gpanel { position: absolute; right: 0; top: calc(100% + 8px); width: min(620px, calc(100vw - 24px)); max-height: 72vh; overflow-y: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 16px 40px rgba(0,0,0,.6); padding: 12px; display: grid; gap: 12px; z-index: 20; }
+.topic-chip { text-align: left; border: 1px solid var(--accent); border-radius: var(--radius); background: var(--accent-soft); padding: 6px 10px; cursor: pointer; display: grid; gap: 1px; font-size: .88rem; }
 .tab { flex: none; border: 1px solid transparent; background: none; padding: 7px 13px; border-radius: 999px; cursor: pointer; font-weight: 500; color: var(--muted); }
 .tab:hover { color: var(--ink); }
 .tab[aria-selected="true"] { background: var(--ink); color: var(--bg); }
-.tab-search { border-color: var(--line); color: var(--ink); margin-left: auto; }
 .sr-group { display: grid; gap: 6px; }
 .sr-hit { text-align: left; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 8px 12px; display: grid; gap: 2px; cursor: pointer; font-size: .9rem; line-height: 1.45; }
 .sr-hit:hover { border-color: var(--accent); }
@@ -362,7 +367,8 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 </header>
 
 <nav class="tabs" aria-label="Sections">
-  <div class="wrap" role="tablist">
+  <div class="wrap tabbar">
+  <div class="tablist" role="tablist">
     <button class="tab" role="tab" data-tab="dashboard">Dashboard</button>
     <button class="tab" role="tab" data-tab="cheat">Midterm cheat sheet</button>
     <button class="tab" role="tab" data-tab="schedule">Schedule</button>
@@ -372,7 +378,11 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <button class="tab" role="tab" data-tab="quiz">Practice</button>
     <button class="tab" role="tab" data-tab="grades">Grades</button>
     <button class="tab" role="tab" data-tab="info">Course info</button>
-    <button class="tab tab-search" id="navSearch" aria-label="Search everything">⌕ Search</button>
+  </div>
+  <div class="gsearch" role="search">
+    <input id="gSearch" type="search" autocomplete="off" placeholder="⌕ Search anything" aria-label="Search the whole site">
+    <div class="gpanel" id="gPanel" hidden></div>
+  </div>
   </div>
 </nav>
 
@@ -2669,6 +2679,9 @@ function csMark(el, words) {
     list.forEach(n => { const i = n.nodeValue.toLowerCase().indexOf(q); if (i < 0) return; const m = document.createElement("mark"), rest = n.splitText(i); rest.splitText(q.length); m.textContent = rest.nodeValue; rest.replaceWith(m); });
   });
 }
+/* search words: split the query; each word must appear at the start of a word */
+function qWords(v) { return v.trim().toLowerCase().split(/\s+/).filter(w => w.length >= 2 || /^\d$/.test(w)); }
+function matcher(words) { const res = words.map(w => new RegExp("(^|[^a-z0-9])" + w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + (w.length <= 3 ? "(?![a-z0-9])" : ""), "i")); return t => res.every(r => r.test(t)); }
 /* site-wide index: every note line, term, essay answer and practice question */
 let SIDX = null;
 function buildIndex() {
@@ -2688,8 +2701,8 @@ function buildIndex() {
     });
   });
   CARDS.forEach(c => out.push({ g: "terms", title: c.term, sub: topicById[c.topic].code + " · " + topicById[c.topic].title, text: c.term + " — " + c.def, note: "midterm-terms", term: c.term }));
-  QUESTIONS.forEach(q => out.push({ g: "practice", title: (q.type === "tf" ? "True/false" : "Multiple choice") + " · " + topicById[q.topic].code, sub: "", text: q.stem + " → Answer: " + q.correct + ". " + q.why }));
-  ESSAY_OBJS.forEach(e => out.push({ g: "practice", title: "Essay · " + topicById[e.topic].code, sub: "", text: e.prompt + " → Covers: " + e.elements.join("; ") }));
+  QUESTIONS.forEach(q => out.push({ g: "practice", t: q.topic, title: (q.type === "tf" ? "True/false" : "Multiple choice") + " · " + topicById[q.topic].code, sub: "", text: q.stem + " → Answer: " + q.correct + ". " + q.why }));
+  ESSAY_OBJS.forEach(e => out.push({ g: "practice", t: e.topic, title: "Essay · " + topicById[e.topic].code, sub: "", text: e.prompt + " → Covers: " + e.elements.join("; ") }));
   return out;
 }
 const SR_GROUPS = [["notes", "In the notes"], ["terms", "Terms"], ["practice", "Practice questions & answers"]];
@@ -2701,16 +2714,15 @@ function snippet(text, words) {
   return (start ? "…" : "") + h + (start + 260 < text.length ? "…" : "");
 }
 function runCsSearch() {
-  const raw = csSearch.value.trim().toLowerCase(), words = raw.split(/\s+/).filter(w => w.length >= 2), on = words.length > 0;
+  const words = qWords(csSearch.value), on = words.length > 0, ok = matcher(words);
   let n = 0;
-  csItems.forEach(it => { it.els.forEach((el, k) => { el.innerHTML = it.html[k]; }); const t = it.els.map(el => el.textContent.toLowerCase()).join(" "), hit = !on || words.every(w => t.includes(w)); it.els.forEach(el => { el.hidden = !hit; if (hit && on) csMark(el, words); }); if (hit && on) n++; });
+  csItems.forEach(it => { it.els.forEach((el, k) => { el.innerHTML = it.html[k]; }); const t = it.els.map(el => el.textContent).join(" "), hit = !on || ok(t); it.els.forEach(el => { el.hidden = !hit; if (hit && on) csMark(el, words); }); if (hit && on) n++; });
   csPanel.querySelectorAll(".cs-box").forEach(b => { b.hidden = on && !b.querySelector("li:not([hidden]), dt:not([hidden])"); });
   csPanel.querySelectorAll(".cs-h").forEach(h => { h.hidden = on && !h.nextElementSibling.querySelector(".cs-box:not([hidden])"); });
   document.getElementById("csJumpRow").hidden = on;
   const box = document.getElementById("csAll");
   if (!on) { box.innerHTML = ""; document.getElementById("csCount").textContent = ""; return; }
-  if (!SIDX) SIDX = buildIndex();
-  const hits = SIDX.filter(x => { const t = (x.title + " " + x.text).toLowerCase(); return words.every(w => t.includes(w)); });
+  const hits = indexWithSheet().filter(x => x.g !== "cheat" && ok(x.text));
   const total = hits.length;
   document.getElementById("csCount").textContent = total + n ? (total + n) + " results: " + n + " on the cheat sheet below, " + total + " elsewhere on the site" : "No results. Try fewer or shorter words.";
   box.innerHTML = SR_GROUPS.map(([g, label]) => {
@@ -2730,9 +2742,66 @@ document.getElementById("csAll").addEventListener("click", e => {
   if (x.el) { const d = x.el.closest("details"); if (d) d.open = true; setTimeout(() => { x.el.scrollIntoView({ block: "center" }); x.el.classList.add("sr-flash"); setTimeout(() => x.el.classList.remove("sr-flash"), 1800); }, 50); }
   else window.scrollTo({ top: 0 });
 });
-function openSearch() { showTab("cheat"); window.scrollTo({ top: 0 }); csSearch.focus(); }
-document.getElementById("navSearch").addEventListener("click", openSearch);
-document.addEventListener("keydown", e => { if (e.key === "/" && !e.target.matches("input, textarea, select")) { e.preventDefault(); openSearch(); } });
+/* top-right search: results drop down over any tab */
+const gSearch = document.getElementById("gSearch"), gPanel = document.getElementById("gPanel");
+const TOPIC_ALIAS = { scor: "week 1 scor ds supply chain operations reference", t1: "topic 1 week 1", t2: "topic 2 week 2", t3: "topic 3 week 3", t4: "topic 4 week 4 erp", t5: "topic 5 week 5 erp", t6: "topic 6 week 6", t7: "topic 7 week 7", t8: "topic 8 week 8", tech: "reading chapter 2 ch. 2 pagano liotine uic", t9: "topic 9 week 11", t10: "topic 10 week 12" };
+function topicOf(x) { return x.t || (topicById[x.note] ? x.note : null); }
+function indexWithSheet() {
+  if (!SIDX) {
+    SIDX = buildIndex();
+    csItems.forEach(it => { const box = it.els[0].closest(".cs-box"); SIDX.push({ g: "cheat", title: "Cheat sheet · " + box.querySelector("h4").textContent, sub: "", text: it.els.map(e => e.textContent.trim()).join(" — "), el: it.els[0] }); });
+    SIDX.forEach(x => { if (x.g === "terms") x.t = CARDS.find(c => c.term === x.term).topic; });
+  }
+  return SIDX;
+}
+const G_GROUPS = [["cheat", "On the cheat sheet"], ["notes", "In the notes"], ["terms", "Terms"], ["practice", "Practice questions & answers"]];
+let gAll = {};
+function runGlobal() {
+  const words = qWords(gSearch.value);
+  if (!words.length) { gPanel.hidden = true; return; }
+  const ok = matcher(words), idx = indexWithSheet();
+  // related topics: topics named by the query first ("Topic 5", "digital strategy"), then topics with the most matches
+  const ref = gSearch.value.trim().toLowerCase().match(/^(topic|week)\s*(\d+)$/), refRe = ref && new RegExp("\\b" + ref[1] + " " + ref[2] + "\\b");
+  const named = TOPICS.filter(t => hasNotes(t) && (ref ? refRe.test(TOPIC_ALIAS[t.id] || "") : ok(t.title + " " + t.code + " " + (TOPIC_ALIAS[t.id] || ""))));
+  const topicRef = !!ref && named.length > 0;
+  const hits = topicRef ? idx.filter(x => named.some(t => t.id === topicOf(x))) : idx.filter(x => ok(x.text));
+  const counts = {}; hits.forEach(x => { const t = topicOf(x); if (t && topicById[t] && hasNotes(topicById[t])) counts[t] = (counts[t] || 0) + 1; });
+  const related = named.map(t => t.id).concat(Object.keys(counts).sort((a, b) => counts[b] - counts[a]).filter(id => !named.some(t => t.id === id))).slice(0, 6);
+  let h = '<div class="panel-head"><span class="label">' + (topicRef ? "Everything in " + named.map(t => esc(t.title)).join(" + ") + " · " + hits.length : hits.length + ' result' + (hits.length === 1 ? "" : "s") + ' for “' + esc(gSearch.value.trim()) + '”') + '</span><button class="btn" data-gclose>Close</button></div>';
+  if (related.length) h += '<div class="sr-group"><span class="label">Related topics</span><div style="display:flex;flex-wrap:wrap;gap:6px">' + related.map(id => { const t = topicById[id]; return '<button class="topic-chip" data-gtopic="' + id + '"><b>' + esc(t.code === "Reading" ? "Reading" : t.code) + ": " + esc(t.title.replace("Reading: ", "")) + '</b><span class="muted" style="font-size:.78rem">' + (counts[id] ? counts[id] + " matching lines · " : "") + 'open notes →</span></button>'; }).join("") + '</div></div>';
+  h += G_GROUPS.map(([g, label]) => {
+    const list = hits.filter(x => x.g === g); if (!list.length) return "";
+    const shown = gAll[g] ? list : list.slice(0, 5);
+    return '<div class="sr-group"><span class="label">' + label + " · " + list.length + '</span>' + shown.map(x => { const t = topicOf(x); return '<button class="sr-hit" data-gi="' + idx.indexOf(x) + '"><span class="label">' + esc(x.title) + (x.sub ? " · " + esc(x.sub) : "") + '</span><span>' + snippet(x.text, words) + '</span></button>'; }).join("") +
+      (list.length > shown.length ? '<button class="btn" data-gmore="' + g + '">Show all ' + list.length + '</button>' : "") + '</div>';
+  }).join("");
+  if (!hits.length && !related.length) h += '<p class="muted" style="margin:0">No results. Try fewer or shorter words.</p>';
+  gPanel.innerHTML = h; gPanel.hidden = false;
+}
+function goTo(x) {
+  gPanel.hidden = true;
+  if (x.g === "terms") { mtSearch.value = x.term; runSearch(); openNote("midterm-terms"); showTab("notes"); window.scrollTo({ top: 0 }); return; }
+  if (x.g === "cheat") { csSearch.value = ""; runCsSearch(); showTab("cheat"); }
+  else { openNote(x.note); showTab("notes"); }
+  const d = x.el.closest("details"); if (d) d.open = true;
+  setTimeout(() => { x.el.scrollIntoView({ block: "center" }); x.el.classList.add("sr-flash"); setTimeout(() => x.el.classList.remove("sr-flash"), 1800); }, 50);
+}
+gSearch.addEventListener("input", () => { gAll = {}; runGlobal(); });
+gSearch.addEventListener("focus", () => { if (gSearch.value.trim()) runGlobal(); });
+gPanel.addEventListener("click", e => {
+  if (e.target.closest("[data-gclose]")) { gPanel.hidden = true; return; }
+  const more = e.target.closest("[data-gmore]"); if (more) { gAll[more.dataset.gmore] = true; runGlobal(); return; }
+  const tp = e.target.closest("[data-gtopic]"); if (tp) { gPanel.hidden = true; openNote(tp.dataset.gtopic); showTab("notes"); window.scrollTo({ top: 0 }); return; }
+  const b = e.target.closest("[data-gi]"); if (!b) return;
+  const x = SIDX[+b.dataset.gi];
+  if (x.g === "practice") { const sp = b.querySelector("span:last-child"); sp.textContent = x.text; return; }
+  goTo(x);
+});
+document.addEventListener("click", e => { if (!e.target.closest(".gsearch")) gPanel.hidden = true; });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && !gPanel.hidden) { gPanel.hidden = true; gSearch.blur(); }
+  if (e.key === "/" && !e.target.matches("input, textarea, select")) { e.preventDefault(); gSearch.focus(); gSearch.select(); }
+});
 csSearch.addEventListener("input", runCsSearch);
 document.querySelector('[data-panel="cheat"]').addEventListener("click", e => { const b = e.target.closest("[data-csjump]"); if (b) document.getElementById(b.dataset.csjump).scrollIntoView({ behavior: "smooth", block: "start" }); });
 
