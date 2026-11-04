@@ -1177,17 +1177,106 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
   <div class="callout"><span class="label">Key takeaways &amp; most likely on the quiz</span><b>Visibility is the goal</b> (drives ROI, efficiency, responsiveness) · <b>adoption varies by tier</b> (know which tech sits in which tier and the 35% / 20% / 10% figures) · <b>data is the backbone</b> (cloud, sensors, warehousing feed analytics) · <b>impact is collective</b>. Also: SaaS vs PaaS vs IaaS, the 20.7% collaborative-sourcing saving, why TMS moved to the cloud before WMS, and each technology's flagship example.</div>
 </article>
 
-<article class="note" data-note="midterm" hidden>
-  <header><span class="label">Midterm · open book · 20% of your grade · check the time and room on mêskanâs</span><h2>Midterm Exam: Open-Book Guide</h2>
-  <p class="prose">Built for looking things up fast during the exam. Search box first, then the six most likely essays with model answers, then the formula sheet, lists, mixed-up pairs and true/false traps.</p></header>
-  <div class="callout info"><span class="label">What the instructor confirmed</span><b>Covers every topic from class except Topic 6 (AI &amp; Intelligent Supply Chains).</b> <b>10 true/false</b> · <b>30 multiple choice</b> · <b>short essay: answer any 1 of 6</b> · <b>open book</b>.</div>
-  <div class="callout"><span class="label">Open-book strategy</span>Open book doesn't mean time to look everything up. <b>1</b> Answer every question you know first and flag the rest. <b>2</b> Look up only the flagged ones, using the search box below or Ctrl+F (⌘F on a Mac). <b>3</b> For the essay, choose the prompt you've prepared, open its model answer below, and write it in your own words <b>applied to their scenario</b>. If you have the usual 80-minute class period, a rough split is ~5 min true/false, ~35 min multiple choice, ~25 min essay, ~10 min checking.</div>
-  <div class="chips" id="mtJump"><span class="label" style="align-self:center">Jump to:</span><button class="chip-btn" data-jump="mt-search">Search terms</button><button class="chip-btn" data-jump="mt-essays">6 likely essays</button><button class="chip-btn" data-jump="mt-weeks">Each topic</button><button class="chip-btn" data-jump="mt-formulas">Formulas</button><button class="chip-btn" data-jump="mt-lists">Lists &amp; sequences</button><button class="chip-btn" data-jump="mt-pairs">Mixed-up pairs</button><button class="chip-btn" data-jump="mt-tf">True/false traps</button></div>
-  <div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Practice midterm (10 + 30)</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="essay">Practise essays</button><button class="btn" data-goto="cards" data-cardscope="mid">Midterm flashcards</button></div>
-  <section id="mt-search"><h3>Search any term</h3>
-  <div class="field"><label class="label" for="mtSearch">Type a word from the question (e.g. WES, bullwhip, 856, shadow, CREST)</label><input id="mtSearch" type="search" autocomplete="off" placeholder="Search 240+ terms and definitions…" style="padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface-2)"></div>
+<article class="note" data-note="midterm-terms" hidden>
+  <header><span class="label">Midterm · open book · every topic except Topic 6</span><h2>Midterm Terminology</h2>
+  <p class="prose">Only the terms from topics on the midterm, grouped by topic in class order. Type in the box to filter everything at once, or tap a topic to jump to it.</p></header>
+  <div class="field"><label class="label" for="mtSearch">Filter terms and definitions (e.g. WES, bullwhip, 856, shadow, CREST)</label><input id="mtSearch" type="search" autocomplete="off" placeholder="Type to filter…" style="padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface-2)"></div>
   <p class="muted" id="mtCount" style="margin:0"></p>
-  <div id="mtResults" style="display:grid;gap:6px"></div></section>
+  <div class="chips" id="mtTopicJump"></div>
+  <div id="mtGlossary" style="display:grid;gap:18px"></div>
+</article>
+
+<article class="note" data-note="midterm-notes" hidden>
+  <header><span class="label">Midterm · open book · every topic except Topic 6</span><h2>Midterm Key Notes</h2>
+  <p class="prose">The main points from each topic, nothing extra. Full notes for any topic are one tap away in the menu.</p></header>
+  <div class="chips" id="mtNotesJump"><span class="label" style="align-self:center">Jump to:</span><button class="chip-btn" data-jump="kn-scor">SCOR DS</button><button class="chip-btn" data-jump="kn-t1">Topic 1</button><button class="chip-btn" data-jump="kn-t2">Topic 2</button><button class="chip-btn" data-jump="kn-t3">Topic 3</button><button class="chip-btn" data-jump="kn-t4">Topic 4</button><button class="chip-btn" data-jump="kn-t5">Topic 5</button><button class="chip-btn" data-jump="kn-t7">Topic 7</button><button class="chip-btn" data-jump="kn-t8">Week 8 + reading</button></div>
+  <section id="kn-scor"><h3>Week 1 · SCOR Digital Standard</h3><div class="prose"><ul>
+    <li><b>SCOR DS</b> = ASCM's free, open-access, fully digital <b>reference model</b> (not software, not a method). Treats the supply chain as a synchronous <b>network</b>. Launched 2022 as a redesign, not “version 13”.</li>
+    <li><b>7 processes:</b> Orchestrate, Plan, Order, Source, Transform, Fulfill, Return. From SCOR 12.0: <b>Enable → Orchestrate</b>, <b>Make → Transform</b>, <b>Deliver → Order + Fulfill</b>.</li>
+    <li><b>Orchestrate</b> = the integrating layer: business rules, network design, technology, data, contracts, risk, ESG, circularity. Enabled by the control tower.</li>
+    <li><b>4 building blocks:</b> Processes, Performance, Practices, People.</li>
+    <li><b>Levels:</b> L1 process types (targets) · L2 categories (configuration) · <b>L3 elements (diagnosis &amp; benchmarking)</b> · L4 implementation (outside the standard).</li>
+    <li><b>Attributes:</b> Resilience (reliability, responsiveness, agility) · Economic (cost, profit, assets) · Sustainability (environmental, social). No chain is best at everything: lead on a few, parity on the rest.</li>
+    <li><b>Placing activities:</b> pricing &amp; payment = Order · pick/pack/ship &amp; invoice = Fulfill · repair &amp; maintenance = Transform · disposition = Return.</li>
+  </ul></div></section>
+  <section id="kn-t1"><h3>Topic 1 · Introduction to SC Technology</h3><div class="prose"><ul>
+    <li>Technology must <b>solve a business problem</b>; it supports physical and information flows. Data quality decides how reliable decisions are.</li>
+    <li><b>Digitization</b> (paper → digital) → <b>digitalization</b> (improve an existing process) → <b>digital transformation</b> (redesign the business model).</li>
+    <li><b>SMAC:</b> cloud = core, mobile = endpoints, social connects them. Big data is 80–90% unstructured. <b>Data → information → knowledge → wisdom.</b></li>
+    <li><b>Systems:</b> TPS (batch = cheaper but out of date; <b>OLTP = real-time, costs more</b>) · MIS (periodic, exception, ad hoc reports) · DSS (what-if, goal-seeking) · EIS (executives).</li>
+    <li><b>Data types:</b> master (products, suppliers) · transactional (orders, invoices) · operational (inventory, capacity) · external (weather, markets).</li>
+    <li><b>Analytics:</b> descriptive (what happened) → diagnostic (why) → predictive (what's likely) → prescriptive (what to do).</li>
+    <li><b>Tech facts:</b> EDI stays important as APIs grow · RFID needs no line of sight · blockchain can't fix bad input (garbage in) · ML models drift and need retraining · cobots still need redesign and safety analysis · edge computing when latency matters.</li>
+    <li><b>Selection framework:</b> define the problem → assess current state → identify alternatives → evaluate (cost, fit, integration, ROI) → pilot in phases → monitor &amp; scale. Judge on <b>TCO</b>, not price.</li>
+  </ul></div></section>
+  <section id="kn-t2"><h3>Topic 2 · Digital SC Strategy &amp; Transformation</h3><div class="prose"><ul>
+    <li><b>Strategy drives technology</b>: business → SC → technology strategy → implementation.</li>
+    <li><b>Environments:</b> internal (culture, structure) · task (suppliers, customers, competitors) · general (<b>CREST</b>: competitive, regulatory, economic, social, technological).</li>
+    <li><b>Five Forces + SCM:</b> raise entry barriers, raise buyer switching costs, multi-source against supplier power, beat substitutes on quality/speed, lower cost vs rivals. Five Forces + value chain show <b>where tech creates value</b>.</li>
+    <li><b>Red ocean</b> = existing market, low cost <b>OR</b> differentiation · <b>Blue ocean</b> = new market, low cost <b>AND</b> differentiation.</li>
+    <li><b>Strategy types:</b> efficient (stable demand, low cost) · responsive (volatile demand, speed) · resilient (redundancy) · sustainable. Lean vs agile vs hybrid (Dell).</li>
+    <li><b>Maturity:</b> Visibility → Connectivity → Predictive → Autonomous. <b>Uneven maturity is normal</b>; build connectivity before AI.</li>
+    <li><b>Journey:</b> Diagnose → Pilot → Scale → Transform → Optimize. <b>Structural</b> (capacity, facilities, technology) vs <b>infrastructural</b> (organization, sourcing, planning, quality) decisions.</li>
+    <li><b>Control tower</b> (enables Orchestrate): visibility → analytics → action; seeing → understanding → deciding → acting. P&amp;G: “drowning in data, starved for insights.”</li>
+    <li><b>Nike:</b> RFID = digitization, AI forecasting = digitalization, wholesale → DTC = transformation. Triple Double (2X Direct, Speed, Innovation).</li>
+    <li><b>6 pitfalls:</b> technology-first · ignoring data quality · change-management neglect · boiling the ocean · ecosystem myopia · ROI impatience.</li>
+  </ul></div></section>
+  <section id="kn-t3"><h3>Topic 3 · Risk, Resilience &amp; Sustainability</h3><div class="prose"><ul>
+    <li><b>Risk</b> (possible event) → <b>disruption</b> (flows interrupted) → <b>crisis</b> (threatens the business).</li>
+    <li><b>Resilience</b> = limit the impact, recover quickly, adapt. <b>Not</b> preventing every disruption.</li>
+    <li>More suppliers or more inventory does <b>not automatically</b> = more resilience (complexity, carrying cost). Connectivity raises visibility <b>and</b> cyber exposure.</li>
+    <li><b>Efficiency → vulnerability:</b> single sourcing → supplier failure · JIT → no buffers · high utilization → no spare capacity · global sourcing → geopolitical exposure · long lean networks → slow recovery. Goal: <b>balance</b>.</li>
+    <li><b>Third-party cyber risk</b> is part of SC risk management. Data governance: who owns, accesses and changes data.</li>
+    <li><b>Triple Bottom Line:</b> profit, people, planet, judged together. Watch <b>unintended consequences</b> (a green change that shifts harm elsewhere).</li>
+  </ul></div></section>
+  <section id="kn-t4"><h3>Topic 4 · Enterprise SC Systems 1</h3><div class="prose"><ul>
+    <li><b>Enterprise SC system</b> = integrated environment across functions and partners. Six flows: information, demand, product, value, financial, risk.</li>
+    <li><b>Bullwhip:</b> consumer ±5% → manufacturer ±50%. Causes: forecast updating, order batching, price fluctuation, shortage gaming. Cures: share POS, VMI, CPFR, EDI, EDLP, shorter lead times. <b>An information problem.</b></li>
+    <li><b>Evolution:</b> MRP (infinite capacity) → MRP II (+capacity, costing) → ERP (one database) → SCM suites → cloud.</li>
+    <li><b>Landscape:</b> planning systems decide · execution (WMS, TMS, MES) makes it happen · <b>ERP records</b> (system of record) · EDI/APIs = plumbing.</li>
+    <li><b>ERP:</b> one version of the truth, auditable; but transactional not optimizing, rigid, inward-looking. One goods receipt updates inventory, the PO, the liability and the GL.</li>
+    <li><b>EDI:</b> 850 PO · 856 ASN · 810 invoice. GTIN = number behind the barcode.</li>
+    <li><b>Cases:</b> Hershey 1999 (big-bang go-live before Halloween) · Nike 2000–01 (i2 planning) · Target Canada (bad master data). Success: sponsor, process before tech, clean data, change management, phased rollout.</li>
+    <li><b>KPIs:</b> OTIF · perfect order · forecast accuracy (1 − MAPE) · turns (COGS ÷ avg inventory) · cash-to-cash (DIO + DSO − DPO).</li>
+  </ul></div></section>
+  <section id="kn-t5"><h3>Topic 5 · Enterprise SC Systems 2: Beyond ERP</h3><div class="prose"><ul>
+    <li><b>ERP is the backbone, not the whole skeleton.</b> Gaps → APS (finite capacity), WMS (bins), TMS (carriers), MES (shop floor), CRM/SRM (partners), SCEM (live exceptions). Finance stays in ERP.</li>
+    <li><b>Suite</b> (one data model, simpler upgrades) vs <b>best-of-breed</b> (deepest functionality, more interfaces). Most go hybrid.</li>
+    <li><b>Integration:</b> point-to-point = n(n−1)/2 (brittle) · middleware hub ≈ n · API-led/iPaaS = real-time. <b>EDI</b> batch high-volume docs · <b>API</b> real-time checks · <b>portal</b> small suppliers.</li>
+    <li><b>Master data rules:</b> completeness · validity · consistency · reasonableness · uniqueness. TCO iceberg: licence is the tip. Build / buy / integrate.</li>
+    <li><b>APS vs MRP:</b> finite, simultaneous, live what-if vs infinite, sequential, overnight. <b>S&amp;OP:</b> data → demand review → supply review → pre-S&amp;OP → executive S&amp;OP (one plan, product families, monthly).</li>
+    <li><b>P2P:</b> requisition → approval → PO → receipt → invoice → match → pay. 2-way (PO vs invoice) · 3-way (+receipt) · 4-way (+inspection). Maverick vs tail spend.</li>
+    <li><b>Sourcing:</b> supplier TCO beats price · SRM: transactional → collaborative → strategic · scorecard OTIF, PPM, lead-time variability · weighted matrix (weights set before bids).</li>
+    <li><b>Order:</b> CRM = relationship, OMS = order. <b>ATP</b> = have it? <b>CTP</b> = can we make it? Perfect order components multiply.</li>
+    <li><b>Fulfill &amp; Transform:</b> WMS (receive → ship), TMS (plan → execute → settle), MES at ISA-95 L3, OEE = A × P × Q. SCEM = manage by exception (MTTD).</li>
+    <li><b>Selection:</b> MoSCoW → fit-gap (fit / configure / gap) → vendor matrix → pilot → business case (payback, ROI). <b>Hershey = timing/testing; Target = master data.</b></li>
+  </ul></div></section>
+  <section id="kn-t7"><h3>Topic 7 · Automation, Smart Manufacturing &amp; Digital Twins</h3><div class="prose"><ul>
+    <li>Automation = hands · smart manufacturing = senses and nerves · twins = memory and foresight. <b>Emerging tech</b> = new &amp; fast-improving, high impact, still uncertain.</li>
+    <li><b>Automation levels:</b> 1 fixed (bottling) · 2 programmable (CNC) · <b>3 flexible (AMR fleets)</b> · 4 autonomous. Right isn't always better.</li>
+    <li><b>AGV</b> fixed paths vs <b>AMR</b> free navigation. Robot (fenced) vs cobot (beside people) vs AMR (moves things). RPA → intelligent automation → agentic AI. <b>Fix the process before automating.</b></li>
+    <li><b>WMS</b> what &amp; where (hours–days, managers, runs manual sites) · <b>WES</b> when &amp; who (minutes, supervisors, waveless release) · <b>WCS</b> how (milliseconds, engineers, needs automation). Layers, not alternatives.</li>
+    <li><b>Smart stack:</b> sensors → connectivity (OPC UA, MQTT) → data platforms → analytics → decisions. Data up, decisions down. ISA-95 L0–L4. IT = confidentiality; OT = availability &amp; safety.</li>
+    <li><b>Maintenance:</b> reactive · preventive (calendar) · <b>predictive (sensor data shows wear)</b> · prescriptive. OEE ≈ 85% world-class.</li>
+    <li><b>Twin:</b> virtual copy kept in sync through data. Model (no auto flow) · <b>shadow (auto in, manual action)</b> · twin (auto both ways). Loop: sense → synchronize → simulate → decide → act. Scales: product → asset → factory → network.</li>
+    <li><b>Making it work:</b> barriers (cost, legacy, data, OT cyber, skills, pilot purgatory) · business case (baseline first, NPV) · pilot → prove → standardize → scale. Technology is rarely the bottleneck.</li>
+  </ul></div></section>
+  <section id="kn-t8"><h3>Week 8 · Picking tech &amp; RFID, plus the Ch. 2 reading</h3><div class="prose"><ul>
+    <li><b>First-time right</b>; every picking error costs (wrong item, wrong quantity, returns, safety). <b>Poka-yoke</b> = error-proofing.</li>
+    <li><b>Picking:</b> paper → RF scanner → pick-to-light (light shows where/how many, press to confirm) → voice (hands-free, automatic capture, big investment). Batch picking = several orders per trip.</li>
+    <li><b>RFID:</b> no line of sight, but limited by liquids, curved/condensation-prone surfaces, fast filling lines and tag cost ($0.04–0.08 → up to $70).</li>
+    <li><b>UIC study:</b> goal of tech investment = <b>end-to-end visibility</b>. Tiers: maturing 35% (cloud, sensors, AS/RS) · growth ~20% (mobility, wearables, analytics) · emerging 10% (3D printing, drones) · exponential (blockchain, IoT, VR, ML).</li>
+    <li><b>Examples:</b> GT Nexus cloud hub · UPS ORION analytics · Vuzix + SAP smart glasses · Zebra RFID · SAP HANA in-memory. SaaS on PaaS on IaaS. TMS moved to cloud before WMS.</li>
+  </ul></div></section>
+</article>
+
+<article class="note" data-note="midterm" hidden>
+  <header><span class="label">Midterm · Wed Nov 4 · 11:00 a.m. · Room 7-383 · open book · 20%</span><h2>Midterm: Essays, Formulas &amp; Traps</h2>
+  <p class="prose">The six most likely essays with model answers, then the formula sheet, lists, mixed-up pairs and true/false traps. Terms are in <b>Midterm Terminology</b>; the main points per topic are in <b>Midterm Key Notes</b>.</p></header>
+  <div class="callout info"><span class="label">What the instructor confirmed</span><b>Covers every topic from class except Topic 6 (AI &amp; Intelligent Supply Chains).</b> <b>10 true/false</b> · <b>30 multiple choice</b> · <b>short essay: answer any 1 of 6</b> · <b>open book</b>.</div>
+  <div class="callout"><span class="label">Open-book strategy</span>Open book doesn't mean time to look everything up. <b>1</b> Answer every question you know first and flag the rest. <b>2</b> Look up only the flagged ones, using the Midterm Terminology filter or Ctrl+F (⌘F on a Mac). <b>3</b> For the essay, choose the prompt you've prepared, open its model answer below, and write it in your own words <b>applied to their scenario</b>. If you have the usual 80-minute class period, a rough split is ~5 min true/false, ~35 min multiple choice, ~25 min essay, ~10 min checking.</div>
+  <div class="chips" id="mtJump"><span class="label" style="align-self:center">Jump to:</span><button class="chip-btn" data-goto="notes" data-note="midterm-terms">Terminology</button><button class="chip-btn" data-goto="notes" data-note="midterm-notes">Key notes</button><button class="chip-btn" data-jump="mt-essays">6 likely essays</button><button class="chip-btn" data-jump="mt-weeks">Each topic</button><button class="chip-btn" data-jump="mt-formulas">Formulas</button><button class="chip-btn" data-jump="mt-lists">Lists &amp; sequences</button><button class="chip-btn" data-jump="mt-pairs">Mixed-up pairs</button><button class="chip-btn" data-jump="mt-tf">True/false traps</button></div>
+  <div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Practice midterm (10 + 30)</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="essay">Practise essays</button><button class="btn" data-goto="cards" data-cardscope="mid">Midterm flashcards</button></div>
   <section id="mt-essays"><h3>The 6 most likely essays, with model answers</h3>
   <p class="prose">You answer <b>1 of 6</b>. These are the prompts most likely to appear, one per topic area, based on both mock quizzes and each lecture's discussion questions. Prepare two so you have a backup. Open one to see a full point-form answer you can adapt.</p>
   <details class="mt-essay" open><summary><b>1 · Warehouse software: WMS vs WES vs WCS</b> <span class="muted">(Topic 7 · on the Quiz 2 mock)</span></summary>
@@ -1631,7 +1720,7 @@ const EVENTS = [
   { date: "2026-10-28", title: "In-class Quiz 2", scope: "Weeks 4–6 per the outline: Enterprise Systems 1 & 2, AI & Intelligent SCs. The Quiz 2 mock quiz also tests Week 7 (WMS/WES/WCS, automation levels, maintenance, digital twins), so study it too.", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q2" },
   { date: "2026-11-01", title: "Group project report due", scope: "Outline says 11:59 a.m. on a Sunday; confirm a.m. vs p.m.", weight: "20% with presentation", kind: "project", time: "11:59" },
   { date: "2026-11-02", title: "Group project presentation", scope: "In class", kind: "project", time: "11:00" },
-  { date: "2026-11-03", title: "Midterm exam", scope: "Open book. Every topic from class except Topic 6 (AI). 10 true/false, 30 multiple choice, and 1 short essay out of 6. Check the time and room on mêskanâs.", weight: "20%", kind: "exam", quizSet: "mid" },
+  { date: "2026-11-04", title: "Midterm exam", scope: "In class. Open book. Every topic except Topic 6 (AI). 10 true/false, 30 multiple choice, and 1 short essay out of 6.", weight: "20%", kind: "exam", time: "11:00", quizSet: "mid" },
   { date: "2026-11-09", end: "2026-11-13", title: "Reading week, campus closed", kind: "closed" },
   { date: "2026-11-25", title: "In-class Quiz 3", scope: "Weeks 7, 8 & 11: Automation & Digital Twins, Blockchain & IoT, Data & Analytics", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q3" },
   { date: "2026-12-07", title: "Last class", kind: "class" },
@@ -1647,7 +1736,7 @@ const WEEKS = [
   { w: "W6", start: "2026-10-10", end: "2026-10-16", dates: "Oct 12 & 14", topic: "Thanksgiving (Oct 12) · Topic 6: AI & Intelligent Supply Chains", topicIds: ["t6"] },
   { w: "W7", start: "2026-10-17", end: "2026-10-23", dates: "Oct 19 & 21", topic: "Topic 7: Automation, Smart Manufacturing & Digital Twins", topicIds: ["t7"] },
   { w: "W8", start: "2026-10-24", end: "2026-10-30", dates: "Oct 26 & 28", topic: "Topic 8: Blockchain, IoT & Smart Logistics", topicIds: ["t8"] },
-  { w: "W9", start: "2026-10-31", end: "2026-11-06", dates: "Nov 2, 3 & 4", topic: "Group project presentations (Nov 2) · Midterm exam (Tue Nov 3)", topicIds: [] },
+  { w: "W9", start: "2026-10-31", end: "2026-11-06", dates: "Nov 2 & 4", topic: "Group project presentations (Nov 2) · Midterm exam (Wed Nov 4)", topicIds: [] },
   { w: "W10", start: "2026-11-07", end: "2026-11-13", dates: "Nov 9 & 11", topic: "Reading week, campus closed", topicIds: [] },
   { w: "W11", start: "2026-11-14", end: "2026-11-20", dates: "Nov 16 & 18", topic: "Topic 9: SC Data Management & Descriptive Analytics", topicIds: ["t9"] },
   { w: "W12", start: "2026-11-21", end: "2026-11-27", dates: "Nov 23 & 25", topic: "Topic 10: Advanced SC Analytics", topicIds: ["t10"] },
@@ -2324,7 +2413,7 @@ function renderDashboard() {
     const when = isToday ? (next.end ? "Under way" : "Today") : n === 1 ? "Tomorrow" : n + "<small>days</small>";
     let actions = "";
     if (next.quizSet) {
-      actions = '<div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="' + next.quizSet + '" data-quizformat="mock">Practise this quiz</button><button class="btn" data-goto="notes" data-note="' + ({ q1: "t3", q2: "t7", q3: "t7", mid: "midterm" }[next.quizSet]) + '">' + (next.quizSet === "mid" ? "Midterm study guide" : "Review notes") + '</button><button class="btn" data-goto="cards">Flashcards</button></div>';
+      actions = '<div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="' + next.quizSet + '" data-quizformat="mock">Practise this quiz</button><button class="btn" data-goto="notes" data-note="' + ({ q1: "t3", q2: "t7", q3: "t7", mid: "midterm-notes" }[next.quizSet]) + '">' + (next.quizSet === "mid" ? "Midterm key notes" : "Review notes") + '</button><button class="btn" data-goto="cards">Flashcards</button></div>';
     }
     box.innerHTML = '<span class="label">' + (isToday ? "Happening today" : "Next graded item") + '</span>' +
       '<div class="when num">' + when + '</div><h2>' + esc(next.title) + '</h2><dl class="kv">' +
@@ -2353,7 +2442,7 @@ function renderDashboard() {
 
 /* exam prep checklist, shown in the 10 days before the midterm */
 const PREP = [
-  ["Skim the Open-Book Guide so you know where everything is", "notes", ' data-note="midterm"'],
+  ["Skim Midterm Terminology and Key Notes so you know where everything is", "notes", ' data-note="midterm-terms"'],
   ["Pick 2 of the 6 likely essays and read their model answers", "notes", ' data-note="midterm"'],
   ["Weeks 1–3 review set (aim for 80%)", "quiz", ' data-quizscope="q1" data-quizformat="mixed"'],
   ["Weeks 4–7 review set (aim for 80%)", "quiz", ' data-quizscope="q2" data-quizformat="mixed"'],
@@ -2368,10 +2457,10 @@ function renderExamPrep() {
   box.hidden = n < -3 || n > 10; if (box.hidden) return;
   const done = PREP.filter((p, i) => prepDone[i]).length, best = wkScores.mid;
   box.innerHTML = '<div class="panel-head"><h3>Midterm prep' + (n === 0 ? " · today" : n === 1 ? " · tomorrow" : n > 1 ? " · in " + n + " days" : "") + '</h3><span class="pill' + (done === PREP.length ? " good" : "") + ' num">' + done + "/" + PREP.length + ' done</span></div>' +
-    '<p class="muted" style="margin:0">Open book · all topics except Topic 6 · 10 true/false, 30 multiple choice, 1 essay of 6 · 20%. ' + (best != null ? 'Best practice midterm: <b class="num">' + best + '%</b>.' : "No practice midterm yet.") + '</p>' +
+    '<p class="muted" style="margin:0">Wed Nov 4, 11:00 a.m., Room 7-383 · open book · all topics except Topic 6 · 10 true/false, 30 multiple choice, 1 essay of 6 · 20%. ' + (best != null ? 'Best practice midterm: <b class="num">' + best + '%</b>.' : "No practice midterm yet.") + '</p>' +
     '<div class="meter"><i style="width:' + (done / PREP.length * 100) + '%"></i></div>' +
     '<ul class="check-list" id="prepList">' + PREP.map((p, i) => '<li style="display:flex;justify-content:space-between;gap:10px;align-items:center"><label><input type="checkbox" data-i="' + i + '"' + (prepDone[i] ? " checked" : "") + '><span>' + p[0] + '</span></label><button class="btn" data-goto="' + p[1] + '"' + p[2] + '>Go</button></li>').join("") + '</ul>' +
-    '<div class="btn-row"><button class="btn primary" data-goto="notes" data-note="midterm">Open the Open-Book Guide</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Practice midterm</button></div>';
+    '<div class="btn-row"><button class="btn primary" data-goto="notes" data-note="midterm-terms">Midterm Terminology</button><button class="btn" data-goto="notes" data-note="midterm-notes">Key Notes</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Practice midterm</button></div>';
 }
 document.getElementById("examPrep").addEventListener("change", e => { const c = e.target.closest("input[data-i]"); if (!c) return; prepDone[c.dataset.i] = c.checked; store.set("midPrep", prepDone); renderExamPrep(); });
 
@@ -2408,7 +2497,7 @@ const CLASS_DAYS = {
   "2026-10-14": ["Topic 6: AI & Intelligent Supply Chains", "t6"],
   "2026-10-19": ["Topic 7: Automation, Smart Manufacturing & Digital Twins", "t7"], "2026-10-21": ["Topic 7: Automation, Smart Manufacturing & Digital Twins", "t7"],
   "2026-10-26": ["Topic 8: Blockchain, IoT & Smart Logistics", "t8"], "2026-10-28": ["Topic 8: Blockchain, IoT & Smart Logistics", "t8"],
-  "2026-11-02": ["Group project presentations", null], "2026-11-04": ["Class (the midterm moved to Tue Nov 3)", null],
+  "2026-11-02": ["Group project presentations", null], "2026-11-04": ["Midterm exam (open book)", null],
   "2026-11-16": ["Topic 9: SC Data Management & Descriptive Analytics", "t9"], "2026-11-18": ["Topic 9: SC Data Management & Descriptive Analytics", "t9"],
   "2026-11-23": ["Topic 10: Advanced SC Analytics", "t10"], "2026-11-25": ["Topic 10: Advanced SC Analytics", "t10"],
   "2026-11-30": ["Concluding remarks & final exam review", null], "2026-12-02": ["Concluding remarks & final exam review", null],
@@ -2466,11 +2555,11 @@ document.getElementById("calToday").onclick = () => { calMonth = T0 < TERM_START
 /* ---------- notes ---------- */
 const toc = document.getElementById("notesToc");
 const MIDTERM = EVENTS.find(e => e.quizSet === "mid");
-toc.innerHTML = '<div class="toc-week now"><span class="label">Midterm · ' + DAYS[parseD(MIDTERM.date).getDay()] + " " + fmt(parseD(MIDTERM.date)) + '</span><button data-topic="midterm" aria-pressed="false"><span class="ttl">Midterm: Open-Book Guide</span><span class="muted" style="font-size:.8rem">Search, 6 likely essays, formulas</span></button></div>' + WEEK_NUMS.map(n => '<div class="toc-week' + (n === currentWeekNum() ? ' now' : '') + '"><span class="label">Week ' + n + ' · ' + WEEK_INFO[n].dates + (n === currentWeekNum() ? ' · this week' : '') + '</span>' +
+toc.innerHTML = '<div class="toc-week now"><span class="label">Midterm · ' + DAYS[parseD(MIDTERM.date).getDay()] + " " + fmt(parseD(MIDTERM.date)) + '</span><button data-topic="midterm-terms" aria-pressed="false"><span class="ttl">Midterm Terminology</span><span class="muted" style="font-size:.8rem">Every term, grouped by topic</span></button><button data-topic="midterm-notes" aria-pressed="false"><span class="ttl">Midterm Key Notes</span><span class="muted" style="font-size:.8rem">Main points per topic</span></button><button data-topic="midterm" aria-pressed="false"><span class="ttl">Essays, Formulas &amp; Traps</span><span class="muted" style="font-size:.8rem">6 likely essays, formula sheet</span></button></div>' + WEEK_NUMS.map(n => '<div class="toc-week' + (n === currentWeekNum() ? ' now' : '') + '"><span class="label">Week ' + n + ' · ' + WEEK_INFO[n].dates + (n === currentWeekNum() ? ' · this week' : '') + '</span>' +
   weekTopics(n).map(t => '<button data-topic="' + t.id + '" aria-pressed="false"><span class="ttl">' + esc(t.title) + '</span><span class="muted" style="font-size:.8rem">' + t.when + (t.status === "nodeck" ? " · no deck this week" : t.status === "upcoming" ? " · not taught yet" : "") + '</span></button>').join("") + '</div>').join("");
 function openNote(id) {
-  if (id === "midterm") {
-    document.querySelectorAll("article[data-note]").forEach(a => a.hidden = a.dataset.note !== "midterm");
+  if (id.startsWith("midterm")) {
+    document.querySelectorAll("article[data-note]").forEach(a => a.hidden = a.dataset.note !== id);
     toc.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.topic === id ? "true" : "false"));
     store.set("note", id); return;
   }
@@ -2484,17 +2573,25 @@ function openNote(id) {
   toc.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.topic === id ? "true" : "false"));
   store.set("note", id);
 }
-/* open-book search over every flashcard term and definition on the midterm */
+/* midterm terminology: every card from a midterm topic, grouped by topic, filterable */
 const mtSearch = document.getElementById("mtSearch");
+const MT_TOPICS = TOPICS.filter(t => inScope(t.id, "mid") && CARDS.some(c => c.topic === t.id));
 function hl(text, q) { const t = esc(text), k = esc(q).toLowerCase(), i = t.toLowerCase().indexOf(k); return !q || i < 0 ? t : t.slice(0, i) + "<mark>" + t.slice(i, i + k.length) + "</mark>" + t.slice(i + k.length); }
+document.getElementById("mtTopicJump").innerHTML = '<span class="label" style="align-self:center">Jump to:</span>' + MT_TOPICS.map(t => '<button class="chip-btn" data-jump="gl-' + t.id + '">' + (t.code === "Reading" ? "Reading" : t.code) + ": " + esc(t.title.replace("Reading: ", "")) + '</button>').join("");
 function runSearch() {
-  const q = mtSearch.value.trim(), lq = q.toLowerCase(), pool = CARDS.filter(c => inScope(c.topic, "mid"));
-  const hits = q.length < 2 ? [] : pool.filter(c => (c.term + " " + c.def).toLowerCase().includes(lq)).sort((a, b) => b.term.toLowerCase().includes(lq) - a.term.toLowerCase().includes(lq));
-  document.getElementById("mtCount").textContent = q.length < 2 ? pool.length + " terms searchable. Type at least 2 letters." : hits.length + " match" + (hits.length === 1 ? "" : "es");
-  document.getElementById("mtResults").innerHTML = hits.slice(0, 40).map(c => '<div class="mt-hit"><span class="label">' + topicById[c.topic].code + " · " + esc(topicById[c.topic].title) + '</span><b>' + hl(c.term, q) + '</b><span>' + hl(c.def, q) + '</span></div>').join("");
+  const q = mtSearch.value.trim(), lq = q.length < 2 ? "" : q.toLowerCase();
+  let n = 0;
+  document.getElementById("mtGlossary").innerHTML = MT_TOPICS.map(t => {
+    const rows = CARDS.filter(c => c.topic === t.id && (!lq || (c.term + " " + c.def).toLowerCase().includes(lq)));
+    n += rows.length; if (!rows.length) return "";
+    return '<section id="gl-' + t.id + '" style="display:grid;gap:8px"><h3>' + (t.code === "Reading" ? "" : t.code + " · ") + esc(t.title) + ' <span class="muted" style="font-size:.85rem;font-weight:400">' + rows.length + '</span></h3><div class="table-scroll"><table><tbody>' + rows.map(c => '<tr><td style="width:32%"><b>' + hl(c.term, lq ? q : "") + '</b></td><td>' + hl(c.def, lq ? q : "") + '</td></tr>').join("") + '</tbody></table></div></section>';
+  }).join("") || '<p class="muted">No matches. Try a shorter word.</p>';
+  document.getElementById("mtCount").textContent = lq ? n + " matching terms" : n + " terms from every midterm topic. Type at least 2 letters to filter.";
+  document.getElementById("mtTopicJump").hidden = !!lq;
 }
 mtSearch.addEventListener("input", runSearch); runSearch();
-document.getElementById("mtJump").addEventListener("click", e => { const b = e.target.closest("[data-jump]"); if (!b) return; document.getElementById(b.dataset.jump).scrollIntoView({ behavior: "smooth", block: "start" }); if (b.dataset.jump === "mt-search") mtSearch.focus({ preventScroll: true }); });
+["mtTopicJump", "mtNotesJump"].forEach(id => document.getElementById(id).addEventListener("click", e => { const b = e.target.closest("[data-jump]"); if (b) document.getElementById(b.dataset.jump).scrollIntoView({ behavior: "smooth", block: "start" }); }));
+document.getElementById("mtJump").addEventListener("click", e => { const b = e.target.closest("[data-jump]"); if (b) document.getElementById(b.dataset.jump).scrollIntoView({ behavior: "smooth", block: "start" }); });
 toc.addEventListener("click", e => { const b = e.target.closest("button"); if (b) { openNote(b.dataset.topic); if (innerWidth < 880) document.getElementById("notesBody").scrollIntoView({ block: "start", behavior: "smooth" }); } });
 
 /* =================================================================
@@ -3032,7 +3129,7 @@ document.addEventListener("keydown", e => {
 });
 
 /* ---------- grades ---------- */
-const PARTS = [{ id: "q1", name: "Quiz 1 (Oct 14)", w: 10 }, { id: "q2", name: "Quiz 2 (Oct 28)", w: 10 }, { id: "q3", name: "Quiz 3 (Nov 25)", w: 10 }, { id: "proj", name: "Group project (Nov 1–2)", w: 20 }, { id: "mid", name: "Midterm (Nov 3)", w: 20 }, { id: "fin", name: "Final exam (Dec 7–18)", w: 30 }];
+const PARTS = [{ id: "q1", name: "Quiz 1 (Oct 14)", w: 10 }, { id: "q2", name: "Quiz 2 (Oct 28)", w: 10 }, { id: "q3", name: "Quiz 3 (Nov 25)", w: 10 }, { id: "proj", name: "Group project (Nov 1–2)", w: 20 }, { id: "mid", name: "Midterm (Nov 4)", w: 20 }, { id: "fin", name: "Final exam (Dec 7–18)", w: 30 }];
 const SCALE = [["A+", 95, "4.0"], ["A", 90, "4.0"], ["A-", 85, "3.7"], ["B+", 80, "3.3"], ["B", 75, "3.0"], ["B-", 70, "2.7"], ["C+", 65, "2.3"], ["C", 61, "2.0"], ["C-", 57, "1.7"], ["D+", 53, "1.3"], ["D", 50, "1.0"], ["F", 0, "0.0"]];
 const letter = p => SCALE.find(s => p >= s[1]);
 let marks = store.get("marks", {});
