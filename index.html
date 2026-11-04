@@ -238,6 +238,12 @@ p.prose { display: block; }
 .opt .k { font: 500 .8rem/1.9 var(--font-mono); color: var(--muted); }
 .opt.correct { border-color: var(--good); background: var(--good-soft); }
 .opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.mt-essay { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 10px 14px; }
+.mt-essay summary { cursor: pointer; line-height: 1.4; }
+.mt-essay[open] summary { margin-bottom: 8px; }
+.mt-essay ul { margin: 6px 0 4px; padding-left: 20px; display: grid; gap: 5px; line-height: 1.5; }
+.mt-hit { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 8px 12px; display: grid; gap: 2px; }
+mark { background: var(--signal-soft); color: var(--signal); border-radius: 2px; }
 .explain { border-left: 3px solid var(--good); background: var(--surface-2); padding: 12px 14px; border-radius: 0 var(--radius) var(--radius) 0; display: grid; gap: 4px; }
 .explain.miss { border-left-color: var(--bad); }
 .progress { height: 5px; border-radius: 3px; background: var(--surface-2); overflow: hidden; }
@@ -1172,11 +1178,122 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 </article>
 
 <article class="note" data-note="midterm" hidden>
-  <header><span class="label">Midterm · Tue Nov 3 · 20% of your grade · check the time and room on mêskanâs</span><h2>Midterm Study Guide: Weeks 1–8</h2>
-  <p class="prose">Everything on one page: the big idea of each week, every formula with a worked example, the lists and sequences to memorize, the pairs people mix up, the true/false traps from both mock quizzes, and outlines for the likely essays.</p></header>
-  <div class="callout info"><span class="label">Scope and format are assumptions</span>The course outline doesn't state the midterm's scope or format. This guide assumes <b>Weeks 1–8</b> (everything taught before the midterm) in the same style as the quizzes: true/false, multiple choice and short essays. Week 6 (AI) had no slide deck, so the AI points that appear in other weeks are gathered in their own section below. Confirm the scope with the instructor if you can.</div>
-  <div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Take a practice midterm (20 + 20)</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="essay">Practise midterm essays</button><button class="btn" data-goto="cards" data-cardscope="mid">Midterm flashcards</button></div>
-  <section><h3>Each week in one line</h3>
+  <header><span class="label">Midterm · open book · 20% of your grade · check the time and room on mêskanâs</span><h2>Midterm Exam: Open-Book Guide</h2>
+  <p class="prose">Built for looking things up fast during the exam. Search box first, then the six most likely essays with model answers, then the formula sheet, lists, mixed-up pairs and true/false traps.</p></header>
+  <div class="callout info"><span class="label">What the instructor confirmed</span><b>Covers every topic from class except Topic 6 (AI &amp; Intelligent Supply Chains).</b> <b>10 true/false</b> · <b>30 multiple choice</b> · <b>short essay: answer any 1 of 6</b> · <b>open book</b>.</div>
+  <div class="callout"><span class="label">Open-book strategy</span>Open book doesn't mean time to look everything up. <b>1</b> Answer every question you know first and flag the rest. <b>2</b> Look up only the flagged ones, using the search box below or Ctrl+F (⌘F on a Mac). <b>3</b> For the essay, choose the prompt you've prepared, open its model answer below, and write it in your own words <b>applied to their scenario</b>. If you have the usual 80-minute class period, a rough split is ~5 min true/false, ~35 min multiple choice, ~25 min essay, ~10 min checking.</div>
+  <div class="chips" id="mtJump"><span class="label" style="align-self:center">Jump to:</span><button class="chip-btn" data-jump="mt-search">Search terms</button><button class="chip-btn" data-jump="mt-essays">6 likely essays</button><button class="chip-btn" data-jump="mt-weeks">Each topic</button><button class="chip-btn" data-jump="mt-formulas">Formulas</button><button class="chip-btn" data-jump="mt-lists">Lists &amp; sequences</button><button class="chip-btn" data-jump="mt-pairs">Mixed-up pairs</button><button class="chip-btn" data-jump="mt-tf">True/false traps</button></div>
+  <div class="btn-row"><button class="btn primary" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Practice midterm (10 + 30)</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="essay">Practise essays</button><button class="btn" data-goto="cards" data-cardscope="mid">Midterm flashcards</button></div>
+  <section id="mt-search"><h3>Search any term</h3>
+  <div class="field"><label class="label" for="mtSearch">Type a word from the question (e.g. WES, bullwhip, 856, shadow, CREST)</label><input id="mtSearch" type="search" autocomplete="off" placeholder="Search 240+ terms and definitions…" style="padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface-2)"></div>
+  <p class="muted" id="mtCount" style="margin:0"></p>
+  <div id="mtResults" style="display:grid;gap:6px"></div></section>
+  <section id="mt-essays"><h3>The 6 most likely essays, with model answers</h3>
+  <p class="prose">You answer <b>1 of 6</b>. These are the prompts most likely to appear, one per topic area, based on both mock quizzes and each lecture's discussion questions. Prepare two so you have a backup. Open one to see a full point-form answer you can adapt.</p>
+  <details class="mt-essay" open><summary><b>1 · Warehouse software: WMS vs WES vs WCS</b> <span class="muted">(Topic 7 · on the Quiz 2 mock)</span></summary>
+  <p class="muted">“Explain the roles of the WMS, WES and WCS: the question each answers, its time horizon, users and what happens if it fails. Recommend a combination for a given DC.”</p>
+  <ul>
+    <li><b>Intro:</b> the three are layers, not alternatives. Each sits at a different distance from physical motion, which sets its time horizon, data, users and goal.</li>
+    <li><b>WMS: what &amp; where.</b> System of record for every SKU, location and order: receiving, put-away, allocation, wave planning, pick/pack/ship rules, cycle counts. Hours to days. Warehouse and inventory managers. Goal: inventory accuracy and compliance. Runs fully manual sites. If it fails: no accurate allocation or shipping, so it prioritizes data integrity and backups.</li>
+    <li><b>WES: when &amp; by whom.</b> Real-time orchestrator between WMS and the floor: waveless (dynamic) release, task interleaving, balancing manual and automated zones, re-routing around exceptions. Minutes to seconds. Operations supervisors. Goal: throughput and resource balance. Exists because the WMS plans in batches but the floor changes by the minute. If it fails: work is released manually and throughput drops.</li>
+    <li><b>WCS: how, physically.</b> Deterministic, millisecond commands to conveyors, sorters, AS/RS, shuttles and robots via PLCs. Controls and maintenance engineers. Goal: equipment flow and uptime. Needs automation to exist. A carton gets one chance at a divert, so it's isolated from slow business systems. If it fails: equipment stops, so it's built for high availability and local fail-safes.</li>
+    <li><b>One order:</b> ERP creates the order → WMS allocates and creates tasks → WES releases when a picker/robot is free, by carrier cut-off → WCS routes the tote → WMS confirms and updates ERP.</li>
+    <li><b>Recommendation:</b> manual site → WMS only. One automation system → WMS + WCS. Mixed, high-volume site with manual zones, AS/RS, AMRs and tight cut-offs → <b>WMS + WES + WCS</b>, because many competing resources must be balanced in real time (the exact gap a WES fills) and the equipment needs a WCS.</li>
+    <li><b>Conclude:</b> boundaries are blurring (WMS products with WES modules), so judge products by capabilities, not labels.</li>
+  </ul></details>
+  <details class="mt-essay"><summary><b>2 · Digital twins</b> <span class="muted">(Topic 7 · on the Quiz 2 mock)</span></summary>
+  <p class="muted">“Define a digital twin, distinguish it from a digital model and a digital shadow, describe how a twin creates value, give a supply chain example and discuss limits.”</p>
+  <ul>
+    <li><b>Definition:</b> a virtual representation of a physical object, process or system, kept in sync with its real counterpart through data, used to understand, predict and improve it. Three parts: physical entity, virtual model, live data link. Concept credited to Michael Grieves (early 2000s).</li>
+    <li><b>Model vs shadow vs twin (Kritzinger et al., 2018):</b> digital model = no automatic data exchange (CAD model, one-off simulation). Digital shadow = data flows in automatically but people act (most control towers). Digital twin = automatic in both directions.</li>
+    <li><b>The loop:</b> Sense (IoT, ERP, WMS, TMS, external feeds) → Synchronize (update the virtual state) → Simulate (predict, what-ifs) → Decide (a person or rule) → Act (setpoints, re-route, reorder, reschedule), then sense the results again. A one-off simulation answers once; a twin keeps answering as reality changes.</li>
+    <li><b>Scales:</b> product → asset → factory → network.</li>
+    <li><b>Supply chain example:</b> a network twin stress-tests losing a key supplier or a port closure to estimate time to recover and cost; or tests DC locations and sourcing mixes before committing capital. Also inventory rebalancing and control towers.</li>
+    <li><b>Limits (pick 2+):</b> only as good as its data and assumptions (stale ERP lead times = garbage in, confident garbage out); partner data is late or partial; people must trust it; costly and decays without an owner and recalibration; more connections = more cyber exposure; vendor lock-in.</li>
+    <li><b>Conclude:</b> start with one decision and KPI, clean master data, run it as a shadow to earn trust, then close the loop on low-risk actions. Many “twins” are shadows, and that's often the right design.</li>
+  </ul></details>
+  <details class="mt-essay"><summary><b>3 · The bullwhip effect and how systems reduce it</b> <span class="muted">(Topics 4–5 · on the Quiz 2 mock)</span></summary>
+  <p class="muted">“Explain the bullwhip effect and its four causes, how enterprise systems and practices like POS sharing, VMI, EDI and CPFR reduce it, and why it's ‘an information problem.’”</p>
+  <ul>
+    <li><b>Definition:</b> small changes in consumer demand become larger order swings as orders move upstream (consumer ±5% → manufacturer ±50%). Each tier holds more inventory; longer chains distort more (P&amp;G Pampers).</li>
+    <li><b>Causes and cures (Lee, Padmanabhan &amp; Whang, 1997):</b>
+      <ul><li><b>Demand forecast updating</b> (each tier forecasts from orders, not real demand) → share POS and inventory data, VMI, supplier portals.</li>
+      <li><b>Order batching</b> (big, infrequent orders to save costs) → EDI and auto-replenishment make small frequent orders cheap; TMS consolidation keeps freight down.</li>
+      <li><b>Price fluctuation</b> (promotions cause forward buying) → everyday low pricing, shared promotion calendars.</li>
+      <li><b>Rationing &amp; shortage gaming</b> (inflated orders, then cancellations) → allocate on past sales, share capacity data.</li></ul></li>
+    <li><b>Also:</b> shorter lead times (cross-docking, JIT), planning more often.</li>
+    <li><b>CPFR:</b> retailer and manufacturer agree a joint business plan and share POS sell-through, promotions and forecasts (EDI 830), managing exceptions above thresholds (Walmart + Warner-Lambert Listerine pilot).</li>
+    <li><b>Conclude:</b> it's an information problem because every company acts rationally on what it sees, but each sees only the next tier's orders, not true end demand. Sharing accurate, timely demand data removes the cause.</li>
+  </ul></details>
+  <details class="mt-essay"><summary><b>4 · Why ERP alone isn't enough</b> <span class="muted">(Topics 4–5)</span></summary>
+  <p class="muted">“Explain why ERP alone is not enough for a modern supply chain. Name ERP's gaps and the specialized systems that fill them, and how they connect.”</p>
+  <ul>
+    <li><b>Intro:</b> ERP is the backbone, not the whole skeleton. It's the integrated system of record (plan / execute / record): one database, shared master data, financial control (GL, AP, AR, costing), audit trail. One goods receipt updates inventory, the PO, the liability and the GL at once.</li>
+    <li><b>Gap → system:</b>
+      <ul><li>Simplified planning (infinite capacity, fixed lead times) → <b>APS</b> (finite capacity, simultaneous optimization, what-if).</li>
+      <li>Thin execution detail → <b>WMS</b> (bins: ERP knows 500 units are in the Toronto DC; WMS knows bin A-14-03), <b>TMS</b> (carriers, routing, freight audit), <b>MES</b> (shop floor in seconds).</li>
+      <li>Batch, not real-time → <b>SCEM / control tower</b> (live exceptions).</li>
+      <li>Inside one company → <b>SRM, supplier portals, CRM/OMS</b>.</li>
+      <li>Weak analytics, sustainability data, costly customization.</li></ul></li>
+    <li><b>Integration:</b> point-to-point needs n(n−1)/2 links (8 systems = 28) and is brittle; a middleware hub needs about n; API-led / iPaaS is real-time. EDI for high-volume B2B documents, APIs for real-time checks, portals for small suppliers.</li>
+    <li><b>Suite vs best-of-breed:</b> one data model and simpler upgrades vs deepest functionality and more interfaces. Most firms end up hybrid.</li>
+    <li><b>Conclude:</b> master data must be governed (Target Canada); heavy ERP customization makes upgrades harder.</li>
+  </ul></details>
+  <details class="mt-essay"><summary><b>5 · How efficiency creates vulnerability (resilience)</b> <span class="muted">(Topic 3 · on the Quiz 1 mock)</span></summary>
+  <p class="muted">“Explain how an efficiency-oriented supply chain can create vulnerability, using at least three practices and the trade-off in each.”</p>
+  <ul>
+    <li><b>Intro:</b> resilience means limiting the impact of disruptions, recovering quickly and adapting, not preventing every disruption. Efficiency practices remove the buffers resilience depends on.</li>
+    <li><b>Single or limited sourcing:</b> lower purchase cost and volume leverage → exposure if that one supplier fails.</li>
+    <li><b>JIT / minimal inventory:</b> lower carrying cost → few buffers when a disruption hits.</li>
+    <li><b>High capacity utilization:</b> efficient use of assets → no spare capacity to absorb shocks.</li>
+    <li><b>Global sourcing:</b> lower unit cost → geopolitical, transport and environmental exposure.</li>
+    <li><b>Long, lean networks:</b> economies of scale → longer recovery times.</li>
+    <li><b>Watch the traps:</b> more suppliers or more inventory does not automatically mean more resilience (complexity, carrying cost, obsolescence); connectivity raises visibility but also cyber exposure.</li>
+    <li><b>Conclude:</b> the goal is to balance efficiency, risk and resilience, not to eliminate efficiency. Technology (visibility, scenario planning, twins) complements risk management and relationships.</li>
+  </ul></details>
+  <details class="mt-essay"><summary><b>6 · Technology roadmap using the selection framework</b> <span class="muted">(Topic 1 · on the Quiz 1 mock)</span></summary>
+  <p class="muted">“A distributor has rising volumes, picking errors and labour shortages with manual, paper processes. Use the six-step framework to recommend a roadmap, with two KPIs and two risks.”</p>
+  <ul>
+    <li><b>1 Define the business problem and objectives</b> (errors, labour, visibility). Always first.</li>
+    <li><b>2 Assess the current state:</b> processes, data, capabilities.</li>
+    <li><b>3 Identify alternatives:</b> WMS, barcode/RFID, voice or pick-to-light, AMRs, analytics, cloud integration.</li>
+    <li><b>4 Evaluate</b> on cost (TCO, not price), fit, integration and ROI.</li>
+    <li><b>5 Pilot and implement in phases:</b> WMS + barcode/RFID first, then AMRs and analytics.</li>
+    <li><b>6 Monitor, measure and scale.</b></li>
+    <li><b>KPIs:</b> picking accuracy · lines picked per labour hour · inventory record accuracy · order cycle time / OTIF · labour cost per order.</li>
+    <li><b>Risks:</b> integration and data quality · employee resistance and training gaps · go-live disruption · premature automation · cyber and vendor dependence.</li>
+    <li><b>Conclude:</b> technology must solve the business problem; fix the process before automating it.</li>
+  </ul></details>
+  <p class="prose" style="margin-top:6px"><b>Backup prompts</b> in case a different one appears:</p>
+  <details class="mt-essay"><summary><b>Backup · Apply SCOR DS to a company</b> <span class="muted">(Week 1)</span></summary>
+  <ul>
+    <li>SCOR DS = ASCM's free, digital reference model; a network with Orchestrate at the centre. Changes from SCOR 12.0: Enable → Orchestrate, Make → Transform, Deliver → Order + Fulfill.</li>
+    <li>Place two activities in each process: <b>Orchestrate</b> (network design, sourcing policy, ESG) · <b>Plan</b> (forecast, capacity plan) · <b>Order</b> (online checkout, pricing &amp; payment) · <b>Source</b> (supplier purchasing, receiving) · <b>Transform</b> (production, repair) · <b>Fulfill</b> (pick, pack, ship, invoice) · <b>Return</b> (warranty returns, recycling, disposition).</li>
+    <li>Building blocks: Processes, Performance, Practices, People. Levels: L1 targets, L2 configuration, L3 diagnosis, L4 company-specific.</li>
+    <li>Attributes: resilience (reliability, responsiveness, agility), economic (cost, profit, assets), sustainability (environmental, social). Lead on two or three, stay at parity on the rest, and name a trade-off (air freight improves responsiveness but worsens emissions).</li>
+  </ul></details>
+  <details class="mt-essay"><summary><b>Backup · Digitization vs digitalization vs transformation, and the maturity roadmap</b> <span class="muted">(Topics 1–2)</span></summary>
+  <ul>
+    <li><b>Digitization:</b> converting information to digital form (RFID tags, digital inventory records). <b>Digitalization:</b> using digital tools to improve an existing process (AI forecasting, automated replenishment). <b>Transformation:</b> redesigning the business model and value proposition (Nike wholesale → direct-to-consumer ecosystem, Nike App/SNKRS).</li>
+    <li><b>Maturity:</b> 1 Visibility → 2 Connectivity → 3 Predictive intelligence → 4 Autonomous &amp; adaptive. Stages build on each other; maturity can be uneven across regions.</li>
+    <li><b>Fragmented data but wants AI:</b> the connectivity foundation is weak, so integrate systems and partners first, then expect reliable predictions.</li>
+    <li><b>Journey:</b> Diagnose → Pilot → Scale → Transform → Optimize. Pitfalls: technology-first, ignoring data quality, change-management neglect, boiling the ocean, ecosystem myopia, ROI impatience.</li>
+  </ul></details>
+  <details class="mt-essay"><summary><b>Backup · Picking technology and RFID</b> <span class="muted">(Week 8)</span></summary>
+  <ul>
+    <li>Picking errors (wrong item, wrong quantity) cause returns, cost and safety issues; aim for first-time right through poka-yoke (error-proofing).</li>
+    <li>Evolution: paper → RF scanner → pick-to-light (lights show location and quantity, press to confirm) → voice (hands-free, ergonomic, automatic data capture, full visibility; significant investment; speaker-independent vs speaker-dependent). Batch picking consolidates orders for productivity and accuracy.</li>
+    <li>RFID reads many tags without line of sight, but struggles with liquids, curved or condensation-prone surfaces and high-speed filling lines; tags cost $0.04–0.08 up to $70 (battery-powered).</li>
+    <li>Recommend based on order profile and budget, with a KPI (pick accuracy, lines per labour hour).</li>
+  </ul></details>
+  <details class="mt-essay"><summary><b>Backup · Smart manufacturing and maintenance</b> <span class="muted">(Topic 7)</span></summary>
+  <ul>
+    <li>Stack: assets &amp; sensors → connectivity (OPC UA, MQTT) → data platforms (historians, MES, edge, cloud) → analytics &amp; AI → decisions &amp; action. Data flows up, decisions flow down; value only when the loop closes.</li>
+    <li>ISA-95: L0 process, L1 PLCs, L2 SCADA/HMI, L3 MES/WMS, L4 ERP. IT (L3–4) protects confidentiality and integrity; OT (L0–2) protects availability and safety. Convergence raises value and cyber risk (IEC 62443).</li>
+    <li>Maintenance: reactive → preventive (calendar) → predictive (sensor data shows wear) → prescriptive (model recommends the action). Predictive for bottlenecks, preventive/reactive for redundant assets.</li>
+    <li>OEE = availability × performance × quality (≈85% world-class). Fewer breakdowns → reliable lead times → less safety stock.</li>
+  </ul></details></section>
+  <section id="mt-weeks"><h3>Each topic in one line</h3>
   <div class="table-scroll"><table><thead><tr><th>Week</th><th>Topic</th><th>The big idea</th><th>Know cold</th></tr></thead><tbody>
     <tr><td>1</td><td><a href="#notes" data-goto="notes" data-note="scor">SCOR DS</a></td><td>A free, digital <b>reference model</b> (not software) giving a common language to describe, measure and improve a supply <b>network</b></td><td>7 processes; Enable→Orchestrate, Make→Transform, Deliver→Order + Fulfill; 4 building blocks; L1–L4 (diagnose at L3); resilience / economic / sustainability attributes</td></tr>
     <tr><td>1</td><td><a href="#notes" data-goto="notes" data-note="t1">Intro to SC Technology</a></td><td>Technology must <b>solve a business problem</b>; data quality decides how reliable tech-enabled decisions are</td><td>Digitization → digitalization → transformation; TPS/MIS/DSS/EIS; batch vs OLTP; SMAC; 4 analytics questions; 6-step selection framework (define the problem first)</td></tr>
@@ -1184,11 +1301,11 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <tr><td>3</td><td><a href="#notes" data-goto="notes" data-note="t3">Risk, Resilience &amp; Sustainability</a></td><td>Resilience = <b>limit impact, recover, adapt</b>, not prevent everything; efficiency creates vulnerability</td><td>Risk → disruption → crisis; efficiency practices and their trade-offs; TBL; unintended consequences; third-party cyber risk</td></tr>
     <tr><td>4</td><td><a href="#notes" data-goto="notes" data-note="t4">Enterprise Systems 1</a></td><td>ERP is the integrated <b>system of record</b>: plan / execute / record</td><td>Bullwhip 4 causes + cures; MRP → MRP II → ERP → SCM → cloud; one goods receipt updates everything; EDI codes; Hershey, Nike, Target Canada; KPI formulas</td></tr>
     <tr><td>5</td><td><a href="#notes" data-goto="notes" data-note="t5">Enterprise Systems 2: Beyond ERP</a></td><td><b>ERP is the backbone, not the whole skeleton</b>: specialized systems fill its gaps, joined by integration</td><td>ERP gaps → APS, WMS, TMS, MES, CRM/SRM, SCEM; n(n−1)/2; EDI vs API vs portal; master data rules; APS vs MRP; S&amp;OP; P2P &amp; 3-way match; ATP vs CTP; perfect order; OEE; weighted matrix; payback/ROI</td></tr>
-    <tr><td>6</td><td>AI &amp; Intelligent SCs</td><td>No slide deck: see the AI section below</td><td>Supervised vs unsupervised; drift; analytics types; AI needs clean, connected data</td></tr>
+    <tr><td>6</td><td>AI &amp; Intelligent SCs</td><td colspan="2"><b>Not on the midterm.</b></td></tr>
     <tr><td>7</td><td><a href="#notes" data-goto="notes" data-note="t7">Automation, Smart Mfg &amp; Twins</a></td><td>Automation = hands, smart manufacturing = senses and nerves, twins = memory and foresight</td><td>Automation levels 1–4; WMS vs WES vs WCS; 5-layer stack; ISA-95 and IT vs OT; 4 maintenance strategies; OEE; model vs shadow vs twin; twin loop; barriers, pilot purgatory</td></tr>
     <tr><td>8</td><td><a href="#notes" data-goto="notes" data-note="t8">Picking tech &amp; RFID</a> + <a href="#notes" data-goto="notes" data-note="tech">Ch. 2 reading</a></td><td>Accuracy and visibility: <b>first-time right</b>; visibility is the goal of tech investment</td><td>Paper → RF → pick-to-light → voice; voice pros and cost; RFID limits and tag prices; 4 technology tiers and %; the ten technologies and their examples</td></tr>
   </tbody></table></div></section>
-  <section><h3>Formula sheet</h3>
+  <section id="mt-formulas"><h3>Formula sheet</h3>
   <div class="table-scroll"><table><thead><tr><th>What</th><th>Formula</th><th>Worked example from class</th></tr></thead><tbody>
     <tr><td>Point-to-point interfaces</td><td><b>n(n−1) ÷ 2</b></td><td>6 systems → 15 · 8 systems → 28 (a hub needs about n)</td></tr>
     <tr><td>OEE</td><td><b>Availability × Performance × Quality</b></td><td>90% × 85% × 98% ≈ 75% · 90% × 95% × 98% ≈ 84% · world-class ≈ 85%. Fix the lowest factor first.</td></tr>
@@ -1207,7 +1324,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <tr><td>OEE as hidden capacity</td><td>New OEE ÷ old OEE</td><td>Bottleneck 60% → 70% = 70 ÷ 60 ≈ +1/6 output</td></tr>
   </tbody></table></div>
   <p class="prose muted">Check any of these with the <a href="#labs" data-goto="labs" data-lab="oee">live calculators</a>.</p></section>
-  <section><h3>Lists and sequences to memorize</h3>
+  <section id="mt-lists"><h3>Lists and sequences</h3>
   <div class="table-scroll"><table><thead><tr><th>List</th><th>In order</th></tr></thead><tbody>
     <tr><td>SCOR DS processes (7)</td><td>Orchestrate, Plan, Order, Source, Transform, Fulfill, Return</td></tr>
     <tr><td>SCOR building blocks (4)</td><td>Processes, Performance, Practices, People</td></tr>
@@ -1246,7 +1363,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <tr><td>Picking technology</td><td>Paper → RF scanner → Pick-to-light → Voice</td></tr>
     <tr><td>UIC technology tiers</td><td>Maturing (35%) → Growth (~20%) → Emerging (10%) → Exponential (new)</td></tr>
   </tbody></table></div></section>
-  <section><h3>Pairs people mix up</h3>
+  <section id="mt-pairs"><h3>Pairs people mix up</h3>
   <div class="table-scroll"><table><thead><tr><th>Pair</th><th>The difference</th></tr></thead><tbody>
     <tr><td>Digitization vs digitalization vs transformation</td><td>Convert to digital (RFID tags) · improve a process with digital tools (AI forecasting) · redesign the business model (wholesale → DTC)</td></tr>
     <tr><td>Batch vs OLTP</td><td>Batch is cheaper but out of date; OLTP is real-time and <b>costs more</b></td></tr>
@@ -1273,7 +1390,8 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <tr><td>Speaker-independent vs dependent</td><td>Works for anyone vs trained on each worker's voice</td></tr>
     <tr><td>SaaS vs PaaS vs IaaS</td><td>Use an app · build on a platform · rent virtual hardware</td></tr>
   </tbody></table></div></section>
-  <section><h3>AI across the course (Week 6 had no deck)</h3>
+  <section><h3>AI points inside other topics</h3>
+  <p class="prose muted">Topic 6 itself is not on the midterm, but these AI points were taught inside Topics 1, 2, 5 and 7, so they can still come up.</p>
   <div class="prose"><ul>
     <li><b>Machine learning:</b> supervised (labelled outcomes) vs unsupervised (finds structure). Models <b>drift</b> as demand changes, so they need monitoring and retraining. “Trained once, accurate forever” is false.</li>
     <li><b>Analytics ladder:</b> descriptive → diagnostic → predictive → prescriptive. AI powers the predictive and prescriptive steps.</li>
@@ -1283,28 +1401,13 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
     <li><b>Software automation:</b> RPA → intelligent automation (RPA + OCR + ML) → <b>agentic AI</b> (agents plan multi-step tasks; people approve key decisions). Governance matters: who approves, what it may change.</li>
     <li><b>Hype:</b> generative and agentic AI are near the peak of inflated expectations. Data governance and explainable, monitored AI are part of risk management.</li>
   </ul></div></section>
-  <section><h3>True/false traps from both mock quizzes</h3>
+  <section id="mt-tf"><h3>True/false traps from both mock quizzes</h3>
   <div class="prose"><ul>
     <li><b>Absolute words are usually false:</b> “always”, “automatically”, “guaranteed”, “every”, “without ongoing monitoring”. More suppliers or more inventory does <b>not automatically</b> make a chain resilient.</li>
     <li><b>Giving a system a strength it doesn't have is false:</b> ERP “plans in real time”, ERP is “primarily optimizing”, MRP “respects finite capacity”, a WMS “needs automation”, blockchain “guarantees accuracy”, OLTP “is cheaper than batch”.</li>
     <li><b>Swapped definitions are false:</b> two-way match “PO vs goods receipt” (it's PO vs invoice); the first selection step is “evaluate alternatives” (it's define the problem); AGVs “navigate freely” (that's AMRs).</li>
     <li><b>Balanced trade-off statements are usually true:</b> EDI stays important as APIs grow; cobots still need redesign and safety analysis; third-party cyber is part of SC risk; heavy ERP customization makes upgrades harder; one bad unit of measure breaks MRP, billing, WMS and TMS.</li>
   </ul></div></section>
-  <section><h3>Essay outlines</h3>
-  <p class="prose">The quizzes give short essays that apply a framework. Lead with the definition, walk the steps or layers in order, then apply them to the scenario with examples, KPIs, risks or trade-offs.</p>
-  <div class="table-scroll"><table><thead><tr><th>Likely prompt</th><th>Skeleton answer</th></tr></thead><tbody>
-    <tr><td>Technology roadmap for a struggling distributor (Quiz 1 mock)</td><td>6 selection steps in order → WMS + barcode/RFID, then AMRs and analytics → 2 KPIs (pick accuracy, lines per labour hour) → 2 risks (integration &amp; data quality, resistance &amp; training)</td></tr>
-    <tr><td>How efficiency creates vulnerability (Quiz 1 mock)</td><td>3+ practices as practice → benefit → vulnerability (single sourcing, JIT, high utilization, global sourcing, long networks) → conclude: balance, don't eliminate efficiency</td></tr>
-    <tr><td>Fragmented data, wants AI (Quiz 1 mock)</td><td>4 maturity stages → diagnosis: weak connectivity → recommend integration first, then AI</td></tr>
-    <tr><td>WMS vs WES vs WCS + recommend (Quiz 2 mock)</td><td>For each: question, horizon, users, goal, failure → mixed high-volume DC = WMS + WES + WCS → layers not alternatives; judge capabilities, not labels</td></tr>
-    <tr><td>Digital twin (Quiz 2 mock)</td><td>Definition + 3 parts → model / shadow / twin by data flow → sense, synchronize, simulate, decide, act → network twin example (supplier loss, port closure) → 2 limits (data, trust, cost &amp; decay, cyber, lock-in)</td></tr>
-    <tr><td>Bullwhip (Quiz 2 mock)</td><td>Definition (±5% → ±50%) → 4 causes, each with its cure (POS/VMI, EDI &amp; TMS consolidation, EDLP, allocate on past sales) → CPFR → “an information problem”</td></tr>
-    <tr><td>Why ERP alone isn't enough</td><td>ERP = system of record → 3+ gaps with the system that fills each (APS, WMS/TMS/MES, SCEM, SRM/CRM) → suite vs best-of-breed → hybrid</td></tr>
-    <tr><td>Classify a company's initiatives (Nike)</td><td>Definition → example → why it fits, for digitization (RFID), digitalization (AI forecasting), transformation (DTC ecosystem)</td></tr>
-    <tr><td>Hershey vs Target Canada</td><td>What happened in each → Hershey = timing, testing, integration; Target = master data → 3 fixes (no peak go-live, end-to-end testing, clean master data)</td></tr>
-    <tr><td>Apply SCOR DS to a company</td><td>Two activities in each of the 7 processes → pick the lead attributes, stay at parity on the rest, note a trade-off</td></tr>
-  </tbody></table></div></section>
-  <div class="callout"><span class="label">If you only have an hour</span>Read the formula sheet and the pairs table, take one practice midterm, then go through every question you missed with “Retry the ones I missed.” Finish by writing the WMS/WES/WCS, digital twin and bullwhip outlines from memory.</div>
 </article>
 
 <article class="note" data-note="pending" hidden>
@@ -1528,7 +1631,7 @@ const EVENTS = [
   { date: "2026-10-28", title: "In-class Quiz 2", scope: "Weeks 4–6 per the outline: Enterprise Systems 1 & 2, AI & Intelligent SCs. The Quiz 2 mock quiz also tests Week 7 (WMS/WES/WCS, automation levels, maintenance, digital twins), so study it too.", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q2" },
   { date: "2026-11-01", title: "Group project report due", scope: "Outline says 11:59 a.m. on a Sunday; confirm a.m. vs p.m.", weight: "20% with presentation", kind: "project", time: "11:59" },
   { date: "2026-11-02", title: "Group project presentation", scope: "In class", kind: "project", time: "11:00" },
-  { date: "2026-11-03", title: "Midterm exam", scope: "Moved to Tuesday, Nov 3 (the outline said Nov 4). Tuesday isn't a regular class day, so check the time and room on mêskanâs. The study guide assumes Weeks 1–8; confirm the scope with the instructor.", weight: "20%", kind: "exam", quizSet: "mid" },
+  { date: "2026-11-03", title: "Midterm exam", scope: "Open book. Every topic from class except Topic 6 (AI). 10 true/false, 30 multiple choice, and 1 short essay out of 6. Check the time and room on mêskanâs.", weight: "20%", kind: "exam", quizSet: "mid" },
   { date: "2026-11-09", end: "2026-11-13", title: "Reading week, campus closed", kind: "closed" },
   { date: "2026-11-25", title: "In-class Quiz 3", scope: "Weeks 7, 8 & 11: Automation & Digital Twins, Blockchain & IoT, Data & Analytics", weight: "10%", kind: "quiz", time: "11:00", quizSet: "q3" },
   { date: "2026-12-07", title: "Last class", kind: "class" },
@@ -2158,7 +2261,7 @@ TF.forEach((q, i) => QUESTIONS.push({ id: "tf" + i, type: "tf", topic: q[0], ste
 MC.forEach((q, i) => QUESTIONS.push({ id: "mc" + i, type: "mc", topic: q[0], stem: q[1], correct: q[2][0], options: q[2], why: q[3], mock: q[4] || 0 }));
 const ESSAY_OBJS = ESSAYS.map((e, i) => ({ id: "es" + i, topic: e[0], prompt: e[1], elements: e[2], tip: e[3], mock: e[4] || 0 }));
 /* mock-quiz format per scope: [true/false, multiple choice]. Quiz 1 mock was 12 + 8, Quiz 2 mock 10 + 8 */
-const MOCK_FMT = { q1: [12, 8], mock1: [12, 8], mid: [20, 20] };
+const MOCK_FMT = { q1: [12, 8], mock1: [12, 8], mid: [10, 30] };
 function mockFmt(scope) { return MOCK_FMT[scope] || [10, 8]; }
 const CARDS = F.map((c, i) => ({ id: "c" + i, topic: c[0], term: c[1], def: c[2] }));
 
@@ -2250,25 +2353,25 @@ function renderDashboard() {
 
 /* exam prep checklist, shown in the 10 days before the midterm */
 const PREP = [
-  ["Read the Midterm Study Guide: formula sheet, lists, mixed-up pairs", "notes", ' data-note="midterm"'],
+  ["Skim the Open-Book Guide so you know where everything is", "notes", ' data-note="midterm"'],
+  ["Pick 2 of the 6 likely essays and read their model answers", "notes", ' data-note="midterm"'],
   ["Weeks 1–3 review set (aim for 80%)", "quiz", ' data-quizscope="q1" data-quizformat="mixed"'],
   ["Weeks 4–7 review set (aim for 80%)", "quiz", ' data-quizscope="q2" data-quizformat="mixed"'],
   ["Week 8 + the Ch. 2 reading", "quiz", ' data-quizscope="w8" data-quizformat="mixed"'],
   ["Midterm flashcards until “still learning” is empty", "cards", ' data-cardscope="mid"'],
-  ["Practice midterm (20 + 20)", "quiz", ' data-quizscope="mid" data-quizformat="mock"'],
-  ["Write the essay outlines from memory", "quiz", ' data-quizscope="mid" data-quizformat="essay"'],
+  ["Practice midterm (10 true/false + 30 multiple choice)", "quiz", ' data-quizscope="mid" data-quizformat="mock"'],
   ["Retry every question you missed", "quiz", ' data-quizscope="missed" data-quizformat="mixed"']
 ];
 let prepDone = store.get("midPrep", {});
 function renderExamPrep() {
   const box = document.getElementById("examPrep"), n = daysBetween(T0, parseD(MIDTERM.date));
-  box.hidden = n < 0 || n > 10; if (box.hidden) return;
+  box.hidden = n < -3 || n > 10; if (box.hidden) return;
   const done = PREP.filter((p, i) => prepDone[i]).length, best = wkScores.mid;
-  box.innerHTML = '<div class="panel-head"><h3>Midterm prep · ' + (n === 0 ? "today" : n === 1 ? "tomorrow" : "in " + n + " days") + '</h3><span class="pill' + (done === PREP.length ? " good" : "") + ' num">' + done + "/" + PREP.length + ' done</span></div>' +
-    '<p class="muted" style="margin:0">Weeks 1–8 · Tue Nov 3 · 20% · check the time and room on mêskanâs. ' + (best != null ? 'Best practice midterm: <b class="num">' + best + '%</b>.' : "No practice midterm yet.") + '</p>' +
+  box.innerHTML = '<div class="panel-head"><h3>Midterm prep' + (n === 0 ? " · today" : n === 1 ? " · tomorrow" : n > 1 ? " · in " + n + " days" : "") + '</h3><span class="pill' + (done === PREP.length ? " good" : "") + ' num">' + done + "/" + PREP.length + ' done</span></div>' +
+    '<p class="muted" style="margin:0">Open book · all topics except Topic 6 · 10 true/false, 30 multiple choice, 1 essay of 6 · 20%. ' + (best != null ? 'Best practice midterm: <b class="num">' + best + '%</b>.' : "No practice midterm yet.") + '</p>' +
     '<div class="meter"><i style="width:' + (done / PREP.length * 100) + '%"></i></div>' +
     '<ul class="check-list" id="prepList">' + PREP.map((p, i) => '<li style="display:flex;justify-content:space-between;gap:10px;align-items:center"><label><input type="checkbox" data-i="' + i + '"' + (prepDone[i] ? " checked" : "") + '><span>' + p[0] + '</span></label><button class="btn" data-goto="' + p[1] + '"' + p[2] + '>Go</button></li>').join("") + '</ul>' +
-    '<div class="btn-row"><button class="btn primary" data-goto="notes" data-note="midterm">Open the Midterm Study Guide</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Practice midterm</button></div>';
+    '<div class="btn-row"><button class="btn primary" data-goto="notes" data-note="midterm">Open the Open-Book Guide</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Practice midterm</button></div>';
 }
 document.getElementById("examPrep").addEventListener("change", e => { const c = e.target.closest("input[data-i]"); if (!c) return; prepDone[c.dataset.i] = c.checked; store.set("midPrep", prepDone); renderExamPrep(); });
 
@@ -2363,7 +2466,7 @@ document.getElementById("calToday").onclick = () => { calMonth = T0 < TERM_START
 /* ---------- notes ---------- */
 const toc = document.getElementById("notesToc");
 const MIDTERM = EVENTS.find(e => e.quizSet === "mid");
-toc.innerHTML = '<div class="toc-week now"><span class="label">Midterm · ' + DAYS[parseD(MIDTERM.date).getDay()] + " " + fmt(parseD(MIDTERM.date)) + '</span><button data-topic="midterm" aria-pressed="false"><span class="ttl">Midterm Study Guide</span><span class="muted" style="font-size:.8rem">Weeks 1–8 on one page</span></button></div>' + WEEK_NUMS.map(n => '<div class="toc-week' + (n === currentWeekNum() ? ' now' : '') + '"><span class="label">Week ' + n + ' · ' + WEEK_INFO[n].dates + (n === currentWeekNum() ? ' · this week' : '') + '</span>' +
+toc.innerHTML = '<div class="toc-week now"><span class="label">Midterm · ' + DAYS[parseD(MIDTERM.date).getDay()] + " " + fmt(parseD(MIDTERM.date)) + '</span><button data-topic="midterm" aria-pressed="false"><span class="ttl">Midterm: Open-Book Guide</span><span class="muted" style="font-size:.8rem">Search, 6 likely essays, formulas</span></button></div>' + WEEK_NUMS.map(n => '<div class="toc-week' + (n === currentWeekNum() ? ' now' : '') + '"><span class="label">Week ' + n + ' · ' + WEEK_INFO[n].dates + (n === currentWeekNum() ? ' · this week' : '') + '</span>' +
   weekTopics(n).map(t => '<button data-topic="' + t.id + '" aria-pressed="false"><span class="ttl">' + esc(t.title) + '</span><span class="muted" style="font-size:.8rem">' + t.when + (t.status === "nodeck" ? " · no deck this week" : t.status === "upcoming" ? " · not taught yet" : "") + '</span></button>').join("") + '</div>').join("");
 function openNote(id) {
   if (id === "midterm") {
@@ -2381,6 +2484,17 @@ function openNote(id) {
   toc.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.topic === id ? "true" : "false"));
   store.set("note", id);
 }
+/* open-book search over every flashcard term and definition on the midterm */
+const mtSearch = document.getElementById("mtSearch");
+function hl(text, q) { const t = esc(text), k = esc(q).toLowerCase(), i = t.toLowerCase().indexOf(k); return !q || i < 0 ? t : t.slice(0, i) + "<mark>" + t.slice(i, i + k.length) + "</mark>" + t.slice(i + k.length); }
+function runSearch() {
+  const q = mtSearch.value.trim(), lq = q.toLowerCase(), pool = CARDS.filter(c => inScope(c.topic, "mid"));
+  const hits = q.length < 2 ? [] : pool.filter(c => (c.term + " " + c.def).toLowerCase().includes(lq)).sort((a, b) => b.term.toLowerCase().includes(lq) - a.term.toLowerCase().includes(lq));
+  document.getElementById("mtCount").textContent = q.length < 2 ? pool.length + " terms searchable. Type at least 2 letters." : hits.length + " match" + (hits.length === 1 ? "" : "es");
+  document.getElementById("mtResults").innerHTML = hits.slice(0, 40).map(c => '<div class="mt-hit"><span class="label">' + topicById[c.topic].code + " · " + esc(topicById[c.topic].title) + '</span><b>' + hl(c.term, q) + '</b><span>' + hl(c.def, q) + '</span></div>').join("");
+}
+mtSearch.addEventListener("input", runSearch); runSearch();
+document.getElementById("mtJump").addEventListener("click", e => { const b = e.target.closest("[data-jump]"); if (!b) return; document.getElementById(b.dataset.jump).scrollIntoView({ behavior: "smooth", block: "start" }); if (b.dataset.jump === "mt-search") mtSearch.focus({ preventScroll: true }); });
 toc.addEventListener("click", e => { const b = e.target.closest("button"); if (b) { openNote(b.dataset.topic); if (innerWidth < 880) document.getElementById("notesBody").scrollIntoView({ block: "start", behavior: "smooth" }); } });
 
 /* =================================================================
@@ -2696,12 +2810,12 @@ labToc.addEventListener("click", e => { const b = e.target.closest("button"); if
 /* ---------- flashcards ---------- */
 let known = store.get("known", {});
 const fcTopic = document.getElementById("fcTopic"), fcMode = document.getElementById("fcMode");
-const scopeOptions = '<option value="mid">Midterm set: Weeks 1–8</option><option value="q1">Quiz 1 set: Weeks 1–3</option><option value="q2">Quiz 2 set: Weeks 4–7 (Week 7 is on the mock)</option><option value="q3">Quiz 3 set: Weeks 7, 8 &amp; 11 (Week 11 not taught yet)</option><option value="all">Everything so far</option>';
+const scopeOptions = '<option value="mid">Midterm set: all topics except Topic 6</option><option value="q1">Quiz 1 set: Weeks 1–3</option><option value="q2">Quiz 2 set: Weeks 4–7 (Week 7 is on the mock)</option><option value="q3">Quiz 3 set: Weeks 7, 8 &amp; 11 (Week 11 not taught yet)</option><option value="all">Everything so far</option>';
 function weekOptions(has) { return WEEK_NUMS.filter(n => weekTopics(n).some(t => has(t.id))).map(n => '<option value="w' + n + '">Week ' + n + ': ' + weekTopics(n).map(t => esc(t.title)).join(" + ") + '</option>').join(""); }
 fcTopic.innerHTML = scopeOptions + weekOptions(id => CARDS.some(c => c.topic === id));
 function inScope(topic, scope) {
   if (scope === "all") return true;
-  if (scope === "mid") return topicById[topic].wk <= 8;
+  if (scope === "mid") return topicById[topic].wk <= 8 && topic !== "t6";
   if (/^q\d$/.test(scope)) { const n = +scope.slice(1), t = topicById[topic]; return t.quiz === n || t.also === n; }
   if (/^w\d+$/.test(scope)) return topicById[topic].wk === +scope.slice(1);
   return topic === scope;
@@ -2746,7 +2860,7 @@ document.getElementById("fcLearning").onclick = () => mark(false);
 document.getElementById("fcShuffle").onclick = () => buildDeck(true);
 fcTopic.onchange = () => { buildDeck(false); syncFcChips(); };
 function syncFcChips() { document.querySelectorAll("#fcWeekChips button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === fcTopic.value)); }
-document.getElementById("fcWeekChips").innerHTML = [["all", "All weeks"], ["mid", "Midterm (Wk 1–8)"], ["q1", "Quiz 1 (Wk 1–3)"], ["q2", "Quiz 2 (Wk 4–7)"], ["q3", "Quiz 3 (Wk 7–11)"]].concat(WEEK_NUMS.filter(n => weekTopics(n).some(t => CARDS.some(c => c.topic === t.id))).map(n => ["w" + n, "Week " + n + " · " + CARDS.filter(c => topicById[c.topic].wk === n).length])).map(([v, l]) => '<button class="chip-btn" data-v="' + v + '" aria-pressed="false">' + l + '</button>').join("");
+document.getElementById("fcWeekChips").innerHTML = [["all", "All weeks"], ["mid", "Midterm (no Topic 6)"], ["q1", "Quiz 1 (Wk 1–3)"], ["q2", "Quiz 2 (Wk 4–7)"], ["q3", "Quiz 3 (Wk 7–11)"]].concat(WEEK_NUMS.filter(n => weekTopics(n).some(t => CARDS.some(c => c.topic === t.id))).map(n => ["w" + n, "Week " + n + " · " + CARDS.filter(c => topicById[c.topic].wk === n).length])).map(([v, l]) => '<button class="chip-btn" data-v="' + v + '" aria-pressed="false">' + l + '</button>').join("");
 document.getElementById("fcWeekChips").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; fcTopic.value = b.dataset.v; buildDeck(false); syncFcChips(); });
 fcMode.onchange = () => buildDeck(false);
 
@@ -2788,7 +2902,7 @@ let wkScores = store.get("wkScores", {});
 function renderWeekGrid() {
   const cnt = ids => { const q = QUESTIONS.filter(x => ids.includes(x.topic)); return { tf: q.filter(x => x.type === "tf").length, mc: q.filter(x => x.type === "mc").length, es: ESSAY_OBJS.filter(e => ids.includes(e.topic)).length }; };
   const best = k => wkScores[k] != null ? '<span class="pill ' + (wkScores[k] >= 80 ? "good" : wkScores[k] >= 60 ? "warn" : "bad") + ' num">best ' + wkScores[k] + '%</span>' : '<span class="pill">not tried</span>';
-  const sets = [["mid", "Midterm review · Weeks 1–8", "Tue Nov 3 · 20% · practice format is 20 true/false + 20 multiple choice (the real format isn't published)"], ["q1", "Quiz 1 review · Weeks 1–3", "Written Oct 14"], ["q2", "Quiz 2 review · Weeks 4–7", "Written Oct 28 · Week 7 included because the mock quiz tests it"], ["q3", "Quiz 3 review · Weeks 7, 8 & 11", "Written Nov 25 · Week 11 not taught yet"]];
+  const sets = [["mid", "Midterm review · all topics except Topic 6", "Open book · 20% · real format: 10 true/false + 30 multiple choice + 1 essay of 6"], ["q1", "Quiz 1 review · Weeks 1–3", "Written Oct 14"], ["q2", "Quiz 2 review · Weeks 4–7", "Written Oct 28 · Week 7 included because the mock quiz tests it"], ["q3", "Quiz 3 review · Weeks 7, 8 & 11", "Written Nov 25 · Week 11 not taught yet"]];
   let h = sets.map(([k, t, sub]) => { const ids = TOPICS.filter(x => inScope(x.id, k)).map(x => x.id), c = cnt(ids);
     return '<div class="wk-card span"><div class="panel-head"><span class="wk-title">' + t + '</span>' + best(k) + '</div><span class="muted" style="font-size:.85rem">' + sub + ' · ' + c.tf + ' true/false · ' + c.mc + ' multiple choice · ' + c.es + ' essays</span><div class="btn-row"><button class="btn primary" data-wkstart="' + k + '" data-fmt="mock">' + (k === "mid" ? "Practice midterm" : "Real-quiz format") + ' (' + mockFmt(k).join(" + ") + ')</button><button class="btn" data-wkstart="' + k + '" data-fmt="mixed">Every question</button><button class="btn" data-wkstart="' + k + '" data-fmt="essay">Essays</button></div></div>'; }).join("");
   h += [1, 2, 3, 4, 5, 6, 7, 8].map(n => { const ts = weekTopics(n), ids = ts.map(t => t.id), c = cnt(ids), has = c.tf + c.mc > 0;
