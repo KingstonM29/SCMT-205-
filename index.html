@@ -2756,28 +2756,117 @@ function indexWithSheet() {
 }
 const G_GROUPS = [["cheat", "On the cheat sheet"], ["notes", "In the notes"], ["terms", "Terms"], ["practice", "Practice questions & answers"]];
 let gAll = {};
+/* smart search: understands questions, abbreviations, plurals and typos, and always suggests something */
+const STOP = new Set("what whats is are was were be the a an of does do did how why which who where when in on at to for from by with into explain define definition describe meaning mean means tell me about list name give example examples can could would should will i you we it its this that these those and or vs versus difference differences between compare contrast main key role purpose please help find show us some any most system systems concept called type types kind calculate calculated calculation compute work works used use".split(" "));
+const SYN = { created: ["credit", "coin", "invent", "introduc", "origin"], invented: ["credit", "coin", "creat", "introduc", "origin"], coined: ["credit", "creat", "introduc"], fail: ["fail", "lesson"], failed: ["fail", "lesson"], cost: ["cost", "tco"], cheapest: ["cheap", "lowest"], fastest: ["fast", "speed"], stops: ["stop", "fail"] };
+const ABBR = { wes: "warehouse execution", wms: "warehouse management", wcs: "warehouse control", tms: "transportation management", mes: "manufacturing execution", erp: "enterprise resource planning", aps: "advanced planning", mrp: "material requirements", crm: "customer relationship", oms: "order management", srm: "supplier relationship", scem: "event management", edi: "electronic data interchange", api: "application programming", asn: "advance ship", rfid: "radio frequency", amr: "autonomous mobile", agv: "automated guided", oee: "overall equipment", atp: "available to promise", ctp: "capable to promise", cpfr: "collaborative planning", vmi: "vendor managed", pos: "point of sale", tbl: "triple bottom", ptl: "pick to light", rpa: "robotic process", otif: "on time in full", ppm: "parts per million", tco: "total cost of ownership", kpi: "key performance", plc: "programmable logic", scada: "supervisory control", iot: "internet of things", iiot: "industrial internet", ml: "machine learning", ai: "artificial intelligence", dtc: "direct to consumer", tps: "transaction processing", mis: "management information", dss: "decision support", eis: "executive information", saas: "software as a service", paas: "platform as a service", iaas: "infrastructure as a service", asrs: "automated storage", oltp: "online real-time", ascm: "association for supply chain", scor: "supply chain operations reference", mape: "mean absolute percentage", bom: "bill of materials", gl: "general ledger", po: "purchase order", ar: "accounts receivable", ap: "accounts payable", sku: "stock keeping", dc: "distribution center", npv: "net present value", roi: "return on investment", esg: "environmental social" };
+const ABBR_REV = Object.entries(ABBR).sort((a, b) => b[1].length - a[1].length);
+function escRe(w) { return w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+function stem(w) { return w.length > 4 ? w.replace(/(ies|es|s)$/, "").replace(/(ing|ed)$/, "") : w; }
+function wordRe(w) { return new RegExp("(^|[^a-z0-9])" + escRe(w) + (w.length <= 3 ? "(?![a-z0-9])" : ""), "i"); }
+function phraseRe(p) { return new RegExp("(^|[^a-z0-9])" + p.split(" ").map(escRe).join("[\\s-]+"), "i"); }
+/* each concept = one thing the text must contain, in any of its forms */
+function parseQuery(v) {
+  let q = " " + v.toLowerCase().replace(/[?!.,;:"“”()]/g, " ").replace(/\s+/g, " ") + " ";
+  ABBR_REV.forEach(([ab, full]) => { if (q.includes(" " + full + " ") || q.includes(" " + full.replace(/ /g, "-") + " ")) q = q.replace(" " + full + " ", " " + ab + " ").replace(" " + full.replace(/ /g, "-") + " ", " " + ab + " "); });
+  q = q.replace(/\bas\/rs\b/g, "asrs").replace(/\bs&op\b/g, "s&op");
+  let toks = q.trim().split(" ").filter(w => w.length >= 2 || /^\d$/.test(w));
+  const content = toks.filter(w => !STOP.has(w));
+  if (content.length) toks = content;
+  return toks.map(w => ({ w, res: [wordRe(stem(w))].concat(ABBR[w] ? [phraseRe(ABBR[w])] : [], (SYN[w] || []).map(wordRe)) }));
+}
+function cMatch(c, t) { return c.res.some(r => r.test(t)); }
+let VOCAB = null;
+function vocab() {
+  if (VOCAB) return VOCAB;
+  const m = new Map();
+  indexWithSheet().forEach(x => (x.text.toLowerCase().match(/[a-z][a-z0-9&/-]{2,}/g) || []).forEach(w => m.set(w, (m.get(w) || 0) + 1)));
+  return VOCAB = m;
+}
+function lev(a, b) { const d = Array.from({ length: a.length + 1 }, (_, i) => [i]); for (let j = 1; j <= b.length; j++) d[0][j] = j; for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); return d[a.length][b.length]; }
+function correct(w) {
+  const V = vocab(), s = stem(w);
+  if (ABBR[w] || [...V.keys()].some(k => k.startsWith(s))) return null;
+  const max = w.length <= 5 ? 1 : 2; let best = null, bd = 9, bf = 0;
+  V.forEach((f, k) => { if (Math.abs(k.length - w.length) > max) return; const d = lev(w, k); if (d < bd || (d === bd && f > bf)) { best = k; bd = d; bf = f; } });
+  return bd <= max ? best : null;
+}
+function score(x, cs) {
+  const title = x.g === "terms" ? x.term : "", inTitle = cs.filter(c => cMatch(c, title)).length, inText = cs.filter(c => cMatch(c, x.text)).length;
+  const lead = cs.some(c => c.res.some(r => r.test(x.text.slice(0, 40)))) ? 2 : 0;
+  return inTitle * 10 + inText * 3 + lead + (x.g === "terms" ? 4 : x.g === "notes" ? 2 : x.g === "cheat" ? 1 : 0) - Math.min(x.text.length, 600) / 300;
+}
+function bestAnswer(cs, pool, near) {
+  // notes, terms and cheat sheet first; lines missing one word compete with a small penalty; practice answers are the fallback
+  const ranked = pool.filter(x => x.g !== "practice").map(x => [score(x, cs), x]).concat((near || []).filter(x => x.g !== "practice").map(x => [score(x, cs) - 3, x])).sort((a, b) => b[0] - a[0]);
+  if (ranked.length) return ranked[0][1];
+  const pr = pool.filter(x => x.g === "practice"); return pr.length ? pr[0] : null;
+}
+function answerCard(x, label, words) {
+  const src = x.g === "terms" ? "Term · " + x.sub : x.g === "cheat" || x.g === "practice" ? x.title : "Notes · " + x.title + (x.sub ? " · " + x.sub : "");
+  return '<button class="sr-hit" data-gi="' + SIDX.indexOf(x) + '" style="border-color:var(--good);background:var(--good-soft)"><span class="label" style="color:var(--good)">' + label + '</span>' + (x.g === "terms" ? "<b>" + esc(x.term) + "</b>" : "") + '<span>' + snippet(x.g === "terms" ? x.text.replace(x.term + " — ", "") : x.text, words) + '</span><span class="muted" style="font-size:.78rem">' + esc(src) + ' · tap to open</span></button>';
+}
 function runGlobal() {
-  const words = qWords(gSearch.value);
-  if (!words.length) { gPanel.hidden = true; return; }
-  const ok = matcher(words), idx = indexWithSheet();
-  // related topics: topics named by the query first ("Topic 5", "digital strategy"), then topics with the most matches
-  const ref = gSearch.value.trim().toLowerCase().match(/^(topic|week)\s*(\d+)$/), refRe = ref && new RegExp("\\b" + ref[1] + " " + ref[2] + "\\b");
-  const named = TOPICS.filter(t => hasNotes(t) && (ref ? refRe.test(TOPIC_ALIAS[t.id] || "") : ok(t.title + " " + t.code + " " + (TOPIC_ALIAS[t.id] || ""))));
+  const raw = gSearch.value.trim();
+  if (qWords(raw).length === 0) { gPanel.hidden = true; return; }
+  const idx = indexWithSheet();
+  // "Topic 5" / "Week 7": everything in that topic
+  const ref = raw.toLowerCase().match(/^(topic|week)\s*(\d+)$/), refRe = ref && new RegExp("\\b" + ref[1] + " " + ref[2] + "\\b");
+  let cs = parseQuery(raw), fixes = [];
+  const topicMatch = t => cs.length && cs.every(c => cMatch(c, t.title + " " + t.code + " " + (TOPIC_ALIAS[t.id] || "")));
+  const named = TOPICS.filter(t => hasNotes(t) && (ref ? refRe.test(TOPIC_ALIAS[t.id] || "") : topicMatch(t)));
   const topicRef = !!ref && named.length > 0;
-  const hits = topicRef ? idx.filter(x => named.some(t => t.id === topicOf(x))) : idx.filter(x => ok(x.text));
+  const all = (list, cc) => list.filter(x => cc.every(c => cMatch(c, x.text)));
+  let hits = topicRef ? idx.filter(x => named.some(t => t.id === topicOf(x))) : all(idx, cs), mode = "exact";
+  if (!hits.length && !topicRef) {
+    // typos: fix words that appear nowhere, then retry
+    const fixed = cs.map(c => { const k = correct(c.w); if (k) fixes.push([c.w, k]); return k ? parseQuery(k)[0] : c; });
+    if (fixes.length) { const h2 = all(idx, fixed); if (h2.length) { hits = h2; cs = fixed; mode = "fixed"; } }
+  }
+  if (!hits.length && !topicRef && cs.length > 1) {
+    // closest: lines that match the most words
+    const need = Math.max(1, Math.ceil(cs.length / 2));
+    hits = idx.map(x => [cs.filter(c => cMatch(c, x.text)).length, x]).filter(p => p[0] >= need).sort((a, b) => b[0] - a[0]).map(p => p[1]);
+    if (hits.length) mode = "partial";
+  }
+  if (!topicRef) hits = hits.map(x => [score(x, cs), x]).sort((a, b) => b[0] - a[0]).map(p => p[1]);
+  const words = cs.flatMap(c => [stem(c.w)].concat(ABBR[c.w] ? ABBR[c.w].split(" ") : []));
   const counts = {}; hits.forEach(x => { const t = topicOf(x); if (t && topicById[t] && hasNotes(topicById[t])) counts[t] = (counts[t] || 0) + 1; });
   const related = named.map(t => t.id).concat(Object.keys(counts).sort((a, b) => counts[b] - counts[a]).filter(id => !named.some(t => t.id === id))).slice(0, 6);
-  let h = '<div class="panel-head"><span class="label">' + (topicRef ? "Everything in " + named.map(t => esc(t.title)).join(" + ") + " · " + hits.length : hits.length + ' result' + (hits.length === 1 ? "" : "s") + ' for “' + esc(gSearch.value.trim()) + '”') + '</span><button class="btn" data-gclose>Close</button></div>';
+  let h = '<div class="panel-head"><span class="label">' + (topicRef ? "Everything in " + named.map(t => esc(t.title)).join(" + ") + " · " + hits.length : mode === "partial" ? "No exact match for every word · closest results" : hits.length + ' result' + (hits.length === 1 ? "" : "s") + ' for “' + esc(raw) + '”') + '</span><button class="btn" data-gclose>Close</button></div>';
+  if (fixes.length) h += '<p style="margin:0">Did you mean ' + fixes.map(([a, b]) => '<button class="btn" data-gfix="' + esc(raw.replace(new RegExp(escRe(a), "i"), b)) + '"><b>' + esc(b) + '</b></button>').join(" ") + (mode === "fixed" ? ' <span class="muted">Showing results for the corrected spelling.</span>' : "") + '</p>';
+  // best answer (or a side-by-side for "A vs B" / "difference between A and B")
+  if (!topicRef && hits.length) {
+    const lq = raw.toLowerCase(), cmp = lq.match(/(?:difference between|differences between|compare|contrast)?\s*(.+?)\s+(?:vs\.?|versus|and|or|compared to)\s+(.+?)\??$/);
+    const isCmp = cmp && (/\bvs\.?\b|versus|difference|compare|contrast/.test(lq));
+    if (isCmp) {
+      const A = bestAnswer(parseQuery(cmp[1]), idx.filter(x => parseQuery(cmp[1]).every(c => cMatch(c, x.text)))), B = bestAnswer(parseQuery(cmp[2]), idx.filter(x => parseQuery(cmp[2]).every(c => cMatch(c, x.text))));
+      const both = hits.find(x => x.g !== "practice");
+      h += '<div class="sr-group"><span class="label">Answer from your notes</span>' + (both ? answerCard(both, "Compared together", words) : "") + (A && A !== both ? answerCard(A, esc(cmp[1]), words) : "") + (B && B !== both && B !== A ? answerCard(B, esc(cmp[2]), words) : "") + '</div>';
+    } else {
+      const near = cs.length >= 3 && mode !== "partial" ? idx.filter(x => cs.filter(c => cMatch(c, x.text)).length === cs.length - 1) : [];
+      const top = bestAnswer(cs, hits, near);
+      if (top) h += '<div class="sr-group"><span class="label">' + (mode === "partial" ? "Closest answer from your notes" : "Best answer from your notes") + '</span>' + answerCard(top, x2label(top), words) + '</div>';
+    }
+  }
   if (related.length) h += '<div class="sr-group"><span class="label">Related topics</span><div style="display:flex;flex-wrap:wrap;gap:6px">' + related.map(id => { const t = topicById[id]; return '<button class="topic-chip" data-gtopic="' + id + '"><b>' + esc(t.code === "Reading" ? "Reading" : t.code) + ": " + esc(t.title.replace("Reading: ", "")) + '</b><span class="muted" style="font-size:.78rem">' + (counts[id] ? counts[id] + " matching lines · " : "") + 'open notes →</span></button>'; }).join("") + '</div></div>';
   h += G_GROUPS.map(([g, label]) => {
     const list = hits.filter(x => x.g === g); if (!list.length) return "";
     const shown = gAll[g] ? list : list.slice(0, 5);
-    return '<div class="sr-group"><span class="label">' + label + " · " + list.length + '</span>' + shown.map(x => { const t = topicOf(x); return '<button class="sr-hit" data-gi="' + idx.indexOf(x) + '"><span class="label">' + esc(x.title) + (x.sub ? " · " + esc(x.sub) : "") + '</span><span>' + snippet(x.text, words) + '</span></button>'; }).join("") +
+    return '<div class="sr-group"><span class="label">' + label + " · " + list.length + '</span>' + shown.map(x => '<button class="sr-hit" data-gi="' + idx.indexOf(x) + '"><span class="label">' + esc(x.title) + (x.sub ? " · " + esc(x.sub) : "") + '</span><span>' + snippet(x.text, words) + '</span></button>').join("") +
       (list.length > shown.length ? '<button class="btn" data-gmore="' + g + '">Show all ' + list.length + '</button>' : "") + '</div>';
   }).join("");
-  if (!hits.length && !related.length) h += '<p class="muted" style="margin:0">No results. Try fewer or shorter words.</p>';
+  if (!hits.length && !related.length) {
+    // nothing at all: suggest close words, topics and places to look
+    const V = vocab(), sug = [];
+    cs.forEach(c => { const s = stem(c.w); [...V.entries()].filter(([k]) => k.includes(s.slice(0, Math.max(3, s.length - 2)))).sort((a, b) => b[1] - a[1]).slice(0, 4).forEach(([k]) => { if (!sug.includes(k)) sug.push(k); }); });
+    h += '<div class="sr-group"><span class="label">Nothing found for “' + esc(raw) + '”</span><p class="muted" style="margin:0">Try one key word (e.g. “bullwhip”, “WES”, “twin”), an abbreviation, or a topic number like “Topic 5”.</p>' +
+      (sug.length ? '<div style="display:flex;flex-wrap:wrap;gap:6px"><span class="label" style="align-self:center">Try:</span>' + sug.slice(0, 8).map(k => '<button class="btn" data-gfix="' + esc(k) + '">' + esc(k) + '</button>').join("") + '</div>' : "") +
+      '<div class="btn-row"><button class="btn" data-gopen="cheat">Open the cheat sheet</button><button class="btn" data-gopen="terms">Browse all 247 terms</button><button class="btn" data-gopen="notes">Key notes by topic</button></div></div>';
+  }
   gPanel.innerHTML = h; gPanel.hidden = false;
 }
+function x2label(x) { return x.g === "terms" ? "Definition" : x.g === "cheat" ? "From the cheat sheet" : x.g === "practice" ? "From a practice question" : "From the notes"; }
 function goTo(x) {
   gPanel.hidden = true;
   if (x.g === "terms") { mtSearch.value = x.term; runSearch(); openNote("midterm-terms"); showTab("notes"); window.scrollTo({ top: 0 }); return; }
@@ -2790,11 +2879,13 @@ gSearch.addEventListener("input", () => { gAll = {}; runGlobal(); });
 gSearch.addEventListener("focus", () => { if (gSearch.value.trim()) runGlobal(); });
 gPanel.addEventListener("click", e => {
   if (e.target.closest("[data-gclose]")) { gPanel.hidden = true; return; }
+  const fx = e.target.closest("[data-gfix]"); if (fx) { gSearch.value = fx.dataset.gfix; gAll = {}; runGlobal(); gSearch.focus(); return; }
+  const go = e.target.closest("[data-gopen]"); if (go) { gPanel.hidden = true; const k = go.dataset.gopen; if (k === "cheat") showTab("cheat"); else { openNote(k === "terms" ? "midterm-terms" : "midterm-notes"); showTab("notes"); } window.scrollTo({ top: 0 }); return; }
   const more = e.target.closest("[data-gmore]"); if (more) { gAll[more.dataset.gmore] = true; runGlobal(); return; }
   const tp = e.target.closest("[data-gtopic]"); if (tp) { gPanel.hidden = true; openNote(tp.dataset.gtopic); showTab("notes"); window.scrollTo({ top: 0 }); return; }
   const b = e.target.closest("[data-gi]"); if (!b) return;
   const x = SIDX[+b.dataset.gi];
-  if (x.g === "practice") { const sp = b.querySelector("span:last-child"); sp.textContent = x.text; return; }
+  if (x.g === "practice") { const sp = b.querySelector("span:not(.label):not(.muted)") || b.querySelector("span:last-child"); sp.textContent = x.text; return; }
   goTo(x);
 });
 document.addEventListener("click", e => { if (!e.target.closest(".gsearch")) gPanel.hidden = true; });
