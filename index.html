@@ -428,7 +428,8 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 <!-- MIDTERM CHEAT SHEET -->
 <section class="panel" data-panel="cheat" hidden>
   <div class="panel-head"><div style="display:grid;gap:6px"><h2>Midterm Cheat Sheet</h2><p class="muted">Wed Nov 4 · 11:00 a.m. · Room 7-383 · open book · every topic except Topic 6 · 10 true/false · 30 multiple choice · 1 essay of 6</p></div><div class="btn-row cs-noprint"><button class="btn" id="csPrint">Print</button><button class="btn" data-goto="notes" data-note="midterm-terms">All 247 terms</button><button class="btn" data-goto="notes" data-note="midterm">Essay model answers</button></div></div>
-  <div class="chips cs-noprint"><span class="label" style="align-self:center">Jump to:</span><button class="chip-btn" data-csjump="cs-sheet">Cheat sheet</button><button class="chip-btn" data-csjump="cs-terms">Most important terms</button></div>
+  <div class="field cs-noprint" style="position:sticky;top:56px;z-index:5;background:var(--bg);padding:8px 0"><label class="label" for="csSearch">Search key terms (e.g. WES, bullwhip, 856, shadow, OEE)</label><input id="csSearch" type="search" autocomplete="off" placeholder="Type a term…" style="padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface-2)"><span class="muted" id="csCount" style="font-size:.85rem"></span></div>
+  <div class="chips cs-noprint" id="csJumpRow"><span class="label" style="align-self:center">Jump to:</span><button class="chip-btn" data-csjump="cs-sheet">Cheat sheet</button><button class="chip-btn" data-csjump="cs-terms">Most important terms</button></div>
 
   <h3 id="cs-sheet" class="cs-h">1 · Cheat sheet</h3>
   <div class="cs-grid">
@@ -2651,6 +2652,26 @@ function renderDashboard() {
 }
 
 document.getElementById("csPrint").onclick = () => window.print();
+/* cheat sheet search: filters bullets and key terms, highlights matches, offers the full term list */
+const csPanel = document.querySelector('[data-panel="cheat"]'), csSearch = document.getElementById("csSearch");
+const csItems = [...csPanel.querySelectorAll(".cs-box li")].map(el => ({ els: [el], html: [el.innerHTML] }))
+  .concat([...csPanel.querySelectorAll(".cs-dl dt")].map(dt => ({ els: [dt, dt.nextElementSibling], html: [dt.innerHTML, dt.nextElementSibling.innerHTML] })));
+function csMark(el, q) {
+  const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), nodes = []; while (w.nextNode()) nodes.push(w.currentNode);
+  nodes.forEach(n => { const i = n.nodeValue.toLowerCase().indexOf(q); if (i < 0) return; const m = document.createElement("mark"), rest = n.splitText(i); rest.splitText(q.length); m.textContent = rest.nodeValue; rest.replaceWith(m); });
+}
+function runCsSearch() {
+  const q = csSearch.value.trim().toLowerCase(), on = q.length >= 2;
+  let n = 0;
+  csItems.forEach(it => { it.els.forEach((el, k) => { el.innerHTML = it.html[k]; }); const hit = !on || it.els.some(el => el.textContent.toLowerCase().includes(q)); it.els.forEach(el => { el.hidden = !hit; if (hit && on) csMark(el, q); }); if (hit && on) n++; });
+  csPanel.querySelectorAll(".cs-box").forEach(b => { b.hidden = on && !b.querySelector("li:not([hidden]), dt:not([hidden])"); });
+  csPanel.querySelectorAll(".cs-h").forEach(h => { h.hidden = on && !h.nextElementSibling.querySelector(".cs-box:not([hidden])"); });
+  document.getElementById("csJumpRow").hidden = on;
+  const more = on ? CARDS.filter(c => inScope(c.topic, "mid") && (c.term + " " + c.def).toLowerCase().includes(q)).length : 0;
+  document.getElementById("csCount").innerHTML = !on ? "" : (n ? n + " match" + (n === 1 ? "" : "es") + " on this sheet" : "Not on this sheet") + (more ? ' · <a href="#notes" id="csMore">' + more + " in the full 247-term list →</a>" : "");
+  const a = document.getElementById("csMore"); if (a) a.onclick = e => { e.preventDefault(); mtSearch.value = csSearch.value; runSearch(); openNote("midterm-terms"); showTab("notes"); window.scrollTo({ top: 0 }); };
+}
+csSearch.addEventListener("input", runCsSearch);
 document.querySelector('[data-panel="cheat"]').addEventListener("click", e => { const b = e.target.closest("[data-csjump]"); if (b) document.getElementById(b.dataset.csjump).scrollIntoView({ behavior: "smooth", block: "start" }); });
 
 /* exam prep checklist, shown in the 10 days before the midterm */
