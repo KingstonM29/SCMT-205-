@@ -238,6 +238,24 @@ p.prose { display: block; }
 .opt .k { font: 500 .8rem/1.9 var(--font-mono); color: var(--muted); }
 .opt.correct { border-color: var(--good); background: var(--good-soft); }
 .opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.cs-h { margin-top: 6px; }
+.cs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 10px; align-items: start; }
+.cs-box { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 10px 12px; display: grid; gap: 6px; font-size: .88rem; line-height: 1.45; }
+.cs-box h4 { margin: 0; font: 600 .78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.cs-box ul { margin: 0; padding-left: 16px; display: grid; gap: 3px; }
+.cs-alert { border-color: var(--signal); }
+.cs-alert h4 { color: var(--signal); }
+.cs-wide { grid-column: 1 / -1; }
+.cs-dl { display: grid; grid-template-columns: minmax(0, 40%) 1fr; gap: 3px 10px; margin: 0; }
+.cs-dl dt { font-weight: 600; }
+.cs-dl dd { margin: 0; color: var(--muted); }
+@media print {
+  :root { --bg: #fff; --surface: #fff; --surface-2: #fff; --ink: #000; --muted: #333; --line: #bbb; --accent: #000; --signal: #000; }
+  body { background: #fff; color: #000; }
+  .masthead, .tabs, footer, .cs-noprint { display: none !important; }
+  .cs-grid { grid-template-columns: 1fr 1fr; }
+  .cs-box { break-inside: avoid; font-size: 9pt; }
+}
 .mt-essay { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 10px 14px; }
 .mt-essay summary { cursor: pointer; line-height: 1.4; }
 .mt-essay[open] summary { margin-bottom: 8px; }
@@ -341,6 +359,7 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
 <nav class="tabs" aria-label="Sections">
   <div class="wrap" role="tablist">
     <button class="tab" role="tab" data-tab="dashboard">Dashboard</button>
+    <button class="tab" role="tab" data-tab="cheat">Midterm cheat sheet</button>
     <button class="tab" role="tab" data-tab="schedule">Schedule</button>
     <button class="tab" role="tab" data-tab="notes">Notes</button>
     <button class="tab" role="tab" data-tab="labs">Live diagrams</button>
@@ -403,6 +422,197 @@ footer.wrap { padding-block: 10px 34px; color: var(--muted); font-size: .82rem; 
         <ul class="topics" id="topicStatus"></ul>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- MIDTERM CHEAT SHEET -->
+<section class="panel" data-panel="cheat" hidden>
+  <div class="panel-head"><div style="display:grid;gap:6px"><h2>Midterm Cheat Sheet</h2><p class="muted">Wed Nov 4 · 11:00 a.m. · Room 7-383 · open book · every topic except Topic 6 · 10 true/false · 30 multiple choice · 1 essay of 6</p></div><div class="btn-row cs-noprint"><button class="btn" id="csPrint">Print</button><button class="btn" data-goto="notes" data-note="midterm-terms">All 247 terms</button><button class="btn" data-goto="notes" data-note="midterm">Essay model answers</button></div></div>
+  <div class="chips cs-noprint"><span class="label" style="align-self:center">Jump to:</span><button class="chip-btn" data-csjump="cs-sheet">Cheat sheet</button><button class="chip-btn" data-csjump="cs-terms">Most important terms</button></div>
+
+  <h3 id="cs-sheet" class="cs-h">1 · Cheat sheet</h3>
+  <div class="cs-grid">
+    <div class="cs-box cs-alert"><h4>True/false rules</h4><ul>
+      <li><b>Absolute words → usually FALSE:</b> always, automatically, guaranteed, every, never.</li>
+      <li><b>A system given a strength it lacks → FALSE:</b> ERP “real-time” / “optimizing”, MRP “finite capacity”, WMS “needs automation”, blockchain “guarantees accuracy”, OLTP “cheaper than batch”.</li>
+      <li><b>Swapped definitions → FALSE:</b> 2-way match = PO vs <i>invoice</i>; first selection step = <i>define the problem</i>; <i>AMRs</i> (not AGVs) navigate freely.</li>
+      <li><b>Balanced trade-off → usually TRUE.</b></li>
+    </ul></div>
+    <div class="cs-box"><h4>Formulas</h4><ul>
+      <li><b>Interfaces</b> n(n−1)/2 → 6 = 15, 8 = 28</li>
+      <li><b>OEE</b> A × P × Q → 90×85×98 ≈ 75% · world-class ≈ 85%</li>
+      <li><b>Perfect order</b> on time × complete × undamaged × docs → 95×97×99×98 ≈ 89.4%</li>
+      <li><b>Cash-to-cash</b> DIO + DSO − DPO (negative = good)</li>
+      <li><b>Turns</b> COGS ÷ avg inventory · <b>Forecast acc.</b> 1 − MAPE</li>
+      <li><b>Payback</b> cost ÷ annual benefit → 1.2M ÷ 450K = 2.7 yrs</li>
+      <li><b>ROI</b> (benefit − cost) ÷ cost → 3 yrs = 12.5%</li>
+      <li><b>PPM</b> defects ÷ units × 1M → 50/100,000 = 500</li>
+      <li><b>Weighted score</b> Σ score × weight (weights before bids)</li>
+      <li><b>ATP</b> on hand + receipts − committed</li>
+    </ul></div>
+    <div class="cs-box"><h4>SCOR DS (Week 1)</h4><ul>
+      <li><b>7:</b> Orchestrate · Plan · Order · Source · Transform · Fulfill · Return</li>
+      <li>Enable→<b>Orchestrate</b> · Make→<b>Transform</b> · Deliver→<b>Order + Fulfill</b></li>
+      <li><b>4 blocks:</b> Processes, Performance, Practices, People</li>
+      <li><b>Levels:</b> L1 targets · L2 configuration · <b>L3 diagnosis</b> · L4 outside standard</li>
+      <li><b>Attributes:</b> Resilience (reliability, responsiveness, agility) · Economic (cost, profit, assets) · Sustainability (environ., social)</li>
+      <li>Pricing = Order · pick/pack = Fulfill · repair = Transform · disposition = Return</li>
+    </ul></div>
+    <div class="cs-box"><h4>Topic 1 · Intro to SC tech</h4><ul>
+      <li><b>Digitization</b> (to digital) → <b>digitalization</b> (improve process) → <b>transformation</b> (new model)</li>
+      <li>TPS → MIS (periodic, exception, ad hoc) → DSS (what-if) → EIS</li>
+      <li><b>Batch</b> cheaper, stale · <b>OLTP</b> real-time, costs more</li>
+      <li>Analytics: descriptive → diagnostic → predictive → prescriptive</li>
+      <li>SMAC: cloud core, mobile endpoints, social connects</li>
+      <li>Selection: <b>1 define problem</b> → current state → alternatives → evaluate → pilot → scale</li>
+      <li>ML drifts · blockchain = garbage in · EDI still matters</li>
+    </ul></div>
+    <div class="cs-box"><h4>Topic 2 · Digital strategy</h4><ul>
+      <li><b>Strategy drives technology</b></li>
+      <li>Efficient (stable, cheap) · Responsive (volatile, fast) · Resilient · Sustainable</li>
+      <li>Red ocean = cost <b>OR</b> differentiation · Blue = cost <b>AND</b> differentiation</li>
+      <li>Maturity: Visibility → Connectivity → Predictive → Autonomous (uneven is normal)</li>
+      <li>Journey: Diagnose → Pilot → Scale → Transform → Optimize</li>
+      <li>Control tower: visibility → analytics → action</li>
+      <li>CREST · task vs general environment · structural vs infrastructural</li>
+      <li>6 pitfalls: tech-first, bad data, no change mgmt, boil the ocean, ecosystem myopia, ROI impatience</li>
+    </ul></div>
+    <div class="cs-box"><h4>Topic 3 · Risk &amp; resilience</h4><ul>
+      <li>Risk → disruption → crisis</li>
+      <li><b>Resilience</b> = limit impact, recover, adapt (NOT prevent all)</li>
+      <li>More suppliers/inventory ≠ automatically resilient</li>
+      <li>Efficiency → vulnerability: single sourcing, JIT, high utilization, global sourcing, long networks</li>
+      <li>Third-party cyber = SC risk · TBL: profit, people, planet</li>
+    </ul></div>
+    <div class="cs-box"><h4>Topics 4–5 · ERP &amp; beyond</h4><ul>
+      <li><b>ERP = system of record</b>, batch, inward; backbone not skeleton</li>
+      <li>Gaps → APS · WMS · TMS · MES · CRM/SRM · SCEM. Finance stays in ERP.</li>
+      <li>MRP → MRP II → ERP → SCM suites → cloud</li>
+      <li><b>Bullwhip</b> ±5% → ±50%: forecast updating, batching, price swings, shortage gaming → POS/VMI, EDI, EDLP, allocate on past sales, CPFR</li>
+      <li>EDI 850 PO · 855 ack · 856 ASN · 810 invoice · 997 receipt · 830 forecast</li>
+      <li>EDI batch · API real-time · portal small suppliers · suite vs best-of-breed</li>
+      <li>APS finite vs MRP infinite · ATP have it vs CTP make it</li>
+      <li>2-way PO+invoice · 3-way +receipt · 4-way +inspection</li>
+      <li>Data rules: complete, valid, consistent, reasonable, unique</li>
+      <li>Hershey = timing/testing · Target Canada = master data</li>
+    </ul></div>
+    <div class="cs-box"><h4>Topic 7 · Automation &amp; twins</h4><ul>
+      <li>Levels: Fixed → Programmable → <b>Flexible (AMRs)</b> → Autonomous</li>
+      <li>AGV fixed path · AMR free · cobot beside people</li>
+      <li><b>WMS</b> what/where, hrs–days, manual OK · <b>WES</b> when/who, minutes, waveless · <b>WCS</b> how, ms, needs automation</li>
+      <li>Stack: sensors → connectivity → data → analytics → decisions</li>
+      <li>ISA-95: L1 PLC · L2 SCADA · L3 MES/WMS · L4 ERP · IT confidentiality, OT availability</li>
+      <li>Maintenance: reactive · preventive · <b>predictive (sensors)</b> · prescriptive</li>
+      <li>Model (none) · <b>Shadow (auto in, manual out)</b> · Twin (auto both)</li>
+      <li>Twin loop: sense → sync → simulate → decide → act</li>
+      <li>Pilot purgatory · RPA → intelligent → agentic AI</li>
+    </ul></div>
+    <div class="cs-box"><h4>Week 8 + reading</h4><ul>
+      <li>Paper → RF → pick-to-light → voice · batch picking · poka-yoke</li>
+      <li>Voice: hands-free, costly · speaker-independent vs dependent</li>
+      <li>RFID: no line of sight · fails on liquids, curves, fast lines · $0.04 → $70</li>
+      <li>Tiers: maturing 35% · growth ~20% · emerging 10% · exponential (blockchain, IoT, VR, ML)</li>
+      <li>Goal = end-to-end visibility · SaaS/PaaS/IaaS · TMS cloud before WMS</li>
+    </ul></div>
+    <div class="cs-box cs-wide"><h4>Essay (pick 1 of 6): structure + the likely six</h4><ul>
+      <li><b>Structure:</b> define → walk the steps/layers in order → apply to their scenario → 2 KPIs / risks / trade-offs → conclude.</li>
+      <li><b>WMS/WES/WCS:</b> question, horizon, users, failure for each → mixed DC = all three.</li>
+      <li><b>Digital twin:</b> definition → model/shadow/twin → 5-step loop → network example → 2 limits.</li>
+      <li><b>Bullwhip:</b> definition → 4 causes + cures → CPFR → “information problem”.</li>
+      <li><b>ERP not enough:</b> system of record → gaps + systems → integration → hybrid.</li>
+      <li><b>Efficiency vs resilience:</b> practice → benefit → vulnerability ×3 → balance.</li>
+      <li><b>Tech roadmap:</b> 6 selection steps → 2 KPIs (pick accuracy, lines/hr) → 2 risks (data, resistance).</li>
+    </ul></div>
+  </div>
+
+  <h3 id="cs-terms" class="cs-h">2 · Most important terms by topic</h3>
+  <div class="cs-grid">
+    <div class="cs-box"><h4>Week 1 · SCOR DS</h4><dl class="cs-dl">
+      <dt>SCOR DS</dt><dd>ASCM's free, digital reference model for SC networks</dd>
+      <dt>Orchestrate</dt><dd>Integrating layer: rules, network design, data, risk, ESG</dd>
+      <dt>Transform</dt><dd>Make + assembly, maintenance, repair, services</dd>
+      <dt>Fulfill</dt><dd>Schedule, pick, pack, ship, install, invoice</dd>
+      <dt>Order</dt><dd>Customer purchase: pricing, payment, status</dd>
+      <dt>Level 3</dt><dd>Process elements; where diagnosis happens</dd>
+      <dt>Perfect order fulfillment</dt><dd>Reliability metric: full, on time, docs, condition</dd>
+      <dt>Practices</dt><dd>Standard · best · emerging</dd>
+    </dl></div>
+    <div class="cs-box"><h4>Topic 1 · Intro to SC technology</h4><dl class="cs-dl">
+      <dt>Digitization</dt><dd>Analog → digital (scan invoices, RFID tags)</dd>
+      <dt>Digitalization</dt><dd>Improve an existing process with digital tools</dd>
+      <dt>Digital transformation</dt><dd>Redesign the business model</dd>
+      <dt>OLTP</dt><dd>Real-time processing; costs more than batch</dd>
+      <dt>DSS</dt><dd>Interactive what-if and goal-seeking</dd>
+      <dt>Master data</dt><dd>Products, suppliers, customers, locations</dd>
+      <dt>Prescriptive analytics</dt><dd>What should we do?</dd>
+      <dt>Model drift</dt><dd>ML accuracy decays; needs retraining</dd>
+      <dt>Edge computing</dt><dd>Process data near the source when latency matters</dd>
+    </dl></div>
+    <div class="cs-box"><h4>Topic 2 · Digital strategy</h4><dl class="cs-dl">
+      <dt>Efficient SC</dt><dd>Stable demand, low cost, high utilization</dd>
+      <dt>Responsive SC</dt><dd>Volatile demand, speed over cost</dd>
+      <dt>Blue ocean</dt><dd>New market; low cost AND differentiation</dd>
+      <dt>CREST</dt><dd>Competitive, Regulatory, Economic, Social, Technological</dd>
+      <dt>Control tower</dt><dd>End-to-end visibility that senses, analyzes, acts</dd>
+      <dt>Uneven maturity</dt><dd>Different stages by region; normal</dd>
+      <dt>Structural decisions</dt><dd>Capacity, facilities, technology</dd>
+      <dt>Boiling the ocean</dt><dd>Pitfall: transforming everything at once</dd>
+    </dl></div>
+    <div class="cs-box"><h4>Topic 3 · Risk &amp; resilience</h4><dl class="cs-dl">
+      <dt>Resilience</dt><dd>Limit impact, recover quickly, adapt</dd>
+      <dt>Disruption</dt><dd>Event that interrupts flows</dd>
+      <dt>Crisis</dt><dd>Consequences threaten the wider business</dd>
+      <dt>SC uncertainty</dt><dd>Unpredictable flows, lead times, prices</dd>
+      <dt>Triple Bottom Line</dt><dd>Profit, people, planet together</dd>
+      <dt>Unintended consequences</dt><dd>A green fix shifts harm elsewhere</dd>
+      <dt>Third-party cyber risk</dt><dd>Partners' weaknesses become your entry points</dd>
+    </dl></div>
+    <div class="cs-box"><h4>Topic 4 · Enterprise systems 1</h4><dl class="cs-dl">
+      <dt>ERP</dt><dd>Integrated system of record (plan, execute, record)</dd>
+      <dt>Bullwhip effect</dt><dd>Order swings amplify upstream</dd>
+      <dt>MRP</dt><dd>Explodes BOM; assumes infinite capacity</dd>
+      <dt>VMI</dt><dd>Supplier manages the customer's inventory</dd>
+      <dt>EDI 856</dt><dd>Advance ship notice (ASN)</dd>
+      <dt>OTIF</dt><dd>% orders on time, in full</dd>
+      <dt>Cash-to-cash</dt><dd>DIO + DSO − DPO</dd>
+      <dt>Target Canada</dt><dd>Failed on bad master data</dd>
+    </dl></div>
+    <div class="cs-box"><h4>Topic 5 · Beyond ERP</h4><dl class="cs-dl">
+      <dt>APS</dt><dd>Finite-capacity, simultaneous optimization</dd>
+      <dt>WMS / TMS / MES</dt><dd>Bins · carriers &amp; routing · shop floor</dd>
+      <dt>SCEM</dt><dd>Manage by exception; MTTD</dd>
+      <dt>Middleware / iPaaS</dt><dd>Hub that connects systems once</dd>
+      <dt>ATP vs CTP</dt><dd>Have it? vs can we make it?</dd>
+      <dt>Three-way match</dt><dd>PO = receipt = invoice before paying</dd>
+      <dt>CPFR</dt><dd>Joint planning, shared forecasts and POS</dd>
+      <dt>S&amp;OP</dt><dd>Monthly; one plan for product families</dd>
+      <dt>Maverick spend</dt><dd>Buying off-contract</dd>
+      <dt>Uniqueness rule</dt><dd>No duplicate master records</dd>
+      <dt>Fit-gap</dt><dd>Fit · configure · gap (customize last)</dd>
+    </dl></div>
+    <div class="cs-box"><h4>Topic 7 · Automation &amp; twins</h4><dl class="cs-dl">
+      <dt>Flexible automation</dt><dd>Little or no changeover (AMR fleets)</dd>
+      <dt>AMR</dt><dd>Navigates freely with sensors and maps</dd>
+      <dt>Cobot</dt><dd>Force-limited robot working beside people</dd>
+      <dt>RPA</dt><dd>Rule-based bots; brittle</dd>
+      <dt>WES</dt><dd>Real-time when/who; waveless release</dd>
+      <dt>WCS</dt><dd>Millisecond control of equipment via PLCs</dd>
+      <dt>Predictive maintenance</dt><dd>Sensor data shows wear</dd>
+      <dt>OEE</dt><dd>Availability × performance × quality</dd>
+      <dt>Digital shadow</dt><dd>Data in automatically; people act</dd>
+      <dt>Digital twin</dt><dd>Synced both ways; sense → act loop</dd>
+      <dt>Pilot purgatory</dt><dd>Many pilots, none scaled</dd>
+    </dl></div>
+    <div class="cs-box"><h4>Week 8 + reading</h4><dl class="cs-dl">
+      <dt>Poka-yoke</dt><dd>Error-proofing</dd>
+      <dt>Pick-to-light</dt><dd>Lights show location and quantity; press to confirm</dd>
+      <dt>Voice picking</dt><dd>Hands-free headset directions</dd>
+      <dt>Batch picking</dt><dd>Several orders per trip</dd>
+      <dt>RFID</dt><dd>Reads tags without line of sight</dd>
+      <dt>End-to-end visibility</dt><dd>Goal of SC tech investment</dd>
+      <dt>Exponential tier</dt><dd>Blockchain, IoT, VR, ML</dd>
+      <dt>SaaS</dt><dd>Use a provider's app via browser</dd>
+    </dl></div>
   </div>
 </section>
 
@@ -2440,8 +2650,12 @@ function renderDashboard() {
   }).join("")).join("");
 }
 
+document.getElementById("csPrint").onclick = () => window.print();
+document.querySelector('[data-panel="cheat"]').addEventListener("click", e => { const b = e.target.closest("[data-csjump]"); if (b) document.getElementById(b.dataset.csjump).scrollIntoView({ behavior: "smooth", block: "start" }); });
+
 /* exam prep checklist, shown in the 10 days before the midterm */
 const PREP = [
+  ["Read the Midterm Cheat Sheet tab top to bottom", "cheat", ""],
   ["Skim Midterm Terminology and Key Notes so you know where everything is", "notes", ' data-note="midterm-terms"'],
   ["Pick 2 of the 6 likely essays and read their model answers", "notes", ' data-note="midterm"'],
   ["Weeks 1–3 review set (aim for 80%)", "quiz", ' data-quizscope="q1" data-quizformat="mixed"'],
@@ -2460,7 +2674,7 @@ function renderExamPrep() {
     '<p class="muted" style="margin:0">Wed Nov 4, 11:00 a.m., Room 7-383 · open book · all topics except Topic 6 · 10 true/false, 30 multiple choice, 1 essay of 6 · 20%. ' + (best != null ? 'Best practice midterm: <b class="num">' + best + '%</b>.' : "No practice midterm yet.") + '</p>' +
     '<div class="meter"><i style="width:' + (done / PREP.length * 100) + '%"></i></div>' +
     '<ul class="check-list" id="prepList">' + PREP.map((p, i) => '<li style="display:flex;justify-content:space-between;gap:10px;align-items:center"><label><input type="checkbox" data-i="' + i + '"' + (prepDone[i] ? " checked" : "") + '><span>' + p[0] + '</span></label><button class="btn" data-goto="' + p[1] + '"' + p[2] + '>Go</button></li>').join("") + '</ul>' +
-    '<div class="btn-row"><button class="btn primary" data-goto="notes" data-note="midterm-terms">Midterm Terminology</button><button class="btn" data-goto="notes" data-note="midterm-notes">Key Notes</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Practice midterm</button></div>';
+    '<div class="btn-row"><button class="btn primary" data-goto="cheat">Open the cheat sheet</button><button class="btn" data-goto="notes" data-note="midterm-terms">Midterm Terminology</button><button class="btn" data-goto="notes" data-note="midterm-notes">Key Notes</button><button class="btn" data-goto="quiz" data-quizscope="mid" data-quizformat="mock">Practice midterm</button></div>';
 }
 document.getElementById("examPrep").addEventListener("change", e => { const c = e.target.closest("input[data-i]"); if (!c) return; prepDone[c.dataset.i] = c.checked; store.set("midPrep", prepDone); renderExamPrep(); });
 
